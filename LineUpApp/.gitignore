@@ -1,0 +1,114 @@
+# =========================================================
+#  LineUpApp — App iOS (SwiftUI / Xcode)
+# =========================================================
+
+# ===== macOS =====
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+.Spotlight-V100
+.Trashes
+Icon?
+
+# ===== Xcode : fichiers propres à CHAQUE développeur =====
+# (position des fenêtres, breakpoints perso, schemes non partagés…)
+xcuserdata/
+*.xcuserstate
+*.xcscmblueprint
+*.xccheckout
+*.mode1v3
+*.mode2v3
+*.perspectivev3
+*.pbxuser
+!default.pbxuser
+!default.mode1v3
+!default.mode2v3
+!default.perspectivev3
+
+# ===== Xcode : à PARTAGER avec l'équipe (ne pas ignorer) =====
+# - *.xcodeproj/project.pbxproj           → structure du projet
+# - *.xcodeproj/xcshareddata/xcschemes/   → schemes cochés "Shared"
+# - *.xcworkspace/contents.xcworkspacedata
+# - xcshareddata/IDEWorkspaceChecks.plist
+!*.xcodeproj/project.pbxproj
+!*.xcodeproj/xcshareddata/
+!*.xcworkspace/contents.xcworkspacedata
+!**/xcshareddata/IDEWorkspaceChecks.plist
+
+# ===== Build & produits générés =====
+DerivedData/
+build/
+Index/
+*.moved-aside
+*.hmap
+*.ipa
+*.app
+*.xcarchive
+*.dSYM
+*.dSYM.zip
+
+# ===== Tests, couverture, profiling =====
+*.xcresult
+*.gcno
+*.gcda
+*.profraw
+*.profdata
+*.trace
+TestResults/
+test_output/
+
+# ===== Playgrounds =====
+timeline.xctimeline
+playground.xcworkspace
+
+# ===== Swift Package Manager =====
+.build/
+.swiftpm/
+Packages/
+# Package.resolved est VERSIONNÉ : toute l'équipe utilise les mêmes versions
+
+# ===== CocoaPods / Carthage (si utilisés un jour) =====
+Pods/
+Carthage/Build/
+Carthage/Checkouts/
+
+# ===== Fastlane =====
+fastlane/report.xml
+fastlane/Preview.html
+fastlane/screenshots/**/*.png
+fastlane/test_output
+fastlane/README.md
+
+# ===== Signature & certificats (JAMAIS sur Git) =====
+*.mobileprovision
+*.provisionprofile
+*.p12
+*.cer
+*.certSigningRequest
+AuthKey_*.p8
+
+# ===== Secrets & config locale =====
+# Partager un modèle (ex: Config.example.xcconfig), pas les vraies valeurs
+Secrets.xcconfig
+*.local.xcconfig
+*.xcconfig.local
+GoogleService-Info.plist
+.env
+.env.*
+!.env.example
+
+# ===== Exports de localisation (EN/FR) =====
+*.xcloc/
+
+# ===== Outils de qualité =====
+.swiftlint-cache/
+.swiftformat-cache/
+
+# ===== Éditeurs =====
+.vscode/*
+!.vscode/settings.json
+!.vscode/extensions.json
+.idea/
+*.swp
+*~
