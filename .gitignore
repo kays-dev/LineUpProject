@@ -1,0 +1,28 @@
+# =========================================================
+#  LineUp — .gitignore racine (règles communes à tout le repo)
+#  Les règles spécifiques sont dans le .gitignore de chaque projet
+# =========================================================
+
+# ===== macOS =====
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+
+# ===== Éditeurs =====
+.vscode/*
+!.vscode/settings.json
+!.vscode/extensions.json
+.idea/
+*.swp
+
+# ===== Secrets =====
+.env
+.env.*
+!.env.example
+
+# ===== draw.io (fichiers de sauvegarde / temporaires) =====
+*.drawio.bkp
+*.drawio.dtmp
+*.bkp
+*.dtmp
