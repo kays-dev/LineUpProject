@@ -1,0 +1,58 @@
+# =========================================================
+#  LineUpBackOffice — HTML / CSS / JS vanilla (MVC)
+# =========================================================
+
+# ===== macOS =====
+.DS_Store
+._*
+.AppleDouble
+.LSOverride
+
+# ===== Dépendances (si outillage npm : linter, serveur local…) =====
+node_modules/
+# package-lock.json est VERSIONNÉ si vous utilisez npm
+
+# ===== Build / bundles générés =====
+dist/
+build/
+out/
+*.min.js.map
+*.css.map
+
+# ===== Caches d'outils =====
+.cache/
+.parcel-cache/
+.vite/
+.eslintcache
+.stylelintcache
+.sass-cache/
+
+# ===== Configuration locale =====
+# On partage config.example.js / .env.example, pas les vraies valeurs
+.env
+.env.*
+!.env.example
+config.local.js
+*.local.*
+
+# ===== Tests & couverture =====
+coverage/
+.nyc_output/
+
+# ===== Logs & fichiers temporaires =====
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+*.tmp
+*.bak
+
+# ===== Éditeurs =====
+# On garde les réglages communs à l'équipe (format, extensions conseillées)
+.vscode/*
+!.vscode/settings.json
+!.vscode/extensions.json
+.history/
+.idea/
+*.swp
+*.sublime-workspace
