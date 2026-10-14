@@ -1,0 +1,77 @@
+# =========================================================
+#  LineUpAPI — Backend (Vapor / Swift)
+# =========================================================
+
+# ===== macOS =====
+.DS_Store
+._*
+
+# ===== Swift Package Manager / Vapor =====
+.build/
+.swiftpm/
+Packages/
+DerivedData/
+# Le projet s'ouvre via Package.swift : pas de .xcodeproj à versionner
+*.xcodeproj
+*.xcworkspace
+xcuserdata/
+# Package.resolved est VERSIONNÉ : toute l'équipe utilise les mêmes versions
+
+# ===== Variables d'environnement =====
+# Chacun a son .env local ; on partage seulement .env.example (sans vraies valeurs)
+.env
+.env.*
+!.env.example
+
+# ===== Clés & certificats (JWT, APNs, HTTPS…) =====
+*.pem
+*.key
+*.p8
+*.p12
+*.crt
+*.cer
+jwks.json
+
+# ===== Base de données locale =====
+*.sqlite
+*.sqlite3
+*.db
+*.sqlite-shm
+*.sqlite-wal
+# Données des conteneurs (si volumes montés dans le dossier)
+postgres-data/
+mysql-data/
+db-data/
+
+# ===== Docker =====
+# Chacun peut surcharger la config sans gêner les autres
+docker-compose.override.yml
+
+# ===== Tests & couverture =====
+*.xcresult
+*.profraw
+*.profdata
+coverage/
+.coverage/
+
+# ===== Logs & fichiers temporaires =====
+*.log
+logs/
+tmp/
+*.tmp
+
+# ===== Uploads générés en local =====
+Public/uploads/
+Storage/
+
+# ===== Outils de qualité =====
+.swiftlint-cache/
+.swiftformat-cache/
+
+# ===== Éditeurs =====
+.vscode/*
+!.vscode/settings.json
+!.vscode/extensions.json
+!.vscode/launch.json
+.idea/
+*.swp
