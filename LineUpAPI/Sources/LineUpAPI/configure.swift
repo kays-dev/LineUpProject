@@ -23,7 +23,7 @@ func configure(_ app: Application) async throws {
         // MySecondMigration
     
     // start here
-    
+    app.migrations.add(CreateWorkshop())
     
     
     
