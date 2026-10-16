@@ -17,6 +17,8 @@ func routes(_ app: Application) throws {
         // MySecondController
     
     // start here
+    try app.register(collection: CategoryController())
+    
     try app.register(collection: WorkshopController())
     
     
