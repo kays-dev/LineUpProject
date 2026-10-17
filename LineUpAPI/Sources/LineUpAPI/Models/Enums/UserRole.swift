@@ -7,10 +7,9 @@
 
 import Foundation
 
-enum UserRole : String, Codable {
-    case admin = "admin"
+enum UserRole : String, Codable, Sendable {
     case staff = "staff"
-    case restaurant_manager = "restaurant_manager"
     case festivalgoer = "festivalgoer"
+    case user = "user"
 }
 
