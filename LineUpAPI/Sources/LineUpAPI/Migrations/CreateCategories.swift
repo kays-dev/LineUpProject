@@ -8,11 +8,11 @@
 import Fluent
 import Vapor
 
-struct CreateCategory: AsyncMigration {
+struct CreateCategories: AsyncMigration {
 
     func prepare(on database: any Database) async throws {
 
-        try await database.schema(Category.schema)
+        try await database.schema(Categories.schema)
             .id()
             .field("name", .string, .required)
             .create()
@@ -21,7 +21,7 @@ struct CreateCategory: AsyncMigration {
 
     func revert(on database: any Database) async throws {
 
-        try await database.schema("category").delete()
+        try await database.schema(Categories.schema).delete()
 
     }
 }

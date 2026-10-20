@@ -8,7 +8,7 @@
 import Fluent
 import Vapor
 
-struct CategoryController: RouteCollection {
+struct CategoriesController: RouteCollection {
     
     func boot(routes: any RoutesBuilder) throws {
         
@@ -31,7 +31,7 @@ struct CategoryController: RouteCollection {
         
     }
     
-    private static func fetchCategory(_ req: Request) async throws -> Category {
+    private func fetchCategory(_ req: Request) async throws -> Categories {
         
         guard let id = req.parameters.get("id", as: UUID.self) else {
             
@@ -39,7 +39,7 @@ struct CategoryController: RouteCollection {
             
         }
         
-        guard let fetched = try await Category.find(id , on: req.db)  else {
+        guard let fetched = try await Categories.find(id , on: req.db)  else {
             
             throw Abort(.notFound, reason: "Category not found.")
             
@@ -51,7 +51,7 @@ struct CategoryController: RouteCollection {
     
     func index(req: Request) async throws  -> [CategoryResponseDTO] {
         
-        let categories = try await Category.query(on: req.db).all()
+        let categories = try await Categories.query(on: req.db).all()
         
         return try categories.map{ try $0.toDTO() }
         
@@ -71,7 +71,7 @@ struct CategoryController: RouteCollection {
     
     func show(req: Request) async throws -> CategoryResponseDTO {
         
-        let category = try await Self.fetchCategory(req)
+        let category = try await fetchCategory(req)
         
         return try category.toDTO()
         
@@ -81,7 +81,7 @@ struct CategoryController: RouteCollection {
         
         let data = try req.content.decode(UpdateCategoryDTO.self)
         
-        let category = try await Self.fetchCategory(req)
+        let category = try await fetchCategory(req)
         
         if let name = data.name {
             

@@ -19,7 +19,7 @@ func routes(_ app: Application) throws {
     // start here
     try app.register(collection: UserController())
     
-    try app.register(collection: CategoryController())
+    try app.register(collection: CategoriesController())
     
     try app.register(collection: WorkshopController())
     try app.register(collection: ReservationController())

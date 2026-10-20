@@ -8,9 +8,9 @@
 import Fluent
 import Vapor
 
-final class Category: Model, Content, @unchecked Sendable {
+final class Categories: Model, @unchecked Sendable {
 
-    static let schema = "category"
+    static let schema = "categories"
 
     @ID(key: .id)
     var id: UUID?
@@ -19,7 +19,7 @@ final class Category: Model, Content, @unchecked Sendable {
     var name: String
     
     @Children(for: \.$category)
-    var workshops: [Workshop]
+    var workshops: [Workshops]
 
     init() { }
 

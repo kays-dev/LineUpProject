@@ -15,7 +15,7 @@ struct CategoryResponseDTO: Content {
 
 }
 
-extension Category {
+extension Categories {
 
     func toDTO() throws -> CategoryResponseDTO {
 
