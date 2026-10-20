@@ -1,7 +1,7 @@
 import Fluent
 import Foundation
 
-final class Reservation: Model, @unchecked Sendable {
+final class Reservations: Model, @unchecked Sendable {
     static let schema = "reservations"
 
     @ID(key: .id)
@@ -14,7 +14,7 @@ final class Reservation: Model, @unchecked Sendable {
     var user: User
 
     @Parent(key: "id_workshop")
-    var workshop: Workshop
+    var workshop: Workshops
 
     init() { }
 

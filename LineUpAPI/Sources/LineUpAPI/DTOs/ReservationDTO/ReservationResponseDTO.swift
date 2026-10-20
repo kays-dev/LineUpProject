@@ -7,7 +7,7 @@ struct ReservationResponseDTO: Content {
     var workshopID: UUID
 }
 
-extension Reservation {
+extension Reservations {
     func toDTO() throws -> ReservationResponseDTO {
         let reservationID = try requireID()
 

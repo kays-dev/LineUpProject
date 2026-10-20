@@ -2,7 +2,7 @@ import Fluent
 
 struct CreateReservation: AsyncMigration {
     func prepare(on database: any Database) async throws {
-        try await database.schema(Reservation.schema)
+        try await database.schema(Reservations.schema)
             .id()
             .field("status", .string, .required)
             .field(
@@ -11,12 +11,12 @@ struct CreateReservation: AsyncMigration {
             )
             .field(
                 "id_workshop", .uuid, .required,
-                .references(Workshop.schema, "id")
+                .references(Workshops.schema, "id")
             )
             .create()
     }
 
     func revert(on database: any Database) async throws {
-        try await database.schema(Reservation.schema).delete()
+        try await database.schema(Reservations.schema).delete()
     }
 }

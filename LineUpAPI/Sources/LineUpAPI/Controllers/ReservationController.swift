@@ -28,7 +28,7 @@ struct ReservationController: RouteCollection {
         guard try await User.find(dto.userID, on: req.db) != nil else {
             throw Abort(.notFound, reason: "Utilisateur introuvable.")
         }
-        guard let workshop = try await Workshop.find(dto.workshopID, on: req.db) else {
+        guard let workshop = try await Workshops.find(dto.workshopID, on: req.db) else {
             throw Abort(.notFound, reason: "Atelier introuvable.")
         }
 
@@ -59,7 +59,7 @@ struct ReservationController: RouteCollection {
             throw Abort(.badRequest, reason: "Le paramètre userID est obligatoire.")
         }
 
-        let query = Reservation.query(on: req.db)
+        let query = Reservations.query(on: req.db)
             .filter(\.$user.$id == userID)
 
         if let status = filters.status {
@@ -71,7 +71,7 @@ struct ReservationController: RouteCollection {
         if let name = filters.name, !name.isEmpty {
             query
                 .join(parent: \.$workshop)
-                .filter(Workshop.self, \.$name ~~ name)
+                .filter(Workshops.self, \.$name ~~ name)
         }
 
         let reservations = try await query.sort(\.$id, .ascending).all()
@@ -81,7 +81,7 @@ struct ReservationController: RouteCollection {
     // Consultation globale avec un filtre utilisateur facultatif.
     func index(req: Request) async throws -> [ReservationResponseDTO] {
         let filters = try req.query.decode(ReservationQueryDTO.self)
-        let query = Reservation.query(on: req.db)
+        let query = Reservations.query(on: req.db)
 
         if let userID = filters.userID {
             query.filter(\.$user.$id == userID)
@@ -95,7 +95,7 @@ struct ReservationController: RouteCollection {
         if let name = filters.name, !name.isEmpty {
             query
                 .join(parent: \.$workshop)
-                .filter(Workshop.self, \.$name ~~ name)
+                .filter(Workshops.self, \.$name ~~ name)
         }
 
         let reservations = try await query.sort(\.$id, .ascending).all()
@@ -106,7 +106,7 @@ struct ReservationController: RouteCollection {
         guard let reservationID = req.parameters.get("reservationID", as: UUID.self) else {
             throw Abort(.badRequest, reason: "Identifiant de réservation invalide.")
         }
-        guard let reservation = try await Reservation.find(reservationID, on: req.db) else {
+        guard let reservation = try await Reservations.find(reservationID, on: req.db) else {
             throw Abort(.notFound, reason: "Réservation introuvable.")
         }
 
@@ -118,7 +118,7 @@ struct ReservationController: RouteCollection {
         guard let reservationID = req.parameters.get("reservationID", as: UUID.self) else {
             throw Abort(.badRequest, reason: "Identifiant de réservation invalide.")
         }
-        guard let reservation = try await Reservation.find(reservationID, on: req.db) else {
+        guard let reservation = try await Reservations.find(reservationID, on: req.db) else {
             throw Abort(.notFound, reason: "Réservation introuvable.")
         }
 
@@ -138,7 +138,7 @@ struct ReservationController: RouteCollection {
         guard let reservationID = req.parameters.get("reservationID", as: UUID.self) else {
             throw Abort(.badRequest, reason: "Identifiant de réservation invalide.")
         }
-        guard let reservation = try await Reservation.find(reservationID, on: req.db) else {
+        guard let reservation = try await Reservations.find(reservationID, on: req.db) else {
             throw Abort(.notFound, reason: "Réservation introuvable.")
         }
 
@@ -165,7 +165,7 @@ struct ReservationController: RouteCollection {
         guard let reservationID = req.parameters.get("reservationID", as: UUID.self) else {
             throw Abort(.badRequest, reason: "Identifiant de réservation invalide.")
         }
-        guard let reservation = try await Reservation.find(reservationID, on: req.db) else {
+        guard let reservation = try await Reservations.find(reservationID, on: req.db) else {
             throw Abort(.notFound, reason: "Réservation introuvable.")
         }
 
@@ -183,11 +183,11 @@ struct ReservationController: RouteCollection {
         guard let workshopID = req.parameters.get("workshopID", as: UUID.self) else {
             throw Abort(.badRequest, reason: "Identifiant d'atelier invalide.")
         }
-        guard let workshop = try await Workshop.find(workshopID, on: req.db) else {
+        guard let workshop = try await Workshops.find(workshopID, on: req.db) else {
             throw Abort(.notFound, reason: "Atelier introuvable.")
         }
 
-        try await Reservation.query(on: req.db)
+        try await Reservations.query(on: req.db)
             .filter(\.$workshop.$id == workshopID)
             .set(\.$status, to: .cancelled)
             .update()
@@ -203,11 +203,11 @@ struct ReservationController: RouteCollection {
         guard let workshopID = req.parameters.get("workshopID", as: UUID.self) else {
             throw Abort(.badRequest, reason: "Identifiant d'atelier invalide.")
         }
-        guard let workshop = try await Workshop.find(workshopID, on: req.db) else {
+        guard let workshop = try await Workshops.find(workshopID, on: req.db) else {
             throw Abort(.notFound, reason: "Atelier introuvable.")
         }
 
-        try await Reservation.query(on: req.db)
+        try await Reservations.query(on: req.db)
             .filter(\.$workshop.$id == workshopID)
             .delete()
 
