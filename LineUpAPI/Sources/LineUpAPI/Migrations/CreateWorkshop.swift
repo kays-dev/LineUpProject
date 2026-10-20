@@ -11,7 +11,7 @@ struct CreateWorkshop: AsyncMigration {
 
     func prepare(on database: any Database) async throws {
 
-        try await database.schema(Workshop.schema)
+        try await database.schema(Workshops.schema)
             .id()
             .field("name", .string, .required)
             .field("start_time", .datetime, .required)
@@ -19,14 +19,13 @@ struct CreateWorkshop: AsyncMigration {
             .field("capacity_max", .int, .required)
             .field("subscriber_number", .int, .required)
             .field("description", .string, .required)
-            .field("category_id", .uuid, .required, .references(Category.schema, "id"))
+            .field("category_id", .uuid, .required, .references(Categories.schema, "id"))
             .create()
 
     }
 
     func revert(on database: any Database) async throws {
-
-        try await database.schema(Workshop.schema).delete()
+        try await database.schema(Workshops.schema).delete()
 
     }
 }

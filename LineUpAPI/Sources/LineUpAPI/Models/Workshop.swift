@@ -8,9 +8,9 @@
 import Fluent
 import Vapor
 
-final class Workshop: Model, Content, @unchecked Sendable {
+final class Workshops: Model, @unchecked Sendable {
 
-    static let schema = "workshop"
+    static let schema = "workshops"
 
     @ID(key: .id)
     var id: UUID?
@@ -19,10 +19,10 @@ final class Workshop: Model, Content, @unchecked Sendable {
     var name: String
 
     @Field(key: "start_time")
-    var start_time: Date  //type Date
+    var start_time: Date
 
     @Field(key: "end_time")
-    var end_time: Date  //type Date
+    var end_time: Date
 
     @Field(key: "capacity_max")
     var capacity_max: Int
@@ -31,13 +31,13 @@ final class Workshop: Model, Content, @unchecked Sendable {
     var subscriber_number: Int
 
     @Field(key: "description")
-    var workshop_description: String  //workshop_description pour éviter les interférences avec le CustomStringConvertible
+    var workshop_description: String
 
-    @Parent(key: "category_id")  //@Parent pas @Children
-    var category: Category
+    @Parent(key: "category_id")
+    var category: Categories
     
-    @Children(for: \.$workshop)  //@Children pas @Parent
-    var reservations: [Reservation]
+    @Children(for: \.$workshops)
+    var reservations: [Reservations]
 
     
     init() {}
@@ -64,7 +64,7 @@ final class Workshop: Model, Content, @unchecked Sendable {
 
 }
 
-extension Workshop {
+extension Workshops {
 
     func toPlanningDTO(category_name: String) throws
         -> WorkshopPlanningResponseDTO{
@@ -81,7 +81,7 @@ extension Workshop {
 
 }
 
-extension Workshop {
+extension Workshops {
     func toDetailDTO(category_name: String,places_remaining: Int) throws -> WorkshopDetailResponseDTO {
         return WorkshopDetailResponseDTO(
             id: try requireID(),
@@ -95,7 +95,7 @@ extension Workshop {
     }
 }
 
-extension Workshop {
+extension Workshops {
     func toSearchDTO(category_name: String) throws -> WorkshopResponseDTO {
         return WorkshopResponseDTO(
             id: try requireID(),

@@ -44,9 +44,9 @@ struct WorkshopController: RouteCollection {
     }
 
     // Liste de tous les workshops
-    func index(req: Request) async throws -> [Workshop] {
+    func index(req: Request) async throws -> [Workshops] {
         return
-            try await Workshop
+            try await Workshops
             .query(on: req.db)
             .sort(\.$start_time, .descending)
             .all()
@@ -55,7 +55,7 @@ struct WorkshopController: RouteCollection {
     // Planning du festival
     func showWorkshopsPlanning(req: Request) async throws
         -> [WorkshopPlanningResponseDTO] {
-        let workshops = try await Workshop.query(on: req.db)
+        let workshops = try await Workshops.query(on: req.db)
             .with(\.$category)
             .sort(\.$start_time, .descending)
             .all()
@@ -75,7 +75,7 @@ struct WorkshopController: RouteCollection {
             throw Abort(.notFound)
         }
         
-        let workshops = try await Workshop.query(on: req.db)
+        let workshops = try await Workshops.query(on: req.db)
             .filter(\.$category.$id == categorieID)
             .with(\.$category)
             .sort(\.$start_time, .ascending)
@@ -94,7 +94,7 @@ struct WorkshopController: RouteCollection {
             throw Abort(.badRequest, reason: "Le paramètre name est obligatoire.")
         }
 
-        let workshops = try await Workshop.query(on: req.db)
+        let workshops = try await Workshops.query(on: req.db)
             .filter(\.$name ~~ name)
             .with(\.$category)
             .all()
@@ -108,11 +108,11 @@ struct WorkshopController: RouteCollection {
     // Planning du festival + Filtrage par disponibilité
     func showWorkshopsAvailable(req: Request) async throws -> [WorkshopPlanningResponseDTO] {
         
-        let workshops = try await Workshop.query(on: req.db)
+        let workshops = try await Workshops.query(on: req.db)
             .with(\.$category)
             .all()
         
-        let workshopsAvailable =  workshops.filter { workshop in
+        let workshopsAvailables =  workshops.filter { workshop in
             let placeRemaining = max(
                 0,
                 workshop.capacity_max
@@ -123,7 +123,7 @@ struct WorkshopController: RouteCollection {
         
         }
         
-        return try workshopsAvailable.map { workshop in
+        return try workshopsAvailables.map { workshop in
             try workshop.toPlanningDTO(
                 category_name: workshop.category.name
                 )
@@ -133,7 +133,7 @@ struct WorkshopController: RouteCollection {
     // Detail des activités
     func showWorkshopsDetail(req: Request) async throws
         -> [WorkshopDetailResponseDTO] {
-        let workshops = try await Workshop.query(on: req.db)
+        let workshops = try await Workshops.query(on: req.db)
             .with(\.$category)
             .sort(\.$start_time, .descending)
             .all()
@@ -154,7 +154,7 @@ struct WorkshopController: RouteCollection {
     }
 
     // Création
-    func create(req: Request) async throws -> Workshop {
+    func create(req: Request) async throws -> Workshops {
         let dto = try req.content.decode(CreateWorkshopDTO.self)
         let workshop = dto.toModel()
         try await workshop.create(on: req.db)
@@ -162,12 +162,12 @@ struct WorkshopController: RouteCollection {
     }
 
     // Modifier un workshop
-    func update(req: Request) async throws -> Workshop {
+    func update(req: Request) async throws -> Workshops {
         guard let id = req.parameters.get("id", as: UUID.self) else {
             throw Abort(.notFound)
         }
 
-        guard let workshop = try await Workshop.find(id, on: req.db) else {
+        guard let workshop = try await Workshops.find(id, on: req.db) else {
             throw Abort(.notFound)
         }
 
@@ -205,7 +205,7 @@ struct WorkshopController: RouteCollection {
     // Suppression par ID
     func delete(req: Request) async throws -> HTTPStatus {
         let id = req.parameters.get("id", as: UUID.self)
-        guard let workshop = try await Workshop.find(id, on: req.db) else {
+        guard let workshop = try await Workshops.find(id, on: req.db) else {
             throw Abort(.notFound)
         }
         try await workshop.delete(on: req.db)
