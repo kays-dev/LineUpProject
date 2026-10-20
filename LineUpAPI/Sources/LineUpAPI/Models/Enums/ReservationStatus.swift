@@ -5,10 +5,10 @@
 //  Created by Apprenant131 on 15/10/2026.
 //
 
-enum ReservationStatus : Int, Codable {
-    case approved = 0
-    case pending = 1
-    case cancelled = 2
+enum ReservationStatus : String, Codable, Sendable {
+    case approved
+    case pending
+    case cancelled
     
     var label : String {
         
