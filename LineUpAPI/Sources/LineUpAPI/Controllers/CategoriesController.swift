@@ -49,7 +49,7 @@ struct CategoriesController: RouteCollection {
         
     }
     
-    func index(req: Request) async throws  -> [CategoryResponseDTO] {
+    func index(req: Request) async throws  -> [CategoriesResponseDTO] {
         
         let categories = try await Categories.query(on: req.db).all()
         
@@ -57,9 +57,9 @@ struct CategoriesController: RouteCollection {
         
     }
     
-    func create(req: Request) async throws -> CategoryResponseDTO {
+    func create(req: Request) async throws -> CategoriesResponseDTO {
         
-        let dto = try req.content.decode(CreateCategoryDTO.self)
+        let dto = try req.content.decode(CreateCategoriesDTO.self)
         
         let category = dto.toModel()
         
@@ -69,7 +69,7 @@ struct CategoriesController: RouteCollection {
         
     }
     
-    func show(req: Request) async throws -> CategoryResponseDTO {
+    func show(req: Request) async throws -> CategoriesResponseDTO {
         
         let category = try await fetchCategory(req)
         
@@ -77,9 +77,9 @@ struct CategoriesController: RouteCollection {
         
     }
     
-    func update(req: Request) async throws -> CategoryResponseDTO {
+    func update(req: Request) async throws -> CategoriesResponseDTO {
         
-        let data = try req.content.decode(UpdateCategoryDTO.self)
+        let data = try req.content.decode(UpdateCategoriesDTO.self)
         
         let category = try await fetchCategory(req)
         

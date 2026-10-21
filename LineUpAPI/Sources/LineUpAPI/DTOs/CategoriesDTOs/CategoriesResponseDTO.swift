@@ -8,7 +8,7 @@
 import Vapor
 import Fluent
 
-struct CategoryResponseDTO: Content {
+struct CategoriesResponseDTO: Content {
 
     var id: UUID
     var name: String
@@ -17,9 +17,9 @@ struct CategoryResponseDTO: Content {
 
 extension Categories {
 
-    func toDTO() throws -> CategoryResponseDTO {
+    func toDTO() throws -> CategoriesResponseDTO {
 
-        return CategoryResponseDTO(
+        return CategoriesResponseDTO(
             id: try requireID(),
             name: name
         )

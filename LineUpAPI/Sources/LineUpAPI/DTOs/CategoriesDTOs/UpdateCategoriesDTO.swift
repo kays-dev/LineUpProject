@@ -8,7 +8,7 @@
 import Vapor
 import Fluent
 
-struct UpdateCategoryDTO: Content {
+struct UpdateCategoriesDTO: Content {
 
     let name: String?
 

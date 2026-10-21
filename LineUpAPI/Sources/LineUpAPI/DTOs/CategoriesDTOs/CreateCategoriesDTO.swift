@@ -8,7 +8,7 @@
 import Vapor
 import Fluent
 
-struct CreateCategoryDTO: Content {
+struct CreateCategoriesDTO: Content {
 
     var name: String
 

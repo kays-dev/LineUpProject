@@ -22,6 +22,7 @@ func routes(_ app: Application) throws {
     try app.register(collection: CategoriesController())
     
     try app.register(collection: WorkshopController())
+    
     try app.register(collection: ReservationController())
     
     
