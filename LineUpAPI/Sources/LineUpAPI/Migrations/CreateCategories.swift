@@ -15,6 +15,7 @@ struct CreateCategories: AsyncMigration {
         try await database.schema(Categories.schema)
             .id()
             .field("name", .string, .required)
+            .unique(on: "name")
             .create()
 
     }

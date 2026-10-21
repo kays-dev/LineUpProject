@@ -10,6 +10,14 @@ import Fluent
 
 struct UpdateCategoriesDTO: Content {
 
-    let name: String?
+    let name: String
+    
+    func toModel() -> Categories {
+
+        return Categories(
+            name: name
+        )
+
+    }
 
 }
