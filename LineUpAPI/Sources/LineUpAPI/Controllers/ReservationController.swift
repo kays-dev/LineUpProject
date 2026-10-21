@@ -25,7 +25,7 @@ struct ReservationController: RouteCollection {
     func create(req: Request) async throws -> ReservationResponseDTO {
         let dto = try req.content.decode(CreateReservationDTO.self)
 
-        guard try await User.find(dto.userID, on: req.db) != nil else {
+        guard try await Users.find(dto.userID, on: req.db) != nil else {
             throw Abort(.notFound, reason: "Utilisateur introuvable.")
         }
         guard let workshop = try await Workshops.find(dto.workshopID, on: req.db) else {

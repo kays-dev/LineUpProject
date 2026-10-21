@@ -9,7 +9,7 @@ import Fluent
 import Vapor
 
 struct UserController: RouteCollection {
-    func boot(routes: any RoutesBuilder) throws {
+/*    func boot(routes: any RoutesBuilder) throws {
         let users = routes.grouped("users")
         
         users.get(use: index) //
@@ -26,10 +26,37 @@ struct UserController: RouteCollection {
             user.delete(use: delete) //
         }
     }
+    */
     
+    func boot (routes: any RoutesBuilder) throws {
+              
+        let users = routes.grouped("users")
+        // Inscription d'un user depuis l'app
+        users.post(use: create)
+        // Gestion de profil par le user via l'id
+        users.group(":id") {user in
+            user.get(use: show)
+            user.patch(use: update)
+            user.delete(use: delete)
+        }
+        
+        let backoffice = users.grouped("backoffice")
+        // Consultation, recherche, tris et statistique pour le staff
+        backoffice.get(use: index)
+        backoffice.get("search", use: search)
+        backoffice.get("sorted", use: sorted)
+        backoffice.get("count", use: count)
+        backoffice.get("role", use: filterByRole)
+        // Gestion avancée d'un utilisateur par un administrateur
+        backoffice.group(":id") { user in
+            user.get(use: show)
+            user.patch(use: update)
+            user.delete(use: delete)
+        }
+    }
     // Fonction qui affiche tous les users
     func index(req: Request) async throws -> [UserResponseDTO] {
-        let user = try await User .query(on: req.db)
+        let user = try await Users.query(on: req.db)
             .all()
         return try user.map { try $0.toDTO() }
     }
@@ -45,7 +72,7 @@ struct UserController: RouteCollection {
                 reason: "The provided ID is not valid."
             )
         }
-        guard let user = try await User.find(
+        guard let user = try await Users.find(
             id,
             on: req.db
         ) else {
@@ -73,7 +100,7 @@ struct UserController: RouteCollection {
         guard let id = req.parameters.get("id", as: UUID.self)
                 else { throw Abort (.badRequest)}
         
-        guard let user = try await User.find(id, on: req.db)
+        guard let user = try await Users.find(id, on: req.db)
                 else { throw Abort(.notFound)}
         
         let data = try req.content.decode(UpdateUserDTO.self)
@@ -94,7 +121,7 @@ struct UserController: RouteCollection {
         guard let id = req.parameters.get("id", as:UUID.self) else {
             throw Abort(.badRequest)
         }
-        guard let user = try await User.find(id, on: req.db) else {
+        guard let user = try await Users.find(id, on: req.db) else {
             throw Abort(.notFound)
         }
         try await user.delete(on: req.db)
@@ -109,7 +136,7 @@ struct UserController: RouteCollection {
                 reason: "Name parameters is required"
             )
         }
-        let users = try await User
+        let users = try await Users
             .query(on: req.db)
             .filter(\.$name ~~ name)
             .all()
@@ -118,7 +145,7 @@ struct UserController: RouteCollection {
     
     // user.get("sorted",use: sorted)
     func sorted(req: Request) async throws -> [UserResponseDTO] {
-        let query = User.query(on: req.db)
+        let query = Users.query(on: req.db)
         let order: String? = req.query["order"]
         
         if order == "desc" {
@@ -138,7 +165,7 @@ struct UserController: RouteCollection {
     
     // user.get("count",use: count)
     func count (req: Request) async throws -> Int {
-        return try await User
+        return try await Users
             .query(on: req.db)
             .count()
     }
@@ -152,7 +179,7 @@ struct UserController: RouteCollection {
                 reason: "Role parameters is required and must be valid"
             )
         }
-        let users = try await User
+        let users = try await Users
             .query(on: req.db)
             .filter(\.$role == role)
             .all()

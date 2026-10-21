@@ -8,7 +8,7 @@
 import Vapor
 import Fluent
 
-final class User: Model, Content, @unchecked Sendable {
+final class Users: Model, @unchecked Sendable {
     
     static let schema = "user"
 
@@ -30,8 +30,8 @@ final class User: Model, Content, @unchecked Sendable {
     @Timestamp(key: "created_at", on: .create)
     var created_at: Date?
 
-//    @Children(for: \.$user)
-//    var reservations: [Reservation]
+    @Children(for: \.$user)
+    var reservations: [Reservations]
 
     init() { }
 

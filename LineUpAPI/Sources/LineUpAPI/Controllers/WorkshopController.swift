@@ -40,7 +40,6 @@ struct WorkshopController: RouteCollection {
             workshop.put(use: update)
             workshop.delete(use: delete)
         }
-        
     }
 
     // Liste de tous les workshops

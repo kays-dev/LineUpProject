@@ -17,8 +17,8 @@ struct CreateUserDTO: Content {
 
     func toModel(
         passwordHash: String
-    ) -> User {
-        let user = User()
+    ) -> Users {
+        let user = Users()
         user.name = name
         user.email = email
         user.password_hash = passwordHash

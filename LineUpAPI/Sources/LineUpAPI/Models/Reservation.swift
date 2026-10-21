@@ -11,7 +11,7 @@ final class Reservations: Model, @unchecked Sendable {
     var status: ReservationStatus
 
     @Parent(key: "id_user")
-    var user: User
+    var user: Users
 
     @Parent(key: "id_workshop")
     var workshop: Workshops

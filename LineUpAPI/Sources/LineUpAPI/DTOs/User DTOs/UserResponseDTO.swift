@@ -17,7 +17,7 @@ struct UserResponseDTO: Content {
    
 }
 
-extension User {
+extension Users {
     func toDTO() throws -> UserResponseDTO {
         return UserResponseDTO (
             id: try requireID(),

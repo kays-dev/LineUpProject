@@ -39,6 +39,7 @@ final class Workshops: Model, @unchecked Sendable {
     @Children(for: \.$workshop)
     var reservations: [Reservations]
 
+
     
     init() {}
 

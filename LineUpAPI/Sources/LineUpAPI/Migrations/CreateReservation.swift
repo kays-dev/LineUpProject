@@ -7,7 +7,7 @@ struct CreateReservation: AsyncMigration {
             .field("status", .string, .required)
             .field(
                 "id_user", .uuid, .required,
-                .references(User.schema, "id")
+                .references(Users.schema, "id")
             )
             .field(
                 "id_workshop", .uuid, .required,
