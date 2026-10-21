@@ -1,6 +1,6 @@
 import Fluent
 
-struct CreateReservation: AsyncMigration {
+struct CreateReservations: AsyncMigration {
     func prepare(on database: any Database) async throws {
         try await database.schema(Reservations.schema)
             .id()
