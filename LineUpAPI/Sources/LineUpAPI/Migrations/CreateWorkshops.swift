@@ -7,7 +7,7 @@
 
 import Fluent
 
-struct CreateWorkshop: AsyncMigration {
+struct CreateWorkshops: AsyncMigration {
 
     func prepare(on database: any Database) async throws {
 

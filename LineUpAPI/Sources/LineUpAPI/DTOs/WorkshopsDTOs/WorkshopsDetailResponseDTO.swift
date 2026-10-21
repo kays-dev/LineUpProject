@@ -7,7 +7,7 @@
 
 import Vapor
 
-struct WorkshopDetailResponseDTO: Content {
+struct WorkshopsDetailResponseDTO: Content {
     var id: UUID
     var name: String
     var start_time: Date

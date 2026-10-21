@@ -8,7 +8,7 @@
 import Fluent
 import Vapor
 
-struct WorkshopController: RouteCollection {
+struct WorkshopsController: RouteCollection {
 
     func boot(routes: any RoutesBuilder) throws {
 
@@ -53,7 +53,7 @@ struct WorkshopController: RouteCollection {
 
     // Planning du festival
     func showWorkshopsPlanning(req: Request) async throws
-        -> [WorkshopPlanningResponseDTO] {
+        -> [WorkshopsPlanningResponseDTO] {
         let workshops = try await Workshops.query(on: req.db)
             .with(\.$category)
             .sort(\.$start_time, .descending)
@@ -69,9 +69,9 @@ struct WorkshopController: RouteCollection {
 
     // Planning du festival + Filtrage par catégorie
     func showWorkshopsPlanningCategory(req: Request) async throws
-        -> [WorkshopPlanningResponseDTO] {
+        -> [WorkshopsPlanningResponseDTO] {
         guard let categorieID = req.parameters.get("categoryID", as: UUID.self) else {
-            throw Abort(.notFound)
+            throw Abort(.notFound, reason: "L'ID de la catégorie est introuvable.")
         }
         
         let workshops = try await Workshops.query(on: req.db)
@@ -88,9 +88,9 @@ struct WorkshopController: RouteCollection {
     }
 
     // Recherche par nom
-    func searchWorkshop(req: Request) async throws -> [WorkshopResponseDTO] {
+    func searchWorkshop(req: Request) async throws -> [WorkshopsResponseDTO] {
         guard let name: String = req.query["name"] else {
-            throw Abort(.badRequest, reason: "Le paramètre name est obligatoire.")
+            throw Abort(.notFound, reason: "Le paramètre name est obligatoire.")
         }
 
         let workshops = try await Workshops.query(on: req.db)
@@ -105,7 +105,7 @@ struct WorkshopController: RouteCollection {
 
 
     // Planning du festival + Filtrage par disponibilité
-    func showWorkshopsAvailable(req: Request) async throws -> [WorkshopPlanningResponseDTO] {
+    func showWorkshopsAvailable(req: Request) async throws -> [WorkshopsPlanningResponseDTO] {
         
         let workshops = try await Workshops.query(on: req.db)
             .with(\.$category)
@@ -131,7 +131,7 @@ struct WorkshopController: RouteCollection {
 
     // Detail des activités
     func showWorkshopsDetail(req: Request) async throws
-        -> [WorkshopDetailResponseDTO] {
+        -> [WorkshopsDetailResponseDTO] {
         let workshops = try await Workshops.query(on: req.db)
             .with(\.$category)
             .sort(\.$start_time, .descending)
@@ -154,7 +154,7 @@ struct WorkshopController: RouteCollection {
 
     // Création
     func create(req: Request) async throws -> Workshops {
-        let dto = try req.content.decode(CreateWorkshopDTO.self)
+        let dto = try req.content.decode(CreateWorkshopsDTO.self)
         let workshop = dto.toModel()
         try await workshop.create(on: req.db)
         return workshop
@@ -170,7 +170,7 @@ struct WorkshopController: RouteCollection {
             throw Abort(.notFound)
         }
 
-        let dto = try req.content.decode(UpdateWorkshopDTO.self)
+        let dto = try req.content.decode(UpdateWorkshopsDTO.self)
 
         if let name = dto.name {
             workshop.name = name

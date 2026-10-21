@@ -7,7 +7,7 @@
 
 import Vapor
 
-struct UpdateWorkshopDTO: Content {
+struct UpdateWorkshopsDTO: Content {
     var name: String?
     var start_time: Date?
     var end_time: Date?

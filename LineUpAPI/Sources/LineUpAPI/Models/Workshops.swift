@@ -68,8 +68,8 @@ final class Workshops: Model, @unchecked Sendable {
 extension Workshops {
 
     func toPlanningDTO(category_name: String) throws
-        -> WorkshopPlanningResponseDTO{
-        return WorkshopPlanningResponseDTO(
+        -> WorkshopsPlanningResponseDTO{
+        return WorkshopsPlanningResponseDTO(
             id: try requireID(),
             name: name,
             start_time: start_time,
@@ -83,8 +83,8 @@ extension Workshops {
 }
 
 extension Workshops {
-    func toDetailDTO(category_name: String,places_remaining: Int) throws -> WorkshopDetailResponseDTO {
-        return WorkshopDetailResponseDTO(
+    func toDetailDTO(category_name: String,places_remaining: Int) throws -> WorkshopsDetailResponseDTO {
+        return WorkshopsDetailResponseDTO(
             id: try requireID(),
             name: name,
             start_time: start_time,
@@ -97,8 +97,8 @@ extension Workshops {
 }
 
 extension Workshops {
-    func toSearchDTO(category_name: String) throws -> WorkshopResponseDTO {
-        return WorkshopResponseDTO(
+    func toSearchDTO(category_name: String) throws -> WorkshopsResponseDTO {
+        return WorkshopsResponseDTO(
             id: try requireID(),
             name: name,
             start_time: start_time,

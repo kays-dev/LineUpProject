@@ -1,20 +1,18 @@
 //
-//  WorkshopPlanningResponseDTO.swift
+//  WorkshopResponseDTO.swift
 //  LineUpAPI
 //
-//  Created by Apprenant131 on 14/10/2026.
+//  Created by Apprenant131 on 16/10/2026.
 //
 
 import Vapor
 
-struct WorkshopPlanningResponseDTO: Content {
+struct WorkshopsResponseDTO: Content {
     var id: UUID
     var name: String
     var start_time: Date
     var end_time: Date
     var capacity_max: Int
     var subscriber_number: Int
-
-    // récupéré depuis la table category
     var category_name: String
 }
