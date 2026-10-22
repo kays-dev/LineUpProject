@@ -4,8 +4,8 @@ import Foundation
 final class Reservations: Model, @unchecked Sendable {
     static let schema = "reservations"
 
-    @ID(key: .id)
-    var id: UUID?
+    @ID(custom: .id, generatedBy: .database)
+    var id: Int?
 
     @Field(key: "status")
     var status: ReservationStatus
@@ -19,7 +19,7 @@ final class Reservations: Model, @unchecked Sendable {
     init() { }
 
     init(
-        id: UUID? = nil,
+        id: Int? = nil,
         status: ReservationStatus,
         userID: UUID,
         workshopID: UUID

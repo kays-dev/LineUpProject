@@ -1,8 +1,8 @@
 import Fluent
 import Vapor
 
-struct ReservationResponseDTO: Content {
-    var reservationID: UUID
+struct ReservationsResponseDTO: Content {
+    var reservationID: Int
     var status: ReservationStatus
     var workshopID: UUID
     var workshopName: String
@@ -13,16 +13,16 @@ struct ReservationResponseDTO: Content {
 
 extension Reservations {
     // L'atelier et l'utilisateur doivent être chargés (.with(...) ou .load(on:)).
-    func toDTO() throws -> ReservationResponseDTO {
+    func toDTO() throws -> ReservationsResponseDTO {
         let reservationID = try requireID()
 
-        return ReservationResponseDTO(
+        return ReservationsResponseDTO(
             reservationID: reservationID,
             status: status,
             workshopID: $workshop.id,
             workshopName: workshop.name,
-            startTime: workshop.start_time,
-            endTime: workshop.end_time,
+            startTime: workshop.startTime,
+            endTime: workshop.endTime,
             userName: user.name
         )
     }

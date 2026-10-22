@@ -38,7 +38,6 @@ func configure(_ app: Application) async throws {
     app.migrations.add(CreateWorkshops())
     
     app.migrations.add(CreateReservations())
-    app.migrations.add(AddReservationCreatedAt())
     
     
     

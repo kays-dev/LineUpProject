@@ -1,6 +1,6 @@
 import Vapor
 
-struct CreateReservationDTO: Content {
+struct CreateReservationsDTO: Content {
     var userID: UUID
     var workshopID: UUID
 

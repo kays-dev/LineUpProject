@@ -6,14 +6,14 @@
 //
 
 enum ReservationStatus : String, Codable, Sendable {
-    case approved
+    case validated
     case pending
     case cancelled
     
     var label : String {
         
         switch self {
-        case .approved : "approved" // approuvé
+        case .validated : "validated" // validé
         case .pending: "pending" // en attente
         case .cancelled: "cancelled" // annulé
         }

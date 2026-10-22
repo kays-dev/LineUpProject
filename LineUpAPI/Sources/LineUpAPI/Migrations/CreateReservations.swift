@@ -3,7 +3,7 @@ import Fluent
 struct CreateReservations: AsyncMigration {
     func prepare(on database: any Database) async throws {
         try await database.schema(Reservations.schema)
-            .id()
+            .field(.id, .int, .identifier(auto: true))
             .field("status", .string, .required)
             .field(
                 "id_user", .uuid, .required,
