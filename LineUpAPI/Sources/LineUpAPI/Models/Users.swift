@@ -10,7 +10,7 @@ import Fluent
 
 final class Users: Model, @unchecked Sendable {
     
-    static let schema = "user"
+    static let schema = "users"
 
     @ID(key: .id)
     var id: UUID?
@@ -22,27 +22,26 @@ final class Users: Model, @unchecked Sendable {
     var email: String
 
     @Field(key: "password_hash")
-    var password_hash: String
+    var passwordHash: String
 
     @Field(key: "role")
     var role: UserRole
 
     @Timestamp(key: "created_at", on: .create)
-    var created_at: Date?
+    var createdAt: Date?
 
     @Children(for: \.$user)
     var reservations: [Reservations]
 
     init() { }
 
-    init(id: UUID? = nil, name: String, email: String, password_hash: String, role: UserRole = .festivalgoer, created_at: Date? = nil) {
+    init(id: UUID? = nil, name: String, email: String, passwordHash: String, role: UserRole = .festivalgoer) {
 
         self.id = id
         self.name = name
         self.email = email
-        self.password_hash = password_hash
+        self.passwordHash = passwordHash
         self.role = role
-        self.created_at = created_at
 
     }
 

@@ -9,8 +9,8 @@
 import Vapor
 import Fluent
 
-struct UserResponseDTO: Content {
-    var id: UUID?
+struct UsersResponseDTO: Content {
+    var id: UUID
     var name: String
     var email: String
     var role: UserRole
@@ -18,8 +18,8 @@ struct UserResponseDTO: Content {
 }
 
 extension Users {
-    func toDTO() throws -> UserResponseDTO {
-        return UserResponseDTO (
+    func toDTO() throws -> UsersResponseDTO {
+        return UsersResponseDTO (
             id: try requireID(),
             name: name,
             email: email,

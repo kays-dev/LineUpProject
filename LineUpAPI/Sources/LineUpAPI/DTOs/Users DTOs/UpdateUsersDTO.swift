@@ -8,7 +8,7 @@
 import Vapor
 import Fluent
 
-struct UpdateUserDTO : Content {
+struct UpdateUsersDTO : Content {
     let name : String?
     let email : String?
     let password : String?

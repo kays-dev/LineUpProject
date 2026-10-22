@@ -8,30 +8,11 @@
 import Fluent
 import Vapor
 
-struct UserController: RouteCollection {
-/*    func boot(routes: any RoutesBuilder) throws {
-        let users = routes.grouped("users")
-        
-        users.get(use: index) //
-        users.post(use: create) //
-        
-        users.get("search",use: search) //
-        users.get("sorted",use: sorted) //
-        users.get("count",use: count) //
-        users.get("role", use: filterByRole)
-        
-        users.group(":id") {user in
-            user.get(use: show) //
-            user.put(use: update) //
-            user.delete(use: delete) //
-        }
-    }
-    */
-    
+struct UsersController: RouteCollection {
     func boot (routes: any RoutesBuilder) throws {
               
         let users = routes.grouped("users")
-        // Inscription d'un user depuis l'app
+        // Inscription d'un festivalier depuis l'app
         users.post(use: create)
         // Gestion de profil par le user via l'id
         users.group(":id") {user in
@@ -41,12 +22,13 @@ struct UserController: RouteCollection {
         }
         
         let backoffice = users.grouped("backoffice")
+        //Création d'un utilisateur par le staff (depuis le dashboard JS)
+        // Permet au staff de créer soit un autre membre du staff, soit d'inscrire un festivalier
+        backoffice.post(use: create)
+        
         // Consultation, recherche, tris et statistique pour le staff
         backoffice.get(use: index)
-        backoffice.get("search", use: search)
-        backoffice.get("sorted", use: sorted)
         backoffice.get("count", use: count)
-        backoffice.get("role", use: filterByRole)
         // Gestion avancée d'un utilisateur par un administrateur
         backoffice.group(":id") { user in
             user.get(use: show)
@@ -54,15 +36,34 @@ struct UserController: RouteCollection {
             user.delete(use: delete)
         }
     }
-    // Fonction qui affiche tous les users
-    func index(req: Request) async throws -> [UserResponseDTO] {
-        let user = try await Users.query(on: req.db)
-            .all()
-        return try user.map { try $0.toDTO() }
+  
+    // Fonction qui gère index, search, filterByRole et sorted combinés
+    func index(req: Request) async throws -> [UsersResponseDTO] {
+        // Décodage des paramètres optionnels de l'URL (Query Parameters)
+        let queryParams = try req.query.decode(UsersQueryDTO.self)
+        
+        let query = Users.query(on: req.db)
+        
+        // 1. Filtrage par nom (recherche partielle, insensible à la casse ou similaire)
+        if let name = queryParams.name, !name.isEmpty {
+            query.filter(\.$name ~~ name)
+        }
+        
+        // 2. Filtrage par rôle
+        if let role = queryParams.role {
+            query.filter(\.$role == role)
+        }
+        
+        // 3. Gestion du tri (Par défaut : nom croissant si non spécifié)
+        let sortOrder: DatabaseQuery.Sort.Direction = (queryParams.order?.lowercased() == "desc") ? .descending : .ascending
+        query.sort(\.$name, sortOrder)
+        
+        let users = try await query.all()
+        return try users.map { try $0.toDTO() }
     }
     
     // Fonction qui affiche un user
-    func show(req: Request) async throws -> UserResponseDTO {
+    func show(req: Request) async throws -> UsersResponseDTO {
         guard let id = req.parameters.get(
             "id",
             as: UUID.self
@@ -85,105 +86,78 @@ struct UserController: RouteCollection {
     }
     
     // Fonction qui cree un user
-    func create (req: Request) async throws -> UserResponseDTO {
-        let dto = try req.content.decode (CreateUserDTO.self)
-        let passwordHash = try await req.password.async.hash(dto.password)
-        
-        let user = dto.toModel(passwordHash: passwordHash)
-        try await user.create( on: req.db)
-        return try user.toDTO()
-    }
-    
-    // Fonctions qui met a jour un user
-    func update (req: Request) async throws -> UserResponseDTO {
-        
-        guard let id = req.parameters.get("id", as: UUID.self)
-                else { throw Abort (.badRequest)}
-        
-        guard let user = try await Users.find(id, on: req.db)
-                else { throw Abort(.notFound)}
-        
-        let data = try req.content.decode(UpdateUserDTO.self)
-        
-        if let name = data.name {
-            user.name = name
-        }
-        if let email = data.email {
-            user.email = email
+        func create (req: Request) async throws -> UsersResponseDTO {
+            // Valide la requête selon les règles définies dans Validatable (lance un 400 si invalide)
+            try CreateUsersDTO.validate(content: req)
+            
+            let dto = try req.content.decode (CreateUsersDTO.self)
+            
+            // Verifie si l'email existe deja -> erreur 409 Conflit
+            let existingUser = try await Users.query(on: req.db)
+                .filter(\.$email == dto.email)
+                .first()
+            if existingUser != nil {
+                throw Abort(.conflict, reason: "Cet email est déja utilisé par un autre compte.")
+            }
+            
+            let passwordHash = try await req.password.async.hash(dto.password)
+            
+            let user = dto.toModel(passwordHash: passwordHash)
+            try await user.create( on: req.db)
+            return try user.toDTO()
         }
         
-        try await user.update(on: req.db)
-        return try user.toDTO()
-    }
-    
-    // Fonction qui supprime un user
-    func delete (req: Request ) async throws -> HTTPStatus {
-        guard let id = req.parameters.get("id", as:UUID.self) else {
-            throw Abort(.badRequest)
+        // Fonctions qui met a jour un user
+        func update (req: Request) async throws -> UsersResponseDTO {
+            
+            guard let id = req.parameters.get("id", as: UUID.self)
+                    else { throw Abort (.badRequest)}
+            
+            guard let user = try await Users.find(id, on: req.db)
+                    else { throw Abort(.notFound)}
+            
+            let data = try req.content.decode(UpdateUsersDTO.self)
+            
+            if let name = data.name {
+                user.name = name
+            }
+            if let email = data.email {
+                user.email = email
+            }
+            
+            // Si l'email est modifié, on vérifie son unicité -> Erreur 409 Conflict
+            if let newEmail = data.email, newEmail != user.email {
+                let emailExists = try await Users.query(on: req.db)
+                    .filter(\.$email == newEmail)
+                    .first()
+                        
+                if emailExists != nil {
+                    throw Abort(.conflict, reason: "Cet email est déjà utilisé par un autre compte.")
+                }
+                user.email = newEmail
+            }
+            
+            try await user.update(on: req.db)
+            return try user.toDTO()
         }
-        guard let user = try await Users.find(id, on: req.db) else {
-            throw Abort(.notFound)
-        }
-        try await user.delete(on: req.db)
-        return .noContent
-    }
-    
-    // user.get("search",use: search)
-    func search (req: Request) async throws -> [UserResponseDTO] {
-        guard let name: String = req.query["name"] else {
-            throw Abort(
-                .badRequest,
-                reason: "Name parameters is required"
-            )
-        }
-        let users = try await Users
-            .query(on: req.db)
-            .filter(\.$name ~~ name)
-            .all()
-        return try users.map {try $0.toDTO()}
-    }
-    
-    // user.get("sorted",use: sorted)
-    func sorted(req: Request) async throws -> [UserResponseDTO] {
-        let query = Users.query(on: req.db)
-        let order: String? = req.query["order"]
         
-        if order == "desc" {
-            query.sort(
-                \.$name,
-                 .descending
-            )
-        } else {
-            query.sort(
-                \.$name,
-                 .ascending
-            )
+        // Fonction qui supprime un user
+        func delete (req: Request ) async throws -> HTTPStatus {
+            guard let id = req.parameters.get("id", as:UUID.self) else {
+                throw Abort(.badRequest)
+            }
+            guard let user = try await Users.find(id, on: req.db) else {
+                throw Abort(.notFound)
+            }
+            try await user.delete(on: req.db)
+            return .noContent
         }
-        let users = try await query.all()
-        return try users.map {try $0.toDTO()}
-    }
-    
-    // user.get("count",use: count)
-    func count (req: Request) async throws -> Int {
-        return try await Users
-            .query(on: req.db)
+        
+        // user.get("count",use: count)
+        func count (req: Request) async throws -> Int {
+            return try await Users
+                .query(on: req.db)
             .count()
-    }
-    
-    // users.get("role", use: filterByRole)
-    func filterByRole (req: Request) async throws -> [UserResponseDTO] {
-        guard let roleString: String = req.query["role"],
-        let role = UserRole(rawValue: roleString) else {
-            throw Abort (
-                .badRequest,
-                reason: "Role parameters is required and must be valid"
-            )
-        }
-        let users = try await Users
-            .query(on: req.db)
-            .filter(\.$role == role)
-            .all()
-        return try users.map {try $0.toDTO()}
     }
 }
 

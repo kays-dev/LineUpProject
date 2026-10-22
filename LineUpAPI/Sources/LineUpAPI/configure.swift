@@ -31,7 +31,7 @@ func configure(_ app: Application) async throws {
         // MySecondMigration
     
     // start here
-    app.migrations.add(CreateUser())
+    app.migrations.add(CreateUsers())
     
     app.migrations.add(CreateCategories())
     
