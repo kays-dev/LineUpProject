@@ -51,7 +51,6 @@ final class Workshops: Model, @unchecked Sendable {
         capacity_max: Int,
         subscriber_number: Int,
         workshop_description: String,
-        categoryID: UUID
     ) {
         self.id = id
         self.name = name
@@ -60,52 +59,31 @@ final class Workshops: Model, @unchecked Sendable {
         self.capacity_max = capacity_max
         self.subscriber_number = subscriber_number
         self.workshop_description = workshop_description
-        self.$category.id = categoryID
     }
 
 }
 
 extension Workshops {
+    
+    func toDTO() throws -> WorkshopsResponseDTO {
 
-    func toPlanningDTO(category_name: String) throws
-        -> WorkshopsPlanningResponseDTO{
-        return WorkshopsPlanningResponseDTO(
+        WorkshopsResponseDTO(
             id: try requireID(),
             name: name,
-            start_time: start_time,
-            end_time: end_time,
-            capacity_max: capacity_max,
-            subscriber_number: subscriber_number,
-            category_name: category_name
+            startTime: start_time,
+            endTime: end_time,
+            capacityMax: capacity_max,
+            subscriberNumber: subscriber_number,
+            workshopDescription: workshop_description,
+            categoryID: try requireID(),
+            categoryName: category.name,
+            remainingPlaces: countRemainingPlaces()
         )
+        
     }
-
-}
-
-extension Workshops {
-    func toDetailDTO(category_name: String,places_remaining: Int) throws -> WorkshopsDetailResponseDTO {
-        return WorkshopsDetailResponseDTO(
-            id: try requireID(),
-            name: name,
-            start_time: start_time,
-            end_time: end_time,
-            workshop_description: workshop_description,
-            places_remaining: places_remaining,
-            category_name: category_name
-        )
+    
+    func countRemainingPlaces() -> Int {
+         return capacity_max - subscriber_number
     }
-}
-
-extension Workshops {
-    func toSearchDTO(category_name: String) throws -> WorkshopsResponseDTO {
-        return WorkshopsResponseDTO(
-            id: try requireID(),
-            name: name,
-            start_time: start_time,
-            end_time: end_time,
-            capacity_max: capacity_max,
-            subscriber_number: subscriber_number,
-            category_name: category_name
-        )
-    }
+    
 }

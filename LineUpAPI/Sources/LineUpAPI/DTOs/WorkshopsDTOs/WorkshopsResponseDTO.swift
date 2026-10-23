@@ -8,11 +8,16 @@
 import Vapor
 
 struct WorkshopsResponseDTO: Content {
+    
     var id: UUID
     var name: String
-    var start_time: Date
-    var end_time: Date
-    var capacity_max: Int
-    var subscriber_number: Int
-    var category_name: String
+    var startTime: Date
+    var endTime: Date
+    var capacityMax: Int
+    var subscriberNumber: Int
+    var workshopDescription: String
+    var categoryID: UUID
+    var categoryName: String
+    var remainingPlaces: Int
+
 }

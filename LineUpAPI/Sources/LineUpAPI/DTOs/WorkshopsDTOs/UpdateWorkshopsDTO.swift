@@ -9,10 +9,9 @@ import Vapor
 
 struct UpdateWorkshopsDTO: Content {
     var name: String?
-    var start_time: Date?
-    var end_time: Date?
-    var capacity_max: Int?
-    var subscriber_number: Int?
-    var workshop_description: String?
+    var startTime: Date?
+    var endTime: Date?
+    var capacityMax: Int?
+    var workshopDescription: String?
     var categoryID: UUID?
 }

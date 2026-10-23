@@ -6,25 +6,27 @@
 //
 
 import Vapor
+import Fluent
 
 struct CreateWorkshopsDTO: Content {
     var name: String
-    var start_time: Date
-    var end_time: Date
-    var capacity_max: Int
-    var workshop_description: String
+    var startTime: Date
+    var endTime: Date
+    var capacityMax: Int
+    var subscriberNumber: Int
+    var workshopDescription: String
     var categoryID: UUID
 
     func toModel() -> Workshops {
-    let workshop = Workshops(
-        name: name,
-        start_time: start_time,
-        end_time: end_time,
-        capacity_max: capacity_max,
-        subscriber_number: 0,
-        workshop_description: workshop_description,
-        categoryID: categoryID
-    )
-    return workshop
+        let workshop = Workshops(
+            name: name,
+            start_time: startTime,
+            end_time: endTime,
+            capacity_max: capacityMax,
+            subscriber_number: 0,
+            workshop_description: workshopDescription
+        )
+        workshop.$category.id = categoryID
+        return workshop
     }
 }

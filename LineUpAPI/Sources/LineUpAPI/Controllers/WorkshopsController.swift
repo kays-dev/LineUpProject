@@ -9,204 +9,210 @@ import Fluent
 import Vapor
 
 struct WorkshopsController: RouteCollection {
-
+    
     func boot(routes: any RoutesBuilder) throws {
-
-        let workshops = routes.grouped("workshop")
-
-        // Liste de tous les workshops
+        
+        let workshops = routes.grouped("workshops")
+        
+        // Liste de tous les workshops filtré (catégories - recherche - disponiblité - date)
         workshops.get(use: index)
         
-        // Planning du festival
-        workshops.get("planning", use: showWorkshopsPlanning)
-        
-        // Detail des activités
-        workshops.get("detail", use: showWorkshopsDetail)
-        
-        // Filtrage par disponibilité
-        workshops.get("available", use: showWorkshopsAvailable)
-        
-        // Filtrage par catégorie
-        workshops.get("category", ":categoryID", "planning", use: showWorkshopsPlanningCategory)
-        
-        // Recherche par nom
-        workshops.get("search", use: searchWorkshop)
+        // Détail d'un atelier par son ID
+        workshops.get(":id", use: showWorkshopsDetail)
         
         // Création
         workshops.post(use: create)
         
-        // Modification et suppression par ID
+        // Modification et suppression
         workshops.group(":id") { workshop in
             workshop.put(use: update)
             workshop.delete(use: delete)
         }
+        
     }
-
-    // Liste de tous les workshops
-    func index(req: Request) async throws -> [Workshops] {
-        return
-            try await Workshops
+    
+    // Liste de tous les workshops filtré (catégories - recherche - disponiblité - date)
+    func index(req: Request) async throws -> [WorkshopsResponseDTO] {
+        
+        
+        let query = Workshops.query(on: req.db)
+            .with(\.$category)
+        
+        
+        let categories = Categories
             .query(on: req.db)
-            .sort(\.$start_time, .descending)
-            .all()
-    }
-
-    // Planning du festival
-    func showWorkshopsPlanning(req: Request) async throws
-        -> [WorkshopsPlanningResponseDTO] {
-        let workshops = try await Workshops.query(on: req.db)
-            .with(\.$category)
-            .sort(\.$start_time, .descending)
-            .all()
-
-        return try workshops.map { workshop in
-            try workshop.toPlanningDTO(
-                category_name: workshop.category.name
-                )
+        
+        // Filtre / catégories
+        if let selectedCategory = try req.query.get(String?.self, at: "category") {
+            
+            guard let cat = try await categories
+                .filter(Categories.self, \.$name ~~ (selectedCategory)).first()
+                    else {
+                throw Abort(.notFound, reason: "Catégorie introuvable.")
             }
-        }
-    }
-
-    // Planning du festival + Filtrage par catégorie
-    func showWorkshopsPlanningCategory(req: Request) async throws
-        -> [WorkshopsPlanningResponseDTO] {
-        guard let categorieID = req.parameters.get("categoryID", as: UUID.self) else {
-            throw Abort(.notFound, reason: "L'ID de la catégorie est introuvable.")
+            
+            query.filter(\.$category.$id == cat.id!)
         }
         
-        let workshops = try await Workshops.query(on: req.db)
-            .filter(\.$category.$id == categorieID)
-            .with(\.$category)
+        // Filtre / recherche
+        if let selectedName = try req.query.get(String?.self, at: "name") {
+            query
+                .filter(\.$name ~~ selectedName)
+        }
+        
+        // Filtre / disponibilité
+        if let status = req.query[String.self, at: "status"] {
+            switch status {
+            case "available":
+                query.filter(\.$subscriber_number, .lessThan, \.$capacity_max)
+            case "full":
+                query.filter(\.$subscriber_number, .greaterThanOrEqual, \.$capacity_max)
+            case "unavailable":
+                query
+                    .filter(\.$subscriber_number == 0)
+                    .filter(\.$capacity_max == 0)
+            default:
+                throw Abort(.badRequest, reason: "La statut de l'atelier doit être disponible ou complet.")
+            }
+        }
+        
+        // Filtre / date
+        if let selectedDay = try req.query.get(String?.self, at: "period") {
+            let (start, end) = try dayRange(for: selectedDay)
+            query.filter(\.$start_time >= start).filter(\.$start_time < end)
+        }
+        
+        return try await query
             .sort(\.$start_time, .ascending)
-            .all()
-
-        return try workshops.map { workshop in
-            try workshop.toPlanningDTO(
-                category_name: workshop.category.name
-                )
-        }
-    }
-
-    // Recherche par nom
-    func searchWorkshop(req: Request) async throws -> [WorkshopsResponseDTO] {
-        guard let name: String = req.query["name"] else {
-            throw Abort(.notFound, reason: "Le paramètre name est obligatoire.")
-        }
-
-        let workshops = try await Workshops.query(on: req.db)
-            .filter(\.$name ~~ name)
-            .with(\.$category)
-            .all()
-
-        return try workshops.map { workshop in
-            try workshop.toSearchDTO(category_name: workshop.category.name)
-        }
-    }
-
-
-    // Planning du festival + Filtrage par disponibilité
-    func showWorkshopsAvailable(req: Request) async throws -> [WorkshopsPlanningResponseDTO] {
-        
-        let workshops = try await Workshops.query(on: req.db)
-            .with(\.$category)
-            .all()
-        
-        let workshopsAvailables =  workshops.filter { workshop in
-            let placeRemaining = max(
-                0,
-                workshop.capacity_max
-                -
-                workshop.subscriber_number
-            )
-            return placeRemaining > 0
-        
-        }
-        
-        return try workshopsAvailables.map { workshop in
-            try workshop.toPlanningDTO(
-                category_name: workshop.category.name
-                )
+            .all().map {
+                try $0.toDTO()
             }
     }
-
+    
     // Detail des activités
     func showWorkshopsDetail(req: Request) async throws
-        -> [WorkshopsDetailResponseDTO] {
-        let workshops = try await Workshops.query(on: req.db)
-            .with(\.$category)
-            .sort(\.$start_time, .descending)
-            .all()
-
-        return try workshops.map { workshop in
-            let placeRemaining = max(
-                0,
-                workshop.capacity_max
-                -
-                workshop.subscriber_number
-            )
-
-            return try workshop.toDetailDTO(
-                category_name: workshop.category.name,
-                places_remaining: placeRemaining
-            )
+    -> WorkshopsResponseDTO {
+        
+        guard let id = req.parameters.get("id", as: UUID.self) else {
+            throw Abort(.badRequest, reason: "L'ID de l'atelier est invalide.")
         }
+        
+        guard let workshop = try await Workshops.find(id, on: req.db) else {
+            throw Abort(.notFound, reason: "L'atelier est introuvable.")
+        }
+        
+        let dto = try workshop.toDTO()
+        
+        return dto
+        
     }
-
+    
     // Création
-    func create(req: Request) async throws -> Workshops {
+    func create(req: Request) async throws -> WorkshopsResponseDTO {
         let dto = try req.content.decode(CreateWorkshopsDTO.self)
         let workshop = dto.toModel()
         try await workshop.create(on: req.db)
-        return workshop
+        return try workshop.toDTO()
     }
-
+    
+    
     // Modifier un workshop
-    func update(req: Request) async throws -> Workshops {
+    func update(req: Request) async throws -> WorkshopsResponseDTO {
         guard let id = req.parameters.get("id", as: UUID.self) else {
-            throw Abort(.notFound)
+            throw Abort(.badRequest, reason: "L'ID de l'atelier est invalide.")
         }
-
+        
         guard let workshop = try await Workshops.find(id, on: req.db) else {
-            throw Abort(.notFound)
+            throw Abort(.notFound, reason: "L'atelier est introuvable.")
         }
-
+        
         let dto = try req.content.decode(UpdateWorkshopsDTO.self)
-
+        
         if let name = dto.name {
             workshop.name = name
         }
-
-        if let startTime = dto.start_time {
+        
+        if let startTime = dto.startTime {
             workshop.start_time = startTime
         }
-
-        if let endTime = dto.end_time {
+        
+        if let endTime = dto.endTime {
             workshop.end_time = endTime
         }
-
-        if let capacityMax = dto.capacity_max {
+        
+        if let capacityMax = dto.capacityMax {
             workshop.capacity_max = capacityMax
         }
-
-        if let subscriberNumber = dto.subscriber_number {
-            workshop.subscriber_number = subscriberNumber
-        }
-
-        if let description = dto.workshop_description {
+        
+        if let description = dto.workshopDescription {
             workshop.workshop_description = description
         }
-
+        
         try await workshop.update(on: req.db)
-
-        return workshop
+        
+        return try workshop.toDTO()
     }
-
+    
     // Suppression par ID
     func delete(req: Request) async throws -> HTTPStatus {
-        let id = req.parameters.get("id", as: UUID.self)
-        guard let workshop = try await Workshops.find(id, on: req.db) else {
-            throw Abort(.notFound)
+        
+        guard let id = req.parameters.get("id", as: UUID.self) else {
+            throw Abort(.badRequest, reason: "L'ID de l'atelier est invalide.")
         }
+        
+        guard let workshop = try await Workshops.find(id, on: req.db) else {
+            throw Abort(.notFound, reason: "L'atelier est introuvable.")
+        }
+        
+        try await checkChildren(of: workshop, on: req.db)
+        
         try await workshop.delete(on: req.db)
+        
         return .noContent
     }
+}
+
+
+// Gestion du filtre date + suppression d'un Workshop avec des réservations
+extension WorkshopsController {
+    
+    func showFestivalDays(req: Request) async throws -> [String] {
+        let workshops = try await Workshops.query(on: req.db).all()
+        let days = Set(workshops.map { formatDay().string(from: $0.start_time) })
+        return days.sorted()
+    }
+    
+    private func formatDay() -> DateFormatter {
+        var calendar = Calendar(identifier: .gregorian)
+        calendar.timeZone = TimeZone(identifier: "Europe/Paris")!
+        
+        let formatter = DateFormatter()
+        formatter.calendar = calendar
+        formatter.timeZone = calendar.timeZone
+        formatter.locale = Locale(identifier: "en_US_POSIX")
+        formatter.dateFormat = "yyyy-MM-dd"
+        return formatter
+    }
+    
+    private func dayRange(for day: String) throws -> (start: Date, end: Date) {
+        let formatter = formatDay()
+        guard let start = formatter.date(from: day),
+              let end = formatter.calendar.date(byAdding: .day, value: 1, to: start) else {
+            throw Abort(.badRequest, reason: "Date must be in yyyy-MM-dd format")
+        }
+        return (start, end)
+    }
+    
+    private func checkChildren(of workshop: Workshops, on db: any Database) async throws {
+        
+        let reservations = workshop.$reservations.query(on: db)
+        
+        guard try await reservations.count() == 0 else {
+            
+            throw Abort(.conflict, reason: "Workshop is linked to some reservations")
+            
+        }
+        
+    }
+}
+
