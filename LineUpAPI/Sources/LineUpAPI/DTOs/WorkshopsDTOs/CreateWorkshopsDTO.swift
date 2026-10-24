@@ -20,11 +20,11 @@ struct CreateWorkshopsDTO: Content {
     func toModel() -> Workshops {
         let workshop = Workshops(
             name: name,
-            start_time: startTime,
-            end_time: endTime,
-            capacity_max: capacityMax,
-            subscriber_number: 0,
-            workshop_description: workshopDescription
+            startTime: startTime,
+            endTime: endTime,
+            capacityMax: capacityMax,
+            subscriberNumber: 0,
+            workshopDescription: workshopDescription
         )
         workshop.$category.id = categoryID
         return workshop

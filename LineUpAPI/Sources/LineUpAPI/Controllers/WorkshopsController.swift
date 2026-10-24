@@ -64,13 +64,13 @@ struct WorkshopsController: RouteCollection {
         if let status = req.query[String.self, at: "status"] {
             switch status {
             case "available":
-                query.filter(\.$subscriber_number, .lessThan, \.$capacity_max)
+                query.filter(\.$subscriberNumber, .lessThan, \.$capacityMax)
             case "full":
-                query.filter(\.$subscriber_number, .greaterThanOrEqual, \.$capacity_max)
+                query.filter(\.$subscriberNumber, .greaterThanOrEqual, \.$capacityMax)
             case "unavailable":
                 query
-                    .filter(\.$subscriber_number == 0)
-                    .filter(\.$capacity_max == 0)
+                    .filter(\.$subscriberNumber == 0)
+                    .filter(\.$capacityMax == 0)
             default:
                 throw Abort(.badRequest, reason: "La statut de l'atelier doit être disponible ou complet.")
             }
@@ -79,11 +79,11 @@ struct WorkshopsController: RouteCollection {
         // Filtre / date
         if let selectedDay = try req.query.get(String?.self, at: "period") {
             let (start, end) = try dayRange(for: selectedDay)
-            query.filter(\.$start_time >= start).filter(\.$start_time < end)
+            query.filter(\.$startTime >= start).filter(\.$startTime < end)
         }
         
         return try await query
-            .sort(\.$start_time, .ascending)
+            .sort(\.$startTime, .ascending)
             .all().map {
                 try $0.toDTO()
             }
@@ -128,27 +128,38 @@ struct WorkshopsController: RouteCollection {
         
         let dto = try req.content.decode(UpdateWorkshopsDTO.self)
         
+        // Mémoriser l'ancienne capacité
+        let oldCapacityMax = workshop.capacityMax
+        
         if let name = dto.name {
             workshop.name = name
         }
         
         if let startTime = dto.startTime {
-            workshop.start_time = startTime
+            workshop.startTime = startTime
         }
         
         if let endTime = dto.endTime {
-            workshop.end_time = endTime
+            workshop.endTime = endTime
         }
         
         if let capacityMax = dto.capacityMax {
-            workshop.capacity_max = capacityMax
+            workshop.capacityMax = capacityMax
         }
         
         if let description = dto.workshopDescription {
-            workshop.workshop_description = description
+            workshop.workshopDescription = description
         }
         
         try await workshop.update(on: req.db)
+        
+        // Si la capacité augmente, promouvoir les réservations en attente
+        if workshop.capacityMax > oldCapacityMax {
+            try await ReservationsController.promoteAfterCapacityIncrease(
+                for: workshop,
+                on: req.db
+            )
+        }
         
         return try workshop.toDTO()
     }
@@ -178,7 +189,7 @@ extension WorkshopsController {
     
     func showFestivalDays(req: Request) async throws -> [String] {
         let workshops = try await Workshops.query(on: req.db).all()
-        let days = Set(workshops.map { formatDay().string(from: $0.start_time) })
+        let days = Set(workshops.map { formatDay().string(from: $0.startTime) })
         return days.sorted()
     }
     

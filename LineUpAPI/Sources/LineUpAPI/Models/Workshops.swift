@@ -19,19 +19,19 @@ final class Workshops: Model, @unchecked Sendable {
     var name: String
 
     @Field(key: "start_time")
-    var start_time: Date
+    var startTime: Date
 
     @Field(key: "end_time")
-    var end_time: Date
+    var endTime: Date
 
     @Field(key: "capacity_max")
-    var capacity_max: Int
+    var capacityMax: Int
 
     @Field(key: "subscriber_number")
-    var subscriber_number: Int
+    var subscriberNumber: Int
 
     @Field(key: "description")
-    var workshop_description: String
+    var workshopDescription: String
 
     @Parent(key: "category_id")
     var category: Categories
@@ -46,19 +46,19 @@ final class Workshops: Model, @unchecked Sendable {
     init(
         id: UUID? = nil,
         name: String,
-        start_time: Date,
-        end_time: Date,
-        capacity_max: Int,
-        subscriber_number: Int,
-        workshop_description: String,
+        startTime: Date,
+        endTime: Date,
+        capacityMax: Int,
+        subscriberNumber: Int,
+        workshopDescription: String,
     ) {
         self.id = id
         self.name = name
-        self.start_time = start_time
-        self.end_time = end_time
-        self.capacity_max = capacity_max
-        self.subscriber_number = subscriber_number
-        self.workshop_description = workshop_description
+        self.startTime = startTime
+        self.endTime = endTime
+        self.capacityMax = capacityMax
+        self.subscriberNumber = subscriberNumber
+        self.workshopDescription = workshopDescription
     }
 
 }
@@ -70,11 +70,11 @@ extension Workshops {
         WorkshopsResponseDTO(
             id: try requireID(),
             name: name,
-            startTime: start_time,
-            endTime: end_time,
-            capacityMax: capacity_max,
-            subscriberNumber: subscriber_number,
-            workshopDescription: workshop_description,
+            startTime: startTime,
+            endTime: endTime,
+            capacityMax: capacityMax,
+            subscriberNumber: subscriberNumber,
+            workshopDescription: workshopDescription,
             categoryID: try requireID(),
             categoryName: category.name,
             remainingPlaces: countRemainingPlaces()
@@ -83,7 +83,7 @@ extension Workshops {
     }
     
     func countRemainingPlaces() -> Int {
-         return capacity_max - subscriber_number
+         return capacityMax - subscriberNumber
     }
     
 }
