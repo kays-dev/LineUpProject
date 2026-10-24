@@ -5,7 +5,7 @@ import Fluent
 
 @Suite("App Tests with DB", .serialized)
 struct LineUpAPITests {
-    private func withApp(_ test: (Application) async throws -> ()) async throws {
+    func withApp(_ test: (Application) async throws -> ()) async throws {
         let app = try await Application.make(.testing)
         do {
             try await configure(app)
