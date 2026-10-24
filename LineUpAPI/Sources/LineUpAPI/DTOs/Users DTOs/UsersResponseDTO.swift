@@ -14,7 +14,15 @@ struct UsersResponseDTO: Content {
     var name: String
     var email: String
     var role: UserRole
-   
+    
+    func toModel() -> Users {
+        return Users(
+            id: id,
+            name: name,
+            email: email,
+            passwordHash: "default"
+        )
+    }
 }
 
 extension Users {

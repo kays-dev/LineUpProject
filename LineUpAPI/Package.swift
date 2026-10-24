@@ -17,6 +17,8 @@ let package = Package(
         .package(url: "https://github.com/apple/swift-nio.git", from: "2.101.0"),
         // Gatekeeper: middleware conçu pour limiter le nombre de requête d'un client peut faire sur une periode définie
         .package(url: "https://github.com/nodes-vapor/gatekeeper.git", from: "4.0.0"),
+        // Dependance JWT
+        .package(url: "https://github.com/vapor/jwt.git", from: "4.0.0")
     ],
     targets: [
         .executableTarget(
@@ -28,6 +30,7 @@ let package = Package(
                 .product(name: "NIOCore", package: "swift-nio"),
                 .product(name: "NIOPosix", package: "swift-nio"),
                 .product (name: "Gatekeeper", package: "gatekeeper"),
+                .product(name: "JWT", package: "jwt")
             ],
             swiftSettings: swiftSettings
         ),
