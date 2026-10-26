@@ -34,8 +34,6 @@ struct CategoriesController: RouteCollection {
             category.delete(use: delete)
         }
         
-        let appIOS = routes.grouped("appIOS")
-        
     }
     
     func index(req: Request) async throws  -> [CategoriesResponseDTO] {

@@ -17,7 +17,7 @@ struct UsersController: RouteCollection {
         users.post(use: create)
         
         // Route Protege par JWTMiddleware
-        let protectedRoutes = users.grouped(JWTMiddleware())
+        let protectedRoutes = users.grouped(JWTMiddleware(), StaffMiddleware())
         protectedRoutes.group(":id") {user in
             user.get(use: show)
             user.patch(use: update)
