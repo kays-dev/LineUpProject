@@ -24,9 +24,9 @@ struct CreateWorkshopsDTO: Content {
             endTime: endTime,
             capacityMax: capacityMax,
             subscriberNumber: 0,
-            workshopDescription: workshopDescription
+            workshopDescription: workshopDescription,
+            categoryID: categoryID
         )
-        workshop.$category.id = categoryID
         return workshop
     }
 }

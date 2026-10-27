@@ -12,21 +12,24 @@ struct WorkshopsController: RouteCollection {
     
     func boot(routes: any RoutesBuilder) throws {
         
-        let workshops = routes.grouped("workshops")
+        let appios = routes.grouped(JWTMiddleware())
         
-        // Liste de tous les workshops filtré (catégories - recherche - disponiblité - date)
-        workshops.get(use: index)
-        
-        // Détail d'un atelier par son ID
-        workshops.get(":id", use: showWorkshopsDetail)
-        
-        // Création
-        workshops.post(use: create)
-        
-        // Modification et suppression
-        workshops.group(":id") { workshop in
-            workshop.put(use: update)
-            workshop.delete(use: delete)
+        appios.group("workshops") { workshops in
+            
+            // Liste de tous les workshops filtré (catégories - recherche - disponiblité - date)
+            workshops.get(use: index)
+            
+            // Détail d'un atelier
+            workshops.get(":id", use: showWorkshopsDetail)
+            
+            // Création
+            workshops.post(use: create)
+            
+            // Modification et suppression
+            workshops.group(":id") { workshop in
+                workshop.patch(use: update)
+                workshop.delete(use: delete)
+            }
         }
         
     }
@@ -97,7 +100,11 @@ struct WorkshopsController: RouteCollection {
             throw Abort(.badRequest, reason: "L'ID de l'atelier est invalide.")
         }
         
-        guard let workshop = try await Workshops.find(id, on: req.db) else {
+        guard let workshop = try await Workshops.query(on: req.db)
+            .filter(\.$id == id)
+            .with(\.$category)
+            .first()
+        else {
             throw Abort(.notFound, reason: "L'atelier est introuvable.")
         }
         
@@ -112,17 +119,23 @@ struct WorkshopsController: RouteCollection {
         let dto = try req.content.decode(CreateWorkshopsDTO.self)
         let workshop = dto.toModel()
         try await workshop.create(on: req.db)
+        // .load == .with()
+        try await workshop.$category.load(on: req.db)
         return try workshop.toDTO()
     }
     
     
-    // Modifier un workshop
+    // Modification
     func update(req: Request) async throws -> WorkshopsResponseDTO {
         guard let id = req.parameters.get("id", as: UUID.self) else {
             throw Abort(.badRequest, reason: "L'ID de l'atelier est invalide.")
         }
         
-        guard let workshop = try await Workshops.find(id, on: req.db) else {
+        guard let workshop = try await Workshops.query(on: req.db)
+            .filter(\.$id == id)
+            .with(\.$category)
+            .first()
+        else {
             throw Abort(.notFound, reason: "L'atelier est introuvable.")
         }
         
@@ -164,7 +177,7 @@ struct WorkshopsController: RouteCollection {
         return try workshop.toDTO()
     }
     
-    // Suppression par ID
+    // Suppression
     func delete(req: Request) async throws -> HTTPStatus {
         
         guard let id = req.parameters.get("id", as: UUID.self) else {
@@ -209,7 +222,7 @@ extension WorkshopsController {
         let formatter = formatDay()
         guard let start = formatter.date(from: day),
               let end = formatter.calendar.date(byAdding: .day, value: 1, to: start) else {
-            throw Abort(.badRequest, reason: "Date must be in yyyy-MM-dd format")
+            throw Abort(.badRequest, reason: "La date doit être au format aaaa-mm-jj")
         }
         return (start, end)
     }
@@ -219,11 +232,8 @@ extension WorkshopsController {
         let reservations = workshop.$reservations.query(on: db)
         
         guard try await reservations.count() == 0 else {
-            
-            throw Abort(.conflict, reason: "Workshop is linked to some reservations")
-            
+            throw Abort(.conflict, reason: "L'atelier est soumis à certaine conditions")
         }
-        
     }
 }
 
