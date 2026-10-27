@@ -3,132 +3,175 @@ import Vapor
 
 struct ReservationsController: RouteCollection {
     func boot(routes: any RoutesBuilder) throws {
-        let reservations = routes.grouped("reservations")
-        reservations.post(use: create)
-        reservations.get(use: myReservations)
-        reservations.get(":reservationID", use: show)
-        reservations.patch(":reservationID", "cancel", use: cancel)
-        
-        let backOffice = routes.grouped("backoffice", "reservations")
-        
-        backOffice.get(use: index)
-        backOffice.get(":reservationID", use: show)
-        backOffice.patch(":reservationID", "cancel", use: cancel)
-        backOffice.patch(":reservationID", "status", use: updateStatus)
-        backOffice.delete(":reservationID", use: delete)
-        backOffice.patch("workshop", ":workshopID", "cancel", use: cancelForWorkshop)
-        backOffice.delete("workshop", ":workshopID", use: deleteForWorkshop)
+        // App iOS : festivalier connecté (token obligatoire)
+        let appios = routes.grouped("appios", "reservations").grouped(JWTMiddleware())
+        appios.post(use: create)
+        appios.get(use: myReservations)
+        appios.get(":reservationID", use: show)
+        appios.patch(":reservationID", "cancel", use: cancel)
+
+        // Back-office : staff uniquement
+        let backoffice = routes.grouped("backoffice", "reservations").grouped(JWTMiddleware(), StaffMiddleware())
+        backoffice.get(use: index)
+        backoffice.get(":reservationID", use: show)
+        backoffice.patch(":reservationID", "cancel", use: cancel)
+        backoffice.patch(":reservationID", "status", use: updateStatus)
+        backoffice.delete(":reservationID", use: delete)
+        backoffice.patch("workshop", ":workshopID", "cancel", use: cancelForWorkshop)
+        backoffice.delete("workshop", ":workshopID", use: deleteForWorkshop)
     }
-    
+
+    // Fonctions transversales (app iOS + back-office)
+
+    // Détail d'une réservation : le festivalier ne voit que les siennes, le staff voit tout.
+    func show(req: Request) async throws -> ReservationsResponseDTO {
+        let reservation = try await fetchReservation(req)
+        return try reservation.toDTO()
+    }
+
+    // Annule une réservation (la ligne reste en base) et libère sa place si elle était validée.
+    func cancel(req: Request) async throws -> ReservationsResponseDTO {
+        let reservation = try await fetchReservation(req)
+
+        // Transaction : toutes les écritures sont enregistrées ensemble, ou aucune si une étape échoue.
+        return try await req.db.transaction { db in
+            let workshop = try await fetchWorkshop(reservation.$workshop.id, on: db)
+            try ensureWorkshopNotEnded(workshop)
+
+            guard reservation.status != .cancelled else {
+                throw Abort(.conflict, reason: "La réservation est déjà annulée.")
+            }
+
+            let wasValidated = reservation.status == .validated
+            if wasValidated {
+                workshop.subscriberNumber -= 1
+                try await workshop.update(on: db)
+            }
+
+            reservation.status = .cancelled
+            try await reservation.update(on: db)
+
+            if wasValidated {
+                try await promoteWaitingReservations(for: workshop, on: db)
+            }
+
+            return try reservation.toDTO()
+        }
+    }
+
+    // Fonctions de l'app iOS
+
+    // Réserve un atelier pour le festivalier connecté : validée s'il reste une place, en attente sinon.
     func create(req: Request) async throws -> ReservationsResponseDTO {
+        let payload = try req.auth.require(UsersPayload.self)
         let dto = try req.content.decode(CreateReservationsDTO.self)
-        
+
+        // Transaction : la réservation et le compteur de l'atelier sont enregistrés ensemble, ou pas du tout.
         return try await req.db.transaction { db in
             let workshop = try await fetchWorkshop(dto.workshopID, on: db)
-            guard try await Users.find(dto.userID, on: db) != nil else {
+            try ensureWorkshopNotEnded(workshop)
+
+            guard try await Users.find(payload.id, on: db) != nil else {
                 throw Abort(.notFound, reason: "Utilisateur introuvable.")
             }
-            
-            try await ensureNoActiveReservation(userID: dto.userID, workshopID: dto.workshopID, on: db)
-            
+
+            try await ensureNoActiveReservation(userID: payload.id, workshopID: dto.workshopID, on: db)
+
             // Les personnes déjà en attente passent avant cette nouvelle demande.
             try await promoteWaitingReservations(for: workshop, on: db)
-            
+
             let status: ReservationStatus
             if workshop.subscriberNumber < workshop.capacityMax {
                 status = .validated
             } else {
                 status = .pending
             }
-            
+
             // Chaque demande crée une nouvelle ligne : son id auto-incrémenté donne sa place dans la file.
-            let reservation = dto.toModel(status: status)
+            let reservation = dto.toModel(status: status, userID: payload.id)
             try await reservation.create(on: db)
-            
+
             if status == .validated {
                 workshop.subscriberNumber += 1
                 try await workshop.update(on: db)
             }
-            
+
             try await reservation.$workshop.load(on: db)
             try await reservation.$user.load(on: db)
             return try reservation.toDTO()
         }
     }
-    
-    // Sélection par userID fourni dans l'URL, sans contrôle d'identité.
+
+    // Les réservations du festivalier connecté (id lu dans le token), par ordre d'arrivée.
     func myReservations(req: Request) async throws -> [ReservationsResponseDTO] {
+        let payload = try req.auth.require(UsersPayload.self)
+
+        let reservations = try await Reservations.query(on: req.db)
+            .filter(\.$user.$id == payload.id)
+            .with(\.$workshop)
+            .with(\.$user)
+            .sort(\.$id, .ascending)
+            .all()
+        return try reservations.map { try $0.toDTO() }
+    }
+
+    //  Fonctions du back-office
+
+    // Toutes les réservations, par pages de 10.
+    func index(req: Request) async throws -> Page<ReservationsResponseDTO> {
         let filters = try req.query.decode(ReservationsQueryDTO.self)
-        
-        guard filters.userID != nil else {
-            throw Abort(.badRequest, reason: "Le paramètre userID est obligatoire.")
+
+        let query = Reservations.query(on: req.db)
+            .with(\.$workshop)
+            .with(\.$user)
+
+        if let status = filters.status {
+            query.filter(\.$status == status)
         }
-        
-        return try await filteredReservations(filters, on: req.db)
-    }
-    
-    // Consultation globale avec un filtre utilisateur facultatif.
-    func index(req: Request) async throws -> [ReservationsResponseDTO] {
-        let filters = try req.query.decode(ReservationsQueryDTO.self)
-        return try await filteredReservations(filters, on: req.db)
-    }
-    
-    func show(req: Request) async throws -> ReservationsResponseDTO {
-        let reservation = try await fetchReservation(req)
-        return try reservation.toDTO()
-    }
-    
-    // Une annulation conserve la réservation et son identifiant en base.
-    func cancel(req: Request) async throws -> ReservationsResponseDTO {
-        let reservation = try await fetchReservation(req)
-        
-        return try await req.db.transaction { db in
-            let workshop = try await fetchWorkshop(reservation.$workshop.id, on: db)
-            
-            guard reservation.status != .cancelled else {
-                throw Abort(.conflict, reason: "La réservation est déjà annulée.")
-            }
-            
-            let wasValidated = reservation.status == .validated
-            if wasValidated {
-                workshop.subscriberNumber -= 1
-                try await workshop.update(on: db)
-            }
-            
-            reservation.status = .cancelled
-            try await reservation.update(on: db)
-            
-            if wasValidated {
-                try await promoteWaitingReservations(for: workshop, on: db)
-            }
-            
-            return try reservation.toDTO()
+        if let workshopID = filters.workshop {
+            query.filter(\.$workshop.$id == workshopID)
         }
+        if let search = filters.search, !search.isEmpty {
+            query
+                .join(parent: \.$user)
+                .group(.or) { group in
+                    group.filter(Users.self, \.$name ~~ search)
+                    group.filter(Users.self, \.$email ~~ search)
+                }
+        }
+
+        let page = try await query
+            .sort(\.$id, .ascending)
+            .paginate(for: req)
+        return try page.map { try $0.toDTO() }
     }
-    
+
+    // Le staff change le statut à la main, en respectant les places et l'ordre de la file.
     func updateStatus(req: Request) async throws -> ReservationsResponseDTO {
         let reservation = try await fetchReservation(req)
-        
+
+        // Transaction : la réservation et le compteur de l'atelier sont enregistrés ensemble, ou pas du tout.
         return try await req.db.transaction { db in
             let workshop = try await fetchWorkshop(reservation.$workshop.id, on: db)
-            
+            try ensureWorkshopNotEnded(workshop)
+
             let dto = try req.content.decode(UpdateReservationsDTO.self)
-            
+
             // Une réservation annulée est définitive : pour revenir, l'utilisateur en crée une nouvelle.
             guard reservation.status != .cancelled else {
                 throw Abort(.conflict, reason: "La réservation est annulée. Créez une nouvelle réservation.")
             }
-            
+
             // Pour retirer une personne inscrite, le staff annule sa réservation.
             if reservation.status == .validated && dto.status == .pending {
                 throw Abort(.conflict, reason: "Une réservation validée ne peut pas repasser en attente. Annulez-la plutôt.")
             }
-            
+
             if reservation.status != .validated && dto.status == .validated {
                 guard workshop.subscriberNumber < workshop.capacityMax else {
                     throw Abort(.conflict, reason: "L'atelier est complet.")
                 }
-                
+
                 let firstWaiting = try await Reservations.query(on: db)
                     .filter(\.$workshop.$id == reservation.$workshop.id)
                     .filter(\.$status == .pending)
@@ -137,19 +180,19 @@ struct ReservationsController: RouteCollection {
                 guard firstWaiting == nil || firstWaiting?.id == reservation.id else {
                     throw Abort(.conflict, reason: "Une réservation plus ancienne est prioritaire.")
                 }
-                
+
                 workshop.subscriberNumber += 1
                 try await workshop.update(on: db)
             } else if reservation.status == .validated && dto.status != .validated {
                 workshop.subscriberNumber -= 1
                 try await workshop.update(on: db)
             }
-            
+
             reservation.status = dto.status
             try await reservation.update(on: db)
-            
+
             try await promoteWaitingReservations(for: workshop, on: db)
-            
+
             // La promotion peut avoir changé le statut : on relit la réservation.
             guard let saved = try await Reservations.query(on: db)
                 .filter(\.$id == reservation.requireID())
@@ -161,20 +204,21 @@ struct ReservationsController: RouteCollection {
             return try saved.toDTO()
         }
     }
-    
+
     // Suppression définitive d'une seule réservation via l'URL du back-office.
     func delete(req: Request) async throws -> HTTPStatus {
         let reservation = try await fetchReservation(req)
-        
+
+        // Transaction : la suppression et le compteur de l'atelier sont enregistrés ensemble, ou pas du tout.
         return try await req.db.transaction { db in
             let workshop = try await fetchWorkshop(reservation.$workshop.id, on: db)
-            
+
             let wasValidated = reservation.status == .validated
             if wasValidated {
                 workshop.subscriberNumber -= 1
                 try await workshop.update(on: db)
             }
-            
+
             try await reservation.delete(on: db)
             if wasValidated {
                 try await promoteWaitingReservations(for: workshop, on: db)
@@ -182,50 +226,66 @@ struct ReservationsController: RouteCollection {
             return HTTPStatus.noContent
         }
     }
-    
+
+    // Annule toutes les réservations d'un atelier (par exemple si l'atelier est annulé).
     func cancelForWorkshop(req: Request) async throws -> HTTPStatus {
         guard let workshopID = req.parameters.get("workshopID", as: UUID.self) else {
             throw Abort(.badRequest, reason: "Identifiant d'atelier invalide.")
         }
-        
+
+        // Transaction : les réservations et le compteur de l'atelier sont enregistrés ensemble, ou pas du tout.
         return try await req.db.transaction { db in
             let workshop = try await fetchWorkshop(workshopID, on: db)
-            
+
             try await Reservations.query(on: db)
                 .filter(\.$workshop.$id == workshopID)
                 .set(\.$status, to: .cancelled)
                 .update()
-            
+
             workshop.subscriberNumber = 0
             try await workshop.update(on: db)
-            
+
             return HTTPStatus.noContent
         }
     }
-    
+
     // Supprime les réservations de l'atelier, sans supprimer l'atelier lui-même.
     func deleteForWorkshop(req: Request) async throws -> HTTPStatus {
         guard let workshopID = req.parameters.get("workshopID", as: UUID.self) else {
             throw Abort(.badRequest, reason: "Identifiant d'atelier invalide.")
         }
-        
+
+        // Transaction : les suppressions et le compteur de l'atelier sont enregistrés ensemble, ou pas du tout.
         return try await req.db.transaction { db in
             let workshop = try await fetchWorkshop(workshopID, on: db)
-            
+
             try await Reservations.query(on: db)
                 .filter(\.$workshop.$id == workshopID)
                 .delete()
-            
+
             workshop.subscriberNumber = 0
             try await workshop.update(on: db)
-            
+
             return HTTPStatus.noContent
         }
     }
-    
-    // Lit l'identifiant de l'URL et charge la réservation avec son atelier et son utilisateur
-    // (400 si invalide, 404 si absente).
+
+    // accès à partir de la fonction update du worskhop controller
+    static func promoteAfterCapacityIncrease(
+        for workshop: Workshops,
+        on db: any Database
+    ) async throws {
+        try await ReservationsController()
+            .promoteWaitingReservations(for: workshop, on: db)
+    }
+
+    // Helpers 
+
+    // Charge la réservation de l'URL avec son atelier et son utilisateur.
+    // 400 si l'id est invalide ; 404 si elle n'existe pas ou n'appartient pas au festivalier connecté.
     private func fetchReservation(_ req: Request) async throws -> Reservations {
+        let payload = try req.auth.require(UsersPayload.self)
+
         guard let reservationID = req.parameters.get("reservationID", as: Int.self) else {
             throw Abort(.badRequest, reason: "Identifiant de réservation invalide.")
         }
@@ -236,9 +296,14 @@ struct ReservationsController: RouteCollection {
             .first() else {
             throw Abort(.notFound, reason: "Réservation introuvable.")
         }
+
+        // Un festivalier ne doit pas savoir qu'une réservation d'un autre existe : même réponse 404.
+        guard payload.role == .staff || reservation.$user.id == payload.id else {
+            throw Abort(.notFound, reason: "Réservation introuvable.")
+        }
         return reservation
     }
-    
+
     // Charge l'atelier d'une réservation (404 s'il n'existe pas).
     private func fetchWorkshop(_ workshopID: UUID, on db: any Database) async throws -> Workshops {
         guard let workshop = try await Workshops.find(workshopID, on: db) else {
@@ -246,7 +311,14 @@ struct ReservationsController: RouteCollection {
         }
         return workshop
     }
-    
+
+    // Refuse toute action sur un atelier déjà terminé (409).
+    private func ensureWorkshopNotEnded(_ workshop: Workshops) throws {
+        guard workshop.endTime > Date() else {
+            throw Abort(.conflict, reason: "L'atelier est terminé.")
+        }
+    }
+
     // Refuse une deuxième réservation non annulée du même utilisateur sur le même atelier (409).
     private func ensureNoActiveReservation(userID: UUID, workshopID: UUID, on db: any Database) async throws {
         let existingReservation = try await Reservations.query(on: db)
@@ -254,38 +326,12 @@ struct ReservationsController: RouteCollection {
             .filter(\.$workshop.$id == workshopID)
             .filter(\.$status != .cancelled)
             .first()
-        
+
         guard existingReservation == nil else {
             throw Abort(.conflict, reason: "Vous avez déjà une réservation active pour cet atelier.")
         }
     }
-    
-    // Filtres communs aux listes mobile et back-office, triés par ordre d'arrivée (id croissant).
-    private func filteredReservations(_ filters: ReservationsQueryDTO, on db: any Database) async throws -> [ReservationsResponseDTO] {
-        let query = Reservations.query(on: db)
-            .with(\.$workshop)
-            .with(\.$user)
-        
-        if let userID = filters.userID {
-            query.filter(\.$user.$id == userID)
-        }
-        if let status = filters.status {
-            query.filter(\.$status == status)
-        }
-        if let workshopID = filters.workshopID {
-            query.filter(\.$workshop.$id == workshopID)
-        }
-        if let name = filters.name, !name.isEmpty {
-            query
-                .join(parent: \.$workshop)
-                .filter(Workshops.self, \.$name ~~ name)
-        }
-        
-        let reservations = try await query
-            .sort(\.$id, .ascending).all()
-        return try reservations.map { try $0.toDTO() }
-    }
-    
+
     // Gestion de la variation du nombre de place d'un worskshop pour les réservations en pending
     private func promoteWaitingReservations(for workshop: Workshops, on db: any Database) async throws {
         let workshopID = try workshop.requireID()
@@ -297,20 +343,11 @@ struct ReservationsController: RouteCollection {
                 .first() else {
                 break
             }
-            
+
             next.status = .validated
             try await next.update(on: db)
             workshop.subscriberNumber += 1
             try await workshop.update(on: db)
         }
-    }
-    
-    // accès à partir de la fonction update du worskhop controller
-    static func promoteAfterCapacityIncrease(
-        for workshop: Workshops,
-        on db: any Database
-    ) async throws {
-        try await ReservationsController()
-            .promoteWaitingReservations(for: workshop, on: db)
     }
 }
