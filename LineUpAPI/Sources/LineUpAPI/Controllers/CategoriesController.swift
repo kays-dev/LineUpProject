@@ -12,7 +12,8 @@ struct CategoriesController: RouteCollection {
     
     func boot(routes: any RoutesBuilder) throws {
         
-        let categories = routes.grouped("categories")
+        // ROUTES MULTIPLATEFORMES (APPIOS + BACKOFFICE)
+        let categories = routes.grouped("categories").grouped(JWTMiddleware())
         
         //GET /categories
         categories.get(use: index)
@@ -20,7 +21,9 @@ struct CategoriesController: RouteCollection {
         //GET /categories/:id
         categories.get(":id", use: show)
         
-        let backoffice = routes.grouped("backoffice", "categories")
+        
+        // ROUTES BACKOFFICE
+        let backoffice = routes.grouped("backoffice", "categories").grouped(JWTMiddleware(), StaffMiddleware())
         
         //POST backoffice/categories
         backoffice.post(use: create)
@@ -102,13 +105,13 @@ extension CategoriesController {
         
         guard let id = req.parameters.get("id", as: UUID.self) else {
             
-            throw Abort(.badRequest, reason: "Invalid parameter.")
+            throw Abort(.badRequest, reason: "Identifiant de catégorie invalide.")
             
         }
         
         guard let fetched = try await Categories.find(id , on: req.db)  else {
             
-            throw Abort(.notFound, reason: "Category not found.")
+            throw Abort(.notFound, reason: "Catégorie introuvable.")
             
         }
         
@@ -119,16 +122,16 @@ extension CategoriesController {
     //Vérifier la validité d'un \.$name à envoyer
     private func checkValidName(for name: String, excluding id: UUID? = nil, on db: any Database) async throws -> String {
         
-        //Vérifier si que le \.$name n'est pas vide
+        //Vérifier que le \.$name n'est pas vide
         let cleanName = name.split(whereSeparator: \.isWhitespace).joined(separator: " ")
         guard !cleanName.isEmpty else {
         
-            throw Abort(.badRequest, reason: "Name must not be empty")
+            throw Abort(.badRequest, reason: "Le nom de la catégorie est obligatoire.")
         }
         
-        //Vérifier si que le \.$name est unique
+        //Vérifier que le \.$name est unique
         let sameName = Categories.query(on: db)
-            .filter( Categories.self, \.$name == cleanName)
+            .filter(\.$name == cleanName)
         
         if let id {
             
@@ -138,7 +141,7 @@ extension CategoriesController {
         
         guard try await sameName.count() == 0  else {
             
-            throw Abort(.conflict, reason: "Name must be unique")
+            throw Abort(.conflict, reason: "Une catégorie porte déjà ce nom.")
             
         }
         
@@ -149,10 +152,11 @@ extension CategoriesController {
     private func checkChildren(of category: Categories, on db: any Database) async throws {
         
         let workshops = category.$workshops.query(on: db)
+        let count = try await workshops.count()
         
-        guard try await workshops.count() == 0 else {
+        guard count == 0 else {
             
-            throw Abort(.conflict, reason: "Category is linked to some workshops")
+            throw Abort(.conflict, reason: "Impossible de supprimer cette catégorie : \(count) ateliers y sont encore rattachés.")
             
         }
         
