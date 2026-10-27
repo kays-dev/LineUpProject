@@ -1,11 +1,10 @@
 import Vapor
 
-// Paramètres de l'URL : userID (UUID), name, status et workshopID (UUID).
+// Filtres facultatifs de la liste du back-office :
+// ?status=pending&workshop=<id de l'atelier>&search=<nom ou email du festivalier>
+// La pagination (?page=&per=) est lue directement par Vapor.
 struct ReservationsQueryDTO: Content {
-    var name: String?
     var status: ReservationStatus?
-    var workshopID: UUID?
-
-    // Obligatoire pour la liste /reservations, facultatif pour la liste globale.
-    var userID: UUID?
+    var workshop: UUID?
+    var search: String?
 }

@@ -47,7 +47,7 @@ func configure(_ app: Application) async throws {
         allowedOrigin : .custom("http://localhost:8080"),
         // Specifie quel methode HTTP sont autorisé pour les requêtes cross-origin
         // OPTIONS: necessaire pour les request preflight
-        allowedMethods: [.GET, .POST, .PUT, .DELETE, .OPTIONS],
+        allowedMethods: [.GET, .POST, .PUT, .PATCH, .DELETE, .OPTIONS],
         // Specifie quel en tête HTTP peuvent être envoye par le client lors de requête cross-origin
         allowedHeaders: [.accept, .authorization, .contentType, .origin],
         // Duree pendant laquelle le resultat d'une requete preflight est mis en cache par le navigateur

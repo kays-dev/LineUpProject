@@ -9,6 +9,7 @@ struct ReservationsResponseDTO: Content {
     var startTime: Date
     var endTime: Date
     var userName: String
+    var userEmail: String
 }
 
 extension Reservations {
@@ -23,7 +24,8 @@ extension Reservations {
             workshopName: workshop.name,
             startTime: workshop.startTime,
             endTime: workshop.endTime,
-            userName: user.name
+            userName: user.name,
+            userEmail: user.email
         )
     }
 }

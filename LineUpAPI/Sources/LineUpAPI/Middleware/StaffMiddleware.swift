@@ -18,7 +18,7 @@ final class StaffMiddleware: AsyncMiddleware {
         
         // Vérifie que le role contenu dans le payload est UserRole.staff
         guard payload.role ==  .staff else {
-            throw Abort(.forbidden, reason: "Accès interdit.")
+            throw AccessError.blockedAccess
         }
 
         // Passer à la prochaine étape du traitement de la requête
