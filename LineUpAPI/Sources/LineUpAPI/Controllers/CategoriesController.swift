@@ -105,13 +105,13 @@ extension CategoriesController {
         
         guard let id = req.parameters.get("id", as: UUID.self) else {
             
-            throw Abort(.badRequest, reason: "Identifiant de catégorie invalide.")
+            throw CategoriesError.invalidID
             
         }
         
         guard let fetched = try await Categories.find(id , on: req.db)  else {
             
-            throw Abort(.notFound, reason: "Catégorie introuvable.")
+            throw CategoriesError.noCategory
             
         }
         
@@ -126,7 +126,7 @@ extension CategoriesController {
         let cleanName = name.split(whereSeparator: \.isWhitespace).joined(separator: " ")
         guard !cleanName.isEmpty else {
         
-            throw Abort(.badRequest, reason: "Le nom de la catégorie est obligatoire.")
+            throw CategoriesError.emptyName
         }
         
         //Vérifier que le \.$name est unique
@@ -141,7 +141,7 @@ extension CategoriesController {
         
         guard try await sameName.count() == 0  else {
             
-            throw Abort(.conflict, reason: "Une catégorie porte déjà ce nom.")
+            throw CategoriesError.takenName
             
         }
         
@@ -156,7 +156,7 @@ extension CategoriesController {
         
         guard count == 0 else {
             
-            throw Abort(.conflict, reason: "Impossible de supprimer cette catégorie : \(count) ateliers y sont encore rattachés.")
+            throw CategoriesError.hasWorkshops
             
         }
         

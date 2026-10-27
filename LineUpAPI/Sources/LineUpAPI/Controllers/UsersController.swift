@@ -83,10 +83,7 @@ struct UsersController: RouteCollection {
             "id",
             as: UUID.self
         ) else {
-            throw Abort(
-                .badRequest,
-                reason: "Identifiant invalide"
-            )
+            throw UsersError.invalidID
         }
         
         try checkAccess(req: req, to: id)
@@ -95,10 +92,7 @@ struct UsersController: RouteCollection {
             id,
             on: req.db
         ) else {
-            throw Abort(
-                .notFound,
-                reason: "Utilisateur introuvable"
-            )
+            throw UsersError.noUser
         }
         return try user.toDTO()
     }
@@ -116,7 +110,7 @@ struct UsersController: RouteCollection {
             .filter(\.$email == dto.email)
             .first()
         if existingUser != nil {
-            throw Abort(.conflict, reason: "Cet email est déja utilisé par un autre compte.")
+            throw UsersError.takenEmail
         }
         
         // Hachage du mot de passe via BCrypt
@@ -145,7 +139,7 @@ struct UsersController: RouteCollection {
         let payload = try  req.auth.require(UsersPayload.self)
         // Autorisé si staff ou titulaire du compte
         guard payload.role == .staff || payload.id == targetID else {
-            throw Abort(.forbidden, reason: "Acces interdit")
+            throw AccessError.blockedAccess
         }
     }
     
@@ -159,12 +153,12 @@ struct UsersController: RouteCollection {
         guard let user = try await Users.query(on: req.db)
             .filter(\.$email == userData.email)
             .first() else {
-            throw Abort(.unauthorized, reason: "L'utilisateur ou le mot de passe sont incorrects.")
+            throw UsersError.failedLogin
         }
         
         // Vérification du mot de passe
         guard try Bcrypt.verify(userData.password, created: user.passwordHash) else {
-            throw Abort (.unauthorized, reason: "L'utilisateur ou le mot de passe sont incorrects.")
+            throw UsersError.failedLogin
         }
         
         // Génération du token JWT
@@ -220,7 +214,7 @@ struct UsersController: RouteCollection {
                     .filter(\.$email == newEmail)
                     .first()
                 if emailExists != nil {
-                    throw Abort(.conflict, reason: "Cet email est déjà utilisé par un autre compte.")
+                    throw UsersError.takenEmail
                 }
                 user.email = newEmail
             }

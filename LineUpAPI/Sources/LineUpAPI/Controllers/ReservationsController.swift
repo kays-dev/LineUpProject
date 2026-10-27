@@ -72,7 +72,7 @@ struct ReservationsController: RouteCollection {
             try ensureWorkshopNotEnded(workshop)
 
             guard try await Users.find(payload.id, on: db) != nil else {
-                throw Abort(.notFound, reason: "Utilisateur introuvable.")
+                throw ReservationsError.noUser
             }
 
             try await ensureNoActiveReservation(userID: payload.id, workshopID: dto.workshopID, on: db)
@@ -159,17 +159,17 @@ struct ReservationsController: RouteCollection {
 
             // Une réservation annulée est définitive : pour revenir, l'utilisateur en crée une nouvelle.
             guard reservation.status != .cancelled else {
-                throw Abort(.conflict, reason: "La réservation est annulée. Créez une nouvelle réservation.")
+                throw ReservationsError.createToChange
             }
 
             // Pour retirer une personne inscrite, le staff annule sa réservation.
             if reservation.status == .validated && dto.status == .pending {
-                throw Abort(.conflict, reason: "Une réservation validée ne peut pas repasser en attente. Annulez-la plutôt.")
+                throw ReservationsError.cancelToChange
             }
 
             if reservation.status != .validated && dto.status == .validated {
                 guard workshop.subscriberNumber < workshop.capacityMax else {
-                    throw Abort(.conflict, reason: "L'atelier est complet.")
+                    throw ReservationsError.full
                 }
 
                 let firstWaiting = try await Reservations.query(on: db)
@@ -178,7 +178,7 @@ struct ReservationsController: RouteCollection {
                     .sort(\.$id, .ascending)
                     .first()
                 guard firstWaiting == nil || firstWaiting?.id == reservation.id else {
-                    throw Abort(.conflict, reason: "Une réservation plus ancienne est prioritaire.")
+                    throw ReservationsError.notNextInLine
                 }
 
                 workshop.subscriberNumber += 1
@@ -199,7 +199,7 @@ struct ReservationsController: RouteCollection {
                 .with(\.$workshop)
                 .with(\.$user)
                 .first() else {
-                throw Abort(.notFound, reason: "Réservation introuvable.")
+                throw ReservationsError.noReservation
             }
             return try saved.toDTO()
         }
@@ -230,7 +230,7 @@ struct ReservationsController: RouteCollection {
     // Annule toutes les réservations d'un atelier (par exemple si l'atelier est annulé).
     func cancelForWorkshop(req: Request) async throws -> HTTPStatus {
         guard let workshopID = req.parameters.get("workshopID", as: UUID.self) else {
-            throw Abort(.badRequest, reason: "Identifiant d'atelier invalide.")
+            throw ReservationsError.invalidWorkshopID
         }
 
         // Transaction : les réservations et le compteur de l'atelier sont enregistrés ensemble, ou pas du tout.
@@ -252,7 +252,7 @@ struct ReservationsController: RouteCollection {
     // Supprime les réservations de l'atelier, sans supprimer l'atelier lui-même.
     func deleteForWorkshop(req: Request) async throws -> HTTPStatus {
         guard let workshopID = req.parameters.get("workshopID", as: UUID.self) else {
-            throw Abort(.badRequest, reason: "Identifiant d'atelier invalide.")
+            throw ReservationsError.invalidWorkshopID
         }
 
         // Transaction : les suppressions et le compteur de l'atelier sont enregistrés ensemble, ou pas du tout.
@@ -287,19 +287,19 @@ struct ReservationsController: RouteCollection {
         let payload = try req.auth.require(UsersPayload.self)
 
         guard let reservationID = req.parameters.get("reservationID", as: Int.self) else {
-            throw Abort(.badRequest, reason: "Identifiant de réservation invalide.")
+            throw ReservationsError.invalidID
         }
         guard let reservation = try await Reservations.query(on: req.db)
             .filter(\.$id == reservationID)
             .with(\.$workshop)
             .with(\.$user)
             .first() else {
-            throw Abort(.notFound, reason: "Réservation introuvable.")
+            throw ReservationsError.noReservation
         }
 
         // Un festivalier ne doit pas savoir qu'une réservation d'un autre existe : même réponse 404.
         guard payload.role == .staff || reservation.$user.id == payload.id else {
-            throw Abort(.notFound, reason: "Réservation introuvable.")
+            throw ReservationsError.noReservation
         }
         return reservation
     }
@@ -307,7 +307,7 @@ struct ReservationsController: RouteCollection {
     // Charge l'atelier d'une réservation (404 s'il n'existe pas).
     private func fetchWorkshop(_ workshopID: UUID, on db: any Database) async throws -> Workshops {
         guard let workshop = try await Workshops.find(workshopID, on: db) else {
-            throw Abort(.notFound, reason: "Atelier introuvable.")
+            throw ReservationsError.noWorkshop
         }
         return workshop
     }
@@ -315,7 +315,7 @@ struct ReservationsController: RouteCollection {
     // Refuse toute action sur un atelier déjà terminé (409).
     private func ensureWorkshopNotEnded(_ workshop: Workshops) throws {
         guard workshop.endTime > Date() else {
-            throw Abort(.conflict, reason: "L'atelier est terminé.")
+            throw ReservationsError.finished
         }
     }
 
@@ -328,7 +328,7 @@ struct ReservationsController: RouteCollection {
             .first()
 
         guard existingReservation == nil else {
-            throw Abort(.conflict, reason: "Vous avez déjà une réservation active pour cet atelier.")
+            throw ReservationsError.activeReservation
         }
     }
 

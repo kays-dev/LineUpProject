@@ -14,7 +14,7 @@ final class JWTMiddleware: Middleware {
         
         // Vérifiez l'en-tête Authorization pour obtenir le token JWT
         guard let token = request.headers["Authorization"].first?.split(separator: " ").last else {
-            return request.eventLoop.future(error: Abort(.unauthorized, reason: "Token manquant."))
+            return request.eventLoop.future(error: AccessError.failedAuth)
         }
         let signer = JWTSigner.hs256(key: "cle_secrete") // Remplacez par une clé secrète
         let payload: UsersPayload
@@ -22,7 +22,7 @@ final class JWTMiddleware: Middleware {
             // Vérifiez le token et récupérez le payload
             payload = try signer.verify(String(token), as: UsersPayload.self)
         } catch {
-            return request.eventLoop.future(error: Abort(.unauthorized, reason: "Token invalide."))
+            return request.eventLoop.future(error: AccessError.failedAuth)
         }
         // Attacher l'utilisateur au contexte de la requête
         request.auth.login(payload)
