@@ -39,7 +39,7 @@ struct ReservationsController: RouteCollection {
             try ensureWorkshopNotEnded(workshop)
 
             guard reservation.status != .cancelled else {
-                throw Abort(.conflict, reason: "La réservation est déjà annulée.")
+                throw ReservationsError.cannotCancelAgain
             }
 
             let wasValidated = reservation.status == .validated
