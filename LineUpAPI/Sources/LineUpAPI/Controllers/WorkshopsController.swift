@@ -12,24 +12,32 @@ struct WorkshopsController: RouteCollection {
     
     func boot(routes: any RoutesBuilder) throws {
         
-        let appios = routes.grouped(JWTMiddleware())
+        // Authentifaction (staff/festivalier)
+        let workshops = routes.grouped("workshops").grouped(JWTMiddleware())
         
-        appios.group("workshops") { workshops in
+        // Liste de tous les workshops filtré
+        workshops.get(use: index)
+        //workshops.
+        
+        // Détail d'un atelier
+        workshops.get(":id", use: showWorkshopsDetail)
+        //workshops.
+        
+        // tableaux de dates pour le selecteur
+        workshops.get("days", use: showFestivalDays)
+        //workshops.
+        
+        // Authentification + role staff backoffice
+        let backoffice = routes.grouped("backoffice", "workshops").grouped(JWTMiddleware(), StaffMiddleware())
+        
+        // Création
+        backoffice.post(use: create)
+        
+        // Modification et suppression
+        backoffice.group(":id") { workshop in
+            workshop.patch(use: update)
+            workshop.delete(use: delete)
             
-            // Liste de tous les workshops filtré (catégories - recherche - disponiblité - date)
-            workshops.get(use: index)
-            
-            // Détail d'un atelier
-            workshops.get(":id", use: showWorkshopsDetail)
-            
-            // Création
-            workshops.post(use: create)
-            
-            // Modification et suppression
-            workshops.group(":id") { workshop in
-                workshop.patch(use: update)
-                workshop.delete(use: delete)
-            }
         }
         
     }
@@ -37,10 +45,8 @@ struct WorkshopsController: RouteCollection {
     // Liste de tous les workshops filtré (catégories - recherche - disponiblité - date)
     func index(req: Request) async throws -> [WorkshopsResponseDTO] {
         
-        
         let query = Workshops.query(on: req.db)
             .with(\.$category)
-        
         
         let categories = Categories
             .query(on: req.db)
@@ -90,6 +96,7 @@ struct WorkshopsController: RouteCollection {
             .all().map {
                 try $0.toDTO()
             }
+        
     }
     
     // Detail des activités
@@ -104,7 +111,7 @@ struct WorkshopsController: RouteCollection {
             .filter(\.$id == id)
             .with(\.$category)
             .first()
-        else {
+                else {
             throw WorkshopsError.noWorkshop
         }
         
@@ -136,7 +143,7 @@ struct WorkshopsController: RouteCollection {
             .filter(\.$id == id)
             .with(\.$category)
             .first()
-        else {
+                else {
             throw WorkshopsError.noWorkshop
         }
         
@@ -197,7 +204,7 @@ struct WorkshopsController: RouteCollection {
     }
 }
 
-// Gestion du filtre date + suppression d'un Workshop avec des réservations
+// Gestion du filtre date + suppression d'un Workshop avec 0 réservation
 extension WorkshopsController {
     
     func showFestivalDays(req: Request) async throws -> [String] {
