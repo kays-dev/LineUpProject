@@ -6,3 +6,29 @@
 //
 
 import Foundation
+
+struct Reservation: Identifiable, Hashable {
+    let id: Int
+    let status: ReservationStatus
+    let workshopID: UUID
+    let workshopName: String
+    let categoryName: String
+    let startTime: Date
+    let endTime: Date
+
+    var isOngoing: Bool {
+        status == .validated && startTime <= Date.now && Date.now < endTime
+    }
+
+    var isUpcoming: Bool {
+        status == .validated && Date.now < startTime
+    }
+
+    var isWaiting: Bool {
+        status == .pending && Date.now < endTime
+    }
+
+    var isPast: Bool {
+        endTime <= Date.now
+    }
+}
