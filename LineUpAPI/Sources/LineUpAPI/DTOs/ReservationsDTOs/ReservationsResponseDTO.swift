@@ -6,6 +6,7 @@ struct ReservationsResponseDTO: Content {
     var status: ReservationStatus
     var workshopID: UUID
     var workshopName: String
+    var categoryName: String
     var startTime: Date
     var endTime: Date
     var userName: String
@@ -13,7 +14,7 @@ struct ReservationsResponseDTO: Content {
 }
 
 extension Reservations {
-    // L'atelier et l'utilisateur doivent être chargés (.with(...) ou .load(on:)).
+    // L'atelier (avec sa catégorie) et l'utilisateur doivent être chargés (.with(...) ou .load(on:)).
     func toDTO() throws -> ReservationsResponseDTO {
         let reservationID = try requireID()
 
@@ -22,6 +23,7 @@ extension Reservations {
             status: status,
             workshopID: $workshop.id,
             workshopName: workshop.name,
+            categoryName: workshop.category.name,
             startTime: workshop.startTime,
             endTime: workshop.endTime,
             userName: user.name,

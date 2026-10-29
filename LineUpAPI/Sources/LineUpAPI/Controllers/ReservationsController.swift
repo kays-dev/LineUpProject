@@ -97,6 +97,7 @@ struct ReservationsController: RouteCollection {
             }
 
             try await reservation.$workshop.load(on: db)
+            try await reservation.workshop.$category.load(on: db)
             try await reservation.$user.load(on: db)
             return try reservation.toDTO()
         }
@@ -108,7 +109,7 @@ struct ReservationsController: RouteCollection {
 
         let reservations = try await Reservations.query(on: req.db)
             .filter(\.$user.$id == payload.id)
-            .with(\.$workshop)
+            .with(\.$workshop, { workshop in workshop.with(\.$category) })
             .with(\.$user)
             .sort(\.$id, .ascending)
             .all()
@@ -122,7 +123,7 @@ struct ReservationsController: RouteCollection {
         let filters = try req.query.decode(ReservationsQueryDTO.self)
 
         let query = Reservations.query(on: req.db)
-            .with(\.$workshop)
+            .with(\.$workshop, { workshop in workshop.with(\.$category) })
             .with(\.$user)
 
         if let status = filters.status {
@@ -196,7 +197,7 @@ struct ReservationsController: RouteCollection {
             // La promotion peut avoir changé le statut : on relit la réservation.
             guard let saved = try await Reservations.query(on: db)
                 .filter(\.$id == reservation.requireID())
-                .with(\.$workshop)
+                .with(\.$workshop, { workshop in workshop.with(\.$category) })
                 .with(\.$user)
                 .first() else {
                 throw ReservationsError.noReservation
@@ -291,7 +292,7 @@ struct ReservationsController: RouteCollection {
         }
         guard let reservation = try await Reservations.query(on: req.db)
             .filter(\.$id == reservationID)
-            .with(\.$workshop)
+            .with(\.$workshop, { workshop in workshop.with(\.$category) })
             .with(\.$user)
             .first() else {
             throw ReservationsError.noReservation
