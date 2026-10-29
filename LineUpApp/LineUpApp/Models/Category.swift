@@ -6,3 +6,18 @@
 //
 
 import Foundation
+
+@Observable
+class Category : Identifiable {
+    
+    let id : UUID
+    let name : String
+    
+    init(id: UUID, name: String) {
+        
+        self.id = id
+        self.name = name
+        
+    }
+    
+}

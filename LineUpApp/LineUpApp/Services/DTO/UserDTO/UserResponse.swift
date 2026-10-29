@@ -15,3 +15,13 @@ struct UserResponse : Decodable {
     let role: UserRole
     
 }
+
+extension UserResponse {
+    
+    func toModel() -> User {
+        
+        return User(name: name, email: email)
+        
+    }
+    
+}

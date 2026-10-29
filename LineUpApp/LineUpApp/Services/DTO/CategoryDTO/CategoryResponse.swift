@@ -9,8 +9,8 @@ import Foundation
 
 struct CategoriesResponse: Decodable {
 
-    var id: UUID
-    var name: String
+    let id: UUID
+    let name: String
 
 }
 
