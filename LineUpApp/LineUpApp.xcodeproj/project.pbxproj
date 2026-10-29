@@ -10,9 +10,22 @@
 		68AF8851307F70CB00EAF241 /* LineUpApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LineUpApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		68CFB371309336A300641DDA /* Exceptions for "LineUpApp" folder in "LineUpApp" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = 68AF8850307F70CB00EAF241 /* LineUpApp */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		68AF8853307F70CB00EAF241 /* LineUpApp */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				68CFB371309336A300641DDA /* Exceptions for "LineUpApp" folder in "LineUpApp" target */,
+			);
 			path = LineUpApp;
 			sourceTree = "<group>";
 		};
@@ -246,6 +259,7 @@
 				DEVELOPMENT_TEAM = N8KYRF6S87;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = LineUpApp/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -278,6 +292,7 @@
 				DEVELOPMENT_TEAM = N8KYRF6S87;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = LineUpApp/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
