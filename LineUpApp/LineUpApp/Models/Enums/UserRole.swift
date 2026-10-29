@@ -6,3 +6,8 @@
 //
 
 import Foundation
+
+enum UserRole : String, Codable, Sendable {
+    case staff = "staff"
+    case festivalgoer = "festivalgoer"
+}
