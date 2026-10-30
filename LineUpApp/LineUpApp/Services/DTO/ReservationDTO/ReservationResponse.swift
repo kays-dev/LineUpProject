@@ -13,8 +13,10 @@ struct ReservationResponse: Decodable {
     let workshopID: UUID
     let workshopName: String
     let categoryName: String
+    let workshopDescription: String
     let startTime: Date
     let endTime: Date
+    let userName: String
 }
 
 extension ReservationResponse {
@@ -25,8 +27,10 @@ extension ReservationResponse {
             workshopID: workshopID,
             workshopName: workshopName,
             categoryName: categoryName,
+            workshopDescription: workshopDescription,
             startTime: startTime,
-            endTime: endTime
+            endTime: endTime,
+            userName: userName
         )
     }
 }

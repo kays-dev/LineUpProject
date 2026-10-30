@@ -13,8 +13,10 @@ struct Reservation: Identifiable, Hashable {
     let workshopID: UUID
     let workshopName: String
     let categoryName: String
+    let workshopDescription: String
     let startTime: Date
     let endTime: Date
+    let userName: String
 
     var isOngoing: Bool {
         status == .validated && startTime <= Date.now && Date.now < endTime
