@@ -9,6 +9,9 @@
 
 import Foundation
 
+@MainActor
+@Observable
+
 // type références
 // Empêche l'héritage
 final class WorkshopStore {
