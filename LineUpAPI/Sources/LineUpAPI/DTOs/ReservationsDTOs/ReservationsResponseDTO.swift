@@ -7,6 +7,7 @@ struct ReservationsResponseDTO: Content {
     var workshopID: UUID
     var workshopName: String
     var categoryName: String
+    var workshopDescription: String
     var startTime: Date
     var endTime: Date
     var userName: String
@@ -24,6 +25,7 @@ extension Reservations {
             workshopID: $workshop.id,
             workshopName: workshop.name,
             categoryName: workshop.category.name,
+            workshopDescription: workshop.workshopDescription,
             startTime: workshop.startTime,
             endTime: workshop.endTime,
             userName: user.name,
