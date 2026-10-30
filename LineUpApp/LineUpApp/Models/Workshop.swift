@@ -29,6 +29,6 @@ struct Workshop: Identifiable, Hashable, CustomStringConvertible{
     
     // faciliter le débogage et vérifier les données récupérées depuis l'API
     var description: String {
-        return " Nom : \(name) Description : \(workshopDescription)
+        return " Nom : \(name) Description : \(workshopDescription) "
     }
 }
