@@ -10,5 +10,4 @@ import Foundation
 enum Availability {
     case available
     case full
-    case unavailable
 }

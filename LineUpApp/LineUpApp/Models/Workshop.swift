@@ -24,9 +24,6 @@ struct Workshop: Identifiable, Hashable, CustomStringConvertible{
         if subscriberNumber < capacityMax {
             return .available
         }
-        if (subscriberNumber == 0) && (capacityMax == 0) {
-            return .unavailable
-        }
         return .full
     }
     
