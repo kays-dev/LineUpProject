@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum Availability {
+enum Availability: Hashable {
     case available
     case full
 }

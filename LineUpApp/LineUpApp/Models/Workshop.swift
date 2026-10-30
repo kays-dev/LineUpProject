@@ -37,7 +37,7 @@ extension Workshop {
     var descriptionSections: [WorkshopDescriptionSection] {
         let sections = workshopDescription
             .split(separator: "§")
-            .compactMap { section in
+            .compactMap { section -> WorkshopDescriptionSection? in
 
                 // Transforme chaque section en objet WorkshopDescriptionSection
                 let sectionComponents = section
