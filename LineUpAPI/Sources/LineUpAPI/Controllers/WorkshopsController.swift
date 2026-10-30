@@ -39,7 +39,6 @@ struct WorkshopsController: RouteCollection {
             workshop.delete(use: delete)
             
         }
-        
     }
     
     // Liste de tous les workshops filtré (catégories - recherche - disponiblité - date)
@@ -55,7 +54,8 @@ struct WorkshopsController: RouteCollection {
         if let selectedCategory = try req.query.get(String?.self, at: "category") {
             
             guard let cat = try await categories
-                .filter(Categories.self, \.$name ~~ (selectedCategory)).first()
+                .filter(Categories.self, \.$name == (selectedCategory))
+                .first()
                     else {
                 throw WorkshopsError.noCategory
             }
@@ -65,8 +65,7 @@ struct WorkshopsController: RouteCollection {
         
         // Filtre / recherche
         if let selectedName = try req.query.get(String?.self, at: "name") {
-            query
-                .filter(\.$name ~~ selectedName)
+            query.filter(\.$name ~~ selectedName)
         }
         
         // Filtre / disponibilité
@@ -86,14 +85,42 @@ struct WorkshopsController: RouteCollection {
         }
         
         // Filtre / date
-        if let selectedDay = try req.query.get(String?.self, at: "period") {
-            let (start, end) = try dayRange(for: selectedDay)
-            query.filter(\.$startTime >= start).filter(\.$startTime < end)
+        if let periods = try req.query.get(String?.self, at: "periods") {
+            
+            // Découpe la chaîne en liste de dates
+            let days = periods.split(separator: ",").map { day in
+                String(day)
+            }
+            
+            // calcule la plage (début, fin) de chaque jour
+            let ranges = try days.map { day in
+                try dayRange(for: day)
+            }
+            
+            // garde les ateliers qui démarrent l'un des jours sélectionnés
+            if !ranges.isEmpty {
+                
+                query.group(.or) { or in
+                    
+                    // (jour 1) OR (jour 2) OR ...
+                    for (start, end) in ranges {
+                        
+                        // Dans un jour, les deux conditions doivent être vraies (AND)
+                        or.group(.and) { and in
+                            // à partir de 00:00 ce jour-là (inclus)
+                            and.filter(\.$startTime >= start)
+                            // avant 00:00 le lendemain (exclu)
+                            and.filter(\.$startTime < end)
+                        }
+                    }
+                }
+            }
         }
         
         return try await query
             .sort(\.$startTime, .ascending)
-            .all().map {
+            .all()
+            .map {
                 try $0.toDTO()
             }
         
