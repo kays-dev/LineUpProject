@@ -38,6 +38,8 @@ func configure(_ app: Application) async throws {
     
     app.migrations.add(CreateWorkshops())
     
+    app.migrations.add(UpdateWorkshopDescription())
+    
     app.migrations.add(CreateReservations())
     
     
