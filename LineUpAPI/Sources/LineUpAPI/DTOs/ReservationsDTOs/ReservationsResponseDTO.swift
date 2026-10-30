@@ -4,12 +4,7 @@ import Vapor
 struct ReservationsResponseDTO: Content {
     var reservationID: Int
     var status: ReservationStatus
-    var workshopID: UUID
-    var workshopName: String
-    var categoryName: String
-    var workshopDescription: String
-    var startTime: Date
-    var endTime: Date
+    var workshop: WorkshopsResponseDTO
     var userName: String
     var userEmail: String
 }
@@ -22,12 +17,7 @@ extension Reservations {
         return ReservationsResponseDTO(
             reservationID: reservationID,
             status: status,
-            workshopID: $workshop.id,
-            workshopName: workshop.name,
-            categoryName: workshop.category.name,
-            workshopDescription: workshop.workshopDescription,
-            startTime: workshop.startTime,
-            endTime: workshop.endTime,
+            workshop: try workshop.toDTO(),
             userName: user.name,
             userEmail: user.email
         )

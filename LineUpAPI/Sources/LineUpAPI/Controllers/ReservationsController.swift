@@ -56,6 +56,8 @@ struct ReservationsController: RouteCollection {
                 try await promoteWaitingReservations(for: workshop, on: db)
             }
 
+            try await reservation.$workshop.load(on: db)
+            try await reservation.workshop.$category.load(on: db)
             return try reservation.toDTO()
         }
     }
@@ -250,6 +252,32 @@ struct ReservationsController: RouteCollection {
     ) async throws {
         try await ReservationsController()
             .promoteWaitingReservations(for: workshop, on: db)
+    }
+
+    static func releasePlaces(ofUser userID: UUID, on db: any Database) async throws {
+        let reservations = try await Reservations.query(on: db)
+            .filter(\.$user.$id == userID)
+            .filter(\.$status != .cancelled)
+            .with(\.$workshop)
+            .all()
+
+        for reservation in reservations {
+            let workshop = reservation.workshop
+
+            if workshop.endTime > Date() {
+                let wasValidated = reservation.status == .validated
+
+                reservation.status = .cancelled
+                try await reservation.update(on: db)
+
+                if wasValidated {
+                    workshop.subscriberNumber -= 1
+                    try await workshop.update(on: db)
+                    try await ReservationsController()
+                        .promoteWaitingReservations(for: workshop, on: db)
+                }
+            }
+        }
     }
 
     // Helpers 

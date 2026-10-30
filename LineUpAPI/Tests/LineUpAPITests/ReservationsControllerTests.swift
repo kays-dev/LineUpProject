@@ -64,7 +64,8 @@ extension LineUpAPITests {
                 #expect(res.status == .ok)
                 let reservation = try res.content.decode(ReservationsResponseDTO.self)
                 #expect(reservation.userName == user.name)
-                #expect(reservation.workshopID == workshop.id)
+                #expect(reservation.workshop.id == workshop.id)
+                #expect(reservation.workshop.remainingPlaces == 9)
                 #expect(reservation.status == .validated)
             })
         }
@@ -86,6 +87,42 @@ extension LineUpAPITests {
             }, afterResponse: { res in
                 #expect(res.status == .conflict)
             })
+        }
+    }
+
+    @Test("Suppression d'un compte : sa place est libérée et la file d'attente avance")
+    func releasePlacesPromotesWaitingUser() async throws {
+        try await withApp { app in
+            let leaving = try await createFestivalgoer(app)
+            let waiting = Users(name: "Luca Galletti", email: "luca@example.com", passwordHash: "hash")
+            try await waiting.save(on: app.db)
+            let category = try await createCategory(app, name: "Théâtre")
+            let startTime = Date().addingTimeInterval(3600 * 24)
+            let workshop = Workshops(
+                name: "Atelier poterie",
+                startTime: startTime,
+                endTime: startTime.addingTimeInterval(3600 * 2),
+                capacityMax: 1,
+                subscriberNumber: 0,
+                workshopDescription: "Initiation au tour.",
+                categoryID: category.id
+            )
+            try await workshop.save(on: app.db)
+            let workshopID = try workshop.requireID()
+
+            let first = try await createReservation(app, userID: leaving.id, workshopID: workshopID)
+            let second = try await createReservation(app, userID: try waiting.requireID(), workshopID: workshopID)
+            #expect(first.status == .validated)
+            #expect(second.status == .pending)
+
+            try await ReservationsController.releasePlaces(ofUser: leaving.id, on: app.db)
+
+            let cancelled = try await Reservations.find(first.reservationID, on: app.db)
+            let promoted = try await Reservations.find(second.reservationID, on: app.db)
+            let updatedWorkshop = try await Workshops.find(workshopID, on: app.db)
+            #expect(cancelled?.status == .cancelled)
+            #expect(promoted?.status == .validated)
+            #expect(updatedWorkshop?.subscriberNumber == 1)
         }
     }
 }
