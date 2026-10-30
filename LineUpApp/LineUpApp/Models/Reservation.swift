@@ -10,27 +10,22 @@ import Foundation
 struct Reservation: Identifiable, Hashable {
     let id: Int
     let status: ReservationStatus
-    let workshopID: UUID
-    let workshopName: String
-    let categoryName: String
-    let workshopDescription: String
-    let startTime: Date
-    let endTime: Date
+    let workshop: Workshop
     let userName: String
 
     var isOngoing: Bool {
-        status == .validated && startTime <= Date.now && Date.now < endTime
+        status == .validated && workshop.startTime <= Date.now && Date.now < workshop.endTime
     }
 
     var isUpcoming: Bool {
-        status == .validated && Date.now < startTime
+        status == .validated && Date.now < workshop.startTime
     }
 
     var isWaiting: Bool {
-        status == .pending && Date.now < endTime
+        status == .pending && Date.now < workshop.endTime
     }
 
     var isPast: Bool {
-        endTime <= Date.now
+        workshop.endTime <= Date.now
     }
 }

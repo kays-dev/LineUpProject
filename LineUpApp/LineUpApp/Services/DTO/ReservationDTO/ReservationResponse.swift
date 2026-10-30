@@ -10,12 +10,7 @@ import Foundation
 struct ReservationResponse: Decodable {
     let reservationID: Int
     let status: ReservationStatus
-    let workshopID: UUID
-    let workshopName: String
-    let categoryName: String
-    let workshopDescription: String
-    let startTime: Date
-    let endTime: Date
+    let workshop: WorkshopResponse
     let userName: String
 }
 
@@ -24,12 +19,7 @@ extension ReservationResponse {
         Reservation(
             id: reservationID,
             status: status,
-            workshopID: workshopID,
-            workshopName: workshopName,
-            categoryName: categoryName,
-            workshopDescription: workshopDescription,
-            startTime: startTime,
-            endTime: endTime,
+            workshop: workshop.toModel(),
             userName: userName
         )
     }
