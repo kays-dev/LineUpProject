@@ -1,3 +1,4 @@
+import Fluent
 import Foundation
 import Testing
 import VaporTesting
@@ -43,6 +44,47 @@ extension LineUpAPITests {
                 req.headers.add(name: .authorization, value: "Bearer \(token)")
             }, afterResponse: { res in
                 #expect(res.status == .notFound)
+            })
+        }
+    }
+
+    @Test("POST back-office : le staff réserve pour un festivalier")
+    func staffBooksForFestivalgoer() async throws {
+        try await withApp { app in
+            let user = try await createFestivalgoer(app)
+            let category = try await createCategory(app, name: "Théâtre")
+            let workshop = try await createWorkshop(app, categoryID: category.id)
+            let token = try makeToken(role: .staff)
+
+            try await app.testing().test(.POST, "backoffice/reservations", beforeRequest: { req in
+                req.headers.add(name: .xForwardedFor, value: "127.0.0.1")
+                req.headers.add(name: .authorization, value: "Bearer \(token)")
+                try req.content.encode(BackofficeCreateReservationsDTO(userID: user.id, workshopID: workshop.id))
+            }, afterResponse: { res in
+                #expect(res.status == .ok)
+                let reservation = try res.content.decode(ReservationsResponseDTO.self)
+                #expect(reservation.userName == user.name)
+                #expect(reservation.workshopID == workshop.id)
+                #expect(reservation.status == .validated)
+            })
+        }
+    }
+
+    @Test("POST back-office : impossible de réserver pour un compte staff")
+    func staffCannotBookForStaff() async throws {
+        try await withApp { app in
+            let staff = Users(name: "Staff Test", email: "staff.test@lineup.com", passwordHash: "hash", role: .staff)
+            try await staff.save(on: app.db)
+            let category = try await createCategory(app, name: "Théâtre")
+            let workshop = try await createWorkshop(app, categoryID: category.id)
+            let token = try makeToken(role: .staff)
+
+            try await app.testing().test(.POST, "backoffice/reservations", beforeRequest: { req in
+                req.headers.add(name: .xForwardedFor, value: "127.0.0.1")
+                req.headers.add(name: .authorization, value: "Bearer \(token)")
+                try req.content.encode(BackofficeCreateReservationsDTO(userID: try staff.requireID(), workshopID: workshop.id))
+            }, afterResponse: { res in
+                #expect(res.status == .conflict)
             })
         }
     }

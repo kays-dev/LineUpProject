@@ -22,7 +22,8 @@ enum ReservationsError : Error {
     case noWorkshop
     case activeReservation
     case finished
-    
+    case staffAccount
+
 }
 
 extension ReservationsError : AbortError {
@@ -33,7 +34,7 @@ extension ReservationsError : AbortError {
             
         case .emptyUserID, .invalidWorkshopID, .invalidID : .badRequest
         case .noUser, .noReservation, .noWorkshop : .notFound
-        case .cannotCancelAgain, .createToChange, .cancelToChange, .full, .notNextInLine, .activeReservation, .finished : .conflict
+        case .cannotCancelAgain, .createToChange, .cancelToChange, .full, .notNextInLine, .activeReservation, .finished, .staffAccount : .conflict
             
         }
         
@@ -56,6 +57,7 @@ extension ReservationsError : AbortError {
         case .noWorkshop : "Atelier introuvable."
         case .activeReservation : "Vous avez déjà une réservation active pour cet atelier."
         case .finished : "L'atelier est terminé."
+        case .staffAccount : "Impossible de réserver pour un compte staff."
             
         }
         

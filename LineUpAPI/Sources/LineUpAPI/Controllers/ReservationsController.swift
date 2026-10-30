@@ -12,6 +12,7 @@ struct ReservationsController: RouteCollection {
 
         // Back-office : staff uniquement
         let backoffice = routes.grouped("backoffice", "reservations").grouped(JWTMiddleware(), StaffMiddleware())
+        backoffice.post(use: createForUser)
         backoffice.get(use: index)
         backoffice.get(":reservationID", use: show)
         backoffice.patch(":reservationID", "cancel", use: cancel)
@@ -65,42 +66,7 @@ struct ReservationsController: RouteCollection {
     func create(req: Request) async throws -> ReservationsResponseDTO {
         let payload = try req.auth.require(UsersPayload.self)
         let dto = try req.content.decode(CreateReservationsDTO.self)
-
-        // Transaction : la réservation et le compteur de l'atelier sont enregistrés ensemble, ou pas du tout.
-        return try await req.db.transaction { db in
-            let workshop = try await fetchWorkshop(dto.workshopID, on: db)
-            try ensureWorkshopNotEnded(workshop)
-
-            guard try await Users.find(payload.id, on: db) != nil else {
-                throw ReservationsError.noUser
-            }
-
-            try await ensureNoActiveReservation(userID: payload.id, workshopID: dto.workshopID, on: db)
-
-            // Les personnes déjà en attente passent avant cette nouvelle demande.
-            try await promoteWaitingReservations(for: workshop, on: db)
-
-            let status: ReservationStatus
-            if workshop.subscriberNumber < workshop.capacityMax {
-                status = .validated
-            } else {
-                status = .pending
-            }
-
-            // Chaque demande crée une nouvelle ligne : son id auto-incrémenté donne sa place dans la file.
-            let reservation = dto.toModel(status: status, userID: payload.id)
-            try await reservation.create(on: db)
-
-            if status == .validated {
-                workshop.subscriberNumber += 1
-                try await workshop.update(on: db)
-            }
-
-            try await reservation.$workshop.load(on: db)
-            try await reservation.workshop.$category.load(on: db)
-            try await reservation.$user.load(on: db)
-            return try reservation.toDTO()
-        }
+        return try await book(dto.toModel(userID: payload.id), on: req.db)
     }
 
     // Les réservations du festivalier connecté (id lu dans le token), par ordre d'arrivée.
@@ -117,6 +83,12 @@ struct ReservationsController: RouteCollection {
     }
 
     //  Fonctions du back-office
+
+    // Le staff réserve pour l'atelier
+    func createForUser(req: Request) async throws -> ReservationsResponseDTO {
+        let dto = try req.content.decode(BackofficeCreateReservationsDTO.self)
+        return try await book(dto.toModel(), on: req.db)
+    }
 
     // Toutes les réservations, par pages de 10.
     func index(req: Request) async throws -> Page<ReservationsResponseDTO> {
@@ -303,6 +275,46 @@ struct ReservationsController: RouteCollection {
             throw ReservationsError.noReservation
         }
         return reservation
+    }
+
+    private func book(_ reservation: Reservations, on db: any Database) async throws -> ReservationsResponseDTO {
+        let userID = reservation.$user.id
+        let workshopID = reservation.$workshop.id
+
+        // Transaction : la réservation et le compteur de l'atelier sont enregistrés ensemble, ou pas du tout.
+        return try await db.transaction { db in
+            let workshop = try await fetchWorkshop(workshopID, on: db)
+            try ensureWorkshopNotEnded(workshop)
+
+            guard let user = try await Users.find(userID, on: db) else {
+                throw ReservationsError.noUser
+            }
+            guard user.role == .festivalgoer else {
+                throw ReservationsError.staffAccount
+            }
+
+            try await ensureNoActiveReservation(userID: userID, workshopID: workshopID, on: db)
+
+            // Les personnes déjà en attente passent avant cette nouvelle demande.
+            try await promoteWaitingReservations(for: workshop, on: db)
+
+            if workshop.subscriberNumber < workshop.capacityMax {
+                reservation.status = .validated
+            }
+
+            // Chaque demande crée une nouvelle ligne : son id auto-incrémenté donne sa place dans la file.
+            try await reservation.create(on: db)
+
+            if reservation.status == .validated {
+                workshop.subscriberNumber += 1
+                try await workshop.update(on: db)
+            }
+
+            try await reservation.$workshop.load(on: db)
+            try await reservation.workshop.$category.load(on: db)
+            try await reservation.$user.load(on: db)
+            return try reservation.toDTO()
+        }
     }
 
     // Charge l'atelier d'une réservation (404 s'il n'existe pas).

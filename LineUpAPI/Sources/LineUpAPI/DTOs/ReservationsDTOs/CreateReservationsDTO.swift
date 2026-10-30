@@ -5,9 +5,9 @@ import Vapor
 struct CreateReservationsDTO: Content {
     var workshopID: UUID
 
-    func toModel(status: ReservationStatus, userID: UUID) -> Reservations {
+    func toModel(userID: UUID) -> Reservations {
         return Reservations(
-            status: status,
+            status: .pending,
             userID: userID,
             workshopID: workshopID
         )
