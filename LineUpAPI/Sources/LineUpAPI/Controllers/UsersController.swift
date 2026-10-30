@@ -12,12 +12,13 @@ import JWT
 struct UsersController: RouteCollection {
     func boot (routes: any RoutesBuilder) throws {
         
-        // 1. Route d'authentification publique (/auth/login)
+        // Route d'authentification publique (/auth/login)
         let authRoutes = routes.grouped("auth")
         authRoutes.post("login", use: login)
         
-        // 2. Routes de l'application iOS (/appios/users)
+        // Routes de l'application iOS (/appios/users)
         let appiosUsers = routes.grouped("appios", "users")
+        
         // Inscription d'un festivalier depuis l'app (POST /appios/users)
         appiosUsers.post(use: register)
         
@@ -30,13 +31,10 @@ struct UsersController: RouteCollection {
         // Changer son mot de passe (PATCH /appios/users/me/password)
         protectedAppios.patch("me", "password", use: updatePassword)
         
-        // Gérer son compte via son ID (/appios/users/:id)
-        protectedAppios.group(":id") { user in
-            user.get(use: show)
-            user.delete(use: delete)
-        }
+        // Supprimer son compte (DELETE /appios/users/me)
+        protectedAppios.delete("me", use: deleteMe)
         
-        // 3. Routes du Backoffice réservées au Staff (/backoffice/users/...)
+        // Routes du Backoffice réservées au Staff (/backoffice/users/...)
         let backofficeUsers = routes.grouped("backoffice", "users").grouped(JWTMiddleware(), StaffMiddleware())
         
         // Création d'un utilisateur staff (POST /backoffice/users)
@@ -212,11 +210,34 @@ struct UsersController: RouteCollection {
         
         try checkAccess(req: req, to: id)
         
-        guard let user = try await Users.find(id, on: req.db) else {
-            throw Abort(.notFound)
-        }
-        try await user.delete(on: req.db)
+        try await deleteAccount(id: id, on: req.db)
         return .noContent
+    }
+    
+    // L'utilisateur connecté supprime son propre compte (DELETE /appios/users/me)
+    @Sendable
+    func deleteMe (req: Request) async throws -> HTTPStatus {
+        // L'id vient du payload du token, jamais de l'URL
+        let payload = try req.auth.require(UsersPayload.self)
+        
+        try await deleteAccount(id: payload.id, on: req.db)
+        return .noContent
+    }
+    
+    // Supprime un compte en libérant les places de ses réservations.
+    // Transaction(si une étape échoue, rien n'est enregistré)
+    private func deleteAccount(id: UUID, on db: any Database) async throws {
+        try await db.transaction { transaction in
+            guard let user = try await Users.find(id, on: transaction) else {
+                throw UsersError.noUser
+            }
+            
+            // Annule ses réservations, décrémente subscriberNumber et promeut la liste d'attente
+            try await ReservationsController.releasePlaces(ofUser: id, on: transaction)
+            
+            // Supprime le compte (les réservations restantes partent avec la cascade)
+            try await user.delete(on: transaction)
+        }
     }
     
     // user.get("count",use: count)
