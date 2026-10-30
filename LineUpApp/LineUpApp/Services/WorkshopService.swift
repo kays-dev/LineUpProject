@@ -7,6 +7,8 @@
 
 import Foundation
 
+// Appelle l'API et convertit les DTO
+
 struct WorkshopService {
     // propriété permettant l'utilisation de APIClient pour communiquer avec l'API
     private let apiClient: APIClient
