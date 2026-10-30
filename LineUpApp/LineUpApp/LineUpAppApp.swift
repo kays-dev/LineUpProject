@@ -12,6 +12,7 @@ struct LineUpAppApp: App {
     
     @State private var sessionStore: SessionStore
     @State private var workshopStore: WorkshopStore
+    @State private var categoryStore: CategoryStore
     
     init() {
         let keychain = KeychainService()
@@ -23,6 +24,9 @@ struct LineUpAppApp: App {
         _workshopStore = State(initialValue: WorkshopStore(
             workshopService: WorkshopService(apiClient: apiClient)
         ))
+        _categoryStore = State(initialValue: CategoryStore(
+            service: CategoryService(apiClient: apiClient)
+        ))
     }
     
     var body: some Scene {
@@ -30,6 +34,7 @@ struct LineUpAppApp: App {
             ContentView()
                 .environment(sessionStore)
                 .environment(workshopStore)
+                .environment(categoryStore)
         }
     }
 }
