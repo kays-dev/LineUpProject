@@ -16,7 +16,7 @@ enum KeychainError: Error {
 
 // Stocke, lit et supprime le token. Ne le décode jamais.
 final class KeychainService {
-    private let service = "LineUp"
+    private let service = "LineUpApp"
     private let account = "authToken"
 
     private var baseQuery: [String: Any] {
