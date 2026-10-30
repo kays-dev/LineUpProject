@@ -9,8 +9,7 @@ import Foundation
 
 struct UpdatePasswordRequest : Encodable {
     
-    let name: String
-    let email: String
-    let password: String
+    let currentPassword: String
+    let newPassword: String
     
 }
