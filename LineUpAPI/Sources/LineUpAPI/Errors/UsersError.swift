@@ -13,6 +13,8 @@ enum UsersError : Error {
     case noUser
     case takenEmail
     case failedLogin
+    case wrongPassword
+    case samePassword
     
 }
 
@@ -26,6 +28,7 @@ extension UsersError : AbortError {
         case .noUser : .notFound
         case .takenEmail : .conflict
         case .failedLogin : .unauthorized
+        case .wrongPassword, .samePassword : .badRequest
             
         }
         
@@ -39,6 +42,8 @@ extension UsersError : AbortError {
         case .noUser : "Utilisateur introuvable."
         case .takenEmail : "Cet email est déja utilisé par un autre compte."
         case .failedLogin : "L'utilisateur ou le mot de passe est incorrect."
+        case .wrongPassword : "Le mot de passe actuel est incorrect."
+        case .samePassword : "Le nouveau mot de passe doit être différent de l'ancien."
             
         }
         

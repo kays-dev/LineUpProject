@@ -27,10 +27,12 @@ struct UsersController: RouteCollection {
         // Consulter son propre profil (GET /appios/users/me)
         protectedAppios.get("me", use: profile)
         
+        // Changer son mot de passe (PATCH /appios/users/me/password)
+        protectedAppios.patch("me", "password", use: updatePassword)
+        
         // Gérer son compte via son ID (/appios/users/:id)
         protectedAppios.group(":id") { user in
             user.get(use: show)
-            user.patch(use: update)
             user.delete(use: delete)
         }
         
@@ -47,7 +49,6 @@ struct UsersController: RouteCollection {
         // Gestion avancée d'un utilisateur par un administrateur (/backoffice/users/:id)
         backofficeUsers.group(":id") { user in
             user.get(use: show)
-            user.patch(use: update)
             user.delete(use: delete)
         }
     }
@@ -183,50 +184,24 @@ struct UsersController: RouteCollection {
         return try user.toDTO()
     }
     
-    // Fonctions qui de modifier les informations d'un user
+    // Fonction qui permet au user de modifier son mot de passe
     @Sendable
-    func update (req: Request) async throws -> UsersResponseDTO {
-        
-        guard let id = req.parameters.get("id", as: UUID.self)
-                else { throw Abort (.badRequest)}
-        // Vérification des droits d'accès
-        try checkAccess(req: req, to: id)
-        
-        // Valide la requête avec les règles de UpdateUsersDTO
-        try UpdateUsersDTO.validate(content: req)
-        let data = try req.content.decode(UpdateUsersDTO.self)
-        
-        guard let user = try await Users.find(id, on: req.db)
-                else { throw Abort(.notFound)}
-        
-        if let name = data.name {
-            user.name = name
+    func updatePassword(req: Request) async throws -> HTTPStatus {
+        let payload = try req.auth.require(UsersPayload.self)
+        try UpdatePasswordDTO.validate(content: req)
+        let data = try req.content.decode(UpdatePasswordDTO.self)
+        guard let user = try await Users.find(payload.id, on: req.db) else {
+            throw UsersError.noUser
         }
-        
-        // Si l'email est modifié, on vérifie son unicité -> Erreur 409 Conflict
-        // Verifie que le champs est rempli.Si le champ est présent sa valeur est extraite et stockée temporairement dans la constante rawEmail, et le bloc de code s'exécute
-        if let rawEmail = data.email {
-            // Supprime espace et retour a la ligne, convertit le tout en minuscule
-            let newEmail = rawEmail.trimmingCharacters(in: .whitespacesAndNewlines).lowercased()
-            
-            if newEmail != user.email {
-                let emailExists = try await Users.query(on: req.db)
-                    .filter(\.$email == newEmail)
-                    .first()
-                if emailExists != nil {
-                    throw UsersError.takenEmail
-                }
-                user.email = newEmail
-            }
+        guard try Bcrypt.verify(data.currentPassword, created: user.passwordHash) else {
+            throw UsersError.wrongPassword
         }
-        
-        // Gestion de la mise à jour du mot de passe
-        if let password = data.password {
-            user.passwordHash = try Bcrypt.hash(password)
+        guard data.newPassword != data.currentPassword else {
+            throw UsersError.samePassword
         }
-        
+        user.passwordHash = try Bcrypt.hash(data.newPassword)
         try await user.update(on: req.db)
-        return try user.toDTO()
+        return .noContent
     }
     
     // Fonction qui supprime un user
