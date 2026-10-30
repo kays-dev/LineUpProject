@@ -93,10 +93,12 @@
 				};
 			};
 			buildConfigurationList = 68AF884C307F70CB00EAF241 /* Build configuration list for PBXProject "LineUpApp" */;
-			developmentRegion = en;
+			developmentRegion = fr;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
+				fr,
+				it,
 				Base,
 			);
 			mainGroup = 68AF8848307F70CB00EAF241;
