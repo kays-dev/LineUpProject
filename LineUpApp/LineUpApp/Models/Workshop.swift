@@ -32,3 +32,40 @@ struct Workshop: Identifiable, Hashable, CustomStringConvertible{
         return " Nom : \(name) Description : \(workshopDescription) "
     }
 }
+
+extension Workshop {
+    var descriptionSections: [WorkshopDescriptionSection] {
+        let sections = workshopDescription
+            .split(separator: "§")
+            .compactMap { section in
+
+                // Transforme chaque section en objet WorkshopDescriptionSection
+                let sectionComponents = section
+                    .split(separator: "|")
+                    .map {
+                        // Convertit les Substring en String et supprime les espaces inutiles
+                        String($0).trimmingCharacters(in: .whitespacesAndNewlines)
+                    }
+
+                guard sectionComponents.count == 2 else {
+                    // Ignore la section si son format est incorrect
+                    return nil
+                }
+
+                return WorkshopDescriptionSection(
+                    name: sectionComponents[0],
+                    detail: sectionComponents[1]
+                )
+            }
+
+        return sections
+    }
+    
+    // utilisation en swiftUI : workshop.descriptionSection(name: "Description")
+    func descriptionSection(name: String) -> WorkshopDescriptionSection? {
+        return descriptionSections.first { section in
+            name == section.name
+            }
+    }
+
+}
