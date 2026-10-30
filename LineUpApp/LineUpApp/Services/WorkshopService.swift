@@ -28,7 +28,7 @@ struct WorkshopService {
         let dates = periods?.joined(separator: ",")
         let workshops: [WorkshopResponse] =
         try await apiClient.request(
-            path: "workshops",
+            path: "appios/workshops",
             query: [
                 "name": name,
                 "category": category,
@@ -45,14 +45,14 @@ struct WorkshopService {
     // absence de paramètres
     func fetchWorkshopsDays() async throws -> [String] {
         return try await apiClient.request(
-            path: "workshops/days"
+            path: "appios/workshops/days"
         )
     }
     
     // récupère le detail d'un atelier
     func fetchWorkshop(id: UUID) async throws -> Workshop {
         let workshop: WorkshopResponse = try await apiClient.request(
-            path: "workshops/\(id)"
+            path: "appios/workshops/\(id)"
         )
         return workshop.toModel()
     }
