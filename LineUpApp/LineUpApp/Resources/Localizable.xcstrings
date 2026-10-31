@@ -1,3635 +1,3647 @@
 {
-  "sourceLanguage": "fr",
-  "strings": {
-    "agenda.section.ongoing": {
-      "comment": "Section agenda",
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Now"
+  "sourceLanguage" : "fr",
+  "strings" : {
+    "agenda.section.ongoing" : {
+      "comment" : "Section agenda",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Now"
           }
         },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "En cours"
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "En cours"
           }
         },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "In corso"
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "In corso"
           }
         }
       }
     },
-    "agenda.section.upcoming": {
-      "comment": "Section agenda",
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Upcoming"
+    "agenda.section.upcoming" : {
+      "comment" : "Section agenda",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Upcoming"
           }
         },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "À venir"
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "À venir"
           }
         },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "In arrivo"
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "In arrivo"
           }
         }
       }
     },
-    "agenda.section.waitlist": {
-      "comment": "Section agenda",
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "On the waitlist"
+    "agenda.section.waitlist" : {
+      "comment" : "Section agenda",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "On the waitlist"
           }
         },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "En liste d'attente"
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "En liste d'attente"
           }
         },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "In lista d'attesa"
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "In lista d'attesa"
           }
         }
       }
     },
-    "agenda.title": {
-      "comment": "Titre de l'écran réservations",
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "NextUp"
+    "agenda.title" : {
+      "comment" : "Titre de l'écran réservations",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "NextUp"
           }
         },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Agenda"
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Agenda"
           }
         },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Il mio palco"
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Il mio palco"
           }
         }
       }
     },
-    "avatar.arlecchino": {
-      "comment": "Avatar",
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Harlequin"
+    "avatar.arlecchino" : {
+      "comment" : "Avatar",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Harlequin"
           }
         },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Arlecchino"
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Arlecchino"
           }
         },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Arlecchino"
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Arlecchino"
           }
         }
       }
     },
-    "avatar.befana": {
-      "comment": "Avatar",
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "La Befana"
+    "avatar.befana" : {
+      "comment" : "Avatar",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "La Befana"
           }
         },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "La Befana"
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "La Befana"
           }
         },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "La Befana"
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "La Befana"
           }
         }
       }
     },
-    "avatar.colombina": {
-      "comment": "Avatar",
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Colombina"
+    "avatar.colombina" : {
+      "comment" : "Avatar",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Colombina"
           }
         },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Colombina"
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Colombina"
           }
         },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Colombina"
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Colombina"
           }
         }
       }
     },
-    "avatar.corleone": {
-      "comment": "Avatar",
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Don Corleone"
+    "avatar.corleone" : {
+      "comment" : "Avatar",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Don Corleone"
           }
         },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Don Corleone"
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Don Corleone"
           }
         },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Don Corleone"
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Don Corleone"
           }
         }
       }
     },
-    "avatar.fountainStar": {
-      "comment": "Avatar",
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "The Fountain Star"
+    "avatar.fountainStar" : {
+      "comment" : "Avatar",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The Fountain Star"
           }
         },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "La star de la fontaine"
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "La star de la fontaine"
           }
         },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "La diva della fontana"
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "La diva della fontana"
           }
         }
       }
     },
-    "avatar.leonardo": {
-      "comment": "Avatar",
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Leonardo da Vinci"
+    "avatar.leonardo" : {
+      "comment" : "Avatar",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Leonardo da Vinci"
           }
         },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Léonard de Vinci"
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Léonard de Vinci"
           }
         },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Leonardo da Vinci"
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Leonardo da Vinci"
           }
         }
       }
     },
-    "avatar.lion": {
-      "comment": "Avatar",
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "The Lion of Saint Mark"
+    "avatar.lion" : {
+      "comment" : "Avatar",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The Lion of Saint Mark"
           }
         },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Le Lion de Saint-Marc"
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Le Lion de Saint-Marc"
           }
         },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Il Leone di San Marco"
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Il Leone di San Marco"
           }
         }
       }
     },
-    "avatar.mask": {
-      "comment": "Avatar",
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "The Venetian Mask"
+    "avatar.mask" : {
+      "comment" : "Avatar",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The Venetian Mask"
           }
         },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Le masque vénitien"
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Le masque vénitien"
           }
         },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "La maschera veneziana"
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "La maschera veneziana"
           }
         }
       }
     },
-    "avatar.mona": {
-      "comment": "Avatar",
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Mona Lisa"
+    "avatar.mona" : {
+      "comment" : "Avatar",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mona Lisa"
           }
         },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "La Joconde"
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "La Joconde"
           }
         },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "La Gioconda"
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "La Gioconda"
           }
         }
       }
     },
-    "avatar.pinocchio": {
-      "comment": "Avatar",
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Pinocchio"
+    "avatar.pinocchio" : {
+      "comment" : "Avatar",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pinocchio"
           }
         },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Pinocchio"
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pinocchio"
           }
         },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Pinocchio"
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pinocchio"
           }
         }
       }
     },
-    "avatar.pulcinella": {
-      "comment": "Avatar",
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Pulcinella"
+    "avatar.pulcinella" : {
+      "comment" : "Avatar",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pulcinella"
           }
         },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Pulcinella"
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pulcinella"
           }
         },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Pulcinella"
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pulcinella"
           }
         }
       }
     },
-    "avatar.subtitle": {
-      "comment": "Sous-titre",
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Choose the character shown on your profile."
+    "avatar.subtitle" : {
+      "comment" : "Sous-titre",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Choose the character shown on your profile."
           }
         },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Choisissez le personnage affiché sur votre profil."
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Choisissez le personnage affiché sur votre profil."
           }
         },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Scegli il personaggio da mostrare sul tuo profilo."
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Scegli il personaggio da mostrare sul tuo profilo."
           }
         }
       }
     },
-    "avatar.title": {
-      "comment": "Titre",
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Avatar"
+    "avatar.title" : {
+      "comment" : "Titre",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Avatar"
           }
         },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Avatar"
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Avatar"
           }
         },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Avatar"
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Avatar"
           }
         }
       }
     },
-    "avatar.vespa": {
-      "comment": "Avatar",
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "The Roman Vespa Rider"
+    "avatar.vespa" : {
+      "comment" : "Avatar",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The Roman Vespa Rider"
           }
         },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "La vespista romaine"
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "La vespista romaine"
           }
         },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "La vespista romana"
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "La vespista romana"
           }
         }
       }
     },
-    "booking.accessibility": {
-      "comment": "Libellé",
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Accessibility"
+    "booking.accessibility" : {
+      "comment" : "Libellé",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Accessibility"
           }
         },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Consigne PSH"
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Consigne PSH"
           }
         },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Accessibilità"
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Accessibilità"
           }
         }
       }
     },
-    "booking.category": {
-      "comment": "Libellé",
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Category"
+    "booking.category" : {
+      "comment" : "Libellé",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Category"
           }
         },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Catégorie"
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Catégorie"
           }
         },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Categoria"
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Categoria"
           }
         }
       }
     },
-    "booking.duration": {
-      "comment": "Libellé",
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Duration"
+    "booking.duration" : {
+      "comment" : "Libellé",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Duration"
           }
         },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Durée"
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Durée"
           }
         },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Durata"
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Durata"
           }
         }
       }
     },
-    "booking.fullName": {
-      "comment": "Libellé",
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Full name"
+    "booking.fullName" : {
+      "comment" : "Libellé",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Full name"
           }
         },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Nom complet"
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nom complet"
           }
         },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Nome e cognome"
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nome e cognome"
           }
         }
       }
     },
-    "booking.moreInfo": {
-      "comment": "Section",
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Additional information"
+    "booking.moreInfo" : {
+      "comment" : "Section",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Additional information"
           }
         },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Infos complémentaires"
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Infos complémentaires"
           }
         },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Informazioni aggiuntive"
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Informazioni aggiuntive"
           }
         }
       }
     },
-    "booking.notification": {
-      "comment": "Libellé",
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Notification"
+    "booking.notification" : {
+      "comment" : "Libellé",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Notification"
           }
         },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Notification"
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Notification"
           }
         },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Notifica"
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Notifica"
           }
         }
       }
     },
-    "booking.notification.message": {
-      "comment": "Valeur",
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "You'll be notified as soon as a spot opens up"
+    "booking.notification.message" : {
+      "comment" : "Valeur",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "You'll be notified as soon as a spot opens up"
           }
         },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Une notification vous prévient dès qu'une place se libère"
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Une notification vous prévient dès qu'une place se libère"
           }
         },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Riceverai una notifica appena si libera un posto"
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Riceverai una notifica appena si libera un posto"
           }
         }
       }
     },
-    "booking.number %@": {
-      "comment": "Titre détail réservation, %@ = code (ex. R-1024)",
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Booking no. %@"
+    "booking.number %@" : {
+      "comment" : "Titre détail réservation, %@ = code (ex. R-1024)",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Booking no. %@"
           }
         },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Réservation n° %@"
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Réservation n° %@"
           }
         },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Prenotazione n° %@"
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Prenotazione n° %@"
           }
         }
       }
     },
-    "booking.reminder": {
-      "comment": "Libellé",
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Reminder"
+    "booking.reminder" : {
+      "comment" : "Libellé",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Reminder"
           }
         },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Rappel"
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rappel"
           }
         },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Promemoria"
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Promemoria"
           }
         }
       }
     },
-    "booking.reminder.message": {
-      "comment": "Valeur",
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "You'll get a notification 1 hour before it starts"
+    "booking.reminder.message" : {
+      "comment" : "Valeur",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "You'll get a notification 1 hour before it starts"
           }
         },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Une notification vous est envoyée 1 h avant le début"
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Une notification vous est envoyée 1 h avant le début"
           }
         },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Riceverai una notifica 1 ora prima dell'inizio"
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Riceverai una notifica 1 ora prima dell'inizio"
           }
         }
       }
     },
-    "booking.schedule": {
-      "comment": "Libellé",
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Time"
+    "booking.schedule" : {
+      "comment" : "Libellé",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Time"
           }
         },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Horaires"
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Horaires"
           }
         },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Orario"
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Orario"
           }
         }
       }
     },
-    "booking.status": {
-      "comment": "Section",
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Booking status"
+    "booking.status" : {
+      "comment" : "Section",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Booking status"
           }
         },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Statut de la réservation"
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Statut de la réservation"
           }
         },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Stato della prenotazione"
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Stato della prenotazione"
           }
         }
       }
     },
-    "booking.status.approved": {
-      "comment": "ReservationStatus.approved",
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Confirmed"
+    "booking.status.approved" : {
+      "comment" : "ReservationStatus.approved",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Confirmed"
           }
         },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Validée"
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Validée"
           }
         },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Confermata"
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Confermata"
           }
         }
       }
     },
-    "booking.status.cancelled": {
-      "comment": "ReservationStatus.cancelled",
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Cancelled"
+    "booking.status.cancelled" : {
+      "comment" : "ReservationStatus.cancelled",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cancelled"
           }
         },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Annulée"
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Annulée"
           }
         },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Annullata"
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Annullata"
           }
         }
       }
     },
-    "booking.status.pending": {
-      "comment": "ReservationStatus.pending",
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Waitlisted"
+    "booking.status.pending" : {
+      "comment" : "ReservationStatus.pending",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Waitlisted"
           }
         },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "En attente"
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "En attente"
           }
         },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "In attesa"
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "In attesa"
           }
         }
       }
     },
-    "booking.success.button": {
-      "comment": "Popup succès réservation",
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Back to workshops"
+    "booking.success.button" : {
+      "comment" : "Popup succès réservation",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Back to workshops"
           }
         },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Retour aux ateliers"
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Retour aux ateliers"
           }
         },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Torna ai laboratori"
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Torna ai laboratori"
           }
         }
       }
     },
-    "booking.success.message": {
-      "comment": "Popup succès réservation",
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Your booking for this workshop has been saved. We can't wait to welcome you!"
+    "booking.success.message" : {
+      "comment" : "Popup succès réservation",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Your booking for this workshop has been saved. We can't wait to welcome you!"
           }
         },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Votre réservation pour l'atelier a bien été enregistrée. Nous avons hâte de vous accueillir !"
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Votre réservation pour l'atelier a bien été enregistrée. Nous avons hâte de vous accueillir !"
           }
         },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "La tua prenotazione per il laboratorio è stata registrata. Non vediamo l'ora di accoglierti!"
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "La tua prenotazione per il laboratorio è stata registrata. Non vediamo l'ora di accoglierti!"
           }
         }
       }
     },
-    "booking.success.title": {
-      "comment": "Popup succès réservation",
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Booking confirmed!"
+    "booking.success.title" : {
+      "comment" : "Popup succès réservation",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Booking confirmed!"
           }
         },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Réservation confirmée !"
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Réservation confirmée !"
           }
         },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Prenotazione confermata!"
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Prenotazione confermata!"
           }
         }
       }
     },
-    "booking.summary": {
-      "comment": "Section",
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Summary"
+    "booking.summary" : {
+      "comment" : "Section",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Summary"
           }
         },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Récapitulatif"
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Récapitulatif"
           }
         },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Riepilogo"
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Riepilogo"
           }
         }
       }
     },
-    "booking.waitlist": {
-      "comment": "Libellé",
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Waitlist"
+    "booking.waitlist" : {
+      "comment" : "Libellé",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Waitlist"
           }
         },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Liste d'attente"
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Liste d'attente"
           }
         },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Lista d'attesa"
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lista d'attesa"
           }
         }
       }
     },
-    "booking.waitlist.noPosition": {
-      "comment": "Valeur",
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Position not available"
+    "booking.waitlist.noPosition" : {
+      "comment" : "Valeur",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Position not available"
           }
         },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Position non renseignée"
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Position non renseignée"
           }
         },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Posizione non disponibile"
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Posizione non disponibile"
           }
         }
       }
     },
-    "booking.workshop": {
-      "comment": "Libellé",
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Workshop"
+    "booking.workshop" : {
+      "comment" : "Libellé",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Workshop"
           }
         },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Atelier concerné"
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Atelier concerné"
           }
         },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Laboratorio"
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Laboratorio"
           }
         }
       }
     },
-    "booking.workshopDetails": {
-      "comment": "Bouton",
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Workshop details"
+    "booking.workshopDetails" : {
+      "comment" : "Bouton",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Workshop details"
           }
         },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Détails de l'atelier"
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Détails de l'atelier"
           }
         },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Dettagli del laboratorio"
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dettagli del laboratorio"
           }
         }
       }
     },
-    "cancel.booking.message %@ %@": {
-      "comment": "%1$@ = code, %2$@ = nom de l'atelier",
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Careful, this can't be undone: booking no. %1$@ for “%2$@” will be permanently cancelled and your spot released."
+    "cancel.booking.message %@ %@" : {
+      "comment" : "%1$@ = code, %2$@ = nom de l'atelier",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Careful, this can't be undone: booking no. %1$@ for “%2$@” will be permanently cancelled and your spot released."
           }
         },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Attention, cette action est irréversible : votre réservation n° %1$@ pour « %2$@ » sera définitivement annulée et votre place libérée."
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Attention, cette action est irréversible : votre réservation n° %1$@ pour « %2$@ » sera définitivement annulée et votre place libérée."
           }
         },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Attenzione, questa azione è irreversibile: la prenotazione n° %1$@ per «%2$@» verrà annullata definitivamente e il tuo posto sarà liberato."
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Attenzione, questa azione è irreversibile: la prenotazione n° %1$@ per «%2$@» verrà annullata definitivamente e il tuo posto sarà liberato."
           }
         }
       }
     },
-    "cancel.booking.title": {
-      "comment": "Popup annulation",
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Cancel this booking?"
+    "cancel.booking.title" : {
+      "comment" : "Popup annulation",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cancel this booking?"
           }
         },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Annuler la réservation ?"
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Annuler la réservation ?"
           }
         },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Annullare la prenotazione?"
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Annullare la prenotazione?"
           }
         }
       }
     },
-    "cancel.confirm": {
-      "comment": "Bouton popup annulation",
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Confirm cancellation"
+    "cancel.confirm" : {
+      "comment" : "Bouton popup annulation",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Confirm cancellation"
           }
         },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Confirmer l'annulation"
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Confirmer l'annulation"
           }
         },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Conferma annullamento"
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Conferma annullamento"
           }
         }
       }
     },
-    "cancel.waitlist.message %@ %@": {
-      "comment": "%1$@ = code, %2$@ = nom de l'atelier",
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Careful, this can't be undone: your waitlist entry no. %1$@ for “%2$@” will be cancelled and you'll lose your place in line."
+    "cancel.waitlist.message %@ %@" : {
+      "comment" : "%1$@ = code, %2$@ = nom de l'atelier",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Careful, this can't be undone: your waitlist entry no. %1$@ for “%2$@” will be cancelled and you'll lose your place in line."
           }
         },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Attention, cette action est irréversible : votre inscription n° %1$@ à la liste d'attente de « %2$@ » sera annulée et vous perdrez votre position."
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Attention, cette action est irréversible : votre inscription n° %1$@ à la liste d'attente de « %2$@ » sera annulée et vous perdrez votre position."
           }
         },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Attenzione, questa azione è irreversibile: la tua iscrizione n° %1$@ alla lista d'attesa di «%2$@» verrà annullata e perderai la tua posizione."
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Attenzione, questa azione è irreversibile: la tua iscrizione n° %1$@ alla lista d'attesa di «%2$@» verrà annullata e perderai la tua posizione."
           }
         }
       }
     },
-    "cancel.waitlist.title": {
-      "comment": "Popup annulation liste d'attente",
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Leave the waitlist?"
+    "cancel.waitlist.title" : {
+      "comment" : "Popup annulation liste d'attente",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Leave the waitlist?"
           }
         },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Quitter la liste d'attente ?"
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Quitter la liste d'attente ?"
           }
         },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Lasciare la lista d'attesa?"
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lasciare la lista d'attesa?"
           }
         }
       }
     },
-    "category.cinema": {
-      "comment": "Catégorie (si locale)",
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Cinema"
+    "Catégories" : {
+
+    },
+    "category.cinema" : {
+      "comment" : "Catégorie (si locale)",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cinema"
           }
         },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Cinéma"
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cinéma"
           }
         },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Cinema"
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cinema"
           }
         }
       }
     },
-    "category.creativeArts": {
-      "comment": "Catégorie (si locale)",
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Creative arts"
+    "category.creativeArts" : {
+      "comment" : "Catégorie (si locale)",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Creative arts"
           }
         },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Arts créatifs"
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Arts créatifs"
           }
         },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Arti creative"
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Arti creative"
           }
         }
       }
     },
-    "category.heritage": {
-      "comment": "Catégorie (si locale)",
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Culture & heritage"
+    "category.heritage" : {
+      "comment" : "Catégorie (si locale)",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Culture & heritage"
           }
         },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Culture & patrimoine"
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Culture & patrimoine"
           }
         },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Cultura e patrimonio"
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cultura e patrimonio"
           }
         }
       }
     },
-    "category.musicDance": {
-      "comment": "Catégorie (si locale)",
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Music & dance"
+    "category.musicDance" : {
+      "comment" : "Catégorie (si locale)",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Music & dance"
           }
         },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Musique & danse"
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Musique & danse"
           }
         },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Musica e danza"
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Musica e danza"
           }
         }
       }
     },
-    "category.photography": {
-      "comment": "Catégorie (si locale)",
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Photography"
+    "category.photography" : {
+      "comment" : "Catégorie (si locale)",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Photography"
           }
         },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Photographie"
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Photographie"
           }
         },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Fotografia"
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fotografia"
           }
         }
       }
     },
-    "category.theatre": {
-      "comment": "Catégorie (si locale)",
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Theatre"
+    "category.theatre" : {
+      "comment" : "Catégorie (si locale)",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Theatre"
           }
         },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Théâtre"
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Théâtre"
           }
         },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Teatro"
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Teatro"
           }
         }
       }
     },
-    "category.youngAudience": {
-      "comment": "Catégorie (si locale)",
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Kids"
+    "category.youngAudience" : {
+      "comment" : "Catégorie (si locale)",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kids"
           }
         },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Jeune public"
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Jeune public"
           }
         },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Bambini"
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bambini"
           }
         }
       }
     },
-    "common.back": {
-      "comment": "Bouton retour (accessibilité)",
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Back"
+    "common.back" : {
+      "comment" : "Bouton retour (accessibilité)",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Back"
           }
         },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Retour"
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Retour"
           }
         },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Indietro"
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Indietro"
           }
         }
       }
     },
-    "common.cancel": {
-      "comment": "Bouton annuler",
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Cancel"
+    "common.cancel" : {
+      "comment" : "Bouton annuler",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cancel"
           }
         },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Annuler"
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Annuler"
           }
         },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Annulla"
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Annulla"
           }
         }
       }
     },
-    "common.close": {
-      "comment": "Bouton fermer (accessibilité)",
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Close"
+    "common.close" : {
+      "comment" : "Bouton fermer (accessibilité)",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Close"
           }
         },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Fermer"
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fermer"
           }
         },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Chiudi"
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Chiudi"
           }
         }
       }
     },
-    "common.confirm": {
-      "comment": "Bouton confirmer",
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Confirm"
+    "common.confirm" : {
+      "comment" : "Bouton confirmer",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Confirm"
           }
         },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Confirmer"
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Confirmer"
           }
         },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Conferma"
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Conferma"
           }
         }
       }
     },
-    "common.save": {
-      "comment": "Bouton enregistrer",
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Save"
+    "common.save" : {
+      "comment" : "Bouton enregistrer",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Save"
           }
         },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Enregistrer"
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Enregistrer"
           }
         },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Salva"
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Salva"
           }
         }
       }
     },
-    "common.share": {
-      "comment": "Bouton partager (accessibilité)",
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Share"
+    "common.share" : {
+      "comment" : "Bouton partager (accessibilité)",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Share"
           }
         },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Partager"
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Partager"
           }
         },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Condividi"
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Condividi"
           }
         }
       }
+    },
+    "Dates" : {
+
     },
-    "deleteAccount.button": {
-      "comment": "Popup danger",
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Delete my account"
+    "deleteAccount.button" : {
+      "comment" : "Popup danger",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Delete my account"
           }
         },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Supprimer mon compte"
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Supprimer mon compte"
           }
         },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Elimina il mio account"
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Elimina il mio account"
           }
         }
       }
     },
-    "deleteAccount.message": {
-      "comment": "Popup danger",
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "This is permanent: your account and your bookings will be deleted."
+    "deleteAccount.message" : {
+      "comment" : "Popup danger",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "This is permanent: your account and your bookings will be deleted."
           }
         },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Cette action est définitive : votre compte et vos réservations seront supprimés."
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cette action est définitive : votre compte et vos réservations seront supprimés."
           }
         },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Questa azione è definitiva: il tuo account e le tue prenotazioni verranno eliminati."
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Questa azione è definitiva: il tuo account e le tue prenotazioni verranno eliminati."
           }
         }
       }
     },
-    "deleteAccount.title": {
-      "comment": "Popup danger",
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Delete your account?"
+    "deleteAccount.title" : {
+      "comment" : "Popup danger",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Delete your account?"
           }
         },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Supprimer votre compte ?"
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Supprimer votre compte ?"
           }
         },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Eliminare il tuo account?"
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Eliminare il tuo account?"
           }
         }
       }
     },
-    "deleteAccount.warning": {
-      "comment": "Popup danger",
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "This can't be undone."
+    "deleteAccount.warning" : {
+      "comment" : "Popup danger",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "This can't be undone."
           }
         },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Cette suppression ne peut pas être annulée."
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cette suppression ne peut pas être annulée."
           }
         },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "L'eliminazione non può essere annullata."
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "L'eliminazione non può essere annullata."
           }
         }
       }
     },
-    "filters.dates": {
-      "comment": "Section dates",
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Dates"
+    "Disponibilité" : {
+
+    },
+    "filters.dates" : {
+      "comment" : "Section dates",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dates"
           }
         },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Dates"
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dates"
           }
         },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Date"
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Date"
           }
         }
       }
     },
-    "filters.reset": {
-      "comment": "Lien réinitialiser une section",
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Reset"
+    "filters.reset" : {
+      "comment" : "Lien réinitialiser une section",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Reset"
           }
         },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Réinitialiser"
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Réinitialiser"
           }
         },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Reimposta"
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Reimposta"
           }
         }
       }
     },
-    "filters.status": {
-      "comment": "Section statut",
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Status"
+    "filters.status" : {
+      "comment" : "Section statut",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Status"
           }
         },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Statut"
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Statut"
           }
         },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Stato"
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Stato"
           }
         }
       }
     },
-    "filters.status.available": {
-      "comment": "Filtre statut",
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Available"
+    "filters.status.available" : {
+      "comment" : "Filtre statut",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Available"
           }
         },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Disponible"
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Disponible"
           }
         },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Disponibile"
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Disponibile"
           }
         }
       }
     },
-    "filters.status.full": {
-      "comment": "Filtre statut",
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Full"
+    "filters.status.full" : {
+      "comment" : "Filtre statut",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Full"
           }
         },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Complet"
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Complet"
           }
         },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Al completo"
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Al completo"
           }
         }
       }
     },
-    "filters.status.waitlist": {
-      "comment": "Filtre statut",
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Waitlist"
+    "filters.status.waitlist" : {
+      "comment" : "Filtre statut",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Waitlist"
           }
         },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "En attente"
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "En attente"
           }
         },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Lista d'attesa"
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lista d'attesa"
           }
         }
       }
     },
-    "filters.title": {
-      "comment": "Titre de la modale filtres",
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Filters"
+    "filters.title" : {
+      "comment" : "Titre de la modale filtres",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Filters"
           }
         },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Filtres"
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Filtres"
           }
         },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Filtri"
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Filtri"
           }
         }
       }
     },
-    "filters.types": {
-      "comment": "Section types",
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Types"
+    "filters.types" : {
+      "comment" : "Section types",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Types"
           }
         },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Types"
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Types"
           }
         },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Tipi"
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tipi"
           }
         }
       }
+    },
+    "Hello, world!" : {
+
     },
-    "history.finished": {
-      "comment": "Carte statut historique",
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Workshop over"
+    "history.finished" : {
+      "comment" : "Carte statut historique",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Workshop over"
           }
         },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Atelier terminé"
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Atelier terminé"
           }
         },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Laboratorio concluso"
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Laboratorio concluso"
           }
         }
       }
     },
-    "history.title": {
-      "comment": "Section profil (archive Encore / Mémoire)",
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "History"
+    "history.title" : {
+      "comment" : "Section profil (archive Encore / Mémoire)",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "History"
           }
         },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Historique"
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Historique"
           }
         },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Cronologia"
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cronologia"
           }
         }
       }
     },
-    "history.wasApproved": {
-      "comment": "Carte statut historique",
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Your booking was confirmed"
+    "history.wasApproved" : {
+      "comment" : "Carte statut historique",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Your booking was confirmed"
           }
         },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Votre réservation était validée"
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Votre réservation était validée"
           }
         },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "La tua prenotazione era confermata"
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "La tua prenotazione era confermata"
           }
         }
       }
     },
-    "language.section": {
-      "comment": "Section",
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "App language"
+    "language.section" : {
+      "comment" : "Section",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "App language"
           }
         },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Langue de l'application"
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Langue de l'application"
           }
         },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Lingua dell'app"
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lingua dell'app"
           }
         }
       }
     },
-    "language.subtitle": {
-      "comment": "Sous-titre",
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Language used throughout the app."
+    "language.subtitle" : {
+      "comment" : "Sous-titre",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Language used throughout the app."
           }
         },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Langue utilisée dans toute l'application."
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Langue utilisée dans toute l'application."
           }
         },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Lingua usata in tutta l'app."
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lingua usata in tutta l'app."
           }
         }
       }
     },
-    "language.title": {
-      "comment": "Titre",
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Language"
+    "language.title" : {
+      "comment" : "Titre",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Language"
           }
         },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Langue"
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Langue"
           }
         },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Lingua"
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lingua"
           }
         }
       }
     },
-    "password.confirm": {
-      "comment": "Champ",
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Confirm new password"
+    "password.confirm" : {
+      "comment" : "Champ",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Confirm new password"
           }
         },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Confirmer le nouveau mot de passe"
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Confirmer le nouveau mot de passe"
           }
         },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Conferma la nuova password"
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Conferma la nuova password"
           }
         }
       }
     },
-    "password.current": {
-      "comment": "Champ",
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Current password"
+    "password.current" : {
+      "comment" : "Champ",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Current password"
           }
         },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Mot de passe actuel"
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mot de passe actuel"
           }
         },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Password attuale"
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Password attuale"
           }
         }
       }
     },
-    "password.new": {
-      "comment": "Champ",
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "New password"
+    "password.new" : {
+      "comment" : "Champ",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "New password"
           }
         },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Nouveau mot de passe"
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nouveau mot de passe"
           }
         },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Nuova password"
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nuova password"
           }
         }
       }
     },
-    "password.rule": {
-      "comment": "Règle",
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "At least 8 characters, including a number."
+    "password.rule" : {
+      "comment" : "Règle",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "At least 8 characters, including a number."
           }
         },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Au moins 8 caractères, dont un chiffre."
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Au moins 8 caractères, dont un chiffre."
           }
         },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Almeno 8 caratteri, di cui un numero."
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Almeno 8 caratteri, di cui un numero."
           }
         }
       }
     },
-    "password.title": {
-      "comment": "Titre",
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Password"
+    "password.title" : {
+      "comment" : "Titre",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Password"
           }
         },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Mot de passe"
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mot de passe"
           }
         },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Password"
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Password"
           }
         }
       }
     },
-    "password.toggleVisibility": {
-      "comment": "Icône œil (accessibilité)",
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Show password"
+    "password.toggleVisibility" : {
+      "comment" : "Icône œil (accessibilité)",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Show password"
           }
         },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Afficher le mot de passe"
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Afficher le mot de passe"
           }
         },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Mostra password"
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mostra password"
           }
         }
       }
     },
-    "privacy.collected.text": {
-      "comment": "Texte",
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Last name, first name, email address and bookings."
+    "privacy.collected.text" : {
+      "comment" : "Texte",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Last name, first name, email address and bookings."
           }
         },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Nom, prénom, adresse e-mail et réservations."
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nom, prénom, adresse e-mail et réservations."
           }
         },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Nome, cognome, indirizzo e-mail e prenotazioni."
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nome, cognome, indirizzo e-mail e prenotazioni."
           }
         }
       }
     },
-    "privacy.collected.title": {
-      "comment": "Section",
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Data collected"
+    "privacy.collected.title" : {
+      "comment" : "Section",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Data collected"
           }
         },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Données collectées"
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Données collectées"
           }
         },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Dati raccolti"
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dati raccolti"
           }
         }
       }
     },
-    "privacy.contact.text %@": {
-      "comment": "%@ = adresse e-mail",
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "For any questions: %@"
+    "privacy.contact.text %@" : {
+      "comment" : "%@ = adresse e-mail",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "For any questions: %@"
           }
         },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Pour toute question : %@"
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pour toute question : %@"
           }
         },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Per qualsiasi domanda: %@"
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Per qualsiasi domanda: %@"
           }
         }
       }
     },
-    "privacy.contact.title": {
-      "comment": "Section",
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Contact"
+    "privacy.contact.title" : {
+      "comment" : "Section",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Contact"
           }
         },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Contact"
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Contact"
           }
         },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Contatti"
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Contatti"
           }
         }
       }
     },
-    "privacy.download": {
-      "comment": "Bouton",
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Download my data"
+    "privacy.download" : {
+      "comment" : "Bouton",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Download my data"
           }
         },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Télécharger mes données"
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Télécharger mes données"
           }
         },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Scarica i miei dati"
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Scarica i miei dati"
           }
         }
       }
     },
-    "privacy.retention.text": {
-      "comment": "Texte",
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Your data is kept while your account is active, then deleted within one year."
+    "privacy.retention.text" : {
+      "comment" : "Texte",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Your data is kept while your account is active, then deleted within one year."
           }
         },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Vos données sont conservées tant que votre compte est actif, puis supprimées dans un délai d'un an."
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vos données sont conservées tant que votre compte est actif, puis supprimées dans un délai d'un an."
           }
         },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "I tuoi dati sono conservati finché il tuo account è attivo, poi eliminati entro un anno."
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "I tuoi dati sono conservati finché il tuo account è attivo, poi eliminati entro un anno."
           }
         }
       }
     },
-    "privacy.retention.title": {
-      "comment": "Section",
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Retention"
+    "privacy.retention.title" : {
+      "comment" : "Section",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Retention"
           }
         },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Conservation"
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Conservation"
           }
         },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Conservazione"
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Conservazione"
           }
         }
       }
     },
-    "privacy.rights.text": {
-      "comment": "Texte",
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Under the GDPR, you can view, correct or delete your data at any time from the settings."
+    "privacy.rights.text" : {
+      "comment" : "Texte",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Under the GDPR, you can view, correct or delete your data at any time from the settings."
           }
         },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Conformément au RGPD, vous pouvez consulter, corriger ou supprimer vos données à tout moment depuis les réglages."
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Conformément au RGPD, vous pouvez consulter, corriger ou supprimer vos données à tout moment depuis les réglages."
           }
         },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "In conformità al GDPR, puoi consultare, correggere o eliminare i tuoi dati in qualsiasi momento dalle impostazioni."
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "In conformità al GDPR, puoi consultare, correggere o eliminare i tuoi dati in qualsiasi momento dalle impostazioni."
           }
         }
       }
     },
-    "privacy.rights.title": {
-      "comment": "Section",
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Your rights"
+    "privacy.rights.title" : {
+      "comment" : "Section",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Your rights"
           }
         },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Vos droits"
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vos droits"
           }
         },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "I tuoi diritti"
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "I tuoi diritti"
           }
         }
       }
     },
-    "privacy.subtitle": {
-      "comment": "Sous-titre",
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "How LineUp uses your data."
+    "privacy.subtitle" : {
+      "comment" : "Sous-titre",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "How LineUp uses your data."
           }
         },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Comment LineUp utilise vos données."
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Comment LineUp utilise vos données."
           }
         },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Come LineUp utilizza i tuoi dati."
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Come LineUp utilizza i tuoi dati."
           }
         }
       }
     },
-    "privacy.title": {
-      "comment": "Titre",
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Privacy"
+    "privacy.title" : {
+      "comment" : "Titre",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Privacy"
           }
         },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Confidentialité"
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Confidentialité"
           }
         },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Privacy"
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Privacy"
           }
         }
       }
     },
-    "privacy.use.text": {
-      "comment": "Texte",
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "To manage your bookings and send you reminders. Your data is never sold."
+    "privacy.use.text" : {
+      "comment" : "Texte",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "To manage your bookings and send you reminders. Your data is never sold."
           }
         },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Gérer vos réservations et vous envoyer des rappels. Vos données ne sont jamais vendues."
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gérer vos réservations et vous envoyer des rappels. Vos données ne sont jamais vendues."
           }
         },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Gestire le tue prenotazioni e inviarti promemoria. I tuoi dati non vengono mai venduti."
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gestire le tue prenotazioni e inviarti promemoria. I tuoi dati non vengono mai venduti."
           }
         }
       }
     },
-    "privacy.use.title": {
-      "comment": "Section",
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Use"
+    "privacy.use.title" : {
+      "comment" : "Section",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Use"
           }
         },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Utilisation"
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Utilisation"
           }
         },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Utilizzo"
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Utilizzo"
           }
         }
       }
     },
-    "profile.stats": {
-      "comment": "Section",
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "My stats"
+    "profile.stats" : {
+      "comment" : "Section",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "My stats"
           }
         },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Mes stats"
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mes stats"
           }
         },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Le mie statistiche"
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Le mie statistiche"
           }
         }
       }
     },
-    "profile.title": {
-      "comment": "Titre de l'écran profil",
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "CloseUp"
+    "profile.title" : {
+      "comment" : "Titre de l'écran profil",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "CloseUp"
           }
         },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "En aparté"
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "En aparté"
           }
         },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "In camerino"
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "In camerino"
           }
         }
       }
     },
-    "program.title": {
-      "comment": "Titre de l'écran programme",
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "StageUp"
+    "program.title" : {
+      "comment" : "Titre de l'écran programme",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "StageUp"
           }
         },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "À l'affiche"
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "À l'affiche"
           }
         },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "In cartellone"
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "In cartellone"
           }
         }
       }
     },
-    "search.placeholder": {
-      "comment": "Placeholder de la barre de recherche (à valider)",
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Search activities"
+    "search.placeholder" : {
+      "comment" : "Placeholder de la barre de recherche (à valider)",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Search activities"
           }
         },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Rechercher une activité"
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rechercher une activité"
           }
         },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Cerca un'attività"
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cerca un'attività"
           }
         }
       }
     },
-    "settings.about": {
-      "comment": "Section",
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "About"
+    "settings.about" : {
+      "comment" : "Section",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "About"
           }
         },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "À propos"
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "À propos"
           }
         },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Informazioni"
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Informazioni"
           }
         }
       }
     },
-    "settings.account": {
-      "comment": "Section",
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Account"
+    "settings.account" : {
+      "comment" : "Section",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Account"
           }
         },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Compte"
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Compte"
           }
         },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Account"
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Account"
           }
         }
       }
     },
-    "settings.avatar": {
-      "comment": "Ligne",
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Avatar"
+    "settings.avatar" : {
+      "comment" : "Ligne",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Avatar"
           }
         },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Avatar"
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Avatar"
           }
         },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Avatar"
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Avatar"
           }
         }
       }
     },
-    "settings.avatar.subtitle": {
-      "comment": "Sous-titre",
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Character shown on your profile"
+    "settings.avatar.subtitle" : {
+      "comment" : "Sous-titre",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Character shown on your profile"
           }
         },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Personnage affiché sur votre profil"
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Personnage affiché sur votre profil"
           }
         },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Personaggio mostrato sul tuo profilo"
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Personaggio mostrato sul tuo profilo"
           }
         }
       }
     },
-    "settings.deleteAccount": {
-      "comment": "Bouton",
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Delete my account"
+    "settings.deleteAccount" : {
+      "comment" : "Bouton",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Delete my account"
           }
         },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Supprimer mon compte"
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Supprimer mon compte"
           }
         },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Elimina il mio account"
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Elimina il mio account"
           }
         }
       }
     },
-    "settings.language": {
-      "comment": "Ligne",
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Language"
+    "settings.language" : {
+      "comment" : "Ligne",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Language"
           }
         },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Langue"
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Langue"
           }
         },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Lingua"
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lingua"
           }
         }
       }
     },
-    "settings.logout": {
-      "comment": "Bouton",
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Log out"
+    "settings.logout" : {
+      "comment" : "Bouton",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Log out"
           }
         },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Déconnexion"
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Déconnexion"
           }
         },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Esci"
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Esci"
           }
         }
       }
     },
-    "settings.notif.news": {
-      "comment": "Toggle",
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Festival news"
+    "settings.notif.news" : {
+      "comment" : "Toggle",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Festival news"
           }
         },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Actualités du festival"
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Actualités du festival"
           }
         },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Novità del festival"
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Novità del festival"
           }
         }
       }
     },
-    "settings.notif.reminder": {
-      "comment": "Toggle",
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Workshop reminder"
+    "settings.notif.reminder" : {
+      "comment" : "Toggle",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Workshop reminder"
           }
         },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Rappel avant un atelier"
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rappel avant un atelier"
           }
         },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Promemoria prima di un laboratorio"
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Promemoria prima di un laboratorio"
           }
         }
       }
     },
-    "settings.notif.reminder.subtitle": {
-      "comment": "Sous-titre",
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "1 hour before it starts"
+    "settings.notif.reminder.subtitle" : {
+      "comment" : "Sous-titre",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "1 hour before it starts"
           }
         },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "1 h avant le début"
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "1 h avant le début"
           }
         },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "1 ora prima dell'inizio"
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "1 ora prima dell'inizio"
           }
         }
       }
     },
-    "settings.notif.spot": {
-      "comment": "Toggle",
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Spot available"
+    "settings.notif.spot" : {
+      "comment" : "Toggle",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Spot available"
           }
         },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Place libérée"
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Place libérée"
           }
         },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Posto liberato"
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Posto liberato"
           }
         }
       }
     },
-    "settings.notif.spot.subtitle": {
-      "comment": "Sous-titre",
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "When a waitlist spot opens up"
+    "settings.notif.spot.subtitle" : {
+      "comment" : "Sous-titre",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "When a waitlist spot opens up"
           }
         },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Quand une place se libère en liste d'attente"
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Quand une place se libère en liste d'attente"
           }
         },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Quando si libera un posto in lista d'attesa"
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Quando si libera un posto in lista d'attesa"
           }
         }
       }
     },
-    "settings.notifications": {
-      "comment": "Section",
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Notifications"
+    "settings.notifications" : {
+      "comment" : "Section",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Notifications"
           }
         },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Notifications"
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Notifications"
           }
         },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Notifiche"
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Notifiche"
           }
         }
       }
     },
-    "settings.password": {
-      "comment": "Ligne",
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Password"
+    "settings.password" : {
+      "comment" : "Ligne",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Password"
           }
         },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Mot de passe"
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mot de passe"
           }
         },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Password"
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Password"
           }
         }
       }
     },
-    "settings.password.subtitle": {
-      "comment": "Sous-titre",
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Change your password"
+    "settings.password.subtitle" : {
+      "comment" : "Sous-titre",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Change your password"
           }
         },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Modifier votre mot de passe"
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Modifier votre mot de passe"
           }
         },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Modifica la tua password"
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Modifica la tua password"
           }
         }
       }
     },
-    "settings.preferences": {
-      "comment": "Section",
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Preferences"
+    "settings.preferences" : {
+      "comment" : "Section",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Preferences"
           }
         },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Préférences"
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Préférences"
           }
         },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Preferenze"
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Preferenze"
           }
         }
       }
     },
-    "settings.privacy": {
-      "comment": "Ligne",
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Privacy policy"
+    "settings.privacy" : {
+      "comment" : "Ligne",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Privacy policy"
           }
         },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Politique de confidentialité"
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Politique de confidentialité"
           }
         },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Informativa sulla privacy"
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Informativa sulla privacy"
           }
         }
       }
     },
-    "settings.terms": {
-      "comment": "Ligne",
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Terms of use"
+    "settings.terms" : {
+      "comment" : "Ligne",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Terms of use"
           }
         },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Conditions d'utilisation"
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Conditions d'utilisation"
           }
         },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Termini di utilizzo"
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Termini di utilizzo"
           }
         }
       }
     },
-    "settings.title": {
-      "comment": "Titre",
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Settings"
+    "settings.title" : {
+      "comment" : "Titre",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Settings"
           }
         },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Réglages"
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Réglages"
           }
         },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Impostazioni"
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Impostazioni"
           }
         }
       }
     },
-    "settings.version %@": {
-      "comment": "%@ = numéro de version",
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "LineUp · version %@"
+    "settings.version %@" : {
+      "comment" : "%@ = numéro de version",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "LineUp · version %@"
           }
         },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "LineUp · version %@"
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "LineUp · version %@"
           }
         },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "LineUp · versione %@"
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "LineUp · versione %@"
           }
         }
       }
     },
-    "stats.attended": {
-      "comment": "Carte stat",
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Workshops attended"
+    "stats.attended" : {
+      "comment" : "Carte stat",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Workshops attended"
           }
         },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Ateliers suivis"
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ateliers suivis"
           }
         },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Laboratori seguiti"
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Laboratori seguiti"
           }
         }
       }
     },
-    "stats.bookings": {
-      "comment": "Carte stat",
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Bookings"
+    "stats.bookings" : {
+      "comment" : "Carte stat",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bookings"
           }
         },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Réservations"
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Réservations"
           }
         },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Prenotazioni"
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Prenotazioni"
           }
         }
       }
     },
-    "stats.favoriteCategory": {
-      "comment": "Carte stat",
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Favourite category"
+    "stats.favoriteCategory" : {
+      "comment" : "Carte stat",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Favourite category"
           }
         },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Catégorie préférée"
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Catégorie préférée"
           }
         },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Categoria preferita"
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Categoria preferita"
           }
         }
       }
     },
-    "stats.festivalDays": {
-      "comment": "Carte stat",
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Festival days"
+    "stats.festivalDays" : {
+      "comment" : "Carte stat",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Festival days"
           }
         },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Jours de festival"
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Jours de festival"
           }
         },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Giorni di festival"
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Giorni di festival"
           }
         }
       }
     },
-    "stats.placesVisited": {
-      "comment": "Carte stat",
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Places visited"
+    "stats.placesVisited" : {
+      "comment" : "Carte stat",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Places visited"
           }
         },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Lieux visités"
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lieux visités"
           }
         },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Luoghi visitati"
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Luoghi visitati"
           }
         }
       }
     },
-    "stats.timeSpent": {
-      "comment": "Carte stat",
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Time spent in workshops"
+    "stats.timeSpent" : {
+      "comment" : "Carte stat",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Time spent in workshops"
           }
         },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Temps passé en ateliers"
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Temps passé en ateliers"
           }
         },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Tempo trascorso nei laboratori"
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tempo trascorso nei laboratori"
           }
         }
       }
     },
-    "status.available": {
-      "comment": "Badge atelier disponible",
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Available"
+    "status.available" : {
+      "comment" : "Badge atelier disponible",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Available"
           }
         },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Disponible"
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Disponible"
           }
         },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Disponibile"
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Disponibile"
           }
         }
       }
     },
-    "status.full": {
-      "comment": "Badge atelier complet",
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Full"
+    "status.full" : {
+      "comment" : "Badge atelier complet",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Full"
           }
         },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Complet"
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Complet"
           }
         },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Al completo"
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Al completo"
           }
         }
       }
     },
-    "tab.agenda": {
-      "comment": "Onglet réservations à venir",
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "NextUp"
+    "tab.agenda" : {
+      "comment" : "Onglet réservations à venir",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "NextUp"
           }
         },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Agenda"
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Agenda"
           }
         },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Palco"
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Palco"
           }
         }
       }
     },
-    "tab.profile": {
-      "comment": "Onglet profil",
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "CloseUp"
+    "tab.profile" : {
+      "comment" : "Onglet profil",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "CloseUp"
           }
         },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Aparté"
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aparté"
           }
         },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Camerino"
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Camerino"
           }
         }
       }
     },
-    "tab.profile.accessibility": {
-      "comment": "Libellé VoiceOver de l'onglet profil",
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Profile"
+    "tab.profile.accessibility" : {
+      "comment" : "Libellé VoiceOver de l'onglet profil",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Profile"
           }
         },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Profil"
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Profil"
           }
         },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Profilo"
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Profilo"
           }
         }
       }
     },
-    "tab.program": {
-      "comment": "Onglet programme du festival",
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "StageUp"
+    "tab.program" : {
+      "comment" : "Onglet programme du festival",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "StageUp"
           }
         },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Affiche"
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Affiche"
           }
         },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Cartellone"
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cartellone"
           }
         }
       }
     },
-    "terms.1.text": {
-      "comment": "Texte",
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "These terms govern the use of the LineUp app, which lets you browse the festival programme and book activities."
+    "terms.1.text" : {
+      "comment" : "Texte",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "These terms govern the use of the LineUp app, which lets you browse the festival programme and book activities."
           }
         },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Les présentes conditions encadrent l'utilisation de l'application LineUp, qui permet de consulter le programme du festival et de réserver des activités."
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Les présentes conditions encadrent l'utilisation de l'application LineUp, qui permet de consulter le programme du festival et de réserver des activités."
           }
         },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Le presenti condizioni regolano l'utilizzo dell'app LineUp, che permette di consultare il programma del festival e prenotare attività."
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Le presenti condizioni regolano l'utilizzo dell'app LineUp, che permette di consultare il programma del festival e prenotare attività."
           }
         }
       }
     },
-    "terms.1.title": {
-      "comment": "Section",
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "1. Purpose"
+    "terms.1.title" : {
+      "comment" : "Section",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "1. Purpose"
           }
         },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "1. Objet"
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "1. Objet"
           }
         },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "1. Oggetto"
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "1. Oggetto"
           }
         }
       }
     },
-    "terms.2.text": {
-      "comment": "Texte",
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Your account is personal. You are responsible for keeping your login details confidential."
+    "terms.2.text" : {
+      "comment" : "Texte",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Your account is personal. You are responsible for keeping your login details confidential."
           }
         },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Votre compte est personnel. Vous êtes responsable de la confidentialité de vos identifiants."
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Votre compte est personnel. Vous êtes responsable de la confidentialité de vos identifiants."
           }
         },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Il tuo account è personale. Sei responsabile della riservatezza delle tue credenziali."
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Il tuo account è personale. Sei responsabile della riservatezza delle tue credenziali."
           }
         }
       }
     },
-    "terms.2.title": {
-      "comment": "Section",
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "2. Account"
+    "terms.2.title" : {
+      "comment" : "Section",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "2. Account"
           }
         },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "2. Compte"
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "2. Compte"
           }
         },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "2. Account"
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "2. Account"
           }
         }
       }
     },
-    "terms.3.text": {
-      "comment": "Texte",
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "A booking is confirmed as soon as it appears in your agenda. As spots are limited, you may be offered a waitlist."
+    "terms.3.text" : {
+      "comment" : "Texte",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "A booking is confirmed as soon as it appears in your agenda. As spots are limited, you may be offered a waitlist."
           }
         },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Une réservation est confirmée dès qu'elle apparaît dans votre agenda. Les places étant limitées, une liste d'attente peut vous être proposée."
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Une réservation est confirmée dès qu'elle apparaît dans votre agenda. Les places étant limitées, une liste d'attente peut vous être proposée."
           }
         },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Una prenotazione è confermata appena compare nella tua agenda. Poiché i posti sono limitati, potrebbe esserti proposta una lista d'attesa."
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Una prenotazione è confermata appena compare nella tua agenda. Poiché i posti sono limitati, potrebbe esserti proposta una lista d'attesa."
           }
         }
       }
     },
-    "terms.3.title": {
-      "comment": "Section",
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "3. Bookings"
+    "terms.3.title" : {
+      "comment" : "Section",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "3. Bookings"
           }
         },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "3. Réservations"
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "3. Réservations"
           }
         },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "3. Prenotazioni"
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "3. Prenotazioni"
           }
         }
       }
     },
-    "terms.4.text": {
-      "comment": "Texte",
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "You can cancel a booking from your agenda until the activity starts. Cancellation is immediate and final."
+    "terms.4.text" : {
+      "comment" : "Texte",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "You can cancel a booking from your agenda until the activity starts. Cancellation is immediate and final."
           }
         },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Vous pouvez annuler une réservation depuis votre agenda jusqu'au début de l'activité. L'annulation est immédiate et définitive."
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vous pouvez annuler une réservation depuis votre agenda jusqu'au début de l'activité. L'annulation est immédiate et définitive."
           }
         },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Puoi annullare una prenotazione dalla tua agenda fino all'inizio dell'attività. L'annullamento è immediato e definitivo."
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Puoi annullare una prenotazione dalla tua agenda fino all'inizio dell'attività. L'annullamento è immediato e definitivo."
           }
         }
       }
     },
-    "terms.4.title": {
-      "comment": "Section",
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "4. Cancellation"
+    "terms.4.title" : {
+      "comment" : "Section",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "4. Cancellation"
           }
         },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "4. Annulation"
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "4. Annulation"
           }
         },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "4. Annullamento"
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "4. Annullamento"
           }
         }
       }
     },
-    "terms.5.text": {
-      "comment": "Texte",
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Schedules may change. The festival team will notify you of any change."
+    "terms.5.text" : {
+      "comment" : "Texte",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Schedules may change. The festival team will notify you of any change."
           }
         },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Les horaires peuvent évoluer. L'équipe du festival vous prévient de tout changement par notification."
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Les horaires peuvent évoluer. L'équipe du festival vous prévient de tout changement par notification."
           }
         },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Gli orari possono cambiare. Lo staff del festival ti avviserà di ogni modifica tramite notifica."
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gli orari possono cambiare. Lo staff del festival ti avviserà di ogni modifica tramite notifica."
           }
         }
       }
     },
-    "terms.5.title": {
-      "comment": "Section",
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "5. Changes"
+    "terms.5.title" : {
+      "comment" : "Section",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "5. Changes"
           }
         },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "5. Modifications"
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "5. Modifications"
           }
         },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "5. Modifiche"
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "5. Modifiche"
           }
         }
       }
     },
-    "terms.title": {
-      "comment": "Titre",
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Terms"
+    "terms.title" : {
+      "comment" : "Titre",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Terms"
           }
         },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Conditions"
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Conditions"
           }
         },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Termini"
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Termini"
           }
         }
       }
     },
-    "terms.updated": {
-      "comment": "Date de mise à jour",
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Last updated: September 1, 2026."
+    "terms.updated" : {
+      "comment" : "Date de mise à jour",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Last updated: September 1, 2026."
           }
         },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Dernière mise à jour : 1er septembre 2026."
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dernière mise à jour : 1er septembre 2026."
           }
         },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Ultimo aggiornamento: 1° settembre 2026."
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ultimo aggiornamento: 1° settembre 2026."
           }
         }
       }
     },
-    "waitlist.success.button": {
-      "comment": "Popup succès liste d'attente",
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Got it!"
+    "waitlist.success.button" : {
+      "comment" : "Popup succès liste d'attente",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Got it!"
           }
         },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Compris !"
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Compris !"
           }
         },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Capito!"
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Capito!"
           }
         }
       }
     },
-    "waitlist.success.message": {
-      "comment": "Popup succès liste d'attente (formulation neutre)",
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "You've joined the waitlist for this workshop. We'll let you know if a spot opens up."
+    "waitlist.success.message" : {
+      "comment" : "Popup succès liste d'attente (formulation neutre)",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "You've joined the waitlist for this workshop. We'll let you know if a spot opens up."
           }
         },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Votre inscription sur la liste d'attente est confirmée. Vous recevrez une notification si une place se libère."
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Votre inscription sur la liste d'attente est confirmée. Vous recevrez une notification si une place se libère."
           }
         },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "La tua iscrizione alla lista d'attesa è confermata. Riceverai una notifica se si libera un posto."
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "La tua iscrizione alla lista d'attesa è confermata. Riceverai una notifica se si libera un posto."
           }
         }
       }
     },
-    "waitlist.success.title": {
-      "comment": "Popup succès liste d'attente",
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "You're on the waitlist!"
+    "waitlist.success.title" : {
+      "comment" : "Popup succès liste d'attente",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "You're on the waitlist!"
           }
         },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Inscription confirmée !"
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Inscription confirmée !"
           }
         },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Iscrizione confermata!"
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Iscrizione confermata!"
           }
         }
       }
     },
-    "workshop.book": {
-      "comment": "Bouton réserver",
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Book"
+    "workshop.book" : {
+      "comment" : "Bouton réserver",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Book"
           }
         },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Réserver"
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Réserver"
           }
         },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Prenota"
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Prenota"
           }
         }
       }
     },
-    "workshop.joinWaitlist": {
-      "comment": "Bouton atelier complet",
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Join the waitlist"
+    "workshop.joinWaitlist" : {
+      "comment" : "Bouton atelier complet",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Join the waitlist"
           }
         },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Rejoindre la liste d'attente"
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rejoindre la liste d'attente"
           }
         },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Iscriviti alla lista d'attesa"
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Iscriviti alla lista d'attesa"
           }
         }
       }
     },
-    "workshop.spotsLeft %lld": {
-      "comment": "Nombre de places restantes",
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "variations": {
-            "plural": {
-              "one": {
-                "stringUnit": {
-                  "state": "translated",
-                  "value": "%lld spot left"
+    "workshop.spotsLeft %lld" : {
+      "comment" : "Nombre de places restantes",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "variations" : {
+            "plural" : {
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld spot left"
                 }
               },
-              "other": {
-                "stringUnit": {
-                  "state": "translated",
-                  "value": "%lld spots left"
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld spots left"
                 }
               }
             }
           }
         },
-        "fr": {
-          "variations": {
-            "plural": {
-              "one": {
-                "stringUnit": {
-                  "state": "translated",
-                  "value": "%lld place restante"
+        "fr" : {
+          "variations" : {
+            "plural" : {
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld place restante"
                 }
               },
-              "other": {
-                "stringUnit": {
-                  "state": "translated",
-                  "value": "%lld places restantes"
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld places restantes"
                 }
               }
             }
           }
         },
-        "it": {
-          "variations": {
-            "plural": {
-              "one": {
-                "stringUnit": {
-                  "state": "translated",
-                  "value": "%lld posto rimasto"
+        "it" : {
+          "variations" : {
+            "plural" : {
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld posto rimasto"
                 }
               },
-              "other": {
-                "stringUnit": {
-                  "state": "translated",
-                  "value": "%lld posti rimasti"
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld posti rimasti"
                 }
               }
             }
@@ -3638,5 +3650,5 @@
       }
     }
   },
-  "version": "1.0"
+  "version" : "1.0"
 }

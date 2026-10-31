@@ -7,7 +7,16 @@
 
 import Foundation
 
-enum Availability: Hashable {
+enum Availability: CaseIterable, Hashable {
     case available
     case full
+    
+    var description: String {
+        switch self {
+        case .available:
+            "Disponible"
+        case .full:
+            "Complet"
+        }
+    }
 }

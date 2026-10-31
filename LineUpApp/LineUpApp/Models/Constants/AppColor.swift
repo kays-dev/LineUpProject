@@ -10,6 +10,12 @@ import SwiftUI
  
 enum AppColor {
     
+    enum Text {
+        static let primary: Color = .ink
+        static let secondary: Color = .mintPrimary
+        static let tertiary: Color = .inkMuted
+    }
+    
     // --- cards -- //
  
     enum Card {
@@ -187,7 +193,8 @@ enum AppColor {
  
     enum ModalFilters {
  
-        static let text: Color = .mintPrimary
+        static let textPrimary: Color = .ink
+        static let textSecondary: Color = .mintPrimary
         static let titleIcon: Color = .tealPrimary
  
         enum Selected {

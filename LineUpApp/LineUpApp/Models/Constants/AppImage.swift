@@ -102,6 +102,7 @@ enum AppImage {
         case calendar = "calendar"
         case sparkles = "sparkles"
         case trash = "trash"
+        case filter = "slider.horizontal.2.square"
 
         var image: Image {
             Image(systemName: rawValue)
