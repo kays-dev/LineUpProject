@@ -102,4 +102,29 @@ extension AppToken {
         
     }
     
+    // MARK: Avatar
+    enum Avatar {
+        
+        static let previewRing: CGFloat = 124
+        static let preview: CGFloat = 112
+        static let gridRing: CGFloat = 96
+        static let grid: CGFloat = 84
+        static let profile: CGFloat = 120
+        
+    }
+    
+    // MARK: FocusRing
+    enum FocusRing {
+        
+        static let offset: CGFloat = 6
+        
+    }
+    
+    // MARK: Picker
+    enum Picker {
+        
+        static let width: CGFloat = 200
+        
+    }
+    
 }

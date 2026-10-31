@@ -625,6 +625,30 @@
         }
       }
     },
+    "booking.places" : {
+      "comment" : "Libellé du choix du nombre de places",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Number of places"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nombre de places"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Numero di posti"
+          }
+        }
+      }
+    },
     "booking.reminder" : {
       "comment" : "Libellé",
       "extractionState" : "manual",
@@ -1368,6 +1392,54 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Conferma"
+          }
+        }
+      }
+    },
+    "common.done" : {
+      "comment" : "Bouton confirmé (accessibilité)",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Done"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fait"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fatto"
+          }
+        }
+      }
+    },
+    "common.loading" : {
+      "comment" : "Bouton en chargement (accessibilité)",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Loading…"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Chargement…"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Caricamento…"
           }
         }
       }

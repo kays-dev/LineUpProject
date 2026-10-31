@@ -15,16 +15,16 @@ enum AppImage {
 
     // Avatars du profil
     enum Avatar: String, CaseIterable {
-        case pinocchio = "avatar-pinocchio"
-        case arlecchino = "avatar-arlecchino"
-        case pulcinella = "avatar-pulcinella"
-        case leonardoDaVinci = "avatar-leonardo-da-vinci"
-        case donCorleone = "avatar-don-corleone"
         case colombina = "avatar-colombina"
         case monaLisa = "avatar-mona-lisa"
+        case pinocchio = "avatar-pinocchio"
+        case arlecchino = "avatar-arlecchino"
         case fountainStar = "avatar-fountain-star"
         case romanVespista = "avatar-roman-vespista"
+        case pulcinella = "avatar-pulcinella"
+        case leonardoDaVinci = "avatar-leonardo-da-vinci"
         case laBefana = "avatar-la-befana"
+        case donCorleone = "avatar-don-corleone"
         case lionOfSaintMark = "avatar-lion-of-saint-mark"
         case venetianMaskBauta = "avatar-venetian-mask-bauta"
 
@@ -124,6 +124,29 @@ enum AppImage {
     enum Flag: String, CaseIterable {
         case french = "flag-france"
         case italian = "flag-italy"
+
+        var image: Image {
+            Image(rawValue)
+        }
+    }
+
+    enum InterfaceIcon: String {
+        case bellDuotone = "icon-bell-duotone"
+        case calendarCheckDuotone = "icon-calendar-check-duotone"
+        case calendarCheckFill = "icon-calendar-check-fill"
+        case calendarFill = "icon-calendar-fill"
+        case clockFill = "icon-clock-fill"
+        case infoDuotone = "icon-info-duotone"
+        case lockDuotone = "icon-lock-duotone"
+        case mapDuotone = "icon-map-duotone"
+        case mapPinFill = "icon-map-pin-fill"
+        case maskDuotone = "icon-mask-duotone"
+        case maskFill = "icon-mask-fill"
+        case personSquareDuotone = "icon-person-square-duotone"
+        case personSquareFill = "icon-person-square-fill"
+        case sparkleDuotone = "icon-sparkle-duotone"
+        case ticketDuotone = "icon-ticket-duotone"
+        case ticketFill = "icon-ticket-fill"
 
         var image: Image {
             Image(rawValue)
