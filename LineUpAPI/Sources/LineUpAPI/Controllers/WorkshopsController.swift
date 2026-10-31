@@ -19,13 +19,12 @@ struct WorkshopsController: RouteCollection {
         workshops.get(use: index)
         //workshops.
         
-        // Détail d'un atelier
-        workshops.get(":id", use: showWorkshopsDetail)
-        //workshops.
-        
         // tableaux de dates pour le selecteur
         workshops.get("days", use: showFestivalDays)
-        //workshops.
+        
+        // Détail d'un atelier
+        workshops.get(":id", use: showWorkshopsDetail)
+        
         
         // Authentification + role staff backoffice
         let backoffice = routes.grouped("backoffice", "workshops").grouped(JWTMiddleware(), StaffMiddleware())
