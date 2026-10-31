@@ -65,6 +65,7 @@ enum AppColor {
  
         // Bouton danger sans fond (texte seul).
         static let ghostDangerText: Color = .dangerSaturated
+        static let ghostDangerTextPressed: Color = .dangerDark
  
         enum Primary {
             static let background: Color = .redPrimary
@@ -112,6 +113,18 @@ enum AppColor {
             static let background: Color = .validation
             static let text: Color = .ink
             static let border: Color = .ink
+        }
+
+        enum Text {
+            static let text: Color = .ink
+            static let pressed: Color = .redPrimary
+            static let disabled: Color = .grayDark
+        }
+
+        enum Link {
+            static let text: Color = .ink
+            static let pressed: Color = .redPrimary
+            static let disabled: Color = .grayDark
         }
     }
 
@@ -162,6 +175,7 @@ enum AppColor {
         static let background: Color = .whitePrimary
         static let title: Color = .ink
         static let descriptionAndChevron: Color = .inkMuted
+        static let separator: Color = .grayPrimary
  
         enum Icon {
             static let background: Color = .tealLight
@@ -173,12 +187,14 @@ enum AppColor {
             static let background: Color = .greenPrimary
             static let border: Color = .ink
             static let icon: Color = .ink
+            static let uncheckedBackground: Color = .whitePrimary
         }
  
         enum Radio {
             static let background: Color = .greenPrimary
             static let border: Color = .ink
             static let innerCircle: Color = .ink
+            static let unselectedBackground: Color = .whitePrimary
         }
  
         enum Toggle {
@@ -186,6 +202,14 @@ enum AppColor {
             static let border: Color = .ink
             static let knob: Color = .whitePrimary
             static let knobBorder: Color = .ink
+            static let offBackground: Color = .whitePrimary
+            static let offKnob: Color = .ink
+        }
+
+        enum Disabled {
+            static let selectedBackground: Color = .greenLight
+            static let border: Color = .grayDark
+            static let content: Color = .grayDark
         }
     }
  
@@ -218,6 +242,27 @@ enum AppColor {
     enum TabBar {
         static let background: Color = .ink
         static let label: Color = .tealLight
+    }
+
+    // --- AvatarPicker --- //
+
+    enum AvatarPicker {
+        static let previewBackground: Color = .whitePrimary
+        static let selectedRing: Color = .redPrimary
+        static let photoBorder: Color = .ink
+        static let selectedName: Color = .redPrimary
+        static let name: Color = .ink
+    }
+
+    // --- Picker --- //
+
+    enum Picker {
+        static let background: Color = .whitePrimary
+        static let border: Color = .ink
+        static let selectedBackground: Color = .greenPrimary
+        static let text: Color = .ink
+        static let nearText: Color = .inkMuted
+        static let farText: Color = .grayDark
     }
 }
  
