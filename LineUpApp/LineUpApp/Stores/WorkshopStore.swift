@@ -8,6 +8,10 @@
 // Gère et conserve les ateliers
 
 import Foundation
+import Observation
+
+@MainActor
+@Observable
 
 // type références
 // Empêche l'héritage
@@ -22,17 +26,26 @@ final class WorkshopStore {
     // initialisation des ateliers et dates :
     // private(set) : Le Store peut lire et modifier les propriétés
     // Le ViewModel peut les lire
-    // Le ViewModel ne peut pas les modifier directement
+    // mais ne peut pas les modifier 
     private(set) var workshops: [Workshop] = []
     private(set) var workshopDays: [String] = []
     
     // récupère et stock les ateliers dans le store
-    func fetchWorkshops() async throws {
-        self.workshops = try await workshopService.fetchWorkshops()
+    func fetchWorkshops(
+        periods: [String]? = nil,
+        category: String? = nil,
+        status: String? = nil
+    ) async throws {
+        self.workshops = try await workshopService.fetchWorkshops(
+            periods: periods,
+            category: category,
+            status: status
+        )
     }
     
     // récupère et stock les dates dans le store
     func fetchWorkshopsDays() async throws {
         self.workshopDays = try await workshopService.fetchWorkshopsDays()
     }
+    
 }

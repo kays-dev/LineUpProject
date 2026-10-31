@@ -10,6 +10,14 @@ import SwiftUI
  
 enum AppColor {
     
+    // -- Text -- //
+    
+    enum Text {
+        static let primary: Color = .ink
+        static let secondary: Color = .mintPrimary
+        static let tertiary: Color = .inkMuted
+    }
+    
     // --- cards -- //
  
     enum Card {
