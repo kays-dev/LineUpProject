@@ -51,16 +51,19 @@ struct WorkshopsController: RouteCollection {
             .query(on: req.db)
         
         // Filtre / catégories
-        if let selectedCategory = try req.query.get(String?.self, at: "category") {
-            
-            guard let cat = try await categories
-                .filter(Categories.self, \.$name == (selectedCategory))
-                .first()
-                    else {
-                throw WorkshopsError.noCategory
+        if let selectedCategories = try req.query.get(String?.self, at: "category") {
+
+            let categoryNames = selectedCategories.split(separator: ",").map {
+                String($0)
             }
-            
-            query.filter(\.$category.$id == cat.id!)
+
+            let cats = try await categories
+                .filter(\.$name ~~ categoryNames)
+                .all()
+
+            let categoryIDs = cats.compactMap { $0.id }
+
+            query.filter(\.$category.$id ~~ categoryIDs)
         }
         
         // Filtre / recherche
