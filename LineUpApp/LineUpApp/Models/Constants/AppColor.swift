@@ -67,12 +67,8 @@ enum AppColor {
 
         // Bouton danger sans fond (texte seul).
         static let ghostDangerText: Color = .dangerSaturated
-<<<<<<< HEAD
-
-=======
         static let ghostDangerTextPressed: Color = .dangerDark
  
->>>>>>> feature/ios-components-krystal
         enum Primary {
             static let background: Color = .redPrimary
             static let text: Color = .mintPrimary
@@ -181,12 +177,8 @@ enum AppColor {
         static let background: Color = .whitePrimary
         static let title: Color = .ink
         static let descriptionAndChevron: Color = .inkMuted
-<<<<<<< HEAD
-
-=======
         static let separator: Color = .grayPrimary
  
->>>>>>> feature/ios-components-krystal
         enum Icon {
             static let background: Color = .tealLight
             static let icon: Color = .ink
@@ -253,7 +245,6 @@ enum AppColor {
         static let label: Color = .tealLight
     }
 
-<<<<<<< HEAD
     // -- Pop Up -- //
 
     enum PopupType {
@@ -298,7 +289,6 @@ enum AppColor {
         }
     }
 
-=======
     // --- AvatarPicker --- //
 
     enum AvatarPicker {
@@ -319,5 +309,4 @@ enum AppColor {
         static let nearText: Color = .inkMuted
         static let farText: Color = .grayDark
     }
->>>>>>> feature/ios-components-krystal
 }
