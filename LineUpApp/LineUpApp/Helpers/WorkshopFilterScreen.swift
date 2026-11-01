@@ -57,8 +57,7 @@ struct WorkshopFilterScreen: View {
                     
                     // disponibilité
                     FilterSectionAvailability(
-                        selection: $viewModel.selectedAvailability,
-                        viewModel: viewModel
+                        selection: $viewModel.selectedAvailability
                     )
                                         
                     // Bouton confirmer
@@ -83,6 +82,7 @@ struct WorkshopFilterScreen: View {
                         text: "Annuler",
                         isSelected: true,
                         action: {
+                            viewModel.resetFilters()
                             dismiss()
                             }
                         )

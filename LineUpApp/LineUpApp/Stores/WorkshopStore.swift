@@ -13,9 +13,6 @@ import Observation
 @MainActor
 @Observable
 
-@MainActor
-@Observable
-
 // type références
 // Empêche l'héritage
 final class WorkshopStore {

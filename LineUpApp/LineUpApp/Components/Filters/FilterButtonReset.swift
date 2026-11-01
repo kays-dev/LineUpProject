@@ -9,12 +9,12 @@ import SwiftUI
 
 struct FilterButtonReset: View {
     
-let viewModel: WorkshopFiltersViewModel
-    
+let action: () -> Void
+
     var body: some View {
         
         Button {
-            viewModel.resetFilters()
+            action()
         } label : {
             HStack(spacing: AppToken.Spacing.s4) {
                 Spacer()
@@ -32,21 +32,12 @@ let viewModel: WorkshopFiltersViewModel
 
 
 #Preview {
-    let viewModel = WorkshopFiltersViewModel(
-        workshopStore: WorkshopStore(
-            workshopService: WorkshopService(
-                apiClient: APIClient(
-                    baseURL: URL(string: "http://localhost:8080")!,
-                    keychain: KeychainService()
-                )
-            )
-        )
-    )
-
     ZStack {
         Color.ink
             .ignoresSafeArea()
 
-        FilterButtonReset(viewModel: viewModel)
+        FilterButtonReset(
+            action: {}
+        )
     }
 }

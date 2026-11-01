@@ -47,7 +47,9 @@ struct FilterSectionDateCategory: View {
                     }
                 }
             }
-            FilterButtonReset(viewModel: viewModel)
+            FilterButtonReset {
+                selection.removeAll()
+            }
         }
     }
 }
@@ -75,7 +77,7 @@ struct FilterSectionDateCategory: View {
             icon: AppImage.Icon.sparkles.image,
             items: ["Danse", "Yoga", "Musique", "Théâtre", "Cirque"],
             selection: $selection,
-            viewModel: viewModel
+            viewModel : viewModel
         )
         .padding()
     }

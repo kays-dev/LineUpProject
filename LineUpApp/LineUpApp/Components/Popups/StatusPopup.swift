@@ -33,6 +33,7 @@ struct StatusPopup: View {
                         Text(message)
                             .font(AppFont.Body.body.font)
                             .multilineTextAlignment(.center)
+                            .fixedSize(horizontal: false, vertical: true)
                     }
                     .foregroundStyle(AppColor.Text.secondary)
                 }
@@ -74,14 +75,6 @@ struct StatusPopup: View {
             title: "Confirmation",
             message: "Votre réservation a bien été enregistrée.",
             buttonTitle: "Continuer",
-            action: {}
-        )
-
-        StatusPopup(
-            type: .warning,
-            title: "Attention",
-            message: "Vous êtes sur le point de quitter cette page.",
-            buttonTitle: "Compris",
             action: {}
         )
 
