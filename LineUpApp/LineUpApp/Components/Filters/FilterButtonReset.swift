@@ -15,12 +15,6 @@ let viewModel: WorkshopFiltersViewModel
         
         Button {
             viewModel.resetFilters()
-            
-            // Test
-            print("Dates après réinitialisation :", viewModel.selectedPeriods)
-            print("Catégories après réinitialisation :", viewModel.selectedCategories)
-            print("Disponibilité après réinitialisation :", viewModel.selectedAvailability as Any)
-            
         } label : {
             HStack(spacing: AppToken.Spacing.s4) {
                 Spacer()

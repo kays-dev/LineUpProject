@@ -14,6 +14,7 @@ struct FilterSectionDateCategory: View {
     let items: [String]
 
     @Binding var selection: Set<String>
+    @Bindable var viewModel: WorkshopFiltersViewModel
 
     private let columns = [
         GridItem(.adaptive(minimum: 120), spacing: AppToken.Spacing.s12)
@@ -33,9 +34,10 @@ struct FilterSectionDateCategory: View {
             LazyVGrid(columns: columns, spacing: AppToken.Spacing.s12) {
                 ForEach(items, id: \.self) { item in
                     FilterCapsule(
-                        title: item,
+                        title: viewModel.formatDate(item),
                         isSelected: selection.contains(item)
                     )
+                    .lineLimit(1)
                     .onTapGesture {
                         if selection.contains(item) {
                             selection.remove(item)
@@ -45,13 +47,25 @@ struct FilterSectionDateCategory: View {
                     }
                 }
             }
+            FilterButtonReset(viewModel: viewModel)
         }
     }
 }
 
 #Preview {
     @Previewable @State var selection: Set<String> = ["Danse", "Musique"]
-
+    
+    let viewModel = WorkshopFiltersViewModel(
+        workshopStore: WorkshopStore(
+            workshopService: WorkshopService(
+                apiClient: APIClient(
+                    baseURL: URL(string: "http://localhost:8080")!,
+                    keychain: KeychainService()
+                )
+            )
+        )
+    )
+    
     ZStack {
         Color.ink
             .ignoresSafeArea()
@@ -60,7 +74,8 @@ struct FilterSectionDateCategory: View {
             title: "Catégories",
             icon: AppImage.Icon.sparkles.image,
             items: ["Danse", "Yoga", "Musique", "Théâtre", "Cirque"],
-            selection: $selection
+            selection: $selection,
+            viewModel: viewModel
         )
         .padding()
     }

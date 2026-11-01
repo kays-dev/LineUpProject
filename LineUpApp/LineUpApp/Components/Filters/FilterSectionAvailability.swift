@@ -9,8 +9,9 @@ import SwiftUI
 
 struct FilterSectionAvailability: View {
 
-    // 
+    
     @Binding var selection: Availability?
+    @Bindable var viewModel: WorkshopFiltersViewModel
 
     var body: some View {
         VStack(alignment: .leading, spacing: AppToken.Spacing.s16) {
@@ -40,6 +41,7 @@ struct FilterSectionAvailability: View {
                     }
                 }
             }
+            FilterButtonReset(viewModel: viewModel)
         }
     }
 }
@@ -47,12 +49,23 @@ struct FilterSectionAvailability: View {
 #Preview {
     @Previewable @State var selection: Availability? = .available
 
+    let viewModel = WorkshopFiltersViewModel(
+        workshopStore: WorkshopStore(
+            workshopService: WorkshopService(
+                apiClient: APIClient(
+                    baseURL: URL(string: "http://localhost:8080")!,
+                    keychain: KeychainService()
+                )
+            )
+        )
+    )
+
     ZStack {
-        Color.ink
-            .ignoresSafeArea()
+        Color.ink.ignoresSafeArea()
 
         FilterSectionAvailability(
-            selection: $selection
+            selection: $selection,
+            viewModel: viewModel
         )
         .padding()
     }

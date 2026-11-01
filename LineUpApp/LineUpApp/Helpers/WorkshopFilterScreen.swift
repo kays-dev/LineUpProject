@@ -10,7 +10,8 @@ import SwiftUI
 struct WorkshopFilterScreen: View {
 
     @Bindable var viewModel: WorkshopFiltersViewModel
-
+    @Environment(\.dismiss) private var dismiss
+    
     let dates: [String]
     let categories: [String]
 
@@ -31,7 +32,9 @@ struct WorkshopFilterScreen: View {
                             font: AppFont.Title.heading.font
                         )
                         
-                        // Button Back
+                        Spacer()
+                        
+                        BackButton()
                     }
                     
                     // Date
@@ -39,7 +42,8 @@ struct WorkshopFilterScreen: View {
                         title: "Dates",
                         icon: AppImage.Icon.calendar.image,
                         items: dates,
-                        selection: $viewModel.selectedPeriods
+                        selection: $viewModel.selectedPeriods,
+                        viewModel: viewModel
                     )
                     
                     // Catégories
@@ -47,37 +51,41 @@ struct WorkshopFilterScreen: View {
                         title: "Catégories",
                         icon: AppImage.Icon.sparkles.image,
                         items: categories,
-                        selection: $viewModel.selectedCategories
+                        selection: $viewModel.selectedCategories,
+                        viewModel: viewModel
                     )
                     
                     // disponibilité
                     FilterSectionAvailability(
-                        selection: $viewModel.selectedAvailability
+                        selection: $viewModel.selectedAvailability,
+                        viewModel: viewModel
                     )
-                    
-                    Spacer()
-                    
-                    // Bouton test
-                    Button {
-                        
-                        print("Dates sélectionnées :", viewModel.selectedPeriods)
-                        print("Catégories sélectionnées :", viewModel.selectedCategories)
-                        print("Disponibilité sélectionnée :", viewModel.selectedAvailability as Any)
-                        
-                        Task {
-                            do {
-                                try await viewModel.applyFilters()
-                                print("Filtrage terminé")
-                                print("Nombre d'ateliers :", viewModel.workshops.count)
-                            } catch {
-                                print("Erreur lors du filtrage :", error)
+                                        
+                    // Bouton confirmer
+                    PrimaryButton(
+                        text: "Confirmer",
+                        border: AppColor.Text.secondary,
+                        isSelected: true,
+                        action: {
+                            Task {
+                                do {
+                                    try await viewModel.applyFilters()
+                                    print("Filtres appliqués avec succès")
+                                } catch {
+                                    print("Erreur lors de l'application des filtres :", error)
+                                }
                             }
                         }
-                        
-                    } label: {
-                        Text("Appliquer")
-                    }
+                    )
                     
+                    // bouton annuler
+                    CancelledModalButton(
+                        text: "Annuler",
+                        isSelected: true,
+                        action: {
+                            dismiss()
+                            }
+                        )
                 }
                 .padding(AppToken.Padding.screen)
             }

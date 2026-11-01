@@ -66,12 +66,27 @@ final class WorkshopFiltersViewModel {
             status: selectedAvailability?.apiValue
         )
     }
-
+    
     // filterButtonReset
     func resetFilters() {
         selectedPeriods.removeAll()
         selectedCategories.removeAll()
         selectedAvailability = nil
+    }
+    
+    // Formattage de la date
+    func formatDate(_ date: String) -> String {
+        let inputFormatter = DateFormatter()
+        inputFormatter.dateFormat = "yyyy-MM-dd"
+
+        let outputFormatter = DateFormatter()
+        outputFormatter.dateFormat = "dd-MM-yyyy"
+
+        guard let date = inputFormatter.date(from: date) else {
+            return date
+        }
+
+        return outputFormatter.string(from: date)
     }
 
 }
