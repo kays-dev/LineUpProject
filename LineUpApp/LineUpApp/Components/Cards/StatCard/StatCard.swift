@@ -12,7 +12,7 @@ struct StatCard: View {
     let valueInString : String
     
     let label : String
-    let icon : AppImage.Icon
+    let icon : Image
     
     var body: some View {
         
@@ -23,7 +23,7 @@ struct StatCard: View {
                 Text(valueInString)
                     .lineupFont(Styles.font)
                 
-                icon.image
+                icon
                     .resizable()
                     .scaledToFit()
                     .frame(width: Styles.iconSize, height: Styles.iconSize)
@@ -79,5 +79,5 @@ fileprivate struct Styles {
 }
 
 #Preview {
-    StatCard(valueInString: "Théâtre", label: "intitulé", icon: .sparkles)
+    StatCard(valueInString: "Théâtre", label: "intitulé", icon: AppImage.Icon.sparkles.image)
 }
