@@ -19,6 +19,7 @@ struct SettingsScreen: View {
     @AppStorage("appLanguage") private var language: AppLanguage = .french
     @State private var showsDeletePopup = false
     @State private var showsLanguage = false
+    @State private var showsAvatar = false
 
     var body: some View {
         ScrollView {
@@ -46,6 +47,9 @@ struct SettingsScreen: View {
         }
         .sheet(isPresented: $showsLanguage) {
             LanguageScreen()
+        }
+        .sheet(isPresented: $showsAvatar) {
+            AvatarScreen()
         }
     }
 
@@ -93,12 +97,17 @@ struct SettingsScreen: View {
             SectionTitle(title: "settings.account")
             ContentCard(theme: .light, size: .small) {
                 VStack(spacing: AppToken.Spacing.none) {
-                    SettingsRow(
-                        icon: AppImage.InterfaceIcon.maskDuotone.image,
-                        title: "settings.avatar",
-                        subtitle: "settings.avatar.subtitle",
-                        accessory: .value(avatar.name)
-                    )
+                    Button {
+                        showsAvatar = true
+                    } label: {
+                        SettingsRow(
+                            icon: AppImage.InterfaceIcon.maskDuotone.image,
+                            title: "settings.avatar",
+                            subtitle: "settings.avatar.subtitle",
+                            accessory: .value(avatar.name)
+                        )
+                    }
+                    .buttonStyle(.plain)
                     SettingsRow(
                         icon: AppImage.InterfaceIcon.lockDuotone.image,
                         title: "settings.password",

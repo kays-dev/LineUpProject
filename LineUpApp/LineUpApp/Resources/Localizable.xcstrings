@@ -2718,30 +2718,6 @@
         }
       }
     },
-    "settings.language.current" : {
-      "comment" : "Nom de la langue affichée (dans sa propre langue)",
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "English"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Français"
-          }
-        },
-        "it" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Italiano"
-          }
-        }
-      }
-    },
     "settings.logout" : {
       "comment" : "Bouton",
       "extractionState" : "manual",
