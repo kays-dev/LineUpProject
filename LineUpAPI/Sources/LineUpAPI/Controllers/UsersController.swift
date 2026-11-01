@@ -162,7 +162,7 @@ struct UsersController: RouteCollection {
         
         // Génération du token JWT
         let payload = UsersPayload(id: user.id!, role: user.role)
-        let signer = JWTSigner.hs256(key: "cle_secrete") // Clé secrète sécurisée
+        let signer = JWTSigner.hs256(key: Secrets.jwt) // Clé secrète sécurisée
         let token = try signer.sign(payload) // Signer le payload pour générer le token
         return token // Retourner le token au client
     }

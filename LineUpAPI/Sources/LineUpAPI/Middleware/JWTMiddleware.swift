@@ -16,7 +16,7 @@ final class JWTMiddleware: Middleware {
         guard let token = request.headers["Authorization"].first?.split(separator: " ").last else {
             return request.eventLoop.future(error: AccessError.failedAuth)
         }
-        let signer = JWTSigner.hs256(key: "cle_secrete") // Remplacez par une clé secrète
+        let signer = JWTSigner.hs256(key: Secrets.jwt) // Remplacez par une clé secrète
         let payload: UsersPayload
         do {
             // Vérifiez le token et récupérez le payload
