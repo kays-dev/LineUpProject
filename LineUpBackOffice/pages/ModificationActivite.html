@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Modification d'activité - DOLCEVITA SUR SEINE</title>
+  <link rel="stylesheet" href="../css/base.css">
+</head>
+<body>
+
+  <div class="app-container">
+    <aside class="sidebar">
+      <div class="sidebar-header">
+        <div class="logo-box">LU</div>
+        <div class="brand-info">
+          <span class="brand-title">DOLCEVITA SUR SEINE</span>
+          <span class="brand-subtitle">Backoffice · by LineUp</span>
+        </div>
+      </div>
+
+      <nav class="sidebar-nav">
+        <a href="Dashboard.html" class="nav-item">TABLEAU DE BORD</a>
+        <a href="GestionActivite.html" class="nav-item active">ACTIVITÉS</a>
+        <a href="GestionReservation.html" class="nav-item">RÉSERVATIONS</a>
+        <a href="Planning.html" class="nav-item">PLANNING</a>
+        <a href="ProfilUtilisateurs.html" class="nav-item">PROFIL</a>
+      </nav>
+
+      <div class="sidebar-footer">
+        <a class="user-block" href="ProfilStaff.html">
+          <div class="user-avatar">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+              <circle cx="12" cy="7" r="4"></circle>
+            </svg>
+          </div>
+          <div class="user-details">
+            <span class="user-name" id="sidebarName">…</span>
+            <span class="user-role" id="sidebarRole"></span>
+          </div>
+        </a>
+        <a class="logout-link" onclick="logout()">DÉCONNEXION</a>
+      </div>
+    </aside>
+
+    <main class="main-content">
+      <header class="page-header">
+        <div>
+          <h1 class="page-title">Modifier l'activité</h1>
+          <p class="page-subtitle"><span id="pageSubtitle">Activités · …</span></p>
+        </div>
+      </header>
+
+      <form class="form-card" id="activityForm">
+        <h2 class="form-title">INFORMATIONS</h2>
+        <div class="form-group">
+          <label for="nom">Nom de l'activité</label>
+          <input type="text" id="nom" placeholder="ex. Atelier poterie" required>
+        </div>
+        <div class="form-group">
+          <label for="categorie">Type d'activité</label>
+          <select id="categorie" required disabled>
+            <option value="">Choisir un type</option>
+          </select>
+        </div>
+        <p class="note">Le type d'activité ne peut pas être modifié après la création.</p>
+
+        <h2 class="form-title">HORAIRES ET JAUGE</h2>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="date">Date</label>
+            <input type="date" id="date" required>
+          </div>
+          <div class="form-group">
+            <label for="debut">Heure de début</label>
+            <input type="time" id="debut" required>
+          </div>
+          <div class="form-group">
+            <label for="fin">Heure de fin</label>
+            <input type="time" id="fin" required>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>Jauge maximale</label>
+          <div class="stepper">
+            <button type="button" onclick="changerCapacite(1)">+</button>
+            <span class="stepper-value"><span id="capacite">20</span> PLACES</span>
+            <button type="button" onclick="changerCapacite(-1)">−</button>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="description">Description</label>
+          <input type="text" id="description" placeholder="Présentation de l'activité">
+        </div>
+
+        <p class="message-erreur" id="message" hidden></p>
+
+        <div class="form-actions">
+          <a href="GestionActivite.html" class="btn btn-secondary">ANNULER</a>
+          <button type="submit" class="btn btn-primary">ENREGISTRER</button>
+        </div>
+      </form>
+    </main>
+  </div>
+
+  <script src="../js/config.js"></script>
+  <script src="../js/services/session.js"></script>
+  <script src="../js/services/api.js"></script>
+  <script src="../js/utils/format.js"></script>
+  <script src="../js/utils/statuts.js"></script>
+  <script src="../js/components/icones.js"></script>
+  <script src="../js/components/modal.js"></script>
+  <script src="../js/components/sidebar.js"></script>
+  <script src="../js/controllers/ModificationActivite.js"></script>
+</body>
+</html>
