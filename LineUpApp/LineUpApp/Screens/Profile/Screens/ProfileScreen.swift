@@ -23,6 +23,7 @@ struct ProfileContent: View {
     @State private var viewModel: ProfileViewModel
     @Environment(SessionStore.self) private var sessionStore
     @AppStorage("selectedAvatar") private var avatar: AppImage.Avatar = .colombina
+    @State private var showsSettings = false
 
     init(reservationStore: ReservationStore, workshopStore: WorkshopStore) {
         _viewModel = State(initialValue: ProfileViewModel(
@@ -53,24 +54,21 @@ struct ProfileContent: View {
         .task {
             await viewModel.loadProfile()
         }
+        .navigationDestination(isPresented: $showsSettings) {
+            SettingsScreen()
+        }
     }
 
     private var header: some View {
         HStack {
-            HStack(spacing: AppToken.Spacing.none) {
-                Text("profile.title")
-                    .foregroundStyle(AppColor.Logo.text)
-                Text(verbatim: ".")
-                    .foregroundStyle(AppColor.Logo.dot)
-            }
-            .lineupFont(AppFont.Title.heading)
-            .accessibilityElement(children: .combine)
-            .accessibilityAddTraits(.isHeader)
+            PageTitle(title: "profile.title")
 
             Spacer()
 
             HStack(spacing: AppToken.Spacing.s12) {
-                AppButton(title: "settings.title", icon: AppImage.Icon.settings.image, type: .iconOutline) {}
+                AppButton(title: "settings.title", icon: AppImage.Icon.settings.image, type: .iconOutline) {
+                    showsSettings = true
+                }
                 AppImage.Flag.italian.image
                     .resizable()
                     .scaledToFit()
@@ -117,7 +115,7 @@ struct ProfileContent: View {
 
     private var stats: some View {
         VStack(alignment: .leading, spacing: AppToken.Spacing.s8) {
-            sectionTitle("profile.stats")
+            SectionTitle(title: "profile.stats")
 
             LazyVGrid(
                 columns: [
@@ -162,7 +160,7 @@ struct ProfileContent: View {
 
     private var history: some View {
         VStack(alignment: .leading, spacing: AppToken.Spacing.s8) {
-            sectionTitle("history.title")
+            SectionTitle(title: "history.title")
 
             VStack(spacing: AppToken.Spacing.s12) {
                 ForEach(viewModel.history) { reservation in
@@ -178,14 +176,6 @@ struct ProfileContent: View {
                 }
             }
         }
-    }
-
-    private func sectionTitle(_ title: LocalizedStringKey) -> some View {
-        Text(title)
-            .lineupFont(AppFont.Body.section)
-            .foregroundStyle(AppColor.Text.primary)
-            .frame(maxWidth: .infinity, alignment: .leading)
-            .accessibilityAddTraits(.isHeader)
     }
 }
 
