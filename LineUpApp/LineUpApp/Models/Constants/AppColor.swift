@@ -68,7 +68,7 @@ enum AppColor {
         // Bouton danger sans fond (texte seul).
         static let ghostDangerText: Color = .dangerSaturated
         static let ghostDangerTextPressed: Color = .dangerDark
- 
+
         enum Primary {
             static let background: Color = .redPrimary
             static let text: Color = .mintPrimary
@@ -178,7 +178,7 @@ enum AppColor {
         static let title: Color = .ink
         static let descriptionAndChevron: Color = .inkMuted
         static let separator: Color = .grayPrimary
- 
+
         enum Icon {
             static let background: Color = .tealLight
             static let icon: Color = .ink
@@ -313,4 +313,5 @@ enum AppColor {
         static let nearText: Color = .inkMuted
         static let farText: Color = .grayDark
     }
+
 }
