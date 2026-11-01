@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ajout de réservation - DOLCEVITA SUR SEINE</title>
+  <link rel="stylesheet" href="../css/base.css">
+</head>
+<body>
+
+  <div class="app-container">
+    <aside class="sidebar">
+      <div class="sidebar-header">
+        <div class="logo-box">LU</div>
+        <div class="brand-info">
+          <span class="brand-title">DOLCEVITA SUR SEINE</span>
+          <span class="brand-subtitle">Backoffice · by LineUp</span>
+        </div>
+      </div>
+
+      <nav class="sidebar-nav">
+        <a href="Dashboard.html" class="nav-item">TABLEAU DE BORD</a>
+        <a href="GestionActivite.html" class="nav-item">ACTIVITÉS</a>
+        <a href="GestionReservation.html" class="nav-item active">RÉSERVATIONS</a>
+        <a href="Planning.html" class="nav-item">PLANNING</a>
+        <a href="ProfilUtilisateurs.html" class="nav-item">PROFIL</a>
+      </nav>
+
+      <div class="sidebar-footer">
+        <a class="user-block" href="ProfilStaff.html">
+          <div class="user-avatar">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+              <circle cx="12" cy="7" r="4"></circle>
+            </svg>
+          </div>
+          <div class="user-details">
+            <span class="user-name" id="sidebarName">…</span>
+            <span class="user-role" id="sidebarRole"></span>
+          </div>
+        </a>
+        <a class="logout-link" onclick="logout()">DÉCONNEXION</a>
+      </div>
+    </aside>
+
+    <main class="main-content">
+      <header class="page-header">
+        <div>
+          <h1 class="page-title">Nouvelle réservation</h1>
+          <p class="page-subtitle">Réservations · Ajout</p>
+        </div>
+      </header>
+
+      <form class="form-card" id="reservationForm">
+        <h2 class="form-title">FESTIVALIER</h2>
+        <div class="form-group">
+          <label for="utilisateur">Utilisateur</label>
+          <select id="utilisateur" required>
+            <option value="">Choisir un festivalier</option>
+          </select>
+        </div>
+
+        <h2 class="form-title">ATELIER</h2>
+        <div class="form-group">
+          <label for="atelier">Atelier</label>
+          <select id="atelier" required>
+            <option value="">Choisir un atelier</option>
+          </select>
+        </div>
+
+        <p class="note">Une réservation correspond à une place. Elle est validée s'il reste de la place, sinon elle passe automatiquement en liste d'attente.</p>
+
+        <p class="message-erreur" id="message" hidden></p>
+
+        <div class="form-actions">
+          <a href="GestionReservation.html" class="btn btn-secondary">ANNULER</a>
+          <button type="submit" class="btn btn-primary">AJOUTER LA RÉSERVATION</button>
+        </div>
+      </form>
+    </main>
+  </div>
+
+  <script src="../js/config.js"></script>
+  <script src="../js/services/session.js"></script>
+  <script src="../js/services/api.js"></script>
+  <script src="../js/utils/format.js"></script>
+  <script src="../js/utils/statuts.js"></script>
+  <script src="../js/components/icones.js"></script>
+  <script src="../js/components/modal.js"></script>
+  <script src="../js/components/sidebar.js"></script>
+  <script src="../js/controllers/AjoutReservation.js"></script>
+</body>
+</html>
