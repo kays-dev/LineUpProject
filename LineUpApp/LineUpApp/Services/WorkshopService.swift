@@ -21,19 +21,20 @@ struct WorkshopService {
     // récupérer la liste des ateliers filtré
     func fetchWorkshops(
         name: String? = nil,
+        periods: [String]? = nil,
         category: String? = nil,
-        status: String? = nil,
-        periods: [String]? = nil
+        status: String? = nil
     ) async throws -> [Workshop] {
         let dates = periods?.joined(separator: ",")
         let workshops: [WorkshopResponse] =
         try await apiClient.request(
-            path: "appios/workshops",
+            path: "workshops",
             query: [
                 "name": name,
+                "periods": dates,
                 "category": category,
                 "status": status,
-                "periods": dates
+                
                 ]
             )
         return workshops.map { workshopResponse in
@@ -42,17 +43,16 @@ struct WorkshopService {
     }
     
     // récupère un tableau de dates
-    // absence de paramètres
     func fetchWorkshopsDays() async throws -> [String] {
         return try await apiClient.request(
-            path: "appios/workshops/days"
+            path: "workshops/days"
         )
     }
     
     // récupère le detail d'un atelier
     func fetchWorkshop(id: UUID) async throws -> Workshop {
         let workshop: WorkshopResponse = try await apiClient.request(
-            path: "appios/workshops/\(id)"
+            path: "workshops/\(id)"
         )
         return workshop.toModel()
     }

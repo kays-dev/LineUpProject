@@ -8,17 +8,20 @@
 import SwiftUI
 
 struct FilterButtonReset: View {
+    
+let viewModel: WorkshopFiltersViewModel
+    
     var body: some View {
         
         Button {
-            
+            viewModel.resetFilters()
         } label : {
-            
             HStack(spacing: AppToken.Spacing.s4) {
                 Spacer()
                 
                 Text("Reinitialiser".uppercased())
                     .foregroundStyle(AppColor.Text.secondary)
+                
                 AppImage.Icon.trash.image
                     .foregroundStyle(AppColor.ModalFilters.Delete.icon)
             }
@@ -27,9 +30,23 @@ struct FilterButtonReset: View {
     }
 }
 
+
 #Preview {
+    let viewModel = WorkshopFiltersViewModel(
+        workshopStore: WorkshopStore(
+            workshopService: WorkshopService(
+                apiClient: APIClient(
+                    baseURL: URL(string: "http://localhost:8080")!,
+                    keychain: KeychainService()
+                )
+            )
+        )
+    )
+
     ZStack {
-        Color.ink.ignoresSafeArea()
-        FilterButtonReset()
+        Color.ink
+            .ignoresSafeArea()
+
+        FilterButtonReset(viewModel: viewModel)
     }
 }
