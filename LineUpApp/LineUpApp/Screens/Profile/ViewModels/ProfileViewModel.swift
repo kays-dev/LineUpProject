@@ -15,10 +15,13 @@ final class ProfileViewModel {
     var hasError = false
 
     private let reservationStore: ReservationStore
+    private let workshopStore: WorkshopStore
     private let secondsPerHour: TimeInterval = 3600
+    private let placeSectionName = "Lieu"
 
-    init(reservationStore: ReservationStore) {
+    init(reservationStore: ReservationStore, workshopStore: WorkshopStore) {
         self.reservationStore = reservationStore
+        self.workshopStore = workshopStore
     }
 
     var history: [Reservation] {
@@ -39,6 +42,11 @@ final class ProfileViewModel {
             seconds += reservation.workshop.endTime.timeIntervalSince(reservation.workshop.startTime)
         }
         return Int((seconds / secondsPerHour).rounded())
+    }
+
+    var hoursSpentText: String {
+        Measurement(value: Double(hoursSpent), unit: UnitDuration.hours)
+            .formatted(.measurement(width: .narrow))
     }
 
     var favoriteCategory: String? {
@@ -62,18 +70,33 @@ final class ProfileViewModel {
         return days.count
     }
 
-    func loadReservations() async {
+    var festivalDaysText: String {
+        "\(festivalDaysCount) / \(workshopStore.workshopDays.count)"
+    }
+
+    var placesVisitedCount: Int {
+        var places: Set<String> = []
+        for reservation in attendedReservations {
+            if let place = reservation.workshop.descriptionSection(name: placeSectionName) {
+                places.insert(place.detail)
+            }
+        }
+        return places.count
+    }
+
+    func loadProfile() async {
         isLoading = true
         hasError = false
         defer { isLoading = false }
         do {
             try await reservationStore.fetchAll()
+            try await workshopStore.fetchWorkshopsDays()
             for reservation in reservationStore.reservations {
                 print(reservation)
             }
         } catch {
             hasError = true
-            print("Erreur loadReservations : \(error)")
+            print("Erreur loadProfile : \(error)")
         }
     }
 
