@@ -15,13 +15,14 @@ struct FilterHeader: View {
 
     var body: some View {
 
+        // icon + titre
         HStack(spacing: AppToken.Spacing.s4) {
             icon.foregroundStyle(AppColor.ModalFilters.titleIcon)
 
             Text(title.uppercased())
         }
         .font(font)
-        .foregroundStyle(AppColor.ModalFilters.textSecondary)
+        .foregroundStyle(AppColor.Text.secondary)
 
     }
 }

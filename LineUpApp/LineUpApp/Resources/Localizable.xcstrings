@@ -1,6 +1,35 @@
 {
   "sourceLanguage" : "fr",
   "strings" : {
+    "%@" : {
+
+    },
+    "%@ — %@" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$@ — %2$@"
+          }
+        }
+      }
+    },
+    "%@ places restantes / %@" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$@ places restantes / %2$@"
+          }
+        }
+      }
+    },
+    "%lld" : {
+
+    },
+    "Adresse email" : {
+
+    },
     "agenda.section.ongoing" : {
       "comment" : "Section agenda",
       "extractionState" : "manual",
@@ -1105,9 +1134,6 @@
         }
       }
     },
-    "Catégories" : {
-
-    },
     "category.cinema" : {
       "comment" : "Catégorie (si locale)",
       "extractionState" : "manual",
@@ -1420,7 +1446,7 @@
         }
       }
     },
-    "Dates" : {
+    "Connexion temporaire" : {
 
     },
     "deleteAccount.button" : {
@@ -1518,9 +1544,6 @@
           }
         }
       }
-    },
-    "Disponibilité" : {
-
     },
     "filters.dates" : {
       "comment" : "Section dates",
@@ -1860,6 +1883,9 @@
           }
         }
       }
+    },
+    "Mot de passe" : {
+
     },
     "password.confirm" : {
       "comment" : "Champ",
@@ -2388,6 +2414,9 @@
           }
         }
       }
+    },
+    "Se connecter" : {
+
     },
     "search.placeholder" : {
       "comment" : "Placeholder de la barre de recherche (à valider)",
@@ -3468,6 +3497,9 @@
           }
         }
       }
+    },
+    "Vérification de la session..." : {
+
     },
     "waitlist.success.button" : {
       "comment" : "Popup succès liste d'attente",

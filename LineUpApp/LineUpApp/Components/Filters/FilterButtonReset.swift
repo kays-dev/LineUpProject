@@ -8,17 +8,20 @@
 import SwiftUI
 
 struct FilterButtonReset: View {
+    
+let action: () -> Void
+
     var body: some View {
         
         Button {
-            
+            action()
         } label : {
-            
             HStack(spacing: AppToken.Spacing.s4) {
                 Spacer()
                 
                 Text("Reinitialiser".uppercased())
                     .foregroundStyle(AppColor.Text.secondary)
+                
                 AppImage.Icon.trash.image
                     .foregroundStyle(AppColor.ModalFilters.Delete.icon)
             }
@@ -27,9 +30,14 @@ struct FilterButtonReset: View {
     }
 }
 
+
 #Preview {
     ZStack {
-        Color.ink.ignoresSafeArea()
-        FilterButtonReset()
+        Color.ink
+            .ignoresSafeArea()
+
+        FilterButtonReset(
+            action: {}
+        )
     }
 }
