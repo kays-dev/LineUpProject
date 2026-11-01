@@ -21,9 +21,9 @@ struct WorkshopService {
     // récupérer la liste des ateliers filtré
     func fetchWorkshops(
         name: String? = nil,
+        periods: [String]? = nil,
         category: String? = nil,
-        status: String? = nil,
-        periods: [String]? = nil
+        status: String? = nil
     ) async throws -> [Workshop] {
         let dates = periods?.joined(separator: ",")
         let workshops: [WorkshopResponse] =
@@ -31,9 +31,10 @@ struct WorkshopService {
             path: "workshops",
             query: [
                 "name": name,
+                "periods": dates,
                 "category": category,
                 "status": status,
-                "periods": dates
+                
                 ]
             )
         return workshops.map { workshopResponse in
@@ -42,7 +43,6 @@ struct WorkshopService {
     }
     
     // récupère un tableau de dates
-    // absence de paramètres
     func fetchWorkshopsDays() async throws -> [String] {
         return try await apiClient.request(
             path: "workshops/days"

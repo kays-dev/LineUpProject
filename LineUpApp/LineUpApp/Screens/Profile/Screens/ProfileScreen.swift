@@ -10,6 +10,16 @@ import SwiftUI
 
 struct ProfileScreen: View {
 
+    @Environment(ReservationStore.self) private var reservationStore
+    @Environment(WorkshopStore.self) private var workshopStore
+
+    var body: some View {
+        ProfileContent(reservationStore: reservationStore, workshopStore: workshopStore)
+    }
+}
+
+struct ProfileContent: View {
+
     @State private var viewModel: ProfileViewModel
     @Environment(SessionStore.self) private var sessionStore
     @AppStorage("selectedAvatar") private var avatar: AppImage.Avatar = .colombina
@@ -119,32 +129,32 @@ struct ProfileScreen: View {
                 StatCard(
                     valueInString: "\(viewModel.reservationCount)",
                     label: String(localized: "stats.bookings"),
-                    icon: .ticket
+                    icon: AppImage.InterfaceIcon.ticketFill.image
                 )
                 StatCard(
                     valueInString: "\(viewModel.attendedCount)",
                     label: String(localized: "stats.attended"),
-                    icon: .calendarCheck
+                    icon: AppImage.InterfaceIcon.calendarCheckFill.image
                 )
                 StatCard(
                     valueInString: viewModel.hoursSpentText,
                     label: String(localized: "stats.timeSpent"),
-                    icon: .clock
+                    icon: AppImage.InterfaceIcon.clockFill.image
                 )
                 StatCard(
                     valueInString: viewModel.favoriteCategory ?? "—",
                     label: String(localized: "stats.favoriteCategory"),
-                    icon: .mask
+                    icon: AppImage.InterfaceIcon.maskFill.image
                 )
                 StatCard(
                     valueInString: viewModel.festivalDaysText,
                     label: String(localized: "stats.festivalDays"),
-                    icon: .calendar
+                    icon: AppImage.InterfaceIcon.calendarFill.image
                 )
                 StatCard(
                     valueInString: "\(viewModel.placesVisitedCount)",
                     label: String(localized: "stats.placesVisited"),
-                    icon: .mapPin
+                    icon: AppImage.InterfaceIcon.mapPinFill.image
                 )
             }
         }
@@ -183,9 +193,8 @@ struct ProfileScreen: View {
     let keychain = KeychainService()
     let apiClient = APIClient(baseURL: APIConfig.baseURL, keychain: keychain)
 
-    ProfileScreen(
-        reservationStore: ReservationStore(service: ReservationService(apiClient: apiClient)),
-        workshopStore: WorkshopStore(workshopService: WorkshopService(apiClient: apiClient))
-    )
-    .environment(SessionStore(service: AuthService(apiClient: apiClient, keychain: keychain)))
+    ProfileScreen()
+        .environment(ReservationStore(service: ReservationService(apiClient: apiClient)))
+        .environment(WorkshopStore(workshopService: WorkshopService(apiClient: apiClient)))
+        .environment(SessionStore(service: AuthService(apiClient: apiClient, keychain: keychain)))
 }

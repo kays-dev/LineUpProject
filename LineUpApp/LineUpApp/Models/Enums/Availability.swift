@@ -19,4 +19,13 @@ enum Availability: CaseIterable, Hashable {
             "Complet"
         }
     }
+    
+    var apiValue: String {
+            switch self {
+            case .available:
+                "available"
+            case .full:
+                "full"
+            }
+        }
 }
