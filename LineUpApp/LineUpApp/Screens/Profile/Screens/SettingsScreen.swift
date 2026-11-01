@@ -16,7 +16,9 @@ struct SettingsScreen: View {
     @AppStorage("notifications.reminder") private var reminderEnabled = true
     @AppStorage("notifications.spot") private var spotEnabled = true
     @AppStorage("notifications.news") private var newsEnabled = false
+    @AppStorage("appLanguage") private var language: AppLanguage = .french
     @State private var showsDeletePopup = false
+    @State private var showsLanguage = false
 
     var body: some View {
         ScrollView {
@@ -41,6 +43,9 @@ struct SettingsScreen: View {
             if showsDeletePopup {
                 deletePopup
             }
+        }
+        .sheet(isPresented: $showsLanguage) {
+            LanguageScreen()
         }
     }
 
@@ -140,12 +145,17 @@ struct SettingsScreen: View {
         VStack(spacing: AppToken.Spacing.s8) {
             SectionTitle(title: "settings.preferences")
             ContentCard(theme: .light, size: .small) {
-                SettingsRow(
-                    icon: AppImage.InterfaceIcon.mapDuotone.image,
-                    title: "settings.language",
-                    accessory: .value(String(localized: "settings.language.current")),
-                    showsSeparator: false
-                )
+                Button {
+                    showsLanguage = true
+                } label: {
+                    SettingsRow(
+                        icon: AppImage.InterfaceIcon.mapDuotone.image,
+                        title: "settings.language",
+                        accessory: .value(language.name),
+                        showsSeparator: false
+                    )
+                }
+                .buttonStyle(.plain)
             }
         }
     }
