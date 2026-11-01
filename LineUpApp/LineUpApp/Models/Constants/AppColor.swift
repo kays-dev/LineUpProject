@@ -253,7 +253,11 @@ enum AppColor {
         case danger
 
         var background: Color {
-            .ink
+            switch self {
+            case .validation : .validationLight
+            case .warning: .warningLight
+            case .danger: .dangerLight
+            }
         }
 
         var text: Color {
