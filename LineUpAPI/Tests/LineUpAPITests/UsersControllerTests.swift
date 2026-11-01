@@ -11,8 +11,9 @@ extension LineUpAPITests {
 
     // Fabrique un token comme la route login, avec la même clé que JWTMiddleware
     func makeToken(id: UUID = UUID(), role: UserRole) throws -> String {
+        Self.loadEnvForTests()
         let payload = UsersPayload(id: id, role: role)
-        return try JWTSigner.hs256(key: "cle_secrete").sign(payload)
+        return try JWTSigner.hs256(key: Secrets.jwt).sign(payload)
     }
 
     // Inscrit un festivalier par l'API et renvoie la réponse décodée
