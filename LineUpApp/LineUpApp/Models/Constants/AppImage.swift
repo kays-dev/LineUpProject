@@ -31,6 +31,35 @@ enum AppImage {
         var image: Image {
             Image(rawValue)
         }
+
+        var name: String {
+            switch self {
+            case .colombina:
+                String(localized: "avatar.colombina")
+            case .monaLisa:
+                String(localized: "avatar.mona")
+            case .pinocchio:
+                String(localized: "avatar.pinocchio")
+            case .arlecchino:
+                String(localized: "avatar.arlecchino")
+            case .fountainStar:
+                String(localized: "avatar.fountainStar")
+            case .romanVespista:
+                String(localized: "avatar.vespa")
+            case .pulcinella:
+                String(localized: "avatar.pulcinella")
+            case .leonardoDaVinci:
+                String(localized: "avatar.leonardo")
+            case .laBefana:
+                String(localized: "avatar.befana")
+            case .donCorleone:
+                String(localized: "avatar.corleone")
+            case .lionOfSaintMark:
+                String(localized: "avatar.lion")
+            case .venetianMaskBauta:
+                String(localized: "avatar.mask")
+            }
+        }
     }
 
     // Catégories d'ateliers : icônes et motifs
