@@ -194,6 +194,9 @@ struct WorkshopsController: RouteCollection {
         }
         
         if let capacityMax = dto.capacityMax {
+            guard capacityMax >= workshop.subscriberNumber else {
+                    throw WorkshopsError.capacityBelowBookings
+                }
             workshop.capacityMax = capacityMax
         }
         

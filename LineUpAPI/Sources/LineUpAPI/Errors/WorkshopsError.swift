@@ -16,6 +16,7 @@ enum WorkshopsError : Error {
     case noWorkshop
     case wrongDateFormat
     case hasReservations
+    case capacityBelowBookings
     
 }
 
@@ -27,7 +28,7 @@ extension WorkshopsError : AbortError {
             
         case .invalidStatus, .invalidID, .wrongDateFormat : .badRequest
         case .noCategory, .noWorkshop : .notFound
-        case .hasReservations : .conflict
+        case .hasReservations, .capacityBelowBookings : .conflict
             
         }
         
@@ -43,6 +44,7 @@ extension WorkshopsError : AbortError {
         case .noWorkshop : "Atelier est introuvable."
         case .wrongDateFormat : "La date doit être au format aaaa-MM-jj."
         case .hasReservations : "Impossible de supprimer cet atelier : un ou des réservations y sont encore rattachées."
+        case .capacityBelowBookings : "La capacité ne peut pas être inférieure au nombre de places déjà réservées."
             
         }
         
