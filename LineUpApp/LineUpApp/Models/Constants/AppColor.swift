@@ -264,5 +264,18 @@ enum AppColor {
         static let nearText: Color = .inkMuted
         static let farText: Color = .grayDark
     }
+
+    // --- Screen --- //
+
+    enum Screen {
+        static let background: Color = .mintPrimary
+    }
+
+    // --- Logo --- //
+
+    enum Logo {
+        static let text: Color = .ink
+        static let dot: Color = .redPrimary
+    }
 }
  
