@@ -22,18 +22,17 @@ struct ProfileScreen: View {
     }
 
     var body: some View {
-        VStack(spacing: AppToken.Spacing.none) {
-            header
-
-            ScrollView {
-                VStack(spacing: AppToken.Spacing.s28) {
-                    identity
-                    stats
-                    history
-                }
-                .padding(.horizontal, AppToken.Padding.screen)
-                .padding(.bottom, AppToken.Padding.scrollViewBottom)
+        ScrollView {
+            VStack(spacing: AppToken.Spacing.s28) {
+                identity
+                stats
+                history
             }
+            .padding(.horizontal, AppToken.Padding.screen)
+            .padding(.bottom, AppToken.Padding.scrollViewBottom)
+        }
+        .safeAreaBar(edge: .top) {
+            header
         }
         .background(AppColor.Screen.background)
         .overlay {
