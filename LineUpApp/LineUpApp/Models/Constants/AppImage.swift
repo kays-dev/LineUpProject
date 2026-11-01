@@ -132,6 +132,7 @@ enum AppImage {
         case sparkles = "sparkles"
         case trash = "trash"
         case filter = "slider.horizontal.2.square"
+        case xCircled = "xmark.circle.fill"
 
         var image: Image {
             Image(systemName: rawValue)

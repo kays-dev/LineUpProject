@@ -11,7 +11,7 @@ struct ContentView: View {
     
     @State private var selection: LineUpTab = .affiche
     @State private var tabBarVisibility: TabBarVisibility = .visible
-    
+
     var body: some View {
         
         TabView(selection: $selection) {
@@ -21,7 +21,6 @@ struct ContentView: View {
                 NavigationStack {
                     tab.rootView
                 }
-                
                 .tag(tab)
                 .toolbar(.hidden, for: .tabBar)
                 

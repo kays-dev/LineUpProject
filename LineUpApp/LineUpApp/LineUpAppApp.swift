@@ -75,11 +75,11 @@ struct LineUpAppApp: App {
                 }
             }
             
-            ContentView()
-                .environment(sessionStore)
-                .environment(workshopStore)
-                .environment(categoryStore)
-                .environment(reservationStore)
+//            ContentView()
+//                .environment(sessionStore)
+//                .environment(workshopStore)
+//                .environment(categoryStore)
+//                .environment(reservationStore)
 
         }
     }

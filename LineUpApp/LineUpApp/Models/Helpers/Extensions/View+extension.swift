@@ -31,3 +31,16 @@ extension View {
     }
     
 }
+
+// MARK: Ajouter le Heading dans les écrans
+extension View {
+    
+    // À mettre après les ScrollView dans les écrans (`.lineupPageHeading(.secondary(title: .settingsTitle)) {}`). Ne pas oublier le `.toolbar(.hidden, for: .navigationBar)` dans les écrans concernés.
+    func lineupPageHeading<Trailing: View>(_ mode: PageHeading<Trailing>.Mode, @ViewBuilder trailing: () -> Trailing) -> some View {
+
+        self
+            .safeAreaBar(edge: .top) { PageHeading(mode: mode, trailing: trailing) }
+            .toolbar(.hidden, for: .navigationBar)
+    }
+    
+}

@@ -63,12 +63,12 @@ enum AppColor {
     enum Button {
 
         // Bordure secondaire affichée quand un bouton a le focus.
-        static let focusRing: Color = .redPrimary
+        static let focusRing: Color = .tealPrimary
 
         // Bouton danger sans fond (texte seul).
         static let ghostDangerText: Color = .dangerSaturated
         static let ghostDangerTextPressed: Color = .dangerDark
- 
+
         enum Primary {
             static let background: Color = .redPrimary
             static let text: Color = .mintPrimary
@@ -178,7 +178,7 @@ enum AppColor {
         static let title: Color = .ink
         static let descriptionAndChevron: Color = .inkMuted
         static let separator: Color = .grayPrimary
- 
+
         enum Icon {
             static let background: Color = .tealLight
             static let icon: Color = .ink
@@ -253,7 +253,11 @@ enum AppColor {
         case danger
 
         var background: Color {
-            .ink
+            switch self {
+            case .validation : .validationLight
+            case .warning: .warningLight
+            case .danger: .dangerLight
+            }
         }
 
         var text: Color {
