@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Reservation: Identifiable, Hashable {
+struct Reservation: Identifiable, Hashable, CustomStringConvertible {
     let id: Int
     let status: ReservationStatus
     let workshop: Workshop
@@ -27,5 +27,9 @@ struct Reservation: Identifiable, Hashable {
 
     var isPast: Bool {
         workshop.endTime <= Date.now
+    }
+
+    var description: String {
+        "Réservation \(id) : \(status.rawValue), \(workshop.name), \(workshop.startTime.formatted(date: .numeric, time: .shortened))"
     }
 }
