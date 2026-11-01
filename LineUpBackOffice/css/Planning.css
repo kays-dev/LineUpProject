@@ -1,0 +1,68 @@
+/* Sélecteur de date : un bouton par jour du festival */
+.date-picker {
+  display: flex;
+  gap: 8px;
+  background-color: #032b2b;
+  border-radius: 24px;
+  padding: 6px;
+  margin-bottom: 25px;
+}
+
+.date-pill {
+  flex: 1;
+  padding: 10px 0;
+  border: none;
+  border-radius: 20px;
+  background-color: transparent;
+  color: #ffffff;
+  font-size: 12px;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+/* Jour sélectionné : fond rouge */
+.date-pill.active {
+  background-color: #de5266;
+}
+
+/* Cartes des ateliers */
+.planning-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 15px;
+}
+
+.workshop-card {
+  display: flex;
+  background-color: #f7faf9;
+  border: 1px solid #032b2b;
+  border-radius: 16px;
+  overflow: hidden;
+  text-decoration: none;
+  color: #032b2b;
+}
+
+.workshop-hour {
+  background-color: #032b2b;
+  color: #48d6c3;
+  font-weight: 800;
+  font-size: 15px;
+  padding: 18px 14px;
+  display: flex;
+  align-items: center;
+}
+
+.workshop-info {
+  padding: 14px 16px;
+  font-size: 12px;
+}
+
+.workshop-info strong {
+  display: block;
+  font-size: 13px;
+  margin-bottom: 4px;
+}
+
+.workshop-info .badge {
+  margin: 6px 0;
+}
