@@ -45,8 +45,7 @@ final class ProfileViewModel {
     }
 
     var hoursSpentText: String {
-        Measurement(value: Double(hoursSpent), unit: UnitDuration.hours)
-            .formatted(.measurement(width: .narrow))
+        "\(hoursSpent) h"
     }
 
     var favoriteCategory: String? {
@@ -54,12 +53,7 @@ final class ProfileViewModel {
         for reservation in activeReservations {
             counts[reservation.workshop.categoryName, default: 0] += 1
         }
-        return counts.max { first, second in
-            if first.value == second.value {
-                return first.key > second.key
-            }
-            return first.value < second.value
-        }?.key
+        return counts.max { $0.value < $1.value }?.key
     }
 
     var festivalDaysCount: Int {
