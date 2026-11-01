@@ -103,10 +103,6 @@ enum AppImage {
         case sparkles = "sparkles"
         case trash = "trash"
         case filter = "slider.horizontal.2.square"
-        case ticket = "ticket.fill"
-        case calendarCheck = "calendar.badge.checkmark"
-        case mask = "theatermasks.fill"
-        case mapPin = "mappin.and.ellipse"
 
         var image: Image {
             Image(systemName: rawValue)
