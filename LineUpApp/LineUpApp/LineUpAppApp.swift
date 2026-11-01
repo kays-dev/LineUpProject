@@ -16,6 +16,7 @@ struct LineUpAppApp: App {
     @State private var workshopStore: WorkshopStore
     @State private var categoryStore: CategoryStore
     @State private var filtersViewModel: WorkshopFiltersViewModel
+    @State private var reservationStore: ReservationStore
 
     init() {
         let keychain = KeychainService()
@@ -40,16 +41,19 @@ struct LineUpAppApp: App {
         _categoryStore = State(initialValue: CategoryStore(
             service: CategoryService(apiClient: apiClient)
         ))
-
         _filtersViewModel = State(
             initialValue: WorkshopFiltersViewModel(
                 workshopStore: workshopStore
             )
         )
+        _reservationStore = State(initialValue: ReservationStore(
+            service: ReservationService(apiClient: apiClient)
+        ))
     }
 
     var body: some Scene {
         WindowGroup {
+            
             WorkshopFilterScreen(
                 viewModel: filtersViewModel,
                 dates: workshopStore.workshopDays,
@@ -70,6 +74,13 @@ struct LineUpAppApp: App {
                     print("Erreur lors du chargement des filtres :", error)
                 }
             }
+            
+            ContentView()
+                .environment(sessionStore)
+                .environment(workshopStore)
+                .environment(categoryStore)
+                .environment(reservationStore)
+
         }
     }
 }

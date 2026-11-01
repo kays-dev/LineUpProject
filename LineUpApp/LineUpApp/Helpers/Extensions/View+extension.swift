@@ -21,3 +21,13 @@ extension View {
     }
     
 }
+
+// MARK: Enlever la TabBar dans les écrans enfants
+extension View {
+    
+    // À mettre sur les écrans de niveau 2 et 3 (`.tabBarVisibility(.hidden)`)
+    func tabBarVisibility(_ visibility: TabBarVisibility) -> some View {
+        preference(key: TabBarVisibilityPreferenceKey.self, value: visibility)
+    }
+    
+}
