@@ -11,7 +11,7 @@ import SwiftUI
 struct BigCard: View {
     
     let cardFormat : CardState
-    let use : Use
+    let use : CardUse
     
     let workshopDate : Date
     let workshopStartTime : Date
@@ -152,11 +152,6 @@ struct BigCard: View {
         case compact
     }
     
-    enum Use {
-        case workshop(Availability)
-        case reservation(ReservationStatus, availability: Availability)
-    }
-    
 }
 
 fileprivate struct Styles {
@@ -185,7 +180,7 @@ fileprivate struct Styles {
     // Affichage conditionnel
     static let showAvailibility = true
     
-    static func isMuted(_ status : BigCard.Use) -> Bool {
+    static func isMuted(_ status : CardUse) -> Bool {
         
         switch status {
             

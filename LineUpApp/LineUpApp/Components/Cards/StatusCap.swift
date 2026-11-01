@@ -12,7 +12,7 @@ struct StatusCap: View {
     
     let capState : CapsState
     
-    let use : BigCard.Use
+    let use : CardUse
     var workshopStatus : Availability {
 
         switch use {
@@ -95,7 +95,7 @@ fileprivate struct Styles {
         switch state {
             
         case .full : return 38
-        case .reduced : return 34
+        case .reduced : return 100
             
         }
         
