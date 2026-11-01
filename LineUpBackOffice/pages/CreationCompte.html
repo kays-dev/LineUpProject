@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Création de compte - DOLCEVITA SUR SEINE</title>
+  <link rel="stylesheet" href="../css/base.css">
+  <link rel="stylesheet" href="../css/Connexion.css">
+</head>
+<body>
+
+  <div class="app-container">
+    <aside class="sidebar">
+      <div class="sidebar-header">
+        <div class="logo-box">LU</div>
+        <div class="brand-info">
+          <span class="brand-title">DOLCEVITA SUR SEINE</span>
+          <span class="brand-subtitle">Backoffice · by LineUp</span>
+        </div>
+      </div>
+    </aside>
+
+    <main class="centre">
+      <div class="auth-card">
+        <h1>Créez votre compte.</h1>
+        <p class="auth-lead">Réservé à l'équipe : compte créé par un membre du staff connecté.</p>
+
+        <form id="signupForm">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="nom">Nom</label>
+              <input type="text" id="nom" placeholder="Rossi" required>
+            </div>
+            <div class="form-group">
+              <label for="prenom">Prénom</label>
+              <input type="text" id="prenom" placeholder="Giulia" required>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="email">E-mail</label>
+            <input type="email" id="email" placeholder="giulia.rossi@exemple.fr" required>
+          </div>
+          <div class="form-group">
+            <label for="password">Mot de passe</label>
+            <input type="password" id="password" placeholder="6 caractères minimum" required>
+          </div>
+          <div class="form-group">
+            <label for="password2">Confirmation du mot de passe</label>
+            <input type="password" id="password2" placeholder="Répétez le mot de passe" required>
+          </div>
+
+          <p class="message-erreur" id="message" hidden></p>
+
+          <button type="submit" class="btn btn-primary">CRÉER LE COMPTE</button>
+        </form>
+        <p class="auth-foot"><a href="ProfilUtilisateurs.html">Retour à la liste des utilisateurs</a></p>
+      </div>
+    </main>
+  </div>
+
+  <script src="../js/config.js"></script>
+  <script src="../js/services/session.js"></script>
+  <script src="../js/services/api.js"></script>
+  <script src="../js/utils/format.js"></script>
+  <script src="../js/utils/statuts.js"></script>
+  <script src="../js/components/icones.js"></script>
+  <script src="../js/components/modal.js"></script>
+  <script src="../js/components/sidebar.js"></script>
+  <script src="../js/controllers/CreationCompte.js"></script>
+</body>
+</html>
