@@ -46,7 +46,7 @@ func configure(_ app: Application) async throws {
     // Configuration de CORS
     let corsConfiguration = CORSMiddleware.Configuration(
         // .all autorise toutes les origines a acceder à l'api
-        allowedOrigin : .custom("http://localhost:8080"),
+        allowedOrigin : .any(["http://localhost:8080","http://localhost:5500"]),
         // Specifie quel methode HTTP sont autorisé pour les requêtes cross-origin
         // OPTIONS: necessaire pour les request preflight
         allowedMethods: [.GET, .POST, .PUT, .PATCH, .DELETE, .OPTIONS],
