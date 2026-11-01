@@ -161,7 +161,7 @@ enum AppColor {
             static let border: Color = .validationDark
         }
  
-        enum Unavailable {
+        enum Full {
             static let background: Color = .grayDark
             static let text: Color = .inkMuted
             static let border: Color = .inkMuted
