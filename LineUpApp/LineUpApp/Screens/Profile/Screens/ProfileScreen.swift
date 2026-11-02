@@ -60,7 +60,7 @@ struct ProfileContent: View {
         }
         .navigationDestination(item: $selectedReservation) { reservation in
 
-            BookingDetailScreen(reservation: reservation)
+            BookingHistoryDetailScreen(reservation: reservation)
 
         }
     }
