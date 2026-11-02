@@ -59,17 +59,17 @@ enum LineUpTab: Int, CaseIterable, Identifiable {
 
     // Écrans de niveau 1
     @ViewBuilder
-    var rootView: some View {
-        
+    func rootView(viewModel: WorkshopFiltersViewModel) -> some View {
         switch self {
         case .affiche:
-            FestivalPlanningScreen()
+            FestivalPlanningScreen(viewModel: viewModel)
+
         case .agenda:
             UserBookingsScreen()
+
         case .aparte:
             ProfileScreen()
         }
-        
     }
     
 }

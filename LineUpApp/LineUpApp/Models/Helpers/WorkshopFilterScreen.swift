@@ -79,6 +79,7 @@ struct WorkshopFilterScreen: View {
                                 do {
                                     try await viewModel.applyFilters()
                                     print("Filtres appliqués avec succès")
+                                    dismiss()
                                 } catch {
                                     print("Erreur lors de l'application des filtres :", error)
                                 }
