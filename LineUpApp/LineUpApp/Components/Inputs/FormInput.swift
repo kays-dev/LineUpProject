@@ -15,6 +15,7 @@ struct FormInput: View {
     var icon: Image? = nil
     
     var validation: ValidationStage = .neutral
+    var isSecure = false
     private var isValidating: Bool {
         
         if case .neutral = validation {
@@ -52,10 +53,26 @@ struct FormInput: View {
 
                 }
 
-                TextField(text: $input, prompt: Text(placeholder).foregroundStyle(styles.foreground.opacity(Styles.placeholderOpacity))) {
-                    
-                    Text(placeholder)
-                    
+                Group {
+
+                    if isSecure {
+
+                        SecureField(text: $input, prompt: Text(placeholder).foregroundStyle(styles.foreground.opacity(Styles.placeholderOpacity))) {
+
+                            Text(placeholder)
+
+                        }
+
+                    } else {
+
+                        TextField(text: $input, prompt: Text(placeholder).foregroundStyle(styles.foreground.opacity(Styles.placeholderOpacity))) {
+
+                            Text(placeholder)
+
+                        }
+
+                    }
+
                 }
                 .lineupFont(Styles.font)
                 .focused($isFocused)
