@@ -36,7 +36,6 @@ struct SettingsScreen: View {
                 session
             }
             .padding(.horizontal, AppToken.Padding.screen)
-            .padding(.bottom, AppToken.Padding.scrollViewBottom)
         }
         .safeAreaBar(edge: .top) {
             header

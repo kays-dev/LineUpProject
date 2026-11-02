@@ -27,8 +27,6 @@ struct AvatarScreen: View {
                 grid
             }
             .padding(.horizontal, AppToken.Padding.screen)
-            .padding(.top, AppToken.Padding.headerBottom)
-            .padding(.bottom, AppToken.Padding.scrollViewBottom)
         }
         .lineupPageHeading(.secondary(title: "", heading: .avatarTitle, subtitle: .avatarSubtitle)) {}
         .tabBarVisibility(.hidden)

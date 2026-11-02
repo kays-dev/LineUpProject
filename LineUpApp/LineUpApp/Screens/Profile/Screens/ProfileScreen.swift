@@ -43,7 +43,6 @@ struct ProfileContent: View {
                 history
             }
             .padding(.horizontal, AppToken.Padding.screen)
-            .padding(.top, AppToken.Padding.headerBottom)
             .padding(.bottom, AppToken.Padding.scrollViewBottom)
         }
         .lineupPageHeading(.primary(heading: .profileTitle)) {

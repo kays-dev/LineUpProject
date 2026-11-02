@@ -44,8 +44,6 @@ struct PasswordScreen: View {
                 }
             }
             .padding(.horizontal, AppToken.Padding.screen)
-            .padding(.top, AppToken.Padding.headerBottom)
-            .padding(.bottom, AppToken.Padding.scrollViewBottom)
         }
         .lineupPageHeading(.secondary(title: "", heading: .passwordTitle, subtitle: .passwordRule)) {}
         .tabBarVisibility(.hidden)

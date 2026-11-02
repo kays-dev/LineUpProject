@@ -27,8 +27,6 @@ struct LanguageScreen: View {
                 }
             }
             .padding(.horizontal, AppToken.Padding.screen)
-            .padding(.top, AppToken.Padding.headerBottom)
-            .padding(.bottom, AppToken.Padding.scrollViewBottom)
         }
         .lineupPageHeading(.secondary(title: "", heading: .languageTitle, subtitle: .languageSubtitle)) {}
         .tabBarVisibility(.hidden)
