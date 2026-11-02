@@ -14,6 +14,8 @@ struct WorkshopFilterScreen: View {
     
     let dates: [String]
     let categories: [String]
+    
+    var onConfirm: (() -> Void)? = nil
 
     var body: some View {
         
@@ -66,6 +68,13 @@ struct WorkshopFilterScreen: View {
                         border: AppColor.Text.secondary,
                         isSelected: true,
                         action: {
+                            
+                            if let onConfirm {
+                                onConfirm()
+                                dismiss()
+                                return
+                            }
+                            
                             Task {
                                 do {
                                     try await viewModel.applyFilters()
