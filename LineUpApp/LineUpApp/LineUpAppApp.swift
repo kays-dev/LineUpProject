@@ -74,6 +74,7 @@ struct LineUpAppApp: App {
             .environment(sessionStore)
             .environment(workshopStore)
             .environment(categoryStore)
+            .environment(reservationStore)
             .task {
                 await sessionStore.restoreSession()
             }
