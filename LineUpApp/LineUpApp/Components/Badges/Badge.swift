@@ -15,7 +15,8 @@ struct BadgeView: View {
     
     var body: some View {
         HStack(spacing: AppToken.Spacing.s4) {
-            Text(title.lowercased())
+            Text(title.uppercased())
+                .font(AppFont.Label.label.font)
                 .foregroundStyle(
                     availability == .available
                     ? AppColor.Capsule.Available.text
@@ -26,8 +27,8 @@ struct BadgeView: View {
                 .resizable()
                 .frame(width: 16, height: 16)
         }
-        .padding(AppToken.Padding.caps)
-        .frame(maxWidth: .infinity)
+        .padding(.vertical, AppToken.Scale.primitive4)
+        .padding(.horizontal, AppToken.Scale.primitive12)
         .background(
             availability == .available
             ? AppColor.Capsule.Available.background
@@ -40,7 +41,7 @@ struct BadgeView: View {
                     availability == .available
                     ? AppColor.Capsule.Available.border
                     : AppColor.Capsule.Full.border,
-                    lineWidth: AppToken.Border.thick
+                    lineWidth: AppToken.Border.thin
                 )
         }
     }

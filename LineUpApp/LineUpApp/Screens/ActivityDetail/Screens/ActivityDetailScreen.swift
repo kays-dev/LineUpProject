@@ -9,26 +9,26 @@ import Foundation
 import SwiftUI
 
 struct ActivityDetailScreen: View {
-
+    
     var workshop: Workshop
-
+    
     var onReturnToPlanning: () -> Void
-
+    
     var useTypes: UseTypes
-
+    
     @State private var showReservationSuccessPopup = false
-
+    
     var body: some View {
-
+        
         ZStack {
             Color.mintPrimary
                 .ignoresSafeArea()
-
+            
             ScrollView {
-
+                
                 VStack(alignment: .center, spacing: AppToken.Scale.primitive28)
                 {
-
+                    
                     // navigation bar
                     PageHeading(
                         mode: .secondary(
@@ -57,13 +57,13 @@ struct ActivityDetailScreen: View {
                                         )
                                 }
                         }
-
+                        
                     }
-
+                    
                     // card
                     BigCard(
                         cardFormat: workshop.availability == .available
-                            ? .standard : .compact,
+                        ? .standard : .compact,
                         use: .workshop(workshop.availability),
                         workshopDate: workshop.date,
                         workshopStartTime: workshop.startTime,
@@ -74,14 +74,17 @@ struct ActivityDetailScreen: View {
                         remainingPlaces: workshop.remainingPlaces,
                         capacityMax: workshop.capacityMax
                     )
-
+                    
                     // capsule
-                    BadgeView(
-                        title: workshop.categoryName,
-                        availability: workshop.availability,
-                        icon: workshop.categoryIcon
-                    )
-
+                    HStack {
+                        Spacer()
+                        BadgeView(
+                            title: workshop.categoryName,
+                            availability: workshop.availability,
+                            icon: workshop.categoryIcon
+                        )
+                    }
+                    
                     // Description
                     if let section = workshop.descriptionSection(
                         name: "Description"
@@ -89,9 +92,9 @@ struct ActivityDetailScreen: View {
                         Text(section.detail)
                             .foregroundStyle(AppColor.Text.primary)
                     }
-
+                    
                     if useTypes == .workshop {
-
+                        
                         // Boutons
                         if workshop.remainingPlaces > 0 {
                             PrimaryButton(
@@ -107,12 +110,14 @@ struct ActivityDetailScreen: View {
                                 tone: .danger
                             ) {
                                 showReservationSuccessPopup = true
-
+                                
                             }
                         }
                     }
-
+                    
                 }
+                .padding(AppToken.Padding.screen)
+                
                 // -> popup + confetti
                 .navigationDestination(
                     isPresented: $showReservationSuccessPopup
@@ -122,11 +127,11 @@ struct ActivityDetailScreen: View {
                         onReturnToPlanning: onReturnToPlanning
                     )
                     .toolbar(.hidden, for: .navigationBar)
-
-                    .padding(AppToken.Padding.screen)
+                    
+                    
                 }
             }
-
+            
         }
     }
 }
@@ -152,24 +157,6 @@ struct ActivityDetailScreen: View {
                 ),
                 onReturnToPlanning: {},
                 useTypes: .workshop
-            )
-
-            ActivityDetailScreen(
-                workshop: Workshop(
-                    id: UUID(),
-                    name: "L'atelier des enfants",
-                    startTime: Date(),
-                    endTime: Date().addingTimeInterval(3600),
-                    capacityMax: 16,
-                    subscriberNumber: 8,
-                    workshopDescription:
-                        "Description|Ateliers artistiques pour le jeune public, avec des activités de collage, dessin, découpage et création autour de Paris et Rome. Animés par Elisa Monguzzi (Ateliers du Poisson Bleu).",
-                    categoryID: UUID(),
-                    categoryName: "Jeune public",
-                    remainingPlaces: 0,
-                ),
-                onReturnToPlanning: {},
-                useTypes: .reservation
             )
         }
     }
