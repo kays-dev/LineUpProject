@@ -13,6 +13,10 @@ import Observation
 final class WorkshopFiltersViewModel {
 
     private let workshopStore: WorkshopStore
+    
+    // Débogage
+    let id = UUID()
+    private var hasApplied = false
 
     init(workshopStore: WorkshopStore) {
         self.workshopStore = workshopStore
@@ -78,6 +82,10 @@ final class WorkshopFiltersViewModel {
             category: categories,
             status: selectedAvailability?.apiValue
         )
+        
+        // débogage
+        hasApplied = false
+        
         // mémorisé qu'après un succès
         appliedName = trimmedName
         applied = Snapshot(
@@ -88,16 +96,13 @@ final class WorkshopFiltersViewModel {
     }
     
     func search() async {
-        // anti-rebond : si le texte change pendant l'attente, la tâche est annulée
-        try? await Task.sleep(for: .milliseconds(400))
-        guard !Task.isCancelled, trimmedName != appliedName else { return }
+        guard !Task.isCancelled else { return }
+        guard !hasApplied || trimmedName != appliedName else { return }
 
         do {
             try await applyFilters()
         } catch is CancellationError {
-            // remplacée par une requête plus récente : normal
         } catch let error as URLError where error.code == .cancelled {
-            // idem
         } catch {
             errorMessage = "Recherche impossible."
         }

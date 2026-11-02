@@ -103,6 +103,7 @@ struct TemporaryLoginView: View {
             try await viewModel.fetchWorkshopsDays()
             try await categoryStore.fetchAll()
             try await viewModel.applyFilters()
+            print("VM créé :", viewModel.id.uuidString.prefix(4), "ateliers :", viewModel.workshops.count)
 
             filtersViewModel = viewModel
 

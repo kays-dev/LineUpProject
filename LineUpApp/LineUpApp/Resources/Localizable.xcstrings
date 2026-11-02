@@ -170,6 +170,9 @@
     "Atelier introuvable" : {
 
     },
+    "Aucun atelier" : {
+
+    },
     "avatar.arlecchino" : {
       "comment" : "Avatar",
       "extractionState" : "manual",
