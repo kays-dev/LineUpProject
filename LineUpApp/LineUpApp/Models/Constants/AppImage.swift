@@ -137,6 +137,7 @@ enum AppImage {
         case calendarCheckFill = "icon-calendar-check-fill"
         case calendarFill = "icon-calendar-fill"
         case clockFill = "icon-clock-fill"
+        case ellipsisDuotone = "icon-ellipsis-duotone"
         case infoDuotone = "icon-info-duotone"
         case lockDuotone = "icon-lock-duotone"
         case mapDuotone = "icon-map-duotone"
@@ -148,6 +149,7 @@ enum AppImage {
         case sparkleDuotone = "icon-sparkle-duotone"
         case ticketDuotone = "icon-ticket-duotone"
         case ticketFill = "icon-ticket-fill"
+        case xMark = "icon-x-bold"
 
         var image: Image {
             Image(rawValue)
