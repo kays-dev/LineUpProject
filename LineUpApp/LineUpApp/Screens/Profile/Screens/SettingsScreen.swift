@@ -20,6 +20,9 @@ struct SettingsScreen: View {
     @State private var showsDeletePopup = false
     @State private var showsLanguage = false
     @State private var showsAvatar = false
+    @State private var showsPassword = false
+    @State private var showsTerms = false
+    @State private var showsPrivacy = false
 
     var body: some View {
         ScrollView {
@@ -50,6 +53,15 @@ struct SettingsScreen: View {
         }
         .sheet(isPresented: $showsAvatar) {
             AvatarScreen()
+        }
+        .sheet(isPresented: $showsPassword) {
+            PasswordScreen()
+        }
+        .sheet(isPresented: $showsTerms) {
+            TermsScreen()
+        }
+        .sheet(isPresented: $showsPrivacy) {
+            PrivacyScreen()
         }
     }
 
@@ -108,13 +120,18 @@ struct SettingsScreen: View {
                         )
                     }
                     .buttonStyle(.plain)
-                    SettingsRow(
-                        icon: AppImage.InterfaceIcon.lockDuotone.image,
-                        title: "settings.password",
-                        subtitle: "settings.password.subtitle",
-                        accessory: .chevron,
-                        showsSeparator: false
-                    )
+                    Button {
+                        showsPassword = true
+                    } label: {
+                        SettingsRow(
+                            icon: AppImage.InterfaceIcon.lockDuotone.image,
+                            title: "settings.password",
+                            subtitle: "settings.password.subtitle",
+                            accessory: .chevron,
+                            showsSeparator: false
+                        )
+                    }
+                    .buttonStyle(.plain)
                 }
             }
         }
@@ -174,18 +191,28 @@ struct SettingsScreen: View {
             SectionTitle(title: "settings.about")
             ContentCard(theme: .light, size: .small) {
                 VStack(spacing: AppToken.Spacing.none) {
-                    SettingsRow(
-                        icon: AppImage.InterfaceIcon.infoDuotone.image,
-                        title: "settings.terms",
-                        accessory: .chevron,
-                        showsSeparator: false
-                    )
-                    SettingsRow(
-                        icon: AppImage.InterfaceIcon.lockDuotone.image,
-                        title: "settings.privacy",
-                        accessory: .chevron,
-                        showsSeparator: false
-                    )
+                    Button {
+                        showsTerms = true
+                    } label: {
+                        SettingsRow(
+                            icon: AppImage.InterfaceIcon.infoDuotone.image,
+                            title: "settings.terms",
+                            accessory: .chevron,
+                            showsSeparator: false
+                        )
+                    }
+                    .buttonStyle(.plain)
+                    Button {
+                        showsPrivacy = true
+                    } label: {
+                        SettingsRow(
+                            icon: AppImage.InterfaceIcon.lockDuotone.image,
+                            title: "settings.privacy",
+                            accessory: .chevron,
+                            showsSeparator: false
+                        )
+                    }
+                    .buttonStyle(.plain)
                 }
             }
         }
