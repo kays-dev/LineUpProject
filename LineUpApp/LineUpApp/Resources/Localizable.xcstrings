@@ -1,6 +1,9 @@
 {
   "sourceLanguage" : "fr",
   "strings" : {
+    "" : {
+
+    },
     "%@" : {
 
     },
@@ -28,6 +31,12 @@
 
     },
     "Adresse email" : {
+
+    },
+    "Affiche" : {
+
+    },
+    "Agenda" : {
 
     },
     "agenda.section.ongoing" : {
@@ -125,6 +134,9 @@
           }
         }
       }
+    },
+    "Aparté" : {
+
     },
     "avatar.arlecchino" : {
       "comment" : "Avatar",
@@ -2630,6 +2642,54 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Elimina il mio account"
+          }
+        }
+      }
+    },
+    "settings.deleteAccount.message" : {
+      "comment" : "Message de la popup de suppression du compte",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "This action is permanent: your account and your bookings will be deleted."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cette action est définitive : votre compte et vos réservations seront supprimés."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Questa azione è definitiva: il tuo account e le tue prenotazioni saranno eliminati."
+          }
+        }
+      }
+    },
+    "settings.deleteAccount.title" : {
+      "comment" : "Titre de la popup de suppression du compte",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Delete your account?"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Supprimer votre compte ?"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Eliminare il tuo account?"
           }
         }
       }

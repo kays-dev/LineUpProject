@@ -110,6 +110,7 @@ extension AppToken {
         static let gridRing: CGFloat = 96
         static let grid: CGFloat = 84
         static let profile: CGFloat = 120
+        static let settings: CGFloat = 56
         
     }
     
