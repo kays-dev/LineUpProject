@@ -53,12 +53,7 @@ struct LineUpAppApp: App {
 
     var body: some Scene {
         WindowGroup {
-            
-            WorkshopFilterScreen(
-                viewModel: filtersViewModel,
-                dates: workshopStore.workshopDays,
-                categories: categoryStore.categories.map { $0.name }
-            )
+            TemporaryLoginView()
             .environment(sessionStore)
             .environment(workshopStore)
             .environment(categoryStore)
@@ -74,49 +69,6 @@ struct LineUpAppApp: App {
                     print("Erreur lors du chargement des filtres :", error)
                 }
             }
-            
-//            ContentView()
-//                .environment(sessionStore)
-//                .environment(workshopStore)
-//                .environment(categoryStore)
-//                .environment(reservationStore)
-
         }
     }
 }
-
-
-
-//import SwiftUI
-//
-//@main
-//struct LineUpAppApp: App {
-//    
-//    @State private var sessionStore: SessionStore
-//    @State private var workshopStore: WorkshopStore
-//    @State private var categoryStore: CategoryStore
-//    
-//    init() {
-//        let keychain = KeychainService()
-//        let apiClient = APIClient(baseURL: APIConfig.baseURL, keychain: keychain)
-//        
-//        _sessionStore = State(initialValue: SessionStore(
-//            service: AuthService(apiClient: apiClient, keychain: keychain)
-//        ))
-//        _workshopStore = State(initialValue: WorkshopStore(
-//            workshopService: WorkshopService(apiClient: apiClient)
-//        ))
-//        _categoryStore = State(initialValue: CategoryStore(
-//            service: CategoryService(apiClient: apiClient)
-//        ))
-//    }
-//    
-//    var body: some Scene {
-//        WindowGroup {
-//            ContentView()
-//                .environment(sessionStore)
-//                .environment(workshopStore)
-//                .environment(categoryStore)
-//        }
-//    }
-//}

@@ -4,6 +4,9 @@
     "" : {
 
     },
+    "." : {
+
+    },
     "%@" : {
 
     },
@@ -28,6 +31,9 @@
       }
     },
     "%lld" : {
+
+    },
+    "à l’affiche" : {
 
     },
     "Adresse email" : {
@@ -1480,6 +1486,9 @@
         }
       }
     },
+    "common.clear" : {
+
+    },
     "common.close" : {
       "comment" : "Bouton fermer (accessibilité)",
       "extractionState" : "manual",
@@ -2592,6 +2601,9 @@
           }
         }
       }
+    },
+    "Rejoindre la liste d’attente" : {
+
     },
     "Se connecter" : {
 
