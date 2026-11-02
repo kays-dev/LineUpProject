@@ -43,10 +43,11 @@ struct ProfileContent: View {
                 history
             }
             .padding(.horizontal, AppToken.Padding.screen)
+            .padding(.top, AppToken.Padding.headerBottom)
             .padding(.bottom, AppToken.Padding.scrollViewBottom)
         }
-        .safeAreaBar(edge: .top) {
-            header
+        .lineupPageHeading(.primary(heading: .profileTitle)) {
+            headerActions
         }
         .background(AppColor.Screen.background)
         .overlay {
@@ -67,30 +68,21 @@ struct ProfileContent: View {
         }
     }
 
-    private var header: some View {
-        HStack {
-            PageTitle(title: "profile.title")
-
-            Spacer()
-
-            HStack(spacing: AppToken.Spacing.s12) {
-                AppButton(title: "settings.title", icon: AppImage.Icon.settings.image, type: .iconOutline) {
-                    showsSettings = true
-                }
-                Button {
-                    language = language == .italian ? .french : .italian
-                } label: {
-                    flag.image
-                        .resizable()
-                        .scaledToFit()
-                        .frame(width: AppToken.Scale.primitive28, height: AppToken.Scale.primitive28)
-                }
-                .buttonStyle(.plain)
-                .accessibilityLabel(Text("settings.language"))
-            }
+    @ViewBuilder
+    private var headerActions: some View {
+        AppButton(title: "settings.title", icon: AppImage.Icon.settings.image, type: .iconOutline) {
+            showsSettings = true
         }
-        .padding(.horizontal, AppToken.Padding.screen)
-        .padding(.bottom, AppToken.Padding.headerBottom)
+        Button {
+            language = language == .italian ? .french : .italian
+        } label: {
+            flag.image
+                .resizable()
+                .scaledToFit()
+                .frame(width: AppToken.Scale.primitive28, height: AppToken.Scale.primitive28)
+        }
+        .buttonStyle(.plain)
+        .accessibilityLabel(Text("settings.language"))
     }
 
     private func localized(_ resource: LocalizedStringResource) -> String {
