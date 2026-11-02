@@ -21,7 +21,7 @@ struct TemporaryLoginView: View {
 
             } else if sessionStore.isLoggedIn,
                       let viewModel = filtersViewModel {
-                ContentView(filtersViewModel: viewModel)
+                ContentView()
             } else {
                 loginForm
             }

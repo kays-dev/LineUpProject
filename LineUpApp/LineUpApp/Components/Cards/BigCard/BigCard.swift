@@ -185,7 +185,7 @@ fileprivate struct Styles {
         switch status {
             
         case .workshop(let availability): availability == .full
-        case .reservation(let status, availability : let availability): status != .validated
+        case .reservation(let status, availability : _): status != .validated
             
         }
         

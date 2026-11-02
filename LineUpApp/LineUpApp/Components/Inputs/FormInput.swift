@@ -29,6 +29,9 @@ struct FormInput: View {
         
     }
     
+    var isSecure: Bool = false
+    @State private var isRevealed = false
+    
     @FocusState private var isFocused: Bool
     @Environment(\.isEnabled) private var isEnabled
     
@@ -52,14 +55,51 @@ struct FormInput: View {
 
                 }
 
-                TextField(text: $input, prompt: Text(placeholder).foregroundStyle(styles.foreground.opacity(Styles.placeholderOpacity))) {
-                    
-                    Text(placeholder)
-                    
+                Group {
+
+                    if isSecure && !isRevealed {
+
+                        SecureField(text: $input, prompt: Text(placeholder).foregroundStyle(styles.foreground.opacity(Styles.placeholderOpacity))) {
+
+                            Text(placeholder)
+
+                        }
+
+                    } else {
+
+                        TextField(text: $input, prompt: Text(placeholder).foregroundStyle(styles.foreground.opacity(Styles.placeholderOpacity))) {
+
+                            Text(placeholder)
+
+                        }
+
+                    }
+
                 }
                 .lineupFont(Styles.font)
                 .focused($isFocused)
 
+                // Afficher / masquer le mot de passe
+                if isSecure {
+
+                    Button {
+
+                        isRevealed.toggle()
+
+                    } label: {
+
+                        (isRevealed ? Styles.hideIcon : Styles.showIcon)
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width: Styles.iconSize, height: Styles.iconSize)
+                            .foregroundStyle(Styles.iconColor)
+
+                    }
+                    .buttonStyle(.plain)
+                    .accessibilityLabel(Text(.passwordToggleVisibility))
+
+                }
+                
                 // Icône de droite
                 if !input.isEmpty, isFocused || !isValidating {
 
@@ -169,6 +209,9 @@ fileprivate struct Styles {
     static let iconColor = AppColor.Text.tertiary
     static let placeholderOpacity: Double = 0.8
 
+    static let showIcon = AppImage.Icon.eye.image
+    static let hideIcon = AppImage.Icon.eyeSlash.image
+    
     static let iconSize = AppToken.Scale.primitive16
     static let clearIcon = AppImage.Icon.xCircled.image
     static let validIcon = AppImage.Icon.check.image

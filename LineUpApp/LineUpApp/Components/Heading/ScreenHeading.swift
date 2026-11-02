@@ -51,7 +51,7 @@ struct PageHeading<Trailing: View>: View {
 
                     Spacer()
 
-                case .secondary(let title, _, _):
+                case .secondary(_, _, _):
                     
                     AppButton(type: .back) { dismiss() }
                     
