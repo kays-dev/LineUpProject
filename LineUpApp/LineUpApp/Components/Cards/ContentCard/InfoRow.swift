@@ -7,11 +7,10 @@
 
 import SwiftUI
 
-// Ligne « libellé + valeur » des ContentCard (détail de réservation, historique)
 struct InfoRow: View {
     
-    let label: LocalizedStringResource   // traduit
-    let value: String                    // donnée de l'API, affichée telle quelle
+    let label: LocalizedStringResource
+    let value: String
     
     var body: some View {
         
@@ -34,7 +33,7 @@ fileprivate struct Styles {
     
     static let labelFont: AppFont = .Label.label
     static let valueFont: AppFont = .Body.body
-    static let gap = AppToken.Spacing.s8
+    static let gap = AppToken.Spacing.s4
     
 }
 
@@ -43,6 +42,8 @@ fileprivate struct Styles {
     ContentCard(theme: .dark, size: .big) {
         
         InfoRow(label: .bookingFullName, value: "Giulia Rossi")
+            .padding(.bottom, AppToken.Spacing.s16)
+        
         InfoRow(label: .bookingWorkshop, value: "La Locandiera")
         
     }

@@ -21,7 +21,6 @@ struct UserBookingsScreen: View {
 
 }
 
-// Même découpage que ProfileScreen / ProfileContent : le ViewModel a besoin des stores de l'environnement pour être créé
 struct UserBookingsContent: View {
 
     @State private var viewModel: UserBookingsViewModel
@@ -44,20 +43,6 @@ struct UserBookingsContent: View {
 
         List {
 
-            // Recherche + filtres
-            HStack(spacing: Styles.searchGap) {
-
-                SearchBar(input: $viewModel.query)
-
-                AppButton(title: "filters.title", icon: Styles.filterIcon, type: .iconOutline, shape: .radius16) {
-                    showFilters = true
-                }
-
-            }
-            .listRowSeparator(.hidden)
-            .listRowBackground(Color.clear)
-            .listRowInsets(Styles.rowInsets)
-
             // En cours
             if !viewModel.ongoing.isEmpty {
 
@@ -65,6 +50,7 @@ struct UserBookingsContent: View {
                     .listRowSeparator(.hidden)
                     .listRowBackground(Color.clear)
                     .listRowInsets(Styles.sectionInsets)
+                    .padding(.top, Styles.screenTopPadding)
 
                 ScrollView(.horizontal) {
                     
@@ -163,7 +149,23 @@ struct UserBookingsContent: View {
         }
         .listStyle(.plain)
         .scrollContentBackground(.hidden)
+        .padding(.bottom, Styles.screenBottomPadding)
         .background(Styles.background)
+        .safeAreaBar(edge: .top, content: {
+            
+            HStack(spacing: Styles.searchGap) {
+
+                SearchBar(input: $viewModel.query)
+
+                AppButton(title: "filters.title", icon: Styles.filterIcon, type: .iconOutline, shape: .radius16) {
+                    showFilters = true
+                }
+
+            }
+            .padding(.top, Styles.screenTopPadding)
+            .padding(.horizontal, Styles.screenHorizontalPadding)
+            
+        })
         .lineupPageHeading(.primary(heading: .agendaTitle)) {}
         .navigationDestination(item: $selectedReservation) { reservation in
 
@@ -227,6 +229,10 @@ fileprivate struct Styles {
 
     static let rowInsets = AppToken.Padding.reservationRow
     static let sectionInsets = EdgeInsets(top: AppToken.Spacing.s20, leading: AppToken.Padding.screen, bottom: AppToken.Spacing.none, trailing: AppToken.Padding.screen)
+    
+    static let screenTopPadding = AppToken.Padding.headerBottom
+    static let screenBottomPadding = AppToken.Padding.scrollViewBottom
+    static let screenHorizontalPadding = AppToken.Padding.screen
 
 }
 

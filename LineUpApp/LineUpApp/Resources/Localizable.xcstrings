@@ -641,6 +641,29 @@
         }
       }
     },
+    "booking.meetingPoint" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Meeting point"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Point de rendez-vous"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Punto d’incontro"
+          }
+        }
+      }
+    },
     "booking.moreInfo" : {
       "comment" : "Section",
       "extractionState" : "manual",
