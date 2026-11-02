@@ -102,6 +102,7 @@ struct PageHeading<Trailing: View>: View {
         }
         .foregroundStyle(Styles.foreground)
         .padding(.horizontal, Styles.horizontalPadding)
+        .padding(.bottom, Styles.bottomPadding)
         .frame(maxWidth: .infinity, alignment: .leading)
         
     }
@@ -121,6 +122,7 @@ struct PageHeading<Trailing: View>: View {
 fileprivate struct Styles {
 
     static let horizontalPadding: CGFloat = AppToken.Scale.primitive20
+    static let bottomPadding: CGFloat = AppToken.Padding.headerBottom
     static let rowHeight = AppToken.Scale.primitive44
     static let gap = AppToken.Spacing.s16
     static let actionsGap = AppToken.Spacing.s8

@@ -83,6 +83,7 @@ struct UserBookingsContent: View {
                     }
                     
                 }
+                .scrollIndicators(.hidden)
 
             }
 
@@ -166,7 +167,7 @@ struct UserBookingsContent: View {
                 }
 
             }
-            .padding(.top, Styles.screenTopPadding)
+            .padding(.bottom, Styles.screenTopPadding)
             .padding(.horizontal, Styles.screenHorizontalPadding)
             
         })
