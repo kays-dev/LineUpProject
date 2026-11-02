@@ -57,8 +57,12 @@ func configure(_ app: Application) async throws {
     )
     
     // Ajout du middleware CORS à l'application
+    // Il doit passer AVANT le ErrorMiddleware : sinon les réponses d'erreur
+    // (409, 403…) partent sans en-têtes CORS et le navigateur les bloque.
     let corsMiddleware = CORSMiddleware(configuration: corsConfiguration)
+    app.middleware = .init()
     app.middleware.use(corsMiddleware)
+    app.middleware.use(ErrorMiddleware.default(environment: app.environment))
     
     // Gatekeeper: middleware conçu pour limiter le nombre de requête d'un client peut faire sur une periode définie
     app.caches.use(.memory)
