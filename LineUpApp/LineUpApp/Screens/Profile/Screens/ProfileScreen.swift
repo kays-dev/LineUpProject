@@ -93,8 +93,10 @@ struct ProfileContent: View {
         .padding(.bottom, AppToken.Padding.headerBottom)
     }
 
-    private func localized(_ key: String.LocalizationValue) -> String {
-        String(localized: LocalizedStringResource(key, locale: locale))
+    private func localized(_ resource: LocalizedStringResource) -> String {
+        var resource = resource
+        resource.locale = locale
+        return String(localized: resource)
     }
 
     private var flag: AppImage.Flag {
