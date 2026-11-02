@@ -139,7 +139,7 @@ struct ActivityDetailScreen: View {
             ActivityDetailScreen(
                 workshop: Workshop(
                     id: UUID(),
-                    name: "L’atelier des enfants",
+                    name: "Éternel Tintoret",
                     startTime: Date(),
                     endTime: Date().addingTimeInterval(3600),
                     capacityMax: 16,
@@ -157,7 +157,7 @@ struct ActivityDetailScreen: View {
             ActivityDetailScreen(
                 workshop: Workshop(
                     id: UUID(),
-                    name: "L’atelier des enfants",
+                    name: "L'atelier des enfants",
                     startTime: Date(),
                     endTime: Date().addingTimeInterval(3600),
                     capacityMax: 16,

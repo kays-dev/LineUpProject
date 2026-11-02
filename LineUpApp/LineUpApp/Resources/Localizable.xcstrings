@@ -1924,9 +1924,6 @@
         }
       }
     },
-    "Hello, world!" : {
-
-    },
     "history.finished" : {
       "comment" : "Carte statut historique",
       "extractionState" : "manual",

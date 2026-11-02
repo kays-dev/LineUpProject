@@ -23,6 +23,8 @@ struct BadgeView: View {
                 )
 
             Image(icon.imageName)
+                .resizable()
+                .frame(width: 16, height: 16)
         }
         .padding(AppToken.Padding.caps)
         .frame(maxWidth: .infinity)
