@@ -122,6 +122,8 @@ enum AppImage {
         case close = "xmark"
         case check = "checkmark"
         case checkCircle = "checkmark.circle"
+        case eye = "eye"
+        case eyeSlash = "eye.slash"
         case search = "magnifyingglass"
         case share = "square.and.arrow.up"
         case settings = "gearshape"

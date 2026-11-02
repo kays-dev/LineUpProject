@@ -9,28 +9,26 @@ import Foundation
 import SwiftUI
 
 struct ActivityDetailScreen: View {
-    
+
     var workshop: Workshop
-    
-    var formattedDate: Date {
-        workshop.startTime
-    }
-    
+
     var onReturnToPlanning: () -> Void
-    
+
+    var useTypes: UseTypes
+
     @State private var showReservationSuccessPopup = false
-    
+
     var body: some View {
-        
+
         ZStack {
             Color.mintPrimary
                 .ignoresSafeArea()
-            
+
             ScrollView {
-                
+
                 VStack(alignment: .center, spacing: AppToken.Scale.primitive28)
                 {
-                    
+
                     // navigation bar
                     PageHeading(
                         mode: .secondary(
@@ -59,15 +57,15 @@ struct ActivityDetailScreen: View {
                                         )
                                 }
                         }
-                        
+
                     }
-                    
+
                     // card
                     BigCard(
                         cardFormat: workshop.availability == .available
-                        ? .standard : .compact,
+                            ? .standard : .compact,
                         use: .workshop(workshop.availability),
-                        workshopDate: formattedDate,
+                        workshopDate: workshop.date,
                         workshopStartTime: workshop.startTime,
                         workshopEndTime: workshop.endTime,
                         workshopCategory: workshop.categoryName,
@@ -76,7 +74,14 @@ struct ActivityDetailScreen: View {
                         remainingPlaces: workshop.remainingPlaces,
                         capacityMax: workshop.capacityMax
                     )
-                    
+
+                    // capsule
+                    BadgeView(
+                        title: workshop.categoryName,
+                        availability: workshop.availability,
+                        icon: workshop.categoryIcon
+                    )
+
                     // Description
                     if let section = workshop.descriptionSection(
                         name: "Description"
@@ -84,39 +89,46 @@ struct ActivityDetailScreen: View {
                         Text(section.detail)
                             .foregroundStyle(AppColor.Text.primary)
                     }
-                    
-                    // Boutons
-                    if workshop.remainingPlaces > 0 {
-                        PrimaryButton(
-                            text: "Réserver",
-                            isSelected: true
-                        ) {
-                            showReservationSuccessPopup = true
-                        }
-                    } else {
-                        AppButton(
-                            title: "Rejoindre la liste d’attente",
-                            type: .secondary,
-                            tone: .danger
-                        ) {
-                            showReservationSuccessPopup = true
+
+                    if useTypes == .workshop {
+
+                        // Boutons
+                        if workshop.remainingPlaces > 0 {
+                            PrimaryButton(
+                                text: "Réserver",
+                                isSelected: true
+                            ) {
+                                showReservationSuccessPopup = true
+                            }
+                        } else {
+                            AppButton(
+                                title: "Rejoindre la liste d’attente",
+                                type: .secondary,
+                                tone: .danger
+                            ) {
+                                showReservationSuccessPopup = true
+
+                            }
                         }
                     }
+
+                }
+                // -> popup + confetti
+                .navigationDestination(
+                    isPresented: $showReservationSuccessPopup
+                ) {
+                    ReservationSuccessPopup(
+                        workshop: workshop,
+                        onReturnToPlanning: onReturnToPlanning
+                    )
+                    .toolbar(.hidden, for: .navigationBar)
+
+                    .padding(AppToken.Padding.screen)
                 }
             }
-            .padding(AppToken.Padding.screen)
-            
-        }
-        // -> popup + confetti
-        .navigationDestination(isPresented: $showReservationSuccessPopup) {
-            ReservationSuccessPopup(
-                workshop: workshop,
-                onReturnToPlanning: onReturnToPlanning
-            )
-            .toolbar(.hidden, for: .navigationBar)
+
         }
     }
-    
 }
 
 #Preview {
@@ -127,7 +139,7 @@ struct ActivityDetailScreen: View {
             ActivityDetailScreen(
                 workshop: Workshop(
                     id: UUID(),
-                    name: "L’atelier des enfants",
+                    name: "Éternel Tintoret",
                     startTime: Date(),
                     endTime: Date().addingTimeInterval(3600),
                     capacityMax: 16,
@@ -138,21 +150,14 @@ struct ActivityDetailScreen: View {
                     categoryName: "Jeune public",
                     remainingPlaces: 7,
                 ),
-                onReturnToPlanning: {}
+                onReturnToPlanning: {},
+                useTypes: .workshop
             )
-        }
-    }
-}
 
-#Preview {
-    ZStack {
-        Color.mintPrimary
-            .ignoresSafeArea()
-        NavigationStack {
             ActivityDetailScreen(
                 workshop: Workshop(
                     id: UUID(),
-                    name: "L’atelier des enfants",
+                    name: "L'atelier des enfants",
                     startTime: Date(),
                     endTime: Date().addingTimeInterval(3600),
                     capacityMax: 16,
@@ -163,7 +168,8 @@ struct ActivityDetailScreen: View {
                     categoryName: "Jeune public",
                     remainingPlaces: 0,
                 ),
-                onReturnToPlanning: {}
+                onReturnToPlanning: {},
+                useTypes: .reservation
             )
         }
     }

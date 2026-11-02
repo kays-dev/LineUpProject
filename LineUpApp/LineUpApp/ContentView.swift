@@ -9,6 +9,7 @@ import SwiftUI
 
 struct ContentView: View {
     
+    @Bindable var filtersViewModel: WorkshopFiltersViewModel
     @State private var selection: LineUpTab = .affiche
     @State private var tabBarVisibility: TabBarVisibility = .visible
 
@@ -19,7 +20,7 @@ struct ContentView: View {
             ForEach(LineUpTab.allCases) { tab in
                 
                 NavigationStack {
-                    tab.rootView
+                    tab.rootView(viewModel: filtersViewModel)
                 }
                 .tag(tab)
                 .toolbar(.hidden, for: .tabBar)
@@ -48,5 +49,16 @@ struct ContentView: View {
 }
 
 #Preview {
-    ContentView()
+    let store = WorkshopStore(
+        workshopService: WorkshopService(
+            apiClient: APIClient(
+                baseURL: URL(string: "http://localhost:8080")!,
+                keychain: KeychainService()
+            )
+        )
+    )
+
+    let viewModel = WorkshopFiltersViewModel(workshopStore: store)
+
+    return ContentView(filtersViewModel: viewModel)
 }

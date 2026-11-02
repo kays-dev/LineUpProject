@@ -33,9 +33,14 @@ struct Workshop: Identifiable, Hashable, CustomStringConvertible{
         return " Nom : \(name) Description : \(workshopDescription) "
     }
     
-    // cards
+    // cards -> icon
     var categoryIcon: AppImage.Category {
         AppImage.Category(rawValue: categoryName) ?? .culture
+    }
+    
+    // cards -> date
+    var date: Date {
+        Calendar.current.startOfDay(for: startTime)
     }
 }
 

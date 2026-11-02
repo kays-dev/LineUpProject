@@ -21,13 +21,7 @@ struct TemporaryLoginView: View {
 
             } else if sessionStore.isLoggedIn,
                       let viewModel = filtersViewModel {
-
-                WorkshopFilterScreen(
-                    viewModel: viewModel,
-                    dates: viewModel.availableDays,
-                    categories: categoryStore.categories.map { $0.name }
-                )
-
+                ContentView(filtersViewModel: viewModel)
             } else {
                 loginForm
             }
@@ -107,11 +101,13 @@ struct TemporaryLoginView: View {
 
             try await viewModel.fetchWorkshopsDays()
             try await categoryStore.fetchAll()
+            try await viewModel.applyFilters()
 
             filtersViewModel = viewModel
 
         } catch {
             errorMessage = "Erreur de chargement : \(error.localizedDescription)"
+            print("ERREUR API :", error)
         }
     }
 }
