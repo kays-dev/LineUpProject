@@ -120,7 +120,7 @@ struct BookingDetailContent: View {
                 
             }
             .foregroundStyle(Styles.foreground)
-            .padding(.horizontal, AppToken.Padding.screen)
+            .padding(.horizontal, Styles.screenHorizontalPadding)
             .padding(.top, Styles.screenTopPadding)
             .padding(.bottom, Styles.screenBottomPadding)
             
@@ -218,7 +218,7 @@ fileprivate struct Styles {
         BookingDetailScreen(
             reservation: Reservation(
                 id: 1025,
-                status: .validated,
+                status: .pending,
                 workshop: Workshop(
                     id: UUID(),
                     name: "La dolce vita",

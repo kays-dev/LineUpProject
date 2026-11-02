@@ -16,12 +16,14 @@ struct StatCard: View {
     
     var body: some View {
         
-        VStack(alignment: .leading) {
+        VStack(alignment: .leading, spacing: Styles.gap) {
             
-            HStack(alignment: .bottom, spacing: Styles.gap) {
+            HStack(alignment: .bottom) {
                 
                 Text(valueInString)
                     .lineupFont(Styles.font)
+                
+                Spacer()
                 
                 icon
                     .resizable()
@@ -37,9 +39,12 @@ struct StatCard: View {
                     }
                 
             }
+            .frame(maxWidth: .infinity, alignment: .leading)
             
             Text(label)
                 .lineupFont(Styles.labelFont)
+                .frame(maxWidth: .infinity, alignment: .leading)
+                .lineLimit(1)
             
         }
         .padding(Styles.padding)
@@ -61,7 +66,7 @@ fileprivate struct Styles {
     static let font : AppFont = .Title.title2
     
     static let fill : Color = AppColor.Card.Standard.background
-    static let gap : CGFloat = AppToken.Spacing.s16
+    static let gap : CGFloat = AppToken.Spacing.s12
     static let cornerRadius = AppToken.Radius.small
     static let padding = AppToken.Padding.caps * 2
     static let maxWidth : CGFloat = 168 + gap

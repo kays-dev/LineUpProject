@@ -24,6 +24,7 @@ struct ProfileContent: View {
     @Environment(SessionStore.self) private var sessionStore
     @AppStorage("selectedAvatar") private var avatar: AppImage.Avatar = .colombina
     @State private var showsSettings = false
+    @State private var selectedReservation: Reservation?
 
     init(reservationStore: ReservationStore, workshopStore: WorkshopStore) {
         _viewModel = State(initialValue: ProfileViewModel(
@@ -56,6 +57,11 @@ struct ProfileContent: View {
         }
         .navigationDestination(isPresented: $showsSettings) {
             SettingsScreen()
+        }
+        .navigationDestination(item: $selectedReservation) { reservation in
+
+            BookingDetailScreen(reservation: reservation)
+
         }
     }
 
@@ -173,6 +179,9 @@ struct ProfileContent: View {
                         workshopCategory: reservation.workshop.categoryName,
                         workshopName: reservation.workshop.name
                     )
+                    .onTapGesture {
+                        selectedReservation = reservation
+                    }
                 }
             }
         }
