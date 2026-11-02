@@ -23,7 +23,8 @@ struct TermsScreen: View {
             .padding(.top, AppToken.Padding.headerBottom)
             .padding(.bottom, AppToken.Padding.scrollViewBottom)
         }
-        .lineupPageHeading(.tertiary(heading: .termsTitle, subtitle: .termsUpdated)) {}
+        .lineupPageHeading(.secondary(title: "", heading: .termsTitle, subtitle: .termsUpdated)) {}
+        .tabBarVisibility(.hidden)
         .background(AppColor.Screen.background)
     }
 }

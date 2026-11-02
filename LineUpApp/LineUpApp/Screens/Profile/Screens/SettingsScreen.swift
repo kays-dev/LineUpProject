@@ -48,19 +48,19 @@ struct SettingsScreen: View {
                 deletePopup
             }
         }
-        .sheet(isPresented: $showsLanguage) {
+        .navigationDestination(isPresented: $showsLanguage) {
             LanguageScreen()
         }
-        .sheet(isPresented: $showsAvatar) {
+        .navigationDestination(isPresented: $showsAvatar) {
             AvatarScreen()
         }
-        .sheet(isPresented: $showsPassword) {
+        .navigationDestination(isPresented: $showsPassword) {
             PasswordScreen()
         }
-        .sheet(isPresented: $showsTerms) {
+        .navigationDestination(isPresented: $showsTerms) {
             TermsScreen()
         }
-        .sheet(isPresented: $showsPrivacy) {
+        .navigationDestination(isPresented: $showsPrivacy) {
             PrivacyScreen()
         }
     }
