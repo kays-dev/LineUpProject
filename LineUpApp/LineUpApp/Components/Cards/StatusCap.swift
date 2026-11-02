@@ -28,7 +28,7 @@ struct StatusCap: View {
                 
             }
             
-        case .reservation(let status, availability : let availability):
+        case .reservation( _, availability : let availability):
             if availability == .full {
                 
                 return .full

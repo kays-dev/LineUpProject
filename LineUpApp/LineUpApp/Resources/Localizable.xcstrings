@@ -4,6 +4,9 @@
     "" : {
 
     },
+    "." : {
+
+    },
     "%@" : {
 
     },
@@ -1480,6 +1483,9 @@
         }
       }
     },
+    "common.clear" : {
+
+    },
     "common.close" : {
       "comment" : "Bouton fermer (accessibilité)",
       "extractionState" : "manual",
@@ -1915,9 +1921,6 @@
         }
       }
     },
-    "Hello, world!" : {
-
-    },
     "history.finished" : {
       "comment" : "Carte statut historique",
       "extractionState" : "manual",
@@ -2058,6 +2061,270 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Lingua"
+          }
+        }
+      }
+    },
+    "login.createAccount" : {
+      "comment" : "Lien vers l'inscription",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Create an account"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Créer un compte"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Crea un account"
+          }
+        }
+      }
+    },
+    "login.email" : {
+      "comment" : "Libellé du champ e-mail",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Email"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "E-mail"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "E-mail"
+          }
+        }
+      }
+    },
+    "login.email.placeholder" : {
+      "comment" : "Placeholder du champ e-mail",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "example@dolcevita.fr"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "exemple@dolcevita.fr"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "esempio@dolcevita.fr"
+          }
+        }
+      }
+    },
+    "login.error.credentials" : {
+      "comment" : "Erreur 401 : identifiants incorrects",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Incorrect email or password."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "E-mail ou mot de passe incorrect."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "E-mail o password non corretti."
+          }
+        }
+      }
+    },
+    "login.error.generic" : {
+      "comment" : "Erreur réseau ou serveur à la connexion",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Couldn't log in. Check your connection and try again."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Connexion impossible. Vérifiez votre connexion et réessayez."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Accesso non riuscito. Controlla la connessione e riprova."
+          }
+        }
+      }
+    },
+    "login.heading" : {
+      "comment" : "Grand titre de l'écran de connexion (le point rouge est ajouté par PageHeading)",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Welcome back"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Heureux de vous revoir"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bentornato"
+          }
+        }
+      }
+    },
+    "login.noAccount" : {
+      "comment" : "Texte avant le lien d'inscription",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No account yet?"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pas encore de compte ?"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Non hai ancora un account?"
+          }
+        }
+      }
+    },
+    "login.password.placeholder" : {
+      "comment" : "Placeholder du champ mot de passe",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Your password"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Votre mot de passe"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "La tua password"
+          }
+        }
+      }
+    },
+    "login.submit" : {
+      "comment" : "Bouton de connexion",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Log in"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Se connecter"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Accedi"
+          }
+        }
+      }
+    },
+    "login.subtitle" : {
+      "comment" : "Sous-titre de l'écran de connexion",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Log in to find your bookings."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Connectez-vous pour retrouver vos réservations."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Accedi per ritrovare le tue prenotazioni."
+          }
+        }
+      }
+    },
+    "login.title" : {
+      "comment" : "Titre de la barre de l'écran de connexion",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Log in"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Connexion"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Accesso"
           }
         }
       }
@@ -2592,6 +2859,9 @@
           }
         }
       }
+    },
+    "Rejoindre la liste d’attente" : {
+
     },
     "Se connecter" : {
 
@@ -3727,6 +3997,9 @@
     "Vérification de la session..." : {
 
     },
+    "Voir le détail de l'atelier" : {
+
+    },
     "waitlist.success.button" : {
       "comment" : "Popup succès liste d'attente",
       "extractionState" : "manual",
@@ -3908,5 +4181,5 @@
       }
     }
   },
-  "version" : "1.0"
+  "version" : "1.2"
 }
