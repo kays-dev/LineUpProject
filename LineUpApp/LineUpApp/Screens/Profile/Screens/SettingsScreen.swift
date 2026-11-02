@@ -12,6 +12,7 @@ struct SettingsScreen: View {
 
     @Environment(SessionStore.self) private var sessionStore
     @Environment(\.dismiss) private var dismiss
+    @Environment(\.locale) private var locale
     @AppStorage("selectedAvatar") private var avatar: AppImage.Avatar = .colombina
     @AppStorage("notifications.reminder") private var reminderEnabled = true
     @AppStorage("notifications.spot") private var spotEnabled = true
@@ -243,13 +244,17 @@ struct SettingsScreen: View {
 
             StatusPopup(
                 type: .danger,
-                title: String(localized: "settings.deleteAccount.title"),
-                message: String(localized: "settings.deleteAccount.message"),
-                buttonTitle: String(localized: "settings.deleteAccount")
+                title: localized("settings.deleteAccount.title"),
+                message: localized("settings.deleteAccount.message"),
+                buttonTitle: localized("settings.deleteAccount")
             ) {
                 showsDeletePopup = false
             }
         }
+    }
+
+    private func localized(_ key: String.LocalizationValue) -> String {
+        String(localized: LocalizedStringResource(key, locale: locale))
     }
 
     private var appVersion: String {
