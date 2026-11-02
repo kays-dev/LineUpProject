@@ -68,21 +68,22 @@ struct ProfileContent: View {
         }
     }
 
-    @ViewBuilder
     private var headerActions: some View {
-        AppButton(title: "settings.title", icon: AppImage.Icon.settings.image, type: .iconOutline) {
-            showsSettings = true
+        HStack(spacing: AppToken.Spacing.s8) {
+            AppButton(title: "settings.title", icon: AppImage.Icon.settings.image, type: .iconOutline) {
+                showsSettings = true
+            }
+            Button {
+                language = language == .italian ? .french : .italian
+            } label: {
+                flag.image
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: AppToken.Scale.primitive28, height: AppToken.Scale.primitive28)
+            }
+            .buttonStyle(.plain)
+            .accessibilityLabel(Text("settings.language"))
         }
-        Button {
-            language = language == .italian ? .french : .italian
-        } label: {
-            flag.image
-                .resizable()
-                .scaledToFit()
-                .frame(width: AppToken.Scale.primitive28, height: AppToken.Scale.primitive28)
-        }
-        .buttonStyle(.plain)
-        .accessibilityLabel(Text("settings.language"))
     }
 
     private func localized(_ resource: LocalizedStringResource) -> String {

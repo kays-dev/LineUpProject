@@ -90,16 +90,16 @@ struct PasswordScreen: View {
         }
 
         isSaving = true
-        defer {
-            isSaving = false
-        }
 
         do {
             try await sessionStore.updatePassword(current: currentPassword, new: newPassword)
+            isSaving = false
             dismiss()
         } catch APIError.badStatus(400) {
+            isSaving = false
             currentError = .passwordErrorCurrent
         } catch {
+            isSaving = false
             currentError = .passwordErrorGeneric
         }
     }

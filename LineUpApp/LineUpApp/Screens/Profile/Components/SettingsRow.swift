@@ -67,20 +67,21 @@ struct SettingsRow: View {
         }
     }
 
-    @ViewBuilder
     private var accessoryView: some View {
-        switch accessory {
-        case .chevron:
-            chevron
-        case .toggle(let isOn):
-            AppToggle(isOn: isOn)
-                .accessibilityLabel(Text(title))
-        case .value(let value):
-            HStack(spacing: AppToken.Spacing.s4) {
-                Text(value)
-                    .lineupFont(AppFont.Body.body2)
-                    .foregroundStyle(AppColor.SettingRow.descriptionAndChevron)
+        HStack {
+            switch accessory {
+            case .chevron:
                 chevron
+            case .toggle(let isOn):
+                AppToggle(isOn: isOn)
+                    .accessibilityLabel(Text(title))
+            case .value(let value):
+                HStack(spacing: AppToken.Spacing.s4) {
+                    Text(value)
+                        .lineupFont(AppFont.Body.body2)
+                        .foregroundStyle(AppColor.SettingRow.descriptionAndChevron)
+                    chevron
+                }
             }
         }
     }

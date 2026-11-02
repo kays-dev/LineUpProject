@@ -67,34 +67,35 @@ struct AppNumberPicker: View {
         }
     }
 
-    @ViewBuilder
     private func row(number: Int, offset: Int) -> some View {
-        if number < minimum || number > maximum {
-            Text(number, format: .number)
-                .lineupFont(AppFont.Body.body)
-                .hidden()
-        } else if offset == 0 {
-            Text(number, format: .number)
-                .lineupFont(AppFont.Title.title2)
-                .foregroundStyle(isEnabled ? AppColor.Picker.text : AppColor.SettingRow.Disabled.content)
-                .frame(maxWidth: .infinity, minHeight: AppToken.Scale.primitive44)
-                .background(
-                    Capsule()
-                        .fill(isEnabled ? AppColor.Picker.selectedBackground : AppColor.SettingRow.Disabled.selectedBackground)
-                )
-                .overlay(
-                    Capsule()
-                        .strokeBorder(border, lineWidth: AppToken.Border.medium)
-                )
-        } else {
-            Text(number, format: .number)
-                .lineupFont(AppFont.Body.body)
-                .foregroundStyle(neighborColor(offset: offset))
-                .frame(maxWidth: .infinity)
-                .contentShape(Rectangle())
-                .onTapGesture {
-                    select(number)
-                }
+        HStack {
+            if number < minimum || number > maximum {
+                Text(number, format: .number)
+                    .lineupFont(AppFont.Body.body)
+                    .hidden()
+            } else if offset == 0 {
+                Text(number, format: .number)
+                    .lineupFont(AppFont.Title.title2)
+                    .foregroundStyle(isEnabled ? AppColor.Picker.text : AppColor.SettingRow.Disabled.content)
+                    .frame(maxWidth: .infinity, minHeight: AppToken.Scale.primitive44)
+                    .background(
+                        Capsule()
+                            .fill(isEnabled ? AppColor.Picker.selectedBackground : AppColor.SettingRow.Disabled.selectedBackground)
+                    )
+                    .overlay(
+                        Capsule()
+                            .strokeBorder(border, lineWidth: AppToken.Border.medium)
+                    )
+            } else {
+                Text(number, format: .number)
+                    .lineupFont(AppFont.Body.body)
+                    .foregroundStyle(neighborColor(offset: offset))
+                    .frame(maxWidth: .infinity)
+                    .contentShape(Rectangle())
+                    .onTapGesture {
+                        select(number)
+                    }
+            }
         }
     }
 

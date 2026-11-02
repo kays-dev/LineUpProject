@@ -53,7 +53,15 @@ final class ProfileViewModel {
         for reservation in activeReservations {
             counts[reservation.workshop.categoryName, default: 0] += 1
         }
-        return counts.max { $0.value < $1.value }?.key
+        var best: String? = nil
+        var bestCount = 0
+        for (name, count) in counts {
+            if count > bestCount {
+                best = name
+                bestCount = count
+            }
+        }
+        return best
     }
 
     var festivalDaysCount: Int {
@@ -81,16 +89,17 @@ final class ProfileViewModel {
     func loadProfile() async {
         isLoading = true
         hasError = false
-        defer { isLoading = false }
         do {
             try await reservationStore.fetchAll()
             try await workshopStore.fetchWorkshopsDays()
             for reservation in reservationStore.reservations {
                 print(reservation)
             }
+            isLoading = false
         } catch {
             hasError = true
             print("Erreur loadProfile : \(error)")
+            isLoading = false
         }
     }
 
