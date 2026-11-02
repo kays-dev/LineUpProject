@@ -4288,9 +4288,6 @@
     "Vérification de la session..." : {
 
     },
-    "Voir le détail de l'atelier" : {
-
-    },
     "waitlist.success.button" : {
       "comment" : "Popup succès liste d'attente",
       "extractionState" : "manual",
