@@ -81,7 +81,7 @@ extension AppToken {
         // Écran complet
         static let screen = Spacing.s20
         static let headerBottom = Spacing.s28
-        static let scrollViewBottom = Spacing.s32
+        static let scrollViewBottom : CGFloat = 88
 
         // Conteneurs
         static let smallBox = EdgeInsets(vertical: Spacing.s8, horizontal: Spacing.s16)

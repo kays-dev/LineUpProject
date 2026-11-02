@@ -20,8 +20,7 @@ struct TemporaryLoginView: View {
                 ProgressView("Vérification de la session...")
 
             } else if sessionStore.isLoggedIn,
-                let viewModel = filtersViewModel
-            {
+                      let viewModel = filtersViewModel {
                 ContentView(filtersViewModel: viewModel)
             } else {
                 loginForm

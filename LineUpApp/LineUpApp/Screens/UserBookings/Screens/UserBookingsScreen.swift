@@ -54,31 +54,36 @@ struct UserBookingsContent: View {
 
                 ScrollView(.horizontal) {
                     
-                    ForEach(viewModel.ongoing) { reservation in
+                    HStack(spacing: AppToken.Spacing.s16) {
                         
-                        BigCard(
-                            cardFormat: .ongoing,
-                            use: .reservation(reservation.status, availability: reservation.workshop.availability),
-                            workshopDate: reservation.workshop.startTime,
-                            workshopStartTime: reservation.workshop.startTime,
-                            workshopEndTime: reservation.workshop.endTime,
-                            workshopCategory: reservation.workshop.categoryName,
-                            workshopIcon: reservation.workshop.categoryIcon,
-                            workshopName: reservation.workshop.name,
-                            remainingPlaces: reservation.workshop.remainingPlaces,
-                            capacityMax: reservation.workshop.capacityMax
-                        )
-                        .contentShape(Rectangle())
-                        .onTapGesture {
-                            selectedReservation = reservation
+                        ForEach(viewModel.ongoing) { reservation in
+                            
+                            BigCard(
+                                cardFormat: .ongoing,
+                                use: .reservation(reservation.status, availability: reservation.workshop.availability),
+                                workshopDate: reservation.workshop.startTime,
+                                workshopStartTime: reservation.workshop.startTime,
+                                workshopEndTime: reservation.workshop.endTime,
+                                workshopCategory: reservation.workshop.categoryName,
+                                workshopIcon: reservation.workshop.categoryIcon,
+                                workshopName: reservation.workshop.name,
+                                remainingPlaces: reservation.workshop.remainingPlaces,
+                                capacityMax: reservation.workshop.capacityMax
+                            )
+                            .contentShape(Rectangle())
+                            .onTapGesture {
+                                selectedReservation = reservation
+                            }
+                            .listRowSeparator(.hidden)
+                            .listRowBackground(Color.clear)
+                            .listRowInsets(Styles.rowInsets)
+                            
                         }
-                        .listRowSeparator(.hidden)
-                        .listRowBackground(Color.clear)
-                        .listRowInsets(Styles.rowInsets)
                         
                     }
                     
                 }
+                .scrollIndicators(.hidden)
 
             }
 
@@ -143,13 +148,14 @@ struct UserBookingsContent: View {
                         }
 
                 }
+                .padding(.bottom, Styles.screenBottomPadding)
 
             }
 
         }
         .listStyle(.plain)
         .scrollContentBackground(.hidden)
-        .padding(.bottom, Styles.screenBottomPadding)
+        .scrollIndicators(.hidden)
         .background(Styles.background)
         .safeAreaBar(edge: .top, content: {
             
@@ -162,7 +168,7 @@ struct UserBookingsContent: View {
                 }
 
             }
-            .padding(.top, Styles.screenTopPadding)
+            .padding(.bottom, Styles.screenTopPadding)
             .padding(.horizontal, Styles.screenHorizontalPadding)
             
         })

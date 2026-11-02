@@ -45,12 +45,12 @@ struct BigCard: View {
                         .lineupFont(Styles.titleFont)
                     
                 }
-                .frame(width: .infinity, alignment: Styles.centerTime(cardFormat) ? .center : .leading)
+                .frame(maxWidth: .infinity, alignment: Styles.centerTime(cardFormat) ? .center : .leading)
                 
             }
             
-            Color.white
-                .frame(width: .infinity)
+            AppColor.Card.Standard.background
+                .frame(maxWidth: .infinity)
                 .aspectRatio(16/9, contentMode: .fit)
                 .overlay {
                     
@@ -87,10 +87,10 @@ struct BigCard: View {
                 
             }
             
-        } //ribbons en bg
+        }
         .foregroundStyle(isMuted ? Styles.foregroundMuted : Styles.foreground)
         .padding(Styles.padding)
-        .frame(width: .infinity)
+        .frame(maxWidth: .infinity)
         .background {
             
             ZStack {
@@ -144,6 +144,7 @@ struct BigCard: View {
                 .strokeBorder(isMuted ? Styles.borderMuted : Styles.border, lineWidth: Styles.lineWidth)
             
         }
+        .frame(width: Styles.height)
     }
     
     enum CardState {
@@ -156,9 +157,10 @@ struct BigCard: View {
 
 fileprivate struct Styles {
     
-    // Styles variables
+    // Styles fixes
     static let titleFont : AppFont = .Title.title2
     static let font : AppFont = .Body.body2
+    static let height : CGFloat = 360
     
     static let fill : Color = AppColor.Card.Standard.background
     static let fillMuted : Color = AppColor.Card.Muted.background
@@ -228,21 +230,24 @@ fileprivate struct Styles {
 
 
 #Preview {
-    ScrollView{
+    ScrollView(.horizontal){
         
-        VStack{
-            BigCard(cardFormat: .standard, use: .workshop(.available), workshopDate: .now, workshopStartTime: .now, workshopEndTime: .now, workshopCategory: "Théâtre", workshopIcon: .theater, workshopName: "La Locendria", remainingPlaces: 5, capacityMax: 30)
+        HStack{
+           
+                BigCard(cardFormat: .standard, use: .workshop(.available), workshopDate: .now, workshopStartTime: .now, workshopEndTime: .now, workshopCategory: "Théâtre", workshopIcon: .theater, workshopName: "La Locendria", remainingPlaces: 5, capacityMax: 30)
+            
+           
+            
+           
+                BigCard(cardFormat: .compact, use: .workshop(.available), workshopDate: .now, workshopStartTime: .now, workshopEndTime: .now, workshopCategory: "Théâtre", workshopIcon: .theater, workshopName: "La Locendria", remainingPlaces: 5, capacityMax: 30)
+            
+            
+            
+           
+                BigCard(cardFormat: .ongoing, use: .workshop(.available), workshopDate: .now, workshopStartTime: .now, workshopEndTime: .now, workshopCategory: "Théâtre", workshopIcon: .theater, workshopName: "La Locendria", remainingPlaces: 5, capacityMax: 30)
+            
+         
         }
-        .padding()
-        
-        VStack{
-            BigCard(cardFormat: .compact, use: .workshop(.available), workshopDate: .now, workshopStartTime: .now, workshopEndTime: .now, workshopCategory: "Théâtre", workshopIcon: .theater, workshopName: "La Locendria", remainingPlaces: 5, capacityMax: 30)
-        }
-        .padding()
-        
-        VStack{
-            BigCard(cardFormat: .ongoing, use: .workshop(.available), workshopDate: .now, workshopStartTime: .now, workshopEndTime: .now, workshopCategory: "Théâtre", workshopIcon: .theater, workshopName: "La Locendria", remainingPlaces: 5, capacityMax: 30)
-        }
-        .padding()
     }
+    .padding()
 }
