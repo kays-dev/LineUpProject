@@ -1,6 +1,12 @@
 {
   "sourceLanguage" : "fr",
   "strings" : {
+    "" : {
+
+    },
+    "." : {
+
+    },
     "%@" : {
 
     },
@@ -27,7 +33,16 @@
     "%lld" : {
 
     },
+    "à l’affiche" : {
+
+    },
     "Adresse email" : {
+
+    },
+    "Affiche" : {
+
+    },
+    "Agenda" : {
 
     },
     "agenda.section.ongoing" : {
@@ -125,6 +140,9 @@
           }
         }
       }
+    },
+    "Aparté" : {
+
     },
     "avatar.arlecchino" : {
       "comment" : "Avatar",
@@ -1374,6 +1392,9 @@
         }
       }
     },
+    "common.clear" : {
+
+    },
     "common.close" : {
       "comment" : "Bouton fermer (accessibilité)",
       "extractionState" : "manual",
@@ -2486,6 +2507,9 @@
           }
         }
       }
+    },
+    "Rejoindre la liste d’attente" : {
+
     },
     "Se connecter" : {
 
