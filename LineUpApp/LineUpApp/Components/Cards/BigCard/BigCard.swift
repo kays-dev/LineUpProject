@@ -160,7 +160,7 @@ fileprivate struct Styles {
     // Styles fixes
     static let titleFont : AppFont = .Title.title2
     static let font : AppFont = .Body.body2
-    static let height : CGFloat = 368
+    static let height : CGFloat = 360
     
     static let fill : Color = AppColor.Card.Standard.background
     static let fillMuted : Color = AppColor.Card.Muted.background

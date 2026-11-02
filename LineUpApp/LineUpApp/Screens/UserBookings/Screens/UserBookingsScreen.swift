@@ -83,6 +83,7 @@ struct UserBookingsContent: View {
                     }
                     
                 }
+                .scrollIndicators(.hidden)
 
             }
 
@@ -147,13 +148,14 @@ struct UserBookingsContent: View {
                         }
 
                 }
+                .padding(.bottom, Styles.screenBottomPadding)
 
             }
 
         }
         .listStyle(.plain)
         .scrollContentBackground(.hidden)
-        .padding(.bottom, Styles.screenBottomPadding)
+        .scrollIndicators(.hidden)
         .background(Styles.background)
         .safeAreaBar(edge: .top, content: {
             
@@ -166,7 +168,7 @@ struct UserBookingsContent: View {
                 }
 
             }
-            .padding(.top, Styles.screenTopPadding)
+            .padding(.bottom, Styles.screenTopPadding)
             .padding(.horizontal, Styles.screenHorizontalPadding)
             
         })
