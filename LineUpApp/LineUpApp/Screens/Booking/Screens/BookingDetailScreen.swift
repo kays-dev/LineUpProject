@@ -151,9 +151,13 @@ struct BookingDetailContent: View {
         .tabBarVisibility(.hidden)
         .navigationDestination(isPresented: $showActivityDetail) {
             
-            ActivityDetailScreen(workshop: viewModel.workshop) {
-                showActivityDetail = false
-            }
+            ActivityDetailScreen(
+                workshop: viewModel.workshop,
+                onReturnToPlanning: {
+                    showActivityDetail = false
+                },
+                useTypes: .reservation
+            )
             .toolbar(.hidden, for: .navigationBar)
             
         }
