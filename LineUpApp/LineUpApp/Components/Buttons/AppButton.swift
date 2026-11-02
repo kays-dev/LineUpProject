@@ -44,13 +44,14 @@ struct AppButton: View {
     var shape: ButtonShape = .round
     var tone: ButtonTone = .normal
     var status: ButtonStatus = .idle
+    var isFullWidth: Bool = false
     let action: () -> Void
 
     var body: some View {
         Button(action: action) {
             content
         }
-        .buttonStyle(AppButtonStyle(type: type, shape: shape, tone: tone, status: status))
+        .buttonStyle(AppButtonStyle(type: type, shape: shape, tone: tone, status: status, isFullWidth: isFullWidth))
         .accessibilityValue(statusText)
     }
 
@@ -104,6 +105,7 @@ struct AppButtonStyle: ButtonStyle {
     let shape: ButtonShape
     let tone: ButtonTone
     let status: ButtonStatus
+    let isFullWidth: Bool
 
     @Environment(\.isEnabled) private var isEnabled
     @Environment(\.isFocused) private var isFocused
@@ -118,7 +120,7 @@ struct AppButtonStyle: ButtonStyle {
             }
             .foregroundStyle(foreground(isPressed: configuration.isPressed))
             .padding(padding)
-            .frame(minWidth: minWidth, minHeight: minHeight)
+            .frame(minWidth: minWidth, maxWidth: isFullWidth ? .infinity : nil, minHeight: minHeight)
             .background(
                 RoundedRectangle(cornerRadius: radius)
                     .fill(background(isPressed: configuration.isPressed))

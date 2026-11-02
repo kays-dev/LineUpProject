@@ -15,10 +15,13 @@ final class ProfileViewModel {
     var hasError = false
 
     private let reservationStore: ReservationStore
+    private let workshopStore: WorkshopStore
     private let secondsPerHour: TimeInterval = 3600
+    private let placeSectionName = "Lieu"
 
-    init(reservationStore: ReservationStore) {
+    init(reservationStore: ReservationStore, workshopStore: WorkshopStore) {
         self.reservationStore = reservationStore
+        self.workshopStore = workshopStore
     }
 
     var history: [Reservation] {
@@ -41,17 +44,16 @@ final class ProfileViewModel {
         return Int((seconds / secondsPerHour).rounded())
     }
 
+    var hoursSpentText: String {
+        "\(hoursSpent) h"
+    }
+
     var favoriteCategory: String? {
         var counts: [String: Int] = [:]
         for reservation in activeReservations {
             counts[reservation.workshop.categoryName, default: 0] += 1
         }
-        return counts.max { first, second in
-            if first.value == second.value {
-                return first.key > second.key
-            }
-            return first.value < second.value
-        }?.key
+        return counts.max { $0.value < $1.value }?.key
     }
 
     var festivalDaysCount: Int {
@@ -62,18 +64,33 @@ final class ProfileViewModel {
         return days.count
     }
 
-    func loadReservations() async {
+    var festivalDaysText: String {
+        "\(festivalDaysCount) / \(workshopStore.workshopDays.count)"
+    }
+
+    var placesVisitedCount: Int {
+        var places: Set<String> = []
+        for reservation in attendedReservations {
+            if let place = reservation.workshop.descriptionSection(name: placeSectionName) {
+                places.insert(place.detail)
+            }
+        }
+        return places.count
+    }
+
+    func loadProfile() async {
         isLoading = true
         hasError = false
         defer { isLoading = false }
         do {
             try await reservationStore.fetchAll()
+            try await workshopStore.fetchWorkshopsDays()
             for reservation in reservationStore.reservations {
                 print(reservation)
             }
         } catch {
             hasError = true
-            print("Erreur loadReservations : \(error)")
+            print("Erreur loadProfile : \(error)")
         }
     }
 

@@ -45,6 +45,29 @@
     "Agenda" : {
 
     },
+    "agenda.section.cancelled" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cancelled"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Annulées"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Annullate"
+          }
+        }
+      }
+    },
     "agenda.section.ongoing" : {
       "comment" : "Section agenda",
       "extractionState" : "manual",
@@ -504,6 +527,54 @@
         }
       }
     },
+    "booking.cancel.error.message" : {
+      "comment" : "CancelBookingPopup",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Your booking could not be cancelled. Check your connection and try again."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Votre réservation n’a pas pu être annulée. Vérifiez votre connexion et réessayez."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Non è stato possibile annullare la tua prenotazione. Controlla la connessione e riprova."
+          }
+        }
+      }
+    },
+    "booking.cancel.error.title" : {
+      "comment" : "CancelBookingPopup",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cancellation failed"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Annulation impossible"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Annullamento non riuscito"
+          }
+        }
+      }
+    },
     "booking.category" : {
       "comment" : "Libellé",
       "extractionState" : "manual",
@@ -572,6 +643,29 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Nome e cognome"
+          }
+        }
+      }
+    },
+    "booking.meetingPoint" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Meeting point"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Point de rendez-vous"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Punto d’incontro"
           }
         }
       }
@@ -2654,6 +2748,54 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Elimina il mio account"
+          }
+        }
+      }
+    },
+    "settings.deleteAccount.message" : {
+      "comment" : "Message de la popup de suppression du compte",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "This action is permanent: your account and your bookings will be deleted."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cette action est définitive : votre compte et vos réservations seront supprimés."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Questa azione è definitiva: il tuo account e le tue prenotazioni saranno eliminati."
+          }
+        }
+      }
+    },
+    "settings.deleteAccount.title" : {
+      "comment" : "Titre de la popup de suppression du compte",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Delete your account?"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Supprimer votre compte ?"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Eliminare il tuo account?"
           }
         }
       }

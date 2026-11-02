@@ -12,52 +12,62 @@ struct WorkshopsController: RouteCollection {
     
     func boot(routes: any RoutesBuilder) throws {
         
-        let workshops = routes.grouped("workshops")
+        // Authentifaction (staff/festivalier)
+        let workshops = routes.grouped("workshops").grouped(JWTMiddleware())
         
-        // Liste de tous les workshops filtré (catégories - recherche - disponiblité - date)
+        // Liste de tous les workshops filtré
         workshops.get(use: index)
+        //workshops.
         
-        // Détail d'un atelier par son ID
+        // tableaux de dates pour le selecteur
+        workshops.get("days", use: showFestivalDays)
+        
+        // Détail d'un atelier
         workshops.get(":id", use: showWorkshopsDetail)
         
+        
+        // Authentification + role staff backoffice
+        let backoffice = routes.grouped("backoffice", "workshops").grouped(JWTMiddleware(), StaffMiddleware())
+        
         // Création
-        workshops.post(use: create)
+        backoffice.post(use: create)
         
         // Modification et suppression
-        workshops.group(":id") { workshop in
-            workshop.put(use: update)
+        backoffice.group(":id") { workshop in
+            workshop.patch(use: update)
             workshop.delete(use: delete)
+            
         }
-        
     }
     
     // Liste de tous les workshops filtré (catégories - recherche - disponiblité - date)
     func index(req: Request) async throws -> [WorkshopsResponseDTO] {
         
-        
         let query = Workshops.query(on: req.db)
             .with(\.$category)
-        
         
         let categories = Categories
             .query(on: req.db)
         
         // Filtre / catégories
-        if let selectedCategory = try req.query.get(String?.self, at: "category") {
-            
-            guard let cat = try await categories
-                .filter(Categories.self, \.$name ~~ (selectedCategory)).first()
-                    else {
-                throw Abort(.notFound, reason: "Catégorie introuvable.")
+        if let selectedCategories = try req.query.get(String?.self, at: "category") {
+
+            let categoryNames = selectedCategories.split(separator: ",").map {
+                String($0)
             }
-            
-            query.filter(\.$category.$id == cat.id!)
+
+            let cats = try await categories
+                .filter(\.$name ~~ categoryNames)
+                .all()
+
+            let categoryIDs = cats.compactMap { $0.id }
+
+            query.filter(\.$category.$id ~~ categoryIDs)
         }
         
         // Filtre / recherche
         if let selectedName = try req.query.get(String?.self, at: "name") {
-            query
-                .filter(\.$name ~~ selectedName)
+            query.filter(\.$name ~~ selectedName)
         }
         
         // Filtre / disponibilité
@@ -72,21 +82,50 @@ struct WorkshopsController: RouteCollection {
                     .filter(\.$subscriberNumber == 0)
                     .filter(\.$capacityMax == 0)
             default:
-                throw Abort(.badRequest, reason: "La statut de l'atelier doit être disponible ou complet.")
+                throw WorkshopsError.invalidStatus
             }
         }
         
         // Filtre / date
-        if let selectedDay = try req.query.get(String?.self, at: "period") {
-            let (start, end) = try dayRange(for: selectedDay)
-            query.filter(\.$startTime >= start).filter(\.$startTime < end)
+        if let periods = try req.query.get(String?.self, at: "periods") {
+            
+            // Découpe la chaîne en liste de dates
+            let days = periods.split(separator: ",").map { day in
+                String(day)
+            }
+            
+            // calcule la plage (début, fin) de chaque jour
+            let ranges = try days.map { day in
+                try dayRange(for: day)
+            }
+            
+            // garde les ateliers qui démarrent l'un des jours sélectionnés
+            if !ranges.isEmpty {
+                
+                query.group(.or) { or in
+                    
+                    // (jour 1) OR (jour 2) OR ...
+                    for (start, end) in ranges {
+                        
+                        // Dans un jour, les deux conditions doivent être vraies (AND)
+                        or.group(.and) { and in
+                            // à partir de 00:00 ce jour-là (inclus)
+                            and.filter(\.$startTime >= start)
+                            // avant 00:00 le lendemain (exclu)
+                            and.filter(\.$startTime < end)
+                        }
+                    }
+                }
+            }
         }
         
         return try await query
             .sort(\.$startTime, .ascending)
-            .all().map {
+            .all()
+            .map {
                 try $0.toDTO()
             }
+        
     }
     
     // Detail des activités
@@ -94,11 +133,15 @@ struct WorkshopsController: RouteCollection {
     -> WorkshopsResponseDTO {
         
         guard let id = req.parameters.get("id", as: UUID.self) else {
-            throw Abort(.badRequest, reason: "L'ID de l'atelier est invalide.")
+            throw WorkshopsError.invalidID
         }
         
-        guard let workshop = try await Workshops.find(id, on: req.db) else {
-            throw Abort(.notFound, reason: "L'atelier est introuvable.")
+        guard let workshop = try await Workshops.query(on: req.db)
+            .filter(\.$id == id)
+            .with(\.$category)
+            .first()
+                else {
+            throw WorkshopsError.noWorkshop
         }
         
         let dto = try workshop.toDTO()
@@ -110,20 +153,27 @@ struct WorkshopsController: RouteCollection {
     // Création
     func create(req: Request) async throws -> WorkshopsResponseDTO {
         let dto = try req.content.decode(CreateWorkshopsDTO.self)
+        
         let workshop = dto.toModel()
         try await workshop.create(on: req.db)
+        // .load == .with()
+        try await workshop.$category.load(on: req.db)
         return try workshop.toDTO()
     }
     
     
-    // Modifier un workshop
+    // Modification
     func update(req: Request) async throws -> WorkshopsResponseDTO {
         guard let id = req.parameters.get("id", as: UUID.self) else {
-            throw Abort(.badRequest, reason: "L'ID de l'atelier est invalide.")
+            throw WorkshopsError.invalidID
         }
         
-        guard let workshop = try await Workshops.find(id, on: req.db) else {
-            throw Abort(.notFound, reason: "L'atelier est introuvable.")
+        guard let workshop = try await Workshops.query(on: req.db)
+            .filter(\.$id == id)
+            .with(\.$category)
+            .first()
+                else {
+            throw WorkshopsError.noWorkshop
         }
         
         let dto = try req.content.decode(UpdateWorkshopsDTO.self)
@@ -144,6 +194,9 @@ struct WorkshopsController: RouteCollection {
         }
         
         if let capacityMax = dto.capacityMax {
+            guard capacityMax >= workshop.subscriberNumber else {
+                    throw WorkshopsError.capacityBelowBookings
+                }
             workshop.capacityMax = capacityMax
         }
         
@@ -164,15 +217,15 @@ struct WorkshopsController: RouteCollection {
         return try workshop.toDTO()
     }
     
-    // Suppression par ID
+    // Suppression
     func delete(req: Request) async throws -> HTTPStatus {
         
         guard let id = req.parameters.get("id", as: UUID.self) else {
-            throw Abort(.badRequest, reason: "L'ID de l'atelier est invalide.")
+            throw WorkshopsError.invalidID
         }
         
         guard let workshop = try await Workshops.find(id, on: req.db) else {
-            throw Abort(.notFound, reason: "L'atelier est introuvable.")
+            throw WorkshopsError.noWorkshop
         }
         
         try await checkChildren(of: workshop, on: req.db)
@@ -183,8 +236,7 @@ struct WorkshopsController: RouteCollection {
     }
 }
 
-
-// Gestion du filtre date + suppression d'un Workshop avec des réservations
+// Gestion du filtre date + suppression d'un Workshop avec 0 réservation
 extension WorkshopsController {
     
     func showFestivalDays(req: Request) async throws -> [String] {
@@ -209,7 +261,7 @@ extension WorkshopsController {
         let formatter = formatDay()
         guard let start = formatter.date(from: day),
               let end = formatter.calendar.date(byAdding: .day, value: 1, to: start) else {
-            throw Abort(.badRequest, reason: "Date must be in yyyy-MM-dd format")
+            throw WorkshopsError.wrongDateFormat
         }
         return (start, end)
     }
@@ -219,11 +271,7 @@ extension WorkshopsController {
         let reservations = workshop.$reservations.query(on: db)
         
         guard try await reservations.count() == 0 else {
-            
-            throw Abort(.conflict, reason: "Workshop is linked to some reservations")
-            
+            throw WorkshopsError.hasReservations
         }
-        
     }
 }
-

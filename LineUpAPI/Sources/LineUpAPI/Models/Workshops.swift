@@ -51,6 +51,7 @@ final class Workshops: Model, @unchecked Sendable {
         capacityMax: Int,
         subscriberNumber: Int,
         workshopDescription: String,
+        categoryID: UUID
     ) {
         self.id = id
         self.name = name
@@ -59,6 +60,7 @@ final class Workshops: Model, @unchecked Sendable {
         self.capacityMax = capacityMax
         self.subscriberNumber = subscriberNumber
         self.workshopDescription = workshopDescription
+        self.$category.id = categoryID
     }
 
 }
@@ -75,7 +77,7 @@ extension Workshops {
             capacityMax: capacityMax,
             subscriberNumber: subscriberNumber,
             workshopDescription: workshopDescription,
-            categoryID: try requireID(),
+            categoryID: $category.id,
             categoryName: category.name,
             remainingPlaces: countRemainingPlaces()
         )
@@ -83,7 +85,7 @@ extension Workshops {
     }
     
     func countRemainingPlaces() -> Int {
-         return capacityMax - subscriberNumber
+        capacityMax - subscriberNumber
     }
     
 }

@@ -93,6 +93,7 @@ extension AppToken {
         static let button = EdgeInsets(vertical: Spacing.s16, horizontal: Spacing.s24)
         static let buttonText = EdgeInsets(vertical: Spacing.none, horizontal: Spacing.s8)
         static let settingsRow = EdgeInsets(vertical: Spacing.s12, horizontal: Spacing.s16)
+        static let reservationRow = EdgeInsets(vertical: Spacing.s8, horizontal: Padding.screen)
         static let caps = Spacing.s8
         static let icon = Spacing.s8
         static let toggleTrack = Spacing.s4
@@ -110,6 +111,7 @@ extension AppToken {
         static let gridRing: CGFloat = 96
         static let grid: CGFloat = 84
         static let profile: CGFloat = 120
+        static let settings: CGFloat = 56
         
     }
     

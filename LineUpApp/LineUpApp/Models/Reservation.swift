@@ -32,4 +32,8 @@ struct Reservation: Identifiable, Hashable, CustomStringConvertible {
     var description: String {
         "Réservation \(id) : \(status.rawValue), \(workshop.name), \(workshop.startTime.formatted(date: .numeric, time: .shortened))"
     }
+    
+    var code: String {
+        "R-\(id)"
+    }
 }
