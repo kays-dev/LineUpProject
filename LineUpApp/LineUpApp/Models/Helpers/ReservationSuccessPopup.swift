@@ -12,6 +12,8 @@ struct ReservationSuccessPopup: View {
     @Environment(\.dismiss) private var dismiss
 
     let workshop: Workshop
+    
+    let onReturnToPlanning: () -> Void
 
     var body: some View {
         ZStack {
@@ -29,7 +31,7 @@ struct ReservationSuccessPopup: View {
                         "Votre réservation pour l’atelier a bien été enregistrée. Nous avons hâte de vous accueillir !",
                     buttonTitle: "Retour aux ateliers"
                 ) {
-                    dismiss()
+                    onReturnToPlanning()
                 }
             } else {
                 StatusPopup(
@@ -39,7 +41,7 @@ struct ReservationSuccessPopup: View {
                         "Vous êtes bien inscrit sur la liste d’attente de cet atelier. Vous serez averti si une place se libère.",
                     buttonTitle: "compris !"
                 ) {
-                    dismiss()
+                    onReturnToPlanning()
                 }
             }
         }
@@ -60,6 +62,7 @@ struct ReservationSuccessPopup: View {
             categoryID: UUID(),
             categoryName: "Théâtre",
             remainingPlaces: 10
-        )
+        ),
+        onReturnToPlanning: {}
     )
 }

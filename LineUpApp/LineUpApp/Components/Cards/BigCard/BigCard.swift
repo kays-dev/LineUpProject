@@ -51,7 +51,7 @@ struct BigCard: View {
             
             Color.white
                 .frame(width: .infinity)
-                .aspectRatio(16/9, contentMode: .fill)
+                .aspectRatio(16/9, contentMode: .fit)
                 .overlay {
                     
                     AppImage.workshopPhoto(for: workshopName)

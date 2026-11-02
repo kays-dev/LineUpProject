@@ -80,7 +80,7 @@ final class WorkshopFiltersViewModel {
         inputFormatter.dateFormat = "yyyy-MM-dd"
 
         let outputFormatter = DateFormatter()
-        outputFormatter.dateFormat = "dd-MM-yyyy"
+        outputFormatter.dateFormat = "dd/MM/yyyy"
 
         guard let date = inputFormatter.date(from: date) else {
             return date

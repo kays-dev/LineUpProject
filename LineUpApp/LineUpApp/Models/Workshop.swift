@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import SwiftUI
 
 // représente un atelier dans l'application, avec ses propriétés et les informations nécessaires à son fonctionnement.
 struct Workshop: Identifiable, Hashable, CustomStringConvertible{
@@ -21,7 +22,7 @@ struct Workshop: Identifiable, Hashable, CustomStringConvertible{
     let remainingPlaces : Int
     
     var availability: Availability {
-        if subscriberNumber < capacityMax {
+        if remainingPlaces > 0 {
             return .available
         }
         return .full
@@ -30,6 +31,11 @@ struct Workshop: Identifiable, Hashable, CustomStringConvertible{
     // faciliter le débogage et vérifier les données récupérées depuis l'API
     var description: String {
         return " Nom : \(name) Description : \(workshopDescription) "
+    }
+    
+    // cards
+    var categoryIcon: AppImage.Category {
+        AppImage.Category(rawValue: categoryName) ?? .culture
     }
 }
 

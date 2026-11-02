@@ -9,9 +9,38 @@ import Foundation
 import SwiftUI
 
 struct FestivalPlanningScreen: View {
-    
+    @State private var showActivityDetail = false
+
     var body: some View {
-        /*@START_MENU_TOKEN@*//*@PLACEHOLDER=Hello, world!@*/Text("Hello, world!")/*@END_MENU_TOKEN@*/
+        NavigationStack {
+            VStack {
+                Button("Voir le détail de l'atelier") {
+                    showActivityDetail = true
+                }
+            }
+            .navigationDestination(isPresented: $showActivityDetail) {
+                ActivityDetailScreen(
+                    workshop: Workshop(
+                        id: UUID(),
+                        name: "Atelier théâtre",
+                        startTime: .now,
+                        endTime: .now.addingTimeInterval(3600),
+                        capacityMax: 20,
+                        subscriberNumber: 10,
+                        workshopDescription: "Découverte du théâtre",
+                        categoryID: UUID(),
+                        categoryName: "Théâtre",
+                        remainingPlaces: 10
+                    ),
+                        onReturnToPlanning: {
+                            showActivityDetail = false
+                        }
+                ).toolbar(.hidden, for: .navigationBar)
+            }
+        }
     }
-    
+}
+
+#Preview {
+    FestivalPlanningScreen()
 }
