@@ -12,40 +12,73 @@ import Observation
 
 @MainActor
 @Observable
-
-// type références
-// Empêche l'héritage
 final class WorkshopStore {
-    // propriété permettant l'utilisation de WorkshopService
     private let workshopService: WorkshopService
     
     init(workshopService: WorkshopService) {
         self.workshopService = workshopService
     }
     
-    // initialisation des ateliers et dates :
-    // private(set) : Le Store peut lire et modifier les propriétés
-    // Le ViewModel peut les lire
-    // mais ne peut pas les modifier 
     private(set) var workshops: [Workshop] = []
     private(set) var workshopDays: [String] = []
+    private(set) var allCategories: [String] = []
+    private(set) var isLoading = false
     
-    // récupère et stock les ateliers dans le store
     func fetchWorkshops(
         periods: [String]? = nil,
         category: String? = nil,
         status: String? = nil
     ) async throws {
-        self.workshops = try await workshopService.fetchWorkshops(
+        isLoading = true
+        defer { isLoading = false }
+        
+        let result = try await workshopService.fetchWorkshops(
             periods: periods,
             category: category,
             status: status
         )
+        // ignore un résultat devenu obsolète
+        try Task.checkCancellation()
+        workshops = result
+        
+        // Sans filtre actif, mémorisation de la liste complète des catégories
+        if periods == nil && category == nil && status == nil {
+            allCategories = Set(result.map(\.categoryName)).sorted()
+        }
     }
     
-    // récupère et stock les dates dans le store
     func fetchWorkshopsDays() async throws {
-        self.workshopDays = try await workshopService.fetchWorkshopsDays()
+        workshopDays = try await workshopService.fetchWorkshopsDays()
     }
     
+    func fetchWorkshops(
+        name: String? = nil,
+        periods: [String]? = nil,
+        category: String? = nil,
+        status: String? = nil
+    ) async throws {
+        isLoading = true
+        defer { isLoading = false }
+        
+        let result = try await workshopService.fetchWorkshops(
+            name: name,
+            periods: periods,
+            category: category,
+            status: status
+        )
+        try Task.checkCancellation()
+        workshops = result
+        
+        // la liste complète des catégories ne se mémorise que sans aucun filtre
+        if name == nil && periods == nil && category == nil && status == nil {
+            allCategories = Set(result.map(\.categoryName)).sorted()
+        }
+    }
+    
+    func refreshWorkshop(id: UUID) async throws {
+        let updated = try await workshopService.fetchWorkshop(id: id)
+        if let index = workshops.firstIndex(where: { $0.id == id }) {
+            workshops[index] = updated
+        }
+    }
 }

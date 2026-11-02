@@ -20,8 +20,9 @@ struct TemporaryLoginView: View {
                 ProgressView("Vérification de la session...")
 
             } else if sessionStore.isLoggedIn,
-                      let viewModel = filtersViewModel {
-                ContentView()
+                let viewModel = filtersViewModel
+            {
+                ContentView(filtersViewModel: viewModel)
             } else {
                 loginForm
             }
@@ -88,7 +89,8 @@ struct TemporaryLoginView: View {
             await loadFilters()
 
         } catch {
-            errorMessage = "Connexion impossible : \(error.localizedDescription)"
+            errorMessage =
+                "Connexion impossible : \(error.localizedDescription)"
         }
     }
 
@@ -106,7 +108,8 @@ struct TemporaryLoginView: View {
             filtersViewModel = viewModel
 
         } catch {
-            errorMessage = "Erreur de chargement : \(error.localizedDescription)"
+            errorMessage =
+                "Erreur de chargement : \(error.localizedDescription)"
             print("ERREUR API :", error)
         }
     }

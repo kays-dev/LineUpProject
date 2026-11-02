@@ -167,6 +167,9 @@
     "Aparté" : {
 
     },
+    "Atelier introuvable" : {
+
+    },
     "avatar.arlecchino" : {
       "comment" : "Avatar",
       "extractionState" : "manual",
@@ -3998,9 +4001,6 @@
       }
     },
     "Vérification de la session..." : {
-
-    },
-    "Voir le détail de l'atelier" : {
 
     },
     "waitlist.success.button" : {
