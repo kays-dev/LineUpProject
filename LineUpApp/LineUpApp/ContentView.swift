@@ -12,6 +12,7 @@ struct ContentView: View {
     @Bindable var filtersViewModel: WorkshopFiltersViewModel
     @State private var selection: LineUpTab = .affiche
     @State private var tabBarVisibility: TabBarVisibility = .visible
+    @AppStorage("selectedAvatar") private var avatar: AppImage.Avatar = .colombina
 
     var body: some View {
         
@@ -31,7 +32,7 @@ struct ContentView: View {
         .safeAreaInset(edge: .bottom, spacing: 0) {
             
             if tabBarVisibility == .visible {
-                TabBar(selection: $selection, avatar: Image(.avatarColombina))
+                TabBar(selection: $selection, avatar: avatar.image)
                     .transition(.move(edge: .bottom))
             }
             
