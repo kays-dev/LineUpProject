@@ -103,6 +103,7 @@ enum AppImage {
         case sparkles = "sparkles"
         case trash = "trash"
         case filter = "slider.horizontal.2.square"
+        case xCircled = "xmark.circle.fill"
 
         var image: Image {
             Image(systemName: rawValue)
@@ -136,6 +137,7 @@ enum AppImage {
         case calendarCheckFill = "icon-calendar-check-fill"
         case calendarFill = "icon-calendar-fill"
         case clockFill = "icon-clock-fill"
+        case ellipsisDuotone = "icon-ellipsis-duotone"
         case infoDuotone = "icon-info-duotone"
         case lockDuotone = "icon-lock-duotone"
         case mapDuotone = "icon-map-duotone"
@@ -147,6 +149,7 @@ enum AppImage {
         case sparkleDuotone = "icon-sparkle-duotone"
         case ticketDuotone = "icon-ticket-duotone"
         case ticketFill = "icon-ticket-fill"
+        case xMark = "icon-x-bold"
 
         var image: Image {
             Image(rawValue)
