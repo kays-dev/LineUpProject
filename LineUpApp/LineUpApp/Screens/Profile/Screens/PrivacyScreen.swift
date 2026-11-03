@@ -26,10 +26,9 @@ struct PrivacyScreen: View {
                 AppButton(title: "privacy.download", type: .secondary, isFullWidth: true) {}
             }
             .padding(.horizontal, AppToken.Padding.screen)
-            .padding(.top, AppToken.Padding.headerBottom)
-            .padding(.bottom, AppToken.Padding.scrollViewBottom)
         }
-        .lineupPageHeading(.tertiary(heading: .privacyTitle, subtitle: .privacySubtitle)) {}
+        .lineupPageHeading(.secondary(title: "", heading: .privacyTitle, subtitle: .privacySubtitle)) {}
+        .tabBarVisibility(.hidden)
         .background(AppColor.Screen.background)
     }
 }

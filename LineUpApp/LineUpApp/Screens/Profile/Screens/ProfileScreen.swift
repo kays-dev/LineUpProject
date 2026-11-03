@@ -23,6 +23,7 @@ struct ProfileContent: View {
     @State private var viewModel: ProfileViewModel
     @Environment(SessionStore.self) private var sessionStore
     @AppStorage("selectedAvatar") private var avatar: AppImage.Avatar = .colombina
+    @Environment(\.locale) private var locale
     @State private var showsSettings = false
     @State private var selectedReservation: Reservation?
 
@@ -43,8 +44,8 @@ struct ProfileContent: View {
             .padding(.horizontal, AppToken.Padding.screen)
             .padding(.bottom, AppToken.Padding.scrollViewBottom)
         }
-        .safeAreaBar(edge: .top) {
-            header
+        .lineupPageHeading(.primary(heading: .profileTitle)) {
+            headerActions
         }
         .background(AppColor.Screen.background)
         .overlay {
@@ -65,25 +66,19 @@ struct ProfileContent: View {
         }
     }
 
-    private var header: some View {
-        HStack {
-            PageTitle(title: "profile.title")
-
-            Spacer()
-
-            HStack(spacing: AppToken.Spacing.s12) {
-                AppButton(title: "settings.title", icon: AppImage.Icon.settings.image, type: .iconOutline) {
-                    showsSettings = true
-                }
-                AppImage.Flag.italian.image
-                    .resizable()
-                    .scaledToFit()
-                    .frame(width: AppToken.Scale.primitive28, height: AppToken.Scale.primitive28)
-                    .accessibilityHidden(true)
+    private var headerActions: some View {
+        HStack(spacing: AppToken.Spacing.s8) {
+            AppButton(title: "settings.title", icon: AppImage.Icon.settings.image, type: .iconOutline) {
+                showsSettings = true
             }
+            LanguageFlagButton()
         }
-        .padding(.horizontal, AppToken.Padding.screen)
-        .padding(.bottom, AppToken.Padding.headerBottom)
+    }
+
+    private func localized(_ resource: LocalizedStringResource) -> String {
+        var resource = resource
+        resource.locale = locale
+        return String(localized: resource)
     }
 
     private var identity: some View {
@@ -132,32 +127,32 @@ struct ProfileContent: View {
             ) {
                 StatCard(
                     valueInString: "\(viewModel.reservationCount)",
-                    label: String(localized: "stats.bookings"),
+                    label: localized("stats.bookings"),
                     icon: AppImage.InterfaceIcon.ticketFill.image
                 )
                 StatCard(
                     valueInString: "\(viewModel.attendedCount)",
-                    label: String(localized: "stats.attended"),
+                    label: localized("stats.attended"),
                     icon: AppImage.InterfaceIcon.calendarCheckFill.image
                 )
                 StatCard(
                     valueInString: viewModel.hoursSpentText,
-                    label: String(localized: "stats.timeSpent"),
+                    label: localized("stats.timeSpent"),
                     icon: AppImage.InterfaceIcon.clockFill.image
                 )
                 StatCard(
                     valueInString: viewModel.favoriteCategory ?? "—",
-                    label: String(localized: "stats.favoriteCategory"),
+                    label: localized("stats.favoriteCategory"),
                     icon: AppImage.InterfaceIcon.maskFill.image
                 )
                 StatCard(
                     valueInString: viewModel.festivalDaysText,
-                    label: String(localized: "stats.festivalDays"),
+                    label: localized("stats.festivalDays"),
                     icon: AppImage.InterfaceIcon.calendarFill.image
                 )
                 StatCard(
                     valueInString: "\(viewModel.placesVisitedCount)",
-                    label: String(localized: "stats.placesVisited"),
+                    label: localized("stats.placesVisited"),
                     icon: AppImage.InterfaceIcon.mapPinFill.image
                 )
             }

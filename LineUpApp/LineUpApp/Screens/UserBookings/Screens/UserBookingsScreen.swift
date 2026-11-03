@@ -74,9 +74,6 @@ struct UserBookingsContent: View {
                             .onTapGesture {
                                 selectedReservation = reservation
                             }
-                            .listRowSeparator(.hidden)
-                            .listRowBackground(Color.clear)
-                            .listRowInsets(Styles.rowInsets)
                             
                         }
                         
@@ -84,6 +81,9 @@ struct UserBookingsContent: View {
                     
                 }
                 .scrollIndicators(.hidden)
+                .listRowSeparator(.hidden)
+                .listRowBackground(Color.clear)
+                .listRowInsets(Styles.rowInsets)
 
             }
 
@@ -172,7 +172,9 @@ struct UserBookingsContent: View {
             .padding(.horizontal, Styles.screenHorizontalPadding)
             
         })
-        .lineupPageHeading(.primary(heading: .agendaTitle)) {}
+        .lineupPageHeading(.primary(heading: .agendaTitle)) {
+            LanguageFlagButton()
+        }
         .navigationDestination(item: $selectedReservation) { reservation in
 
             BookingDetailScreen(reservation: reservation)

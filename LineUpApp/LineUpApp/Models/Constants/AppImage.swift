@@ -32,32 +32,32 @@ enum AppImage {
             Image(rawValue)
         }
 
-        var name: String {
+        var name: LocalizedStringResource {
             switch self {
             case .colombina:
-                String(localized: "avatar.colombina")
+                "avatar.colombina"
             case .monaLisa:
-                String(localized: "avatar.mona")
+                "avatar.mona"
             case .pinocchio:
-                String(localized: "avatar.pinocchio")
+                "avatar.pinocchio"
             case .arlecchino:
-                String(localized: "avatar.arlecchino")
+                "avatar.arlecchino"
             case .fountainStar:
-                String(localized: "avatar.fountainStar")
+                "avatar.fountainStar"
             case .romanVespista:
-                String(localized: "avatar.vespa")
+                "avatar.vespa"
             case .pulcinella:
-                String(localized: "avatar.pulcinella")
+                "avatar.pulcinella"
             case .leonardoDaVinci:
-                String(localized: "avatar.leonardo")
+                "avatar.leonardo"
             case .laBefana:
-                String(localized: "avatar.befana")
+                "avatar.befana"
             case .donCorleone:
-                String(localized: "avatar.corleone")
+                "avatar.corleone"
             case .lionOfSaintMark:
-                String(localized: "avatar.lion")
+                "avatar.lion"
             case .venetianMaskBauta:
-                String(localized: "avatar.mask")
+                "avatar.mask"
             }
         }
     }

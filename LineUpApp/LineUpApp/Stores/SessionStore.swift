@@ -14,6 +14,7 @@ final class SessionStore {
     
     private(set) var user: User?
     private(set) var isRestoring = true
+    private(set) var hasLoggedOut = false
     
     var isLoggedIn: Bool {
         
@@ -65,11 +66,19 @@ final class SessionStore {
         
     }
     
+    // Modification du mot de passe
+    func updatePassword(current: String, new: String) async throws {
+
+        try await service.updatePassword(current: current, new: new)
+
+    }
+
     // MARK: Déconnexion
     func logout() {
         
         try? service.logout()
         user = nil
+        hasLoggedOut = true
         
     }
     

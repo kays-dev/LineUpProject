@@ -15,6 +15,7 @@ struct LineUpAppApp: App {
     @State private var categoryStore: CategoryStore
     @State private var filtersViewModel: WorkshopFiltersViewModel
     @State private var reservationStore: ReservationStore
+    @AppStorage("appLanguage") private var language: AppLanguage = .french
     
     init() {
         let keychain = KeychainService()
@@ -75,6 +76,7 @@ struct LineUpAppApp: App {
             .environment(workshopStore)
             .environment(categoryStore)
             .environment(reservationStore)
+            .environment(\.locale, Locale(identifier: language.rawValue))
             .task {
                 await sessionStore.restoreSession()
             }

@@ -27,10 +27,9 @@ struct AvatarScreen: View {
                 grid
             }
             .padding(.horizontal, AppToken.Padding.screen)
-            .padding(.top, AppToken.Padding.headerBottom)
-            .padding(.bottom, AppToken.Padding.scrollViewBottom)
         }
-        .lineupPageHeading(.tertiary(heading: .avatarTitle, subtitle: .avatarSubtitle)) {}
+        .lineupPageHeading(.secondary(title: "", heading: .avatarTitle, subtitle: .avatarSubtitle)) {}
+        .tabBarVisibility(.hidden)
         .safeAreaBar(edge: .bottom) {
             AppButton(title: "common.save", type: .primary, isFullWidth: true) {
                 avatar = selection

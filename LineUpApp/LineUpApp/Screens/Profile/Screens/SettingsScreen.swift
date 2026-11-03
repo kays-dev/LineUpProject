@@ -12,6 +12,7 @@ struct SettingsScreen: View {
 
     @Environment(SessionStore.self) private var sessionStore
     @Environment(\.dismiss) private var dismiss
+    @Environment(\.locale) private var locale
     @AppStorage("selectedAvatar") private var avatar: AppImage.Avatar = .colombina
     @AppStorage("notifications.reminder") private var reminderEnabled = true
     @AppStorage("notifications.spot") private var spotEnabled = true
@@ -35,7 +36,6 @@ struct SettingsScreen: View {
                 session
             }
             .padding(.horizontal, AppToken.Padding.screen)
-            .padding(.bottom, AppToken.Padding.scrollViewBottom)
         }
         .safeAreaBar(edge: .top) {
             header
@@ -48,19 +48,19 @@ struct SettingsScreen: View {
                 deletePopup
             }
         }
-        .sheet(isPresented: $showsLanguage) {
+        .navigationDestination(isPresented: $showsLanguage) {
             LanguageScreen()
         }
-        .sheet(isPresented: $showsAvatar) {
+        .navigationDestination(isPresented: $showsAvatar) {
             AvatarScreen()
         }
-        .sheet(isPresented: $showsPassword) {
+        .navigationDestination(isPresented: $showsPassword) {
             PasswordScreen()
         }
-        .sheet(isPresented: $showsTerms) {
+        .navigationDestination(isPresented: $showsTerms) {
             TermsScreen()
         }
-        .sheet(isPresented: $showsPrivacy) {
+        .navigationDestination(isPresented: $showsPrivacy) {
             PrivacyScreen()
         }
     }
@@ -116,7 +116,7 @@ struct SettingsScreen: View {
                             icon: AppImage.InterfaceIcon.maskDuotone.image,
                             title: "settings.avatar",
                             subtitle: "settings.avatar.subtitle",
-                            accessory: .value(avatar.name)
+                            accessory: .value(localized(avatar.name))
                         )
                     }
                     .buttonStyle(.plain)
@@ -243,13 +243,25 @@ struct SettingsScreen: View {
 
             StatusPopup(
                 type: .danger,
-                title: String(localized: "settings.deleteAccount.title"),
-                message: String(localized: "settings.deleteAccount.message"),
-                buttonTitle: String(localized: "settings.deleteAccount")
+                title: localized("settings.deleteAccount.title"),
+                message: localized("settings.deleteAccount.message"),
+                buttonTitle: localized("settings.deleteAccount")
             ) {
                 showsDeletePopup = false
             }
+            .overlay(alignment: .topTrailing) {
+                AppButton(title: "common.close", icon: AppImage.Icon.close.image, type: .iconFilled, shape: .radius16) {
+                    showsDeletePopup = false
+                }
+                .padding(AppToken.Spacing.s24)
+            }
         }
+    }
+
+    private func localized(_ resource: LocalizedStringResource) -> String {
+        var resource = resource
+        resource.locale = locale
+        return String(localized: resource)
     }
 
     private var appVersion: String {

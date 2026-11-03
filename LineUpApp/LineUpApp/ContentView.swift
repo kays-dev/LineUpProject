@@ -37,6 +37,7 @@ struct ContentView: View {
             }
             
         }
+        .ignoresSafeArea(.keyboard, edges: .bottom)
         .onPreferenceChange(TabBarVisibilityPreferenceKey.self) { visibility in
             
             withAnimation(.easeOut(duration: 0.25)) {

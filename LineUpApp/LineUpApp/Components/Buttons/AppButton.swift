@@ -55,26 +55,27 @@ struct AppButton: View {
         .accessibilityValue(statusText)
     }
 
-    @ViewBuilder
     private var content: some View {
-        switch type {
-        case .back:
-            iconImage(AppImage.Icon.back.image, size: AppToken.Scale.primitive16)
-                .accessibilityLabel(Text("common.back"))
-        case .iconFilled, .iconOutline:
-            if let icon, let title {
-                iconImage(icon)
-                    .accessibilityLabel(Text(title))
-            } else if let icon {
-                iconImage(icon)
-            }
-        case .primary, .secondary, .text, .link:
-            HStack(spacing: AppToken.Spacing.s8) {
-                if let icon {
-                    iconImage(icon, size: AppToken.Scale.primitive16)
+        HStack {
+            switch type {
+            case .back:
+                iconImage(AppImage.Icon.back.image, size: AppToken.Scale.primitive16)
+                    .accessibilityLabel(Text("common.back"))
+            case .iconFilled, .iconOutline:
+                if let icon, let title {
+                    iconImage(icon)
+                        .accessibilityLabel(Text(title))
+                } else if let icon {
+                    iconImage(icon)
                 }
-                if let title {
-                    Text(title)
+            case .primary, .secondary, .text, .link:
+                HStack(spacing: AppToken.Spacing.s8) {
+                    if let icon {
+                        iconImage(icon, size: AppToken.Scale.primitive16)
+                    }
+                    if let title {
+                        Text(title)
+                    }
                 }
             }
         }
@@ -138,22 +139,23 @@ struct AppButtonStyle: ButtonStyle {
             .contentShape(Rectangle())
     }
 
-    @ViewBuilder
     private func statusIndicator(isPressed: Bool) -> some View {
-        switch status {
-        case .idle:
-            EmptyView()
-        case .loading:
-            ProgressView()
-                .controlSize(.small)
-                .tint(foreground(isPressed: isPressed))
-        case .confirmed:
-            AppImage.Icon.check.image
-                .resizable()
-                .scaledToFit()
-                .fontWeight(.bold)
-                .frame(width: AppToken.Scale.primitive16, height: AppToken.Scale.primitive16)
-                .foregroundStyle(foreground(isPressed: isPressed))
+        HStack {
+            switch status {
+            case .idle:
+                EmptyView()
+            case .loading:
+                ProgressView()
+                    .controlSize(.small)
+                    .tint(foreground(isPressed: isPressed))
+            case .confirmed:
+                AppImage.Icon.check.image
+                    .resizable()
+                    .scaledToFit()
+                    .fontWeight(.bold)
+                    .frame(width: AppToken.Scale.primitive16, height: AppToken.Scale.primitive16)
+                    .foregroundStyle(foreground(isPressed: isPressed))
+            }
         }
     }
 
