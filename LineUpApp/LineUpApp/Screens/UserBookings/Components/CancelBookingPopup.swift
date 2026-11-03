@@ -28,10 +28,8 @@ struct CancelBookingPopup: View {
                             : .cancelBookingMessage(reservation.code, reservation.workshop.name)),
             buttonTitle: String(localized: .cancelConfirm)
         ) {
-            
             onConfirm()
             dismiss()
-            
         }
         .overlay(alignment: .topTrailing) {
             

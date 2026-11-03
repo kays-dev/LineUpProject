@@ -88,7 +88,8 @@ struct TemporaryLoginView: View {
             await loadFilters()
 
         } catch {
-            errorMessage = "Connexion impossible : \(error.localizedDescription)"
+            errorMessage =
+                "Connexion impossible : \(error.localizedDescription)"
         }
     }
 
@@ -102,11 +103,13 @@ struct TemporaryLoginView: View {
             try await viewModel.fetchWorkshopsDays()
             try await categoryStore.fetchAll()
             try await viewModel.applyFilters()
+            print("VM créé :", viewModel.id.uuidString.prefix(4), "ateliers :", viewModel.workshops.count)
 
             filtersViewModel = viewModel
 
         } catch {
-            errorMessage = "Erreur de chargement : \(error.localizedDescription)"
+            errorMessage =
+                "Erreur de chargement : \(error.localizedDescription)"
             print("ERREUR API :", error)
         }
     }

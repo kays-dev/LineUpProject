@@ -8,56 +8,128 @@
 import SwiftUI
 
 struct FestivalPlanningScreen: View {
+
     @Bindable var viewModel: WorkshopFiltersViewModel
-    @State private var selectedWorkshop: Workshop?
+    @State private var isItalianFlag = true
+    @State private var selectedWorkshopID: UUID?
+    @State private var showFilters = false
 
     var body: some View {
-        NavigationStack {
-            ZStack {
-                Color.mintPrimary.ignoresSafeArea()
+        ZStack {
+            Color.mintPrimary.ignoresSafeArea()
 
-                ScrollView {
-                    VStack(spacing: 16) {
-                        PageHeading(mode: .primary(heading: "à l’affiche")) {}
+            ScrollView {
+                VStack(spacing: AppToken.Spacing.s28) {
 
-                        ForEach(viewModel.workshops) { workshop in
-                            VStack(
-                                alignment: .leading,
-                                spacing: AppToken.Spacing.s16
-                            ) {
-                                SmallCard(
-                                    cardFormat: .standard,
-                                    use: .workshop(workshop.availability),
-                                    workshopDate: workshop.date,
-                                    workshopStartTime: workshop.startTime,
-                                    workshopEndTime: workshop.endTime,
-                                    workshopCategory: workshop.categoryName,
-                                    workshopName: workshop.name
-                                )
-                            }
-                            .onTapGesture {
-                                selectedWorkshop = workshop
+                    // en tête
+                    PageHeading(mode: .primary(heading: "à l’affiche")) {
+                        Button {
+                            isItalianFlag.toggle()
+                        } label: {
+                            if isItalianFlag {
+                                AppImage.Flag.italian.image
+                                    .resizable()
+                                    .scaledToFit()
+                            } else {
+                                AppImage.Flag.french.image
+                                    .resizable()
+                                    .scaledToFit()
                             }
                         }
+                        .buttonStyle(.plain)
                     }
-                    .padding(AppToken.Padding.screen)
+
+                    // searchBar + bouton filtres
+                    HStack(spacing: AppToken.Spacing.s16) {
+                        SearchBar(input: $viewModel.searchText)
+                        
+                        AppButton(
+                            title: "filters.title",
+                            icon: AppImage.Icon.filter.image,
+                            type: .iconOutline,
+                            shape: ButtonShape.round
+                        ) {
+                            showFilters = true
+                        }
+                    }
+                    .padding(.bottom, AppToken.Padding.headerBottom)
+                    .padding(.horizontal, AppToken.Padding.screen)
+
+                    // état vide
+                    if viewModel.workshops.isEmpty && !viewModel.isLoading {
+                        Group {
+                            if viewModel.searchText.isEmpty {
+                                ContentUnavailableView(
+                                    "Aucun atelier",
+                                    systemImage: "calendar.badge.exclamationmark"
+                                )
+                            } else {
+                                ContentUnavailableView.search(
+                                    text: viewModel.searchText
+                                )
+                            }
+                        }
+                        .font(AppFont.Title.title2.font.uppercaseSmallCaps())
+                        .foregroundStyle(AppColor.Text.tertiary)
+                    }
+
+                    // cards
+                    ForEach(viewModel.workshops) { workshop in
+                        VStack(
+                            alignment: .leading,
+                            spacing: AppToken.Spacing.s16
+                        ) {
+                            SmallCard(
+                                cardFormat: .standard,
+                                use: .workshop(workshop.availability),
+                                workshopDate: workshop.date,
+                                workshopStartTime: workshop.startTime,
+                                workshopEndTime: workshop.endTime,
+                                workshopCategory: workshop.categoryName,
+                                workshopName: workshop.name
+                            )
+                        }
+                        .onTapGesture {
+                            selectedWorkshopID = workshop.id
+                        }
+                    }
                 }
-                .navigationDestination(item: $selectedWorkshop) { workshop in
+                .padding(AppToken.Padding.screen)
+                .padding(.top, AppToken.Padding.headerBottom)
+                .padding(.bottom, AppToken.Padding.scrollViewBottom)
+            }
+            .navigationDestination(isPresented: $showFilters) {
+                WorkshopFilterScreen(
+                    viewModel: viewModel,
+                    dates: viewModel.availableDays,
+                    categories: viewModel.availableCategories
+                )
+                .toolbar(.hidden, for: .navigationBar)
+            }
+            .navigationDestination(item: $selectedWorkshopID) { id in
+                if let workshop = viewModel.workshop(id: id) {
                     ActivityDetailScreen(
                         workshop: workshop,
-                        onReturnToPlanning: {
-                            selectedWorkshop = nil
-                        },
+                        onReturnToPlanning: { selectedWorkshopID = nil },
                         useTypes: .workshop
+                    )
+                    .toolbar(.hidden, for: .navigationBar)
+                } else {
+                    ContentUnavailableView(
+                        "Atelier introuvable",
+                        systemImage: "questionmark.folder"
                     )
                 }
             }
+            .toolbar(.hidden, for: .navigationBar)
+        }
+        .task(id: viewModel.searchText) {
+            await viewModel.search()
         }
     }
 }
 
 #Preview {
-
     let store = WorkshopStore(
         workshopService: WorkshopService(
             apiClient: APIClient(
@@ -69,7 +141,7 @@ struct FestivalPlanningScreen: View {
 
     let viewModel = WorkshopFiltersViewModel(workshopStore: store)
 
-    return FestivalPlanningScreen(
-        viewModel: viewModel
-    )
+    return NavigationStack {
+        FestivalPlanningScreen(viewModel: viewModel)
+    }
 }

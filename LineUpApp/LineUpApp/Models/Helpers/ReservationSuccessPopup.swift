@@ -34,6 +34,9 @@ struct ReservationSuccessPopup: View {
                     onReturnToPlanning()
                 }
             } else {
+                
+                ConfettiView()
+
                 StatusPopup(
                     type: .validation,
                     title: "Inscription confirmée !",

@@ -35,8 +35,10 @@ struct ConfettiView: View {
 
     private var totalTime: Double { (duration + maxDelay) / timeScale + 0.2 }
 
-    private let drag: CGFloat = 1.4
-    private let terminalFall: CGFloat = 90
+    // Traînée plus forte : l'éclatement ralentit vite
+    private let drag: CGFloat = 3.0
+    // Chute plus lente et plus flottante
+    private let terminalFall: CGFloat = 70
 
     @State private var startTime: TimeInterval? = nil
     @State private var isFinished = false
@@ -102,60 +104,53 @@ struct ConfettiView: View {
         let up = -Double.pi / 2
         let down = Double.pi / 2
         return [
+            // canons bas gauche / bas droite, tirés vers l'intérieur
             Jet(
-                x: 0.15,
-                y: 1.02,
-                direction: up + 0.25,
-                spread: 0.7,
-                minSpeed: 900,
-                maxSpeed: 1700,
+                x: 0.0,
+                y: 1.0,
+                direction: up + 0.55,
+                spread: 0.35,
+                minSpeed: 1400,
+                maxSpeed: 2600,
                 delay: 0.00
             ),
             Jet(
-                x: 0.50,
-                y: 1.02,
+                x: 1.0,
+                y: 1.0,
+                direction: up - 0.55,
+                spread: 0.35,
+                minSpeed: 1400,
+                maxSpeed: 2600,
+                delay: 0.00
+            ),
+            // seconde salve, plus verticale, depuis le centre bas
+            Jet(
+                x: 0.5,
+                y: 1.0,
                 direction: up,
-                spread: 0.8,
-                minSpeed: 900,
-                maxSpeed: 1700,
-                delay: 0.25
+                spread: 0.5,
+                minSpeed: 1200,
+                maxSpeed: 2200,
+                delay: 0.35
             ),
+            // pluie lente depuis le haut
             Jet(
-                x: 0.85,
-                y: 1.02,
-                direction: up - 0.25,
-                spread: 0.7,
-                minSpeed: 900,
-                maxSpeed: 1700,
-                delay: 0.50
-            ),
-
-            Jet(
-                x: 0.15,
-                y: -0.02,
-                direction: down - 0.15,
-                spread: 0.8,
-                minSpeed: 500,
-                maxSpeed: 1100,
-                delay: 0.15
-            ),
-            Jet(
-                x: 0.50,
-                y: -0.02,
+                x: 0.25,
+                y: -0.05,
                 direction: down,
-                spread: 0.9,
-                minSpeed: 500,
-                maxSpeed: 1100,
-                delay: 0.40
+                spread: 0.6,
+                minSpeed: 40,
+                maxSpeed: 220,
+                delay: 0.7
             ),
             Jet(
-                x: 0.85,
-                y: -0.02,
-                direction: down + 0.15,
-                spread: 0.8,
-                minSpeed: 500,
-                maxSpeed: 1100,
-                delay: 0.65
+                x: 0.75,
+                y: -0.05,
+                direction: down,
+                spread: 0.6,
+                minSpeed: 40,
+                maxSpeed: 220,
+                delay: 0.9
             ),
         ]
     }()
@@ -216,9 +211,9 @@ struct ConfettiView: View {
                             + Double.random(in: 0...0.1, using: &rng),
                         size: size,
                         spin: Double.random(in: -360...360, using: &rng),
-                        flipSpeed: Double.random(in: 4...9, using: &rng),
+                        flipSpeed: Double.random(in: 3...7, using: &rng),
                         phase: Double.random(in: 0...(2 * .pi), using: &rng),
-                        sway: CGFloat.random(in: 6...18, using: &rng)
+                        sway: CGFloat.random(in: 15...40, using: &rng)
                     )
                 )
             }
@@ -291,12 +286,10 @@ struct ConfettiView: View {
     }
 
     private func fireHaptic(strong: Bool) {
-        #if canImport(UIKit)
             let generator = UIImpactFeedbackGenerator(
                 style: strong ? .heavy : .medium
             )
             generator.impactOccurred()
-        #endif
     }
 
     private func draw(
@@ -355,9 +348,13 @@ struct ConfettiView: View {
             let progress = time / duration
 
             let decay = (1 - exp(-drag * t)) / drag
+
+            // le balancement s'installe après l'éclatement
+            let swayRamp = min(1, t * 1.2)
             let x =
                 origin.x + particle.vx * decay
-                + particle.sway * CGFloat(sin(time * 4 + particle.phase))
+                + particle.sway * swayRamp
+                * CGFloat(sin(time * 3 + particle.phase))
             let y =
                 origin.y + (particle.vy - terminalFall) * decay + terminalFall
                 * t
