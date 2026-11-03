@@ -249,6 +249,12 @@ struct SettingsScreen: View {
             ) {
                 showsDeletePopup = false
             }
+            .overlay(alignment: .topTrailing) {
+                AppButton(title: "common.close", icon: AppImage.Icon.close.image, type: .iconFilled, shape: .radius16) {
+                    showsDeletePopup = false
+                }
+                .padding(AppToken.Spacing.s24)
+            }
         }
     }
 
