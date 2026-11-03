@@ -112,7 +112,7 @@ final class UserBookingsViewModel {
     }
 
     // MARK: Recherche + filtres, sur la liste déjà chargée
-    private var visibleReservations: [Reservation] {
+    var visibleReservations: [Reservation] {
         
         reservationStore.reservations
             .filter { query.isEmpty || $0.workshop.name.localizedStandardContains(query) }

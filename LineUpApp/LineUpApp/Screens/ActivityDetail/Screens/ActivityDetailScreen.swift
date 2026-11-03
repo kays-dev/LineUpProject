@@ -117,6 +117,7 @@ struct ActivityDetailScreen: View {
                     }
                     
                 }
+                .tabBarVisibility(.hidden)
                 .padding(AppToken.Padding.screen)
                 
                 // -> popup + confetti
@@ -127,10 +128,11 @@ struct ActivityDetailScreen: View {
                         workshop: workshop,
                         onReturnToPlanning: onReturnToPlanning
                     )
-                    .toolbar(.hidden, for: .navigationBar)
+                    .toolbarVisibility(.hidden, for: .navigationBar, .tabBar)
                     
                     
                 }
+
             }
             
         }

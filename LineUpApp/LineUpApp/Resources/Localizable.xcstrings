@@ -33,9 +33,6 @@
     "%lld" : {
 
     },
-    "à l’affiche" : {
-
-    },
     "Adresse email" : {
 
     },
@@ -2339,6 +2336,18 @@
       }
     },
     "Mot de passe" : {
+
+    },
+    "Pas de réservations" : {
+
+    },
+    "Pas de réservations à venir" : {
+
+    },
+    "Pas de réservations annulées" : {
+
+    },
+    "Pas de réservations en cours" : {
 
     },
     "password.confirm" : {

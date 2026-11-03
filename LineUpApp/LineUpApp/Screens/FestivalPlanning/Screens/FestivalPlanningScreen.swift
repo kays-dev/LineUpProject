@@ -81,16 +81,15 @@ struct FestivalPlanningScreen: View {
                 .padding(.horizontal, AppToken.Padding.screen)
             }
             // en tête
-            .lineupPageHeading(.primary(heading: "à l’affiche")) {
+            .lineupPageHeading(.primary(heading: .tabProgram)) {
                 LanguageFlagButton()
             }
-            .navigationDestination(isPresented: $showFilters) {
+            .fullScreenCover(isPresented: $showFilters) {
                 WorkshopFilterScreen(
                     viewModel: viewModel,
                     dates: viewModel.availableDays,
                     categories: viewModel.availableCategories
                 )
-                .toolbar(.hidden, for: .navigationBar)
             }
             .navigationDestination(item: $selectedWorkshopID) { id in
                 if let workshop = viewModel.workshop(id: id) {
@@ -99,7 +98,7 @@ struct FestivalPlanningScreen: View {
                         onReturnToPlanning: { selectedWorkshopID = nil },
                         useTypes: .workshop
                     )
-                    .toolbar(.hidden, for: .navigationBar)
+                    .toolbarVisibility(.hidden, for: .navigationBar, .tabBar)
                 } else {
                     ContentUnavailableView(
                         "Atelier introuvable",
@@ -107,7 +106,6 @@ struct FestivalPlanningScreen: View {
                     )
                 }
             }
-            .toolbar(.hidden, for: .navigationBar)
         }
         .task(id: viewModel.searchText) {
             await viewModel.search()

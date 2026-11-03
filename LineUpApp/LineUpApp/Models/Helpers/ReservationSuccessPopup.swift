@@ -48,6 +48,7 @@ struct ReservationSuccessPopup: View {
                 }
             }
         }
+        .tabBarVisibility(.hidden)
     }
 }
 
