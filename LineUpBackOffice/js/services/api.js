@@ -18,6 +18,19 @@ async function getErrorMessage(response) {
   }
 }
 
+// L'API envoie l'atelier dans un objet "workshop". On remet ses champs à plat
+// (workshopID, workshopName, startTime, endTime) pour que les pages les lisent comme avant.
+function aplatirReservation(reservation) {
+  const atelier = reservation.workshop || {};
+  return {
+    ...reservation,
+    workshopID: reservation.workshopID ?? atelier.id,
+    workshopName: reservation.workshopName ?? atelier.name,
+    startTime: reservation.startTime ?? atelier.startTime,
+    endTime: reservation.endTime ?? atelier.endTime
+  };
+}
+
 // Récupère TOUTES les réservations (l'API les envoie par pages de 10 maximum)
 async function fetchAllReservations(filtres = {}) {
   const toutes = [];
@@ -30,7 +43,7 @@ async function fetchAllReservations(filtres = {}) {
       throw new Error(`Erreur HTTP : ${response.status}`);
     }
     const data = await response.json();
-    toutes.push(...data.items);
+    toutes.push(...data.items.map(aplatirReservation));
 
     // On s'arrête quand on a tout reçu
     if (data.items.length === 0 || toutes.length >= data.metadata.total) {

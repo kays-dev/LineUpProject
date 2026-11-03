@@ -27,7 +27,7 @@ function formatDate(dateIso) {
   return new Date(dateIso).toLocaleDateString('fr-FR', { timeZone: 'Europe/Paris' });
 }
 
-// Exemple : 2026-07-03 (format attendu par un <input type="date"> et par le filtre ?period=)
+// Exemple : 2026-07-03 (format attendu par un <input type="date"> et par le filtre ?periods=)
 function formatJour(dateIso) {
   return new Date(dateIso).toLocaleDateString('sv-SE', { timeZone: 'Europe/Paris' });
 }

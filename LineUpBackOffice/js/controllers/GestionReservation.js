@@ -67,7 +67,7 @@ async function fetchReservations() {
 
     // La réponse contient "items" (la liste) et "metadata" (page, per, total)
     const data = await response.json();
-    renderReservationsTable(data.items);
+    renderReservationsTable(data.items.map(aplatirReservation));
 
     // Mise à jour du nombre total et des boutons de pagination
     totalPages = Math.max(1, Math.ceil(data.metadata.total / data.metadata.per));
