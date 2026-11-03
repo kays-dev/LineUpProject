@@ -27,6 +27,7 @@ struct RegisterContent: View {
 
     init(sessionStore: SessionStore) {
         _viewModel = State(initialValue: RegisterViewModel(sessionStore: sessionStore))
+        _showLogin = State(initialValue: sessionStore.hasLoggedOut)
     }
 
     var body: some View {
