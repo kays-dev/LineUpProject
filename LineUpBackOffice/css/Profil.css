@@ -1,0 +1,57 @@
+/* Pages de profil (liste, détail, staff) */
+
+.profil-card {
+  background-color: #f7faf9;
+  border: 1px solid #032b2b;
+  border-radius: 16px;
+  padding: 30px;
+}
+
+/* Bloc identité (avatar + nom + email) */
+.identity {
+  text-align: center;
+  margin-bottom: 25px;
+}
+
+.avatar {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background-color: #a8e6cf;
+  border: 2px solid #032b2b;
+  margin: 0 auto 10px auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28px;
+  font-weight: 800;
+  color: #032b2b;
+}
+
+.identity-name {
+  font-size: 18px;
+  font-weight: 800;
+  color: #032b2b;
+}
+
+.identity-email {
+  font-size: 12px;
+  color: #666666;
+}
+
+.profil-section {
+  margin-bottom: 25px;
+}
+
+.profil-staff {
+  max-width: 480px;
+}
+
+/* Ligne cliquable dans la liste des utilisateurs */
+.ligne-cliquable {
+  cursor: pointer;
+}
+
+.ligne-cliquable:hover {
+  background-color: #ebfaf7;
+}

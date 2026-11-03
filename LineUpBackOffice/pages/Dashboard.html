@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tableau de bord - DOLCEVITA SUR SEINE</title>
+  <link rel="icon" href="../assets/logo.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../css/base.css">
+  <link rel="stylesheet" href="../css/Dashboard.css">
+</head>
+<body>
+
+  <div class="app-container">
+    <aside class="sidebar">
+      <div class="sidebar-header">
+        <img class="logo" src="../assets/logo.svg" alt="Logo Dolcevita sur Seine">
+        <div class="brand-info">
+          <span class="brand-title">DOLCEVITA SUR SEINE</span>
+          <span class="brand-subtitle">Backoffice · by LineUp</span>
+        </div>
+      </div>
+
+      <nav class="sidebar-nav">
+        <a href="Dashboard.html" class="nav-item active">TABLEAU DE BORD</a>
+        <a href="GestionActivite.html" class="nav-item">ACTIVITÉS</a>
+        <a href="GestionReservation.html" class="nav-item">RÉSERVATIONS</a>
+        <a href="Planning.html" class="nav-item">PLANNING</a>
+        <a href="ProfilUtilisateurs.html" class="nav-item">PROFIL</a>
+      </nav>
+
+      <div class="sidebar-footer">
+        <a class="user-block" href="ProfilStaff.html">
+          <div class="user-avatar">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+              <circle cx="12" cy="7" r="4"></circle>
+            </svg>
+          </div>
+          <div class="user-details">
+            <span class="user-name" id="sidebarName">…</span>
+            <span class="user-role" id="sidebarRole"></span>
+          </div>
+        </a>
+        <a class="logout-link" onclick="logout()">DÉCONNEXION</a>
+      </div>
+    </aside>
+
+    <main class="main-content">
+      <header class="page-header">
+        <div>
+          <h1 class="page-title">Tableau de bord</h1>
+          <p class="page-subtitle">Vue d'ensemble · <span id="jourAffiche"></span></p>
+        </div>
+      </header>
+
+      <div class="stats">
+        <div class="stat-card"><div class="stat-value" id="statActivites">0</div><div class="stat-label">Activités ce jour</div></div>
+        <div class="stat-card"><div class="stat-value" id="statReservations">0</div><div class="stat-label">Réservations</div></div>
+        <div class="stat-card"><div class="stat-value" id="statPlaces">0</div><div class="stat-label">Places restantes</div></div>
+        <div class="stat-card"><div class="stat-value" id="statAttente">0</div><div class="stat-label">En liste d'attente</div></div>
+      </div>
+
+      <div class="dashboard-body">
+        <section class="dashboard-main">
+          <h2 class="section-title">ACTIVITÉS DU JOUR</h2>
+          <div class="table-card">
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th>HEURE</th>
+                  <th>ACTIVITÉ</th>
+                  <th>CATÉGORIE</th>
+                  <th>PLACES</th>
+                  <th>STATUT</th>
+                </tr>
+              </thead>
+              <tbody id="agendaTable"></tbody>
+            </table>
+          </div>
+        </section>
+
+        <section class="dashboard-side">
+          <h2 class="section-title">PLANNING IMMÉDIAT</h2>
+          <div id="prochainsAteliers"></div>
+        </section>
+      </div>
+    </main>
+  </div>
+
+  <script src="../js/config.js"></script>
+  <script src="../js/services/session.js"></script>
+  <script src="../js/services/api.js"></script>
+  <script src="../js/utils/format.js"></script>
+  <script src="../js/utils/statuts.js"></script>
+  <script src="../js/components/icones.js"></script>
+  <script src="../js/components/modal.js"></script>
+  <script src="../js/components/sidebar.js"></script>
+  <script src="../js/controllers/Dashboard.js"></script>
+</body>
+</html>

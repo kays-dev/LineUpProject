@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Profil - Liste des utilisateurs - DOLCEVITA SUR SEINE</title>
+  <link rel="icon" href="../assets/logo.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../css/base.css">
+  <link rel="stylesheet" href="../css/Profil.css">
+</head>
+<body>
+
+  <div class="app-container">
+    <aside class="sidebar">
+      <div class="sidebar-header">
+        <img class="logo" src="../assets/logo.svg" alt="Logo Dolcevita sur Seine">
+        <div class="brand-info">
+          <span class="brand-title">DOLCEVITA SUR SEINE</span>
+          <span class="brand-subtitle">Backoffice · by LineUp</span>
+        </div>
+      </div>
+
+      <nav class="sidebar-nav">
+        <a href="Dashboard.html" class="nav-item">TABLEAU DE BORD</a>
+        <a href="GestionActivite.html" class="nav-item">ACTIVITÉS</a>
+        <a href="GestionReservation.html" class="nav-item">RÉSERVATIONS</a>
+        <a href="Planning.html" class="nav-item">PLANNING</a>
+        <a href="ProfilUtilisateurs.html" class="nav-item active">PROFIL</a>
+      </nav>
+
+      <div class="sidebar-footer">
+        <a class="user-block" href="ProfilStaff.html">
+          <div class="user-avatar">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+              <circle cx="12" cy="7" r="4"></circle>
+            </svg>
+          </div>
+          <div class="user-details">
+            <span class="user-name" id="sidebarName">…</span>
+            <span class="user-role" id="sidebarRole"></span>
+          </div>
+        </a>
+        <a class="logout-link" onclick="logout()">DÉCONNEXION</a>
+      </div>
+    </aside>
+
+    <main class="main-content">
+      <header class="page-header header-with-btn">
+        <div>
+          <h1 class="page-title">Profil</h1>
+          <p class="page-subtitle"><span id="pageSubtitle">…</span></p>
+        </div>
+        <a href="CreationCompte.html" class="btn btn-primary">AJOUTER</a>
+      </header>
+
+      <div class="filters-bar">
+        <div class="search-input-wrapper">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="11" cy="11" r="8"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+          </svg>
+          <input type="text" id="searchInput" placeholder="Saisir un nom">
+        </div>
+
+        <div class="select-wrapper">
+          <select id="roleFilter">
+            <option value="">Tous les rôles</option>
+            <option value="festivalgoer">Festivalier</option>
+            <option value="staff">Staff</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="table-card">
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>UTILISATEUR</th>
+              <th>E-MAIL</th>
+              <th>À VENIR</th>
+              <th>HISTORIQUE</th>
+              <th>ANNULÉES</th>
+              <th>RÔLE</th>
+            </tr>
+          </thead>
+
+          <tbody id="userTable">
+
+          </tbody>
+        </table>
+      </div>
+      <p class="note" style="margin-top: 12px;">Cliquez sur une ligne pour ouvrir le profil d'un festivalier. Les réservations annulées ne sont jamais supprimées.</p>
+    </main>
+  </div>
+
+  <script src="../js/config.js"></script>
+  <script src="../js/services/session.js"></script>
+  <script src="../js/services/api.js"></script>
+  <script src="../js/utils/format.js"></script>
+  <script src="../js/utils/statuts.js"></script>
+  <script src="../js/components/icones.js"></script>
+  <script src="../js/components/modal.js"></script>
+  <script src="../js/components/sidebar.js"></script>
+  <script src="../js/controllers/ProfilUtilisateurs.js"></script>
+</body>
+</html>

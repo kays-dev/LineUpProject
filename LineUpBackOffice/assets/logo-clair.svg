@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="40 40 520 520" role="img" aria-label="Logo Dolcevita sur Seine">
+  <circle cx="295" cy="111" r="58" fill="#F2FBF8"/>
+  <g stroke-width="58" stroke-linecap="round" fill="none">
+    <line x1="194" y1="227" x2="164" y2="419" stroke="#76D372"/>
+    <line x1="296" y1="227" x2="296" y2="490" stroke="#C65763"/>
+    <line x1="398" y1="227" x2="428" y2="419" stroke="#77D4C4"/>
+  </g>
+</svg>
