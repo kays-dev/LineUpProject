@@ -41,7 +41,7 @@ struct WorkshopFilterScreen: View {
                             icon: AppImage.InterfaceIcon.xMark.image,
                             type: .iconFilled
                         ) {
-                            viewModel.cancelChanges()
+                            viewModel.resetFilters()
                             dismiss()
                         }
                     }
