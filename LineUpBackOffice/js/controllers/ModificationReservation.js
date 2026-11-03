@@ -16,7 +16,7 @@ async function fetchReservation() {
   try {
     const response = await fetch(`${API_URL}/${reservationId}`, { headers: getHeaders() });
     if (!response.ok) throw new Error(`Erreur HTTP : ${response.status}`);
-    const reservation = await response.json();
+    const reservation = aplatirReservation(await response.json());
 
     document.getElementById('pageSubtitle').textContent = `Réservations · AR-${reservation.reservationID}`;
     document.getElementById('titreReservation').textContent = `RÉSERVATION AR-${reservation.reservationID}`;

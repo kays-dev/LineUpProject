@@ -51,10 +51,10 @@ function afficherBoutonsJours(jours) {
   });
 }
 
-// Récupère les ateliers du jour choisi (filtre ?period=2026-07-03)
+// Récupère les ateliers du jour choisi (filtre ?periods=2026-07-03)
 async function fetchPlanning() {
   try {
-    const response = await fetch(`${API_URL}?period=${jourChoisi}`, { headers: getHeaders() });
+    const response = await fetch(`${API_URL}?periods=${jourChoisi}`, { headers: getHeaders() });
     if (!response.ok) throw new Error(`Erreur HTTP : ${response.status}`);
     const workshops = await response.json();
 
