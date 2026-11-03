@@ -112,6 +112,7 @@ struct WorkshopFilterScreen: View {
                     )
                 }
                 .padding(AppToken.Padding.screen)
+                .padding(.bottom, AppToken.Padding.scrollViewBottom)
             }
         }
         // couvre tous les cas où l’utilisateur quitte sans confirmer

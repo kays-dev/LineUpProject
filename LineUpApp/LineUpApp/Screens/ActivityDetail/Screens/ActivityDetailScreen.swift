@@ -91,6 +91,7 @@ struct ActivityDetailScreen: View {
                     ) {
                         Text(section.detail)
                             .foregroundStyle(AppColor.Text.primary)
+                            .frame(maxWidth: .infinity, alignment: .leading)
                     }
                     
                     if useTypes == .workshop {
