@@ -23,7 +23,6 @@ struct ProfileContent: View {
     @State private var viewModel: ProfileViewModel
     @Environment(SessionStore.self) private var sessionStore
     @AppStorage("selectedAvatar") private var avatar: AppImage.Avatar = .colombina
-    @AppStorage("appLanguage") private var language: AppLanguage = .french
     @Environment(\.locale) private var locale
     @State private var showsSettings = false
     @State private var selectedReservation: Reservation?
@@ -72,16 +71,7 @@ struct ProfileContent: View {
             AppButton(title: "settings.title", icon: AppImage.Icon.settings.image, type: .iconOutline) {
                 showsSettings = true
             }
-            Button {
-                language = language == .italian ? .french : .italian
-            } label: {
-                flag.image
-                    .resizable()
-                    .scaledToFit()
-                    .frame(width: AppToken.Scale.primitive28, height: AppToken.Scale.primitive28)
-            }
-            .buttonStyle(.plain)
-            .accessibilityLabel(Text("settings.language"))
+            LanguageFlagButton()
         }
     }
 
@@ -89,10 +79,6 @@ struct ProfileContent: View {
         var resource = resource
         resource.locale = locale
         return String(localized: resource)
-    }
-
-    private var flag: AppImage.Flag {
-        language == .italian ? .french : .italian
     }
 
     private var identity: some View {

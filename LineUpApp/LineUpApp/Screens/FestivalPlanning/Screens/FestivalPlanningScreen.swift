@@ -10,7 +10,6 @@ import SwiftUI
 struct FestivalPlanningScreen: View {
 
     @Bindable var viewModel: WorkshopFiltersViewModel
-    @State private var isItalianFlag = true
     @State private var selectedWorkshopID: UUID?
     @State private var showFilters = false
 
@@ -19,41 +18,7 @@ struct FestivalPlanningScreen: View {
             Color.mintPrimary.ignoresSafeArea()
 
             ScrollView {
-                VStack(spacing: AppToken.Spacing.s28) {
-
-                    // en tête
-                    PageHeading(mode: .primary(heading: "à l’affiche")) {
-                        Button {
-                            isItalianFlag.toggle()
-                        } label: {
-                            if isItalianFlag {
-                                AppImage.Flag.italian.image
-                                    .resizable()
-                                    .scaledToFit()
-                            } else {
-                                AppImage.Flag.french.image
-                                    .resizable()
-                                    .scaledToFit()
-                            }
-                        }
-                        .buttonStyle(.plain)
-                    }
-
-                    // searchBar + bouton filtres
-                    HStack(spacing: AppToken.Spacing.s16) {
-                        SearchBar(input: $viewModel.searchText)
-                        
-                        AppButton(
-                            title: "filters.title",
-                            icon: AppImage.Icon.filter.image,
-                            type: .iconOutline,
-                            shape: ButtonShape.round
-                        ) {
-                            showFilters = true
-                        }
-                    }
-                    .padding(.bottom, AppToken.Padding.headerBottom)
-                    .padding(.horizontal, AppToken.Padding.screen)
+                VStack(spacing: AppToken.Spacing.s16) {
 
                     // état vide
                     if viewModel.workshops.isEmpty && !viewModel.isLoading {
@@ -94,9 +59,30 @@ struct FestivalPlanningScreen: View {
                         }
                     }
                 }
-                .padding(AppToken.Padding.screen)
-                .padding(.top, AppToken.Padding.headerBottom)
+                .padding(.horizontal, AppToken.Padding.screen)
                 .padding(.bottom, AppToken.Padding.scrollViewBottom)
+            }
+            .safeAreaBar(edge: .top) {
+
+                // searchBar + bouton filtres
+                HStack(spacing: AppToken.Spacing.s16) {
+                    SearchBar(input: $viewModel.searchText)
+
+                    AppButton(
+                        title: "filters.title",
+                        icon: AppImage.Icon.sort.image,
+                        type: .iconOutline,
+                        shape: ButtonShape.radius16
+                    ) {
+                        showFilters = true
+                    }
+                }
+                .padding(.bottom, AppToken.Padding.headerBottom)
+                .padding(.horizontal, AppToken.Padding.screen)
+            }
+            // en tête
+            .lineupPageHeading(.primary(heading: "à l’affiche")) {
+                LanguageFlagButton()
             }
             .navigationDestination(isPresented: $showFilters) {
                 WorkshopFilterScreen(
