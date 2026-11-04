@@ -18,6 +18,10 @@ struct ActivityDetailScreen: View {
     
     @State private var showReservationSuccessPopup = false
     
+    @Environment(ReservationStore.self) private var reservationStore
+    
+    @State private var errorMessage: String?
+    
     var body: some View {
         
         ZStack {
@@ -102,7 +106,7 @@ struct ActivityDetailScreen: View {
                                 text: "Réserver",
                                 isSelected: true
                             ) {
-                                showReservationSuccessPopup = true
+                                reserve()
                             }
                         } else {
                             AppButton(
@@ -110,9 +114,13 @@ struct ActivityDetailScreen: View {
                                 type: .secondary,
                                 tone: .danger
                             ) {
-                                showReservationSuccessPopup = true
-                                
+                                reserve()
                             }
+                        }
+                        
+                        if let errorMessage {
+                            Text(errorMessage)
+                                .foregroundStyle(AppColor.Button.ghostDangerText)
                         }
                     }
                     
@@ -137,9 +145,24 @@ struct ActivityDetailScreen: View {
             
         }
     }
+    
+    private func reserve() {
+        Task {
+            do {
+                _ = try await reservationStore.create(workshopID: workshop.id)
+                errorMessage = nil
+                showReservationSuccessPopup = true
+            } catch {
+                print("Erreur réservation :", error)
+                errorMessage = "La réservation a échoué."
+            }
+        }
+    }
 }
 
 #Preview {
+    let apiClient = APIClient(baseURL: APIConfig.baseURL, keychain: KeychainService())
+    
     ZStack {
         Color.mintPrimary
             .ignoresSafeArea()
@@ -163,4 +186,5 @@ struct ActivityDetailScreen: View {
             )
         }
     }
+    .environment(ReservationStore(service: ReservationService(apiClient: apiClient)))
 }
