@@ -66,7 +66,7 @@ Le projet couvre toute la chaîne : conception de la base de données (MERISE / 
 | Krystal | [@kays-dev](https://github.com/kays-dev) | Scrum Master · ressource Catégories et middleware de rôle (API) · architecture, couche réseau, authentification et écrans de réservation (iOS) |
 | Hayat   | [@Hayat91800](https://github.com/Hayat91800) | Authentification JWT et utilisateurs (API) · back-office web |
 | Imane   | [@imane-CDA](https://github.com/imane-CDA) | Ateliers (API) |
-| Slimane | Réservations (API) |
+| Slimane | [@SlimaneZZZ] (https://github.com/SlimaneZZZ) | Réservations (API) |
 
 ## 📜 LICENSE
 
